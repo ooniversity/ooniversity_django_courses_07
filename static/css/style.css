@@ -1,0 +1,42 @@
+nav li.active a{
+	color: blue !important;
+}
+
+body {
+background-color: #ffffff;
+}
+
+div #bs-example-navbar-collapse-1{
+	background-color: #e7e7e7;
+}
+
+li.active a{
+	background-color: #e7e7e7;
+}
+
+h2.curs{
+	font-family: 'Comic Sans MS';
+	font-size: 250%;
+}
+
+p a{
+	letter-spacing: 0.2em;
+}
+
+h2.names{
+	color: #808000;
+}
+
+p span.text-lowercase{
+	font-family: Impact;
+}
+
+p span.name{
+	text-transform: capitalize;
+}
+
+p span.Skype{
+	border-style: dashed;
+	border-bottom-width: 2px;
+	border-color: #e7e7e7;
+	}
