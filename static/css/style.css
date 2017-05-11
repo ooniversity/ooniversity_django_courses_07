@@ -31,15 +31,24 @@ nav {
 	font-weight: bold;
 }
 
+.card {
+	margin-top: 20px !important;
+	width: 500px !important;
+}
+
+.card-td {
+	width: 150px !important;
+}
+
 .main td{
 	width: 40%;
 }
 
-.contact table {
+.contact {
 	width: 220px;
 }
 
-.contact td {
+.contact tr td {
 	/*width: 250px;*/
 	vertical-align: top;
 }
@@ -61,7 +70,7 @@ nav {
 
 .navbar-brand{
 	height: auto !important;
-	padding-left: 200px !important;
+	padding-left: 67px !important;
 }
 
 ul {
@@ -79,7 +88,9 @@ ul {
 	color: #6DB854 !important;	
 }
 
-
+.table {
+	margin-top: 50px;
+}
 
 .person {
 	max-width: 100px;
