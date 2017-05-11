@@ -36,10 +36,10 @@ html, body{
   margin-right: auto;
   margin-left: auto;
 }
-p{
+.text{
     font-family: cursive;
     color:black;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 100;
     line-height: 32px;
 }
@@ -69,7 +69,6 @@ p{
     font-size: 16px;
 }
 
-
 .btm{
     color: black;
 }
@@ -81,3 +80,26 @@ p{
    font-family: inherit; 
    color: dimgrey;
 }
+.p_list{
+    font-size: 16px;
+}
+.danger{
+    background-color:lightgoldenrodyellow;
+}
+.ivan{
+    text-align: left;
+    font-family:inherit;
+    line-height: 2;
+}
+.card{
+    font-size: 12px;
+    font-family: cursive;
+    line-height: 1;
+}
+.table_stud{
+    background-color: lightyellow;
+}
+.test_table{
+    font-weight:bold;
+}
+
