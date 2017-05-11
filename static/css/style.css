@@ -6,18 +6,11 @@ body {
 background-color: #ffffff;
 }
 
-div #bs-example-navbar-collapse-1{
-	background-color: #e7e7e7;
-}
 
 li.active a{
 	background-color: #e7e7e7;
 }
 
-h2.curs{
-	font-family: 'Comic Sans MS';
-	font-size: 250%;
-}
 
 p a{
 	letter-spacing: 0.2em;
