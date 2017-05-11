@@ -1,0 +1,90 @@
+body {
+  padding-top: 50px;
+}
+.main-template {
+  padding: 0px 15px;
+  text-align: left;
+}
+
+.contacts-template {
+  padding: 40px 35px;
+  text-align: left;
+  margin: 0 0;
+}
+
+.contacts-form {
+    margin: 10px 15px;
+}
+
+.contacts-img-block {
+    margin: 10px 160px;
+    width: 400px;
+    height: auto;
+    display: inline-block;	
+    vertical-align: top;
+	padding: 0 10px;
+}
+
+.contacts-text {
+    width: 300px;
+    padding: 0 60px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: top;
+}
+
+.contacts-map {
+	width:400px;
+	height:400px;
+	margin: 30px 200px;
+	display: inline-block;
+    vertical-align: top;	
+ }
+
+.contacts-img {
+    margin: 0 15px;
+}
+
+.i-map {
+	width: 600px;
+	height: 450px;
+	border: 0;
+}
+
+.logo-block {
+	 margin: 0;
+}
+
+.logo {
+	display: block;
+    margin: auto;
+    width: 40%;
+}
+
+.contact-form-key {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.course-title {
+	font-weight: bold;
+	text-align: center;
+}
+
+.program-title {
+	font-weight: bold
+}
+
+.description-title {
+	font-weight: bold
+}
+
+.contact-title {
+	font-weight: bold;
+}
+
+.contact-key {
+	font-size: 16px;
+}
