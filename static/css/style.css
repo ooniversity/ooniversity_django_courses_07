@@ -35,31 +35,31 @@ h6, .h6 {
  * Masthead for nav
  */
 
-.blog-masthead {
+.page-masthead {
   background-color: #428bca;
   -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
           box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
 
 /* Nav links */
-.blog-nav-item {
+.page-nav-item {
   position: relative;
   display: inline-block;
   padding: 10px;
   font-weight: 500;
   color: #cdddeb;
 }
-.blog-nav-item:hover,
-.blog-nav-item:focus {
+.page-nav-item:hover,
+.page-nav-item:focus {
   color: #fff;
   text-decoration: none;
 }
 
 /* Active state gets a caret at the bottom */
-.blog-nav .active {
+.page-nav .active {
   color: #fff;
 }
-.blog-nav .active:after {
+.page-nav .active:after {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -75,30 +75,70 @@ h6, .h6 {
 
 
 /*
- * Blog name and description
+ * Page name and description
  */
 
-.blog-header {
-  padding-top: 20px;
+.page-header {
+  padding-top: 5px;
   padding-bottom: 20px;
 }
-.blog-title {
-  margin-top: 30px;
+.page-title {
   margin-bottom: 0;
-  font-size: 60px;
+  font-size: 40px;
   font-weight: normal;
 }
-.blog-description {
-  font-size: 20px;
+.page-description {
+  font-size: 18px;
   color: #999;
 }
+.page-list {
+	font-size: 18px;
+	line-height: 1.5;
+}
 
+.end-page-title {
+	margin-top: 40px;
+    margin-bottom: 40px;
+	font-size: 30px;
+	font-weight: normal;
+	text-align: center;
+	
+}
+
+
+/*
+ * Contacts page
+ */
+
+.team-photo {
+	width: 50%;
+	margin-top: 10px;
+}
+
+.map-photo {
+	width: 60%;
+	margin-top: 10px;
+	text-align: center;
+}
+
+.team-photo-title {
+	margin-top: 10px;
+	text-align: center;
+}
+.help-text {
+	font-size: 12px;
+	font-style: italic;
+}
+
+.contact-team-text {
+	font-size: 16px;
+}
 
 /*
  * Main column and sidebar layout
  */
 
-.blog-main {
+.page-main {
   font-size: 18px;
   line-height: 1.5;
 }
@@ -134,17 +174,17 @@ h6, .h6 {
 
 
 /*
- * Blog posts
+ * page posts
  */
 
-.blog-post {
-  margin-bottom: 60px;
+.page-post {
+  margin-bottom: 40px;
 }
-.blog-post-title {
+.page-post-title {
   margin-bottom: 5px;
-  font-size: 40px;
+  font-size: 30px;
 }
-.blog-post-meta {
+.page-post-meta {
   margin-bottom: 20px;
   color: #999;
 }
@@ -154,13 +194,13 @@ h6, .h6 {
  * Footer
  */
 
-.blog-footer {
+.page-footer {
   padding: 40px 0;
   color: #999;
   text-align: center;
   background-color: #f9f9f9;
   border-top: 1px solid #e5e5e5;
 }
-.blog-footer p:last-child {
+.page-footer p:last-child {
   margin-bottom: 0;
 }
