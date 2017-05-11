@@ -31,11 +31,15 @@ nav {
 	font-weight: bold;
 }
 
-table {
+.main td{
+	width: 40%;
+}
+
+.contact table {
 	width: 220px;
 }
 
-td {
+.contact td {
 	/*width: 250px;*/
 	vertical-align: top;
 }
