@@ -1,0 +1,13 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+.picto {
+	width: 10px;
+}
+.student {
+	cellpadding:5px; cellspacing:5px; bgcolor:green;
+}
