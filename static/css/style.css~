@@ -1,0 +1,3 @@
+.first_title { background-color: #EEE; }
+.text_footer {}
+img.media-object { width: 50px !important; height: 50px; }
