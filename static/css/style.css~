@@ -1,3 +1,13 @@
-.first_title { background-color: #EEE; }
-.text_footer {}
-img.media-object { width: 50px !important; height: 50px; }
+div.first_title h2 { background-color: #EEE; color: #111A66; }
+div.main_text p { font-style: italic; }
+.media-body h4 { font-weight: bold; }
+img.media-object { border-radius: 5px; }
+div.media-body { border-left: 2px solid; padding-left: 10px; }
+div.main_text h3 { font-style: oblique; }
+.program { margin-bottom: 50px; }
+.program ul {color: #555; }
+img.media-object { width: 50px; height: 50px; }
+
+.contact { list-style-type: disc; }
+
+img.student { width: 100px; margin-bottom: 15px; }
