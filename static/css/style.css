@@ -1,14 +1,14 @@
 body{
 	background-color: #ddd;
 }
-body > .navbar {
+.navbar {
 	background-color: #555;
 	border-radius: 0px;
 }
-body > .navbar .navbar-nav > li > a {
+.navbar .navbar-nav > li > a {
 	color: #fff;
 }
-body > .navbar .navbar-nav > li:hover > a{
+.navbar .navbar-nav > li:hover > a{
 	color: #fff;
 	background-color: #666;
 }
@@ -24,11 +24,11 @@ p a:hover{
 	color: #333;
 	text-decoration: none;
 }
-p.desc, p.prog {
+.desc {
 	font-size: 130%;
 }
-.contacts .col h2.names{
-	margin-bottom: 20px;
+.prog{
+	font-size: 120%;
 }
 .contacts .col p{
 	margin: 10px 0 20px 0;
@@ -37,4 +37,25 @@ p.desc, p.prog {
 .contacts .col p span{
 	font-weight: normal;
 	letter-spacing: 1px;
+}
+.names{
+	margin-bottom: 20px;	
+}
+.name{
+	font-size: 150%;
+}
+.Skype{
+	font-family: Monospace;
+}
+.email{
+	text-decoration: underline;
+}
+.phone{
+	font-style: italic;
+}
+.main-title{
+	font-size: 50px;
+}
+.contacts{
+	border-bottom: 1px solid black;
 }
