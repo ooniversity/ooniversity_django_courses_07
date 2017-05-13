@@ -34,5 +34,5 @@ def results(request):
             message='Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = '+str(-1*b / float(2*a))
         elif d<0:
             message='Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
-    return render(request,'results.html',{'a':a,'b':b,'c':c, 'D':d,'message':message,
+    return render(request,'quadratic/results.html',{'a':a,'b':b,'c':c, 'D':d,'message':message,
                                           'c1':c1,'c2':c2,'c3':c3})
