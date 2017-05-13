@@ -1,35 +1,40 @@
-nav li.active a{
-	color: blue !important;
+body{
+	background-color: #ddd;
 }
-
-body {
-background-color: #ffffff;
+body > .navbar {
+	background-color: #555;
+	border-radius: 0px;
 }
-
-
-li.active a{
-	background-color: #e7e7e7;
+body > .navbar .navbar-nav > li > a {
+	color: #fff;
 }
-
-
+body > .navbar .navbar-nav > li:hover > a{
+	color: #fff;
+	background-color: #666;
+}
+body > .navbar .navbar-nav > li.active > a {
+	background-color: #ddd;
+	color: #555;
+}
 p a{
-	letter-spacing: 0.2em;
+	color: #000;
+	text-decoration: underline;
 }
-
-h2.names{
-	color: #808000;
+p a:hover{
+	color: #333;
+	text-decoration: none;
 }
-
-p span.text-lowercase{
-	font-family: Impact;
+p.desc, p.prog {
+	font-size: 130%;
 }
-
-p span.name{
-	text-transform: capitalize;
+.contacts .col h2.names{
+	margin-bottom: 20px;
 }
-
-p span.Skype{
-	border-style: dashed;
-	border-bottom-width: 2px;
-	border-color: #e7e7e7;
-	}
+.contacts .col p{
+	margin: 10px 0 20px 0;
+	font-weight: bold;
+}
+.contacts .col p span{
+	font-weight: normal;
+	letter-spacing: 1px;
+}
