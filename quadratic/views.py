@@ -17,7 +17,7 @@ def int_to_str(num):
     return num,flag,code
 
 #Квадратное уравнения вьюха
-def quadratic(request):
+def quadratic_results(request):
     a,b,c=request.GET.get('a'),request.GET.get('b'),request.GET.get('c');
     a,f1,c1=int_to_str(a)
     if a==0:
@@ -26,7 +26,7 @@ def quadratic(request):
     b, f2,c2 = int_to_str(b)
     c, f3,c3 = int_to_str(c)
     flag=f1 and f2 and f3
-    d= b*b-4*a*c if flag else None
+    d = b*b-4*a*c if flag else None
     message=''
     if flag:
         if d>0:
