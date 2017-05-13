@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Квадратное уравнения</title>
+</head>
+<body>
+    <h2>Квадратное уравнения a*x*x + b*x + c*x = 0</h2>
+    <ul>
+        <li>a = {{ a }}{% if c1 != None %} <br> {{ c1 }} {% endif %}</li>
+        <li>b = {{ b }}{% if c2 != None %} <br> {{ c2 }} {% endif %}</li>
+        <li>c = {{ c }}{% if c3 != None %} <br> {{ c3 }} {% endif %}</li>
+    </ul>
+    {% if D != None %}
+        <h4>Дискриминант: {{ D }}</h4>
+        <h3>{{ message }}</h3>
+    {% endif %}
+</body>
+</html>
