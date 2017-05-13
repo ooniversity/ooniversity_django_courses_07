@@ -23,7 +23,7 @@ def quadratic_results(request):
     a,f1,c1=int_to_str(a)
     if a == 0:
         c1 ='коэффициент при первом слагаемом уравнения не может быть равным нулю'
-        flag=False
+        f1=False
     b, f2,c2 = int_to_str(b)
     c, f3,c3 = int_to_str(c)
     flag=f1 and f2 and f3
