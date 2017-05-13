@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Main</title>
+        <link rel="stylesheet" href="../static/css/bootstrap.css">
+        <link rel="stylesheet" href="../static/css/bootstrap-theme.css">
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/bootstrap.js"></script>
+        <link rel="stylesheet" href="../static/css/style.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html">Main</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+                <li><a href="contact.html">Contacts</a></li>
+                  <li><a href="student_list.html">Students</a></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="Description">
+                    <h1>PyBursa</h1>
+                    <p>Курс web-программирования с использованиям Python + Django.</p>
+                    <h2>Program</h2>
+                    <div class="container-fluid week border">
+                        <h3>1 неделя. Введение в курс дела и основы Python</h3>
+                        <ul>
+                            <li>Подготовка к курсу. Работа с системой автоматической проверки домашних заданий</li>
+                            <li>Работа с консолью</li>
+                            <li>типы данных, операторы</li>
+                            <li>работа со строками и итерируемыми типами</li>
+                            <li>синтаксис управляющих конструкций, условные операторы и циклы (if, for...)</li>
+                            <li>исключения и разбор стектрейса</li>
+                            <li>zen, pep8</li>
+                        </ul>
+                    </div>
+                    <div class="container-fluid week border">
+                        <h3>2 неделя. Функции и модульность</h3>
+                        <ul>
+                            <li>Функции (def, lambda)</li>
+                            <li>модули, структура </li>
+                            <li>встроенные библиотеки http://docs.python.org/</li>
+                            <li>сторонние библиотеки (менеджер пакетов) PYPI</li>
+                            <li>PYTHONPATH и виртуальное окружение</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-info center-block" data-toggle="collapse" data-target="#hide-me">3 - 9 недели курса</button>
+                    <div id="hide-me" class="collapse">
+                        <div class="container-fluid week border">
+                            <h3>3 неделя. ООП, IO, daytime</h3>
+                            <ul>
+                                <li>Работа с классами. Наследование</li>
+                                <li>Работа с файлами</li>
+                                <li>Работа с данными. Запись данных в .csv и .json форматы</li>
+                                <li>Работа со стандартным модулем datetime</li>
+                                <li>синтаксис, атрибуты, методы, инстанцирование</li>
+                                <li>все объект, служебные методы</li>
+                                <li>инкапсуляция, наследование, полиморфизм</li>
+                                <li>переопределение методов</li>
+                                <li>абстрактные классы</li>
+                                <li>статические методы</li>
+                                <li>запись и чтение файлов</li>
+                                <li>методы объектов-файлов</li>
+                                <li>csv, json</li>
+                                <li>модуль datetime</li>
+                            </ul>
+                        </div>
+                        <div class="container-fluid week border">
+                            <h3>4 неделя. Основы веб-технологий</h3>
+                            <ul>
+                                <li>Основы HTML - теги и свойства</li>
+                                <li>Основы CSS - свойства и селекторы</li>
+                                <li>каскадное переопределение свойств</li>
+                                <li>Bootstrap, проектирование web-интерфейса</li>
+                                <li>Система контроля версий Git, сервис github </li>
+                            </ul>
+                        </div>
+                        <div class="container-fluid week border">
+                            <h3>5 неделя. Начало работы с Django</h3>
+                            <ul><li>Django. "Hello world!" </li>
+                                <li>HTTP (GET, POST), (200, 404, 500), headers, cookies </li>
+                                <li>Инструменты отладки браузера (Firebug, Web Developer) </li>
+                                <li>введение и описание фреймворка </li><li>старт проекта </li>
+                                <li>команды manage.py </li><li>django.contrib </li>
+                                <li>авторизация, django.contrib.auth </li>
+                                <li>админка </li><li>статика </li>
+                                <li>Структура проекта и приложения (ulr-&gt;view-&gt;model-&gt;template) </li>
+                                <li>Паттерн MVC (MVT) </li>
+                            </ul>
+                        </div>
+                        <div class="container-fluid week border">
+                            <h3>6 неделя. Django, models, ORM, admin</h3>
+                            <ul><li>модели и поля, типы полей и атрибуты </li>
+                                <li>связи между таблицами и проектирование БД </li>
+                                <li>миграции </li>
+                                <li>фикстуры </li>
+                                <li>QuerySet </li>
+                                <li>Raw-sql </li>
+                                <li>Класс админки </li>
+                                <li>настройка отображения виджетов </li>
+                                <li>кастомизация ItemView, ListView, редактирование в ListView </li>
+                                <li>Сортировка, фильтры, поиск admin actions, редактирование полей в ListView </li>
+                                <li>admin actions, редактирование полей в ListView </li>
+                            </ul>
+                        </div>
+                        <div class="container-fluid week border">
+                            <h3>7 неделя. Django: язык шаблонов и работа с web-формами</h3>
+                            <ul>
+                                <li>Шаблоны </li>
+                                <li>Синтаксис, логические конструкции </li>
+                                <li>наследование и includes </li>
+                                <li>Понятие контекста, контекст процессор </li>
+                                <li>теги и фильтры </li>
+                                <li>Формы </li>
+                                <li>Типы полей </li>
+                                <li>Виджеты </li>
+                                <li>Атрибуты </li>
+                                <li>Валидация </li>
+                                <li>Формы для моделей </li>
+                            </ul>
+                        </div>
+                        <div class="container-fluid week border">
+                            <h3>8 неделя. Django: CBV, Реализация стандартных задач</h3>
+                            <ul>
+                                <li>Django CBV </li>
+                                <li>Встроенные class-based views (TemplateView, ListView, ItemView) </li>
+                                <li>Использование форм с class-based views </li>
+                                <li>Миксины </li>
+                                <li>отправка email </li>
+                                <li>Кэширование </li>
+                                <li>пагинация</li>
+                            </ul>
+                        </div>
+                        <div class="container-fluid week border">
+                            <h3>9 неделя. Django: Средства отладки и тестирования, Деплоймент </h3>
+                            <ul>
+                                <li>logging</li>
+                                <li>pdb</li>
+                                <li>debug toolbar</li>
+                                <li>extensions</li>
+                                <li>unit-tests</li>
+                                <li>selenium</li>
+                                <li>Nginx, uwsgi</li>
+                                <li>Управление статикой </li>
+                                <li>Деплоймент</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </body>
+</html>
