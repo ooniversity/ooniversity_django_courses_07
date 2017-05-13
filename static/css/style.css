@@ -172,3 +172,6 @@ h6, .h6 {
 .contact ul li b {
 	padding-left:15px;
 }
+.contact-inner {width:33%;
+float:left;
+padding:5px;}
