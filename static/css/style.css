@@ -1,3 +1,16 @@
 body{
 	background-color: #ddd;
 }
+
+h2{
+	font-size: 25px;
+}
+
+p.indent {
+    text-indent: 20px;
+}
+
+.week{
+	color: red;
+}
+
