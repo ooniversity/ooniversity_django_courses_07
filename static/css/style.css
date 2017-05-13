@@ -14,3 +14,26 @@ p.indent {
 	color: red;
 }
 
+.week_text{
+	font-family: serif;
+}
+
+.PyBursa {
+	font-weight: bold;
+}
+
+.email{
+	color: blue;
+}
+
+.name{
+	font-weight: bold;
+}
+
+.skype{
+	text-decoration: underline;
+}
+
+.phone{
+	font-style: italic;
+}
