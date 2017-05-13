@@ -1,0 +1,57 @@
+.Description h1,h2,h3{
+    text-align:center;
+}
+.week{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+div.border{
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+li{
+    font-size: 18px;
+}
+#contacts_table td,th{
+    padding: 10px;
+}
+.students_table td,th{
+    padding: 10px;
+}
+
+#title_contacts{
+    background-color: orange;
+}
+
+.students_table{
+    background-color: lightgray;
+    border-spacing: 10px:
+}
+.students_table th{
+    background-color: orange;
+}
+
+.students_table tr{
+    background-color: #f7e1b5;
+}
+
+.students_table tr:hover{
+    background-color: #f0ad4e;
+}
+
+.students_detail{
+    background: lightgray;
+}
+
+.students_card{
+    background-color: #f0ad4e;
+}
+
+.Perfomance th{
+    background-color: #2b669a;
+    color: white;
+}
+
+.Perfomance td{
+    background-color: #2aabd2;
+}
