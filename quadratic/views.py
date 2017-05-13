@@ -9,14 +9,15 @@ def int_to_str(num):
         flag=False
     else:
         try:
-            num=int(num)
+            int(num)
+            num = int(num)
         except ValueError:
             code='коэффициент не целое число'
             flag = False
     return num,flag,code
 
 #Квадратное уравнения вьюха
-def results(request):
+def quadratic(request):
     a,b,c=request.GET.get('a'),request.GET.get('b'),request.GET.get('c');
     a,f1,c1=int_to_str(a)
     if a==0:
@@ -26,7 +27,7 @@ def results(request):
     c, f3,c3 = int_to_str(c)
     flag=f1 and f2 and f3
     d= b*b-4*a*c if flag else None
-    message=None
+    message=''
     if flag:
         if d>0:
             message='Квадратное уравнение имеет два действительных корня: ' + 'x1 = '+ str((-1*b + sqrt(d)) / float(2*a))+', '+'x2 = '+str((-1*b - sqrt(d)) / float(2*a))
