@@ -62,3 +62,26 @@ p a:hover{
 .old-text{
 	text-decoration: line-through;
 }
+th {
+	text-align: center;
+}
+.tab2{
+	width:50%;
+}
+.tab2 table, .tab2 th, .tab2 td{
+	border-style:solid;
+	border-color:green !important;
+	border-width:1px;
+	border-collapse:collapse;
+	background-color: #CDCDC1;
+}
+.tab3{
+	width:75%;
+}
+.tab3 td {
+	text-align: center;
+	background-color: #F5F5DC;
+}
+.tab3 th {
+	background-color: #4682B4;
+}

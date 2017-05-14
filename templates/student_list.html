@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>PyBursa - Contacts</title>
+    <title>PyBursa - Students</title>
 
     <!-- Bootstrap -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../static/css/style.css" rel="stylesheet">
-    
+   
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -26,37 +26,65 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  <ul class="nav navbar-nav">
 			<li><a href="index.html">Main</a></li>
-			<li class="active"><a href="contact.html">Contacts</a></li>
-			<li><a href="student_list.html">Students</a></li>
-		  </ul>      
-		</div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
+			<li><a href="contact.html">Contacts</a></li>  
+			<li class="active"><a href="student_list.html">Students</a></li>			
+		  </ul>
+		</div>	  
 	</nav>
-	<div class="container">
-		<div class="row contacts">
-			<div class="col col-md-4">
-				<h2 class="names">Director</h2>
-				<p>Name: <span class="name">Ivan Ivanov</span></p>
-				<p>Skype: <span class="Skype">juk67</span></p>
-				<p>Email: <span class="email text-lowercase">juk67@yahoo.com</span></p>
-				<p>Phone: <span class="phone">(812)456-45-76</span></p>
-			</div>
-			<div class="col col-md-4">
-				<h2 class="names">Manager</h2>
-				<p>Name: <span class="name">Ivan Ivanov</span></p>
-				<p>Skype: <span class="Skype">juk67</span></p>
-				<p>Email: <span class="email text-lowercase">juk67@yahoo.com</span></p>
-				<p>Phone: <span class="phone">(812)456-45-76</span></p>
-			</div>
-			<div class="col col-md-4">
-				<h2 class="names">Founder</h2>
-				<p>Name: <span class="name">Ivan Ivanov</span></p>
-				<p>Skype: <span class="Skype">juk67</span></p>
-				<p>Email: <span class="email text-lowercase">juk67@yahoo.com</span></p>
-				<p>Phone: <span class="phone">(812)456-45-76</span></p>
-			</div>
-		</div>
+	<div class="container text-center">
+		<h1 class="main-title">PyBursa</h1>
+		<h4> Список студентов</h4>
+	
+		<table class="tab1 table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Surname</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Skype</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="student_detail.html">1</a></td>
+					<td>Plant</td>
+					<td>Denise</td>
+					<td>391 Vine Street Chicago, IL 60631</td>
+					<td>D_Plant</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Morales</td>
+					<td>Beverly</td>
+					<td>1667 Lightning Point Drive Memphis, TN 38110</td>
+					<td>Morales</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Aikin</td>
+					<td>Amy</td>
+					<td>2611 Khale Street Folly Beach, SC 29439</td>
+					<td>Amy_R</td>
+				</tr>
+					<tr>
+					<td>4</td>
+					<td>Valenzuela</td>
+					<td>Joshua</td>
+					<td>3148 Fire Access Road Elkin, NC 28621</td>
+					<td>Jvalen</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>Strain</td>
+					<td>Cynthia</td>
+					<td>2560 Ford Street Sunnyvale, CA 94089</td>
+					<td>Stranger</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
+	
 	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
