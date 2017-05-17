@@ -8,7 +8,7 @@ from django.views import generic
 def index(request):
 	return render(request, 'index.html')
 
-def contacts(request):
+def contact(request):
 	return render(request, 'contact.html')
 
 def student_list(request):
