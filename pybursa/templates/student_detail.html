@@ -4,38 +4,42 @@
 	<meta charset="UTF-8">
 	<title>Detail</title>
 	
-	<link rel="stylesheet" type="text/css" href="../static/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.css">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-theme.css' %}">
 	
 </head>
 <body>
-	<div class="container">
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
+	<div class="splash">
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container-fluid">
 
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- <div class="navbar-brand"> -->
-					<img class="navbar-brand" alt="brand" src="../static/images/it.png">
-					<!-- </div> -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- <div class="navbar-brand"> -->
+						<img class="navbar-brand" alt="brand" src="{% static '/images/it.png' %}">
+						<!-- </div> -->
 
+					</div>
+
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a class="li-a" href="{% url 'index' %}">Main</a></li>
+							<li><a class="li-a" href="{% url 'contacts' %}">Contacts</a></li>
+							<li><a class="li-a" href="{% url 'student_list' %}">Students</a></li>
+						</ul>
+					</div>
 				</div>
-
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a class="li-a" href="index.html">Main</a></li>
-						<li><a class="li-a" href="contact.html">Contacts</a></li>
-						<li><a class="li-a" href="student_list.html">Students</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+			</nav>
 
 		<h2>Ivanov Ivan</h2>
 		<br/>
@@ -119,7 +123,7 @@
 	</div>
 
 
-	<script src="../static/js/jquery-3.2.1.min.js"></script>
-	<script src="../static/js/bootstrap.js"></script>
+	<script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static '/static/js/bootstrap.js' %}"></script>
 </body>
 </html>

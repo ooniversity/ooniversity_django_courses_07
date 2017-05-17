@@ -3,10 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Main</title>
-	
-	<link rel="stylesheet" type="text/css" href="../static/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.css">
+
+	<meta name=viewport content="width=device-width, initial-scale=1">
+
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-theme.css' %}">
 	
 </head>
 <body>
@@ -23,16 +26,16 @@
 							<span class="icon-bar"></span>
 						</button>
 						<!-- <div class="navbar-brand"> -->
-						<img class="navbar-brand" alt="brand" src="../static/images/it.png">
+						<img class="navbar-brand" alt="brand" src="{% static '/images/it.png' %}">
 						<!-- </div> -->
 
 					</div>
 
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a class="li-a" href="index.html">Main</a></li>
-							<li><a class="li-a" href="contact.html">Contacts</a></li>
-							<li><a class="li-a" href="student_list.html">Students</a></li>
+							<li><a class="li-a" href="{% url 'index' %}">Main</a></li>
+							<li><a class="li-a" href="{% url 'contacts' %}">Contacts</a></li>
+							<li><a class="li-a" href="{% url 'student_list' %}">Students</a></li>
 						</ul>
 					</div>
 				</div>
@@ -54,7 +57,7 @@
 
 		</div>
 	</div>
-	<script src="../static/js/jquery-3.2.1.min.js"></script>
-	<script src="../static/js/bootstrap.js"></script>
+	<script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static '/static/js/bootstrap.js' %}"></script>
 </body>
 </html>
