@@ -40,8 +40,8 @@ def quadratic_results(request):
 
 		elif desc > 0:
 
-			x1 = (-values['b'] + desc**0.5)/2*values['a']
-			x2 = (-values['b'] - desc**0.5)/2*values['a']
+			x1 = (-values['b'] + desc**0.5)/(2*values['a'])
+			x2 = (-values['b'] - desc**0.5)/(2*values['a'])
 			result = 'Квадратное уравнение имеет два действительных \
 			корня: x1 = {0}, x2 = {1}'.format(x1, x2)
 
