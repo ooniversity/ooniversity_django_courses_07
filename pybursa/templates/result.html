@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Result</title>
+</head>
+<body>
+	<p>Квадратное уравнение a*x*x + b*x + c = 0</p>
+	<ul>
+		<li>a = {{ a }}</li>
+		{{ errors.a }}
+		<li>b = {{ b }}</li>
+		{{ errors.b }}
+		<li>c = {{ c }}</li>
+		{{ errors.c }}
+	</ul>
+	<p>Дискриминант: {{ desc }}</p>
+	<p>{{ result }}</p>
+	
+</body>
+</html>
