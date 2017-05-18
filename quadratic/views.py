@@ -5,10 +5,7 @@ def quadratic_results(request):
     a = request.GET['a']
     b = request.GET['b']
     c = request.GET['c']
-    dict_quadratic = {}
-    dict_quadratic["a1"] = a
-    dict_quadratic["b1"] = b
-    dict_quadratic["c1"] = c
+    dict_quadratic = dict(zip(["a1", "b1", "c1"], [a, b, c]))
     try:
         a = int(a)
     except ValueError:
