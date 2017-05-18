@@ -9,14 +9,16 @@ def quadratic_results(request):
 	for arg in request.GET:
 	
 		try:
-			values[arg] = int(request.GET[arg].strip())
+			values[arg] = int(request.GET[arg])
 		except ValueError:
 			if not request.GET[arg]:
 				messages[arg] = 'коэффициент не определен'
 			elif not request.GET[arg].replace('-','').isdigit():
 				messages[arg] = 'коэффициент не целое число'
 
-	if request.GET['a'].strip() is '0':
+			values[arg] = request.GET[arg]
+
+	if 'a' in values and values['a'] == 0:
 		messages['a'] = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
 
 	print(request.GET['a'])
