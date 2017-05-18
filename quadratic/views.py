@@ -3,46 +3,48 @@ from django.shortcuts import render
 
 def quadratic_results(request):
 
-	params = {}
-	errors = {}
+	values = {}
+	messages = {}
 
 	for arg in request.GET:
 	
 		try:
-			params[arg] = int(request.GET[arg].strip())
+			values[arg] = int(request.GET[arg].strip())
 		except ValueError:
 			if not request.GET[arg]:
-				errors[arg] = 'коэффициент не определен'
+				messages[arg] = 'коэффициент не определен'
 			elif not request.GET[arg].replace('-','').isdigit():
-				errors[arg] = 'коэффициент не целое число'
+				messages[arg] = 'коэффициент не целое число'
 
-	if request.GET['a'] == '0':
-		errors['a'] = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
+	if request.GET['a'].strip() is '0':
+		messages['a'] = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
 
-	params['errors'] = errors
+	print(request.GET['a'])
 
-	if not len(errors):
-		params['desc'] = params['b']**2 - 4*params['a']*params['c']
+	if len(messages) == 0:
+		desc = values['b']**2 - 4*values['a']*values['c']
+		values['desc'] = 'Дискриминант: ' + str(desc)
 
-		if params['desc'] < 0:
+		if desc < 0:
 
 			result = 'Дискриминант меньше нуля, квадратное уравнение \
 			не имеет действительных решений.'
 
-		elif params['desc'] == 0:
+		elif desc == 0:
 
-			x = -params['b']/2*params['a']
+			x = -values['b']/2*values['a']
 			result = 'Дискриминант равен нулю, квадратное уравнение имеет \
 			один действительный корень: x1 = x2 = ' + str(x)
 
-		elif params['desc'] > 0:
+		elif desc > 0:
 
-			x1 = (-params['b'] + params['desc']**0.5)/2*params['a']
-			x2 = (-params['b'] - params['desc']**0.5)/2*params['a']
+			x1 = (-values['b'] + desc**0.5)/2*values['a']
+			x2 = (-values['b'] - desc**0.5)/2*values['a']
 			result = 'Квадратное уравнение имеет два действительных \
 			корня: x1 = {0}, x2 = {1}'.format(x1, x2)
 
-		params['result'] = result
-	
+		messages['result'] = result
 
-	return render(request, 'result.html', params)
+	context = {'values': values, 'messages': messages}
+
+	return render(request, 'result.html', context)

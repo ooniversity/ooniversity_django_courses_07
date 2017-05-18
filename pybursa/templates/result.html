@@ -7,15 +7,14 @@
 <body>
 	<p>Квадратное уравнение a*x*x + b*x + c = 0</p>
 	<ul>
-		<li>a = {{ a }}</li>
-		{{ errors.a }}
-		<li>b = {{ b }}</li>
-		{{ errors.b }}
-		<li>c = {{ c }}</li>
-		{{ errors.c }}
+		<li>a = {{ values.a }}</li>
+		{{ messages.a }}
+		<li>b = {{ values.b }}</li>
+		{{ messages.b }}
+		<li>c = {{ values.c }}</li>
+		{{ messages.c }}
 	</ul>
-	<p>Дискриминант: {{ desc }}</p>
-	<p>{{ result }}</p>
-	
+	<p>{{ values.desc }}</p>
+	<p>{{ messages.result }}</p>
 </body>
 </html>
