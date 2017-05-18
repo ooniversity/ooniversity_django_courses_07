@@ -11,7 +11,7 @@ def quadratic_results(request):
     except ValueError:
         dict_quadratic["resA"] = "коэффициент не целое число"
     if a == '':
-        dict_quadratic["resA"] = "коэффициент не определён"
+        dict_quadratic["resA"] = "коэффициент не определен"
     if a == 0:
         dict_quadratic["resA"] = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
     try:
@@ -19,13 +19,13 @@ def quadratic_results(request):
     except ValueError:
         dict_quadratic["resB"] = "коэффициент не целое число"
     if b == '':
-        dict_quadratic["resB"] = "коэффициент не определён"
+        dict_quadratic["resB"] = "коэффициент не определен"
     try:
         c = int(c)
     except ValueError:
         dict_quadratic["resC"] = "коэффициент не целое число"
     if c == '':
-        dict_quadratic["resC"] = "коэффициент не определён"
+        dict_quadratic["resC"] = "коэффициент не определен"
     if type(a) == int and type(b) == int and type(c) == int and a != 0:
         d = b ** 2 - 4 * a * c
         dict_quadratic["discriminant"] = "Дискриминант: %d" %(d)
