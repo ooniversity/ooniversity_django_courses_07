@@ -34,14 +34,14 @@ def quadratic_results(request):
 
 			x = -values['b']/2*values['a']
 			result = 'Дискриминант равен нулю, квадратное уравнение имеет \
-			один действительный корень: x1 = x2 = ' + str(x)
+			один действительный корень: x1 = x2 = {:.0f}'.format(x)
 
 		elif desc > 0:
 
 			x1 = (-values['b'] + desc**0.5)/(2*values['a'])
 			x2 = (-values['b'] - desc**0.5)/(2*values['a'])
 			result = 'Квадратное уравнение имеет два действительных \
-			корня: x1 = {0}, x2 = {1}'.format(x1, x2)
+			корня: x1 = {:.0f}, x2 = {:.0f}'.format(x1, x2)
 
 		messages['result'] = result
 
