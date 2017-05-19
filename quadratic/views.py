@@ -21,8 +21,6 @@ def quadratic_results(request):
 	if 'a' in values and values['a'] == 0:
 		messages['a'] = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
 
-	print(request.GET['a'])
-
 	if len(messages) == 0:
 		desc = values['b']**2 - 4*values['a']*values['c']
 		values['desc'] = 'Дискриминант: ' + str(desc)
