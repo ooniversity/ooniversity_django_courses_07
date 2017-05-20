@@ -12,9 +12,9 @@
     <title>PyBursa : Main</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-	<link href="../static/css/style.css" rel="stylesheet">
-  
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'ccss/style.css' %}" rel="stylesheet">
+	 
 	        
   </head>
 
@@ -23,9 +23,10 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="index.html">Main</a>
-          <a class="blog-nav-item" href="contact.html">Contacts</a>
-	  <a class="blog-nav-item" href="student_list.html">Students</a>
+          <a href="{% url 'index' %}">Main</a>
+          <a href="{% url 'contact' %}">Contacts</a>
+          <a href="{% url 'student_list' %}">Students</a>
+          <a href="{% url 'results' %}">Equation</a>
        </nav>
       </div>
     </div>
@@ -152,6 +153,6 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../static/js/bootstrap.js"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
    </body>
 </html>
