@@ -25,9 +25,9 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  <ul class="nav navbar-nav">
-			<li><a href="index.html">Main</a></li>
-			<li><a href="contact.html">Contacts</a></li>  
-			<li class="active"><a href="student_list.html">Students</a></li>			
+			<li><a href="{% url 'index' %}">Main</a></li>
+			<li><a href="{% url 'contact' %}">Contacts</a></li>
+			<li class="active"><a href="{% url 'student_list' %}">Students</a></li>
 		  </ul>
 		</div>	  
 	</nav>
@@ -47,7 +47,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><a href="student_detail.html">1</a></td>
+					<td><a href="{% url 'student_detail' %}">1</a></td>
 					<td>Plant</td>
 					<td>Denise</td>
 					<td>391 Vine Street Chicago, IL 60631</td>
