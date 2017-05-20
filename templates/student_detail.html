@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,113 +6,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Информация о студенте</title>
+    <meta name="description" content="Our contacts">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-    <!-- Bootstrap -->
+    <title>Student detail</title>
+
+    <!-- Bootstrap core CSS -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-    
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	
+	    
   </head>
-    <body>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <!-- Collect the nav links, forms, and other content for toggling -->
-           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-             <ul class="nav navbar-nav">
-               <li><a href="{% url 'index' %}">Main</a></li>
-               <li><a href="{% url 'contact' %}">Contacts</a></li>
-               <li class="active"><a href="{% url 'student_list' %}">Students</a></li>
-               
-             </ul>
-           </div><!-- /.navbar-collapse -->
-         </div><!-- /.container-fluid -->
-      </nav>
-        <div class="container">
-          <div class="container main-container">
-            <div class="row">
-                 <div class="col-lg-5">
-                     <h2><span class="ivan">Ivanov Ivan</span></h2>
-                     <p><span class="label label-info">Студент о себе</span></p>
-                          <h6><span class="card">Student's card</span></h6>
-                            <table class="table table-condensed">
-                            <tbody class="table_stud">
-                              <tr>
-                                 <td class="test_table">Surname:</td>
-                                 <td>Ivanov</td>
-                             </tr>
-                             <tr>
-                                <td class="test_table">Name:</td>
-                                <td>Ivan</td>
-                             </tr>
-                             <tr>
-                                <td class="test_table">Patronymic:</td>
-                                <td>Ivanovich</td>
-                             </tr>
-                             <tr>
-                                <td class="test_table">Birth Date:</td>
-                                <td>13.01.1990</td>
-                             </tr>
-                             <tr>
-                                <td class="test_table">Address:</td>
-                                <td>Украина, г.Киев, ул.Иванова, д.12, кв.13</td>
-                             </tr>
-                             <tr>
-                                <td class="test_table">E-mail:</td>
-                                <td>ivanov@gmail.com</td>
-                             </tr>
-                             <tr>
-                                <td class="test_table">Skype:</td>
-                                <td>ivanov_i</td>
-                             </tr>
-                             <tr>
-                               <td class="test_table">Average Grade:</td>
-                               <td>90</td>
-                             </tr>
-                             <tr>
-                                <td class="test_table">Rating:</td>
-                                <td>1</td>
-                             </tr>
-                           </tbody>
-                         </table>
-                       <h6><span class="card">Performance</span></h6>
-                         <table class="table table-hover">
-                           <thead>
-                              <tr class="info">
-                                <th>Course</th>
-                                <th>Week</th>
-                                <th>Control Type</th>
-                                <th>Grade</th>
-                              </tr>
-                            </thead>
-                           <tbody>
-                              <tr class="success">
-                                <td>Введение в Python</td>
-                                <td>Week 1</td>
-                                <td>Tests</td>
-                                <td>90%</td>
-                              </tr>
-                              <tr class="success">
-                                <td></td>
-                                <td></td>
-                                <td>Problem Task #1</td>
-                                <td>95%</td>
-                              </tr>
-                           </tbody>
-                         </table>
-                     </div>
-                  </div>   
-              </div>
-          </div>   
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+  <body>
+
+
+    <div class="blog-masthead">
+      <div class="container">
+
+        <nav class="blog-nav">
+          <a href="{% url 'index' %}">Main</a>
+          <a href="{% url 'contact' %}">Contacts</a>
+          <a href="{% url 'student_list' %}">Students</a>
+       </nav>
+      </div>
+    </div>
+
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">Николайчук Иван</h1>
+	  </div>
+	  <div class = "contact">
+		<h2>Director:</h2>
+		<ul>
+		<li><span class = "glyphicon glyphicon-user"><span><b>Name:</b> Ivan Bondarenko</li>
+		<li><span class = "glyphicon glyphicon-play-circle"><span><b>Skype:</b> Ivan_Bondarenko</li>
+		<li><span class = "glyphicon glyphicon-envelope"><span><b>Email:</b> Ivan_Bondarenko@mail.ru</li>
+		<li><span class = "glyphicon glyphicon-phone-alt"><span><b>Phone:</b> +37529 1110000</li>
+		</ul>
+		<h2>Manager:</h2>
+		<ul>
+		<li><span class = "glyphicon glyphicon-user"><span><b>Name:</b> Aleksandr Ivanov</li>
+		<li><span class = "glyphicon glyphicon-play-circle"><span><b>Skype:</b> Aleksandr-Ivanov</li>
+		<li><span class = "glyphicon glyphicon-envelope"><span><b>Email:</b> Aleksandr_Ivanov@mail.ru</li>
+		<li><span class = "glyphicon glyphicon-phone-alt"><span><b>Phone:</b> +37529 1110020</li>
+		</ul>
+		<h2>Founder:</h2>
+		<ul>
+		<li><span class = "glyphicon glyphicon-user"><span><b>Name:</b> Nikolay Sidorov</li>
+		<li><span class = "glyphicon glyphicon-play-circle"><span><b>Skype:</b> Nikolay-Sidorov</li>
+		<li><span class = "glyphicon glyphicon-envelope"><span><b>Email:</b> Nikolay_Sidorov@mail.ru</li>
+		<li><span class = "glyphicon glyphicon-phone-alt"><span><b>Phone:</b> +37529 1114000</li>
+		</ul>
+	  </div>
+      
+	
+	  <nav class="navbar navbar-default navbar-fixed-bottom">
+		<footer>
+			
+	  
+        <p>&copy; 2017 Company, Inc.</p>
+	  
+		</footer>
+	  </nav>
+      
+
+    </div><!-- /.container -->
+
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'js/bootstrap.js' %}"></script>
   </body>
+</html>
 </html>
