@@ -23,9 +23,10 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="index.html">Main</a>
-          <a class="blog-nav-item" href="contact.html">Contacts</a>
-	  <a class="blog-nav-item" href="student_list.html">Students</a>
+          <a href="{% url 'index' %}">Main</a>
+          <a href="{% url 'contact' %}">Contacts</a>
+          <a href="{% url 'student_list' %}">Students</a>
+          <a href="{% url 'results' %}">Equation</a>
        </nav>
       </div>
     </div>
