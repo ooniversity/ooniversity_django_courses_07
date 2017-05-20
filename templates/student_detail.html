@@ -10,54 +10,37 @@
 
     <title>Ivanenko Ivan</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-
-    
+	{% load staticfiles %}
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../static/css/style.css" rel="stylesheet">
-   
+    {% load staticfiles %}
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
   </head>
-
   <body>
-
     <div class="page-masthead">
       <div class="container">
         <nav class="page-nav">
-          <a class="page-nav-item" href="index.html">Main</a>
-          <a class="page-nav-item" href="contact.html">Contacts</a>
-		  <a class="page-nav-item active" href="student_list.html">Students</a>
-          
+          <a class="page-nav-item" href="{% url 'index' %}">Main</a>
+          <a class="page-nav-item" href="{% url 'contact' %}">Contacts</a>
+		  <a class="page-nav-item active" href="{% url 'student_list' %}">Students</a>
         </nav>
       </div>
     </div>
-
     <div class="container">
-
       <div class="page-header">
-	  
 			<p class="lead page-description">Come to us!!!</p>
-        
       </div>
-
-	    
       <div class="row">
-
         <div class="col-sm-12 blog-main">
-			
 			<h1 class="page-title">Ivanenko Ivan</h1>
 			<br>
-					
 			<p class="page-main">This course is the first of a two-course sequence: Introduction to Computer Science and Programming Using Python,
 			and Introduction to Computational Thinking and Data Science. Together, they are designed to help people with no prior exposure
 			to computer science or programming learn to think computationally and write programs to tackle useful problems. </p>
-			
-			
 			<h2>About student:</h2>
 		</div><!-- /.page-main -->
 			
 			<div class="col-sm-6">
-			
 				<table class="table table-hover"> 
 					<tbody> 
 						<tr> 
@@ -102,7 +85,6 @@
 			</div>
 			
 			<div class="col-sm-6">
-			
 				<table class="table table-hover"> 
 					<thead> 
 						<tr> 
@@ -127,24 +109,15 @@
 							<td>Tests</td> 
 							<td>100%</td>
 						</tr> 
-						
 					</tbody> 
 				</table>
 			</div>
 			<hr>
-	
 		<div class="col-sm-12 blog-main">	
-			
 			<h2 class="end-page-title">Come to us!!!</h2>
-	
         </div>
-
-
-
       </div><!-- /.row -->
-
     </div><!-- /.container -->
-
     <footer class="page-footer">
       <p>ItBursa - 2017</p>
       <p>
@@ -152,13 +125,12 @@
       </p>
     </footer>
 
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../static/js/bootstrap.min.js"></script>
+    {% load staticfiles%}
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
 	<script>
 		function getQueryVariable(variable)
 		{
@@ -174,13 +146,9 @@
 	
 	<script type="text/javascript">
 		window.onload = function() {
-        var danfa = getQueryVariable("id"); // Создаём переменную
+        var danfa = getQueryVariable("id");
         document.getElementById('display').innerHTML = danfa;
 		};            
 	</script>
-	
-	
-	
-    
   </body>
 </html>
