@@ -11,12 +11,11 @@
     <title>Students of ItBursa course</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-
-    
+	{% load staticfiles %}
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../static/css/style.css" rel="stylesheet">
-   
+    {% load staticfiles %}
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
   </head>
 
   <body>
@@ -24,26 +23,18 @@
     <div class="page-masthead">
       <div class="container">
         <nav class="page-nav">
-          <a class="page-nav-item" href="index.html">Main</a>
-          <a class="page-nav-item" href="contact.html">Contacts</a>
-		  <a class="page-nav-item active" href="student_list.html">Students</a>
-          
+          <a class="page-nav-item" href="{% url 'index' %}">Main</a>
+          <a class="page-nav-item" href="{% url 'contact' %}">Contacts</a>
+		  <a class="page-nav-item active" href="{% url 'student_list' %}">Students</a>
         </nav>
       </div>
     </div>
-
     <div class="container">
-
-      	    
       <div class="row">
-
         <div class="col-sm-12 blog-main">
 		<br>
-			
 			<h1>Students of ItBursa course</h1>
-						
 			<p>Here is list of students of ItBursa 2017</p>
-		
 			<table class="table table-hover"> 
 				<thead> 
 					<tr> 
@@ -56,49 +47,49 @@
 				</thead> 
 				<tbody> 
 					<tr> 
-						<th scope="row"><a href="student_detail.html">1</a></th> 
+						<th scope="row"><a href="{% url 'student_detail' %}">1</a></th> 
 						<td>Ivanenko</td> 
 						<td>Ivan</td> 
 						<td>Kirovograd</td>
 						<td>ivanenko_i</td>
 					</tr> 
 					<tr> 
-						<th scope="row"><a href="student_detail.html">2</a></th> 
+						<th scope="row">2</th> 
 						<td>Pavlenko</td> 
 						<td>Pavlo</td> 
 						<td>Odessa</td>
 						<td>pavlenko_p</td>
 					</tr> 
 					<tr> 
-						<th scope="row"><a href="student_detail.html">3</a></th> 
+						<th scope="row">3</th> 
 						<td>Petrenko</td> 
 						<td>Petro</td> 
 						<td>Kyiv</td>
 						<td>petrenko_p</td>
 					</tr> 
 					<tr> 
-						<th scope="row"><a href="student_detail.html">4</a></th> 
+						<th scope="row">4</th> 
 						<td>Makarenko</td> 
 						<td>Makar</td> 
 						<td>Kirovograd</td>
 						<td>makarenko_m</td>
 					</tr> 
 					<tr> 
-						<th scope="row"><a href="student_detail.html">5</a></th> 
+						<th scope="row">5</th> 
 						<td>kravchenko</td> 
 						<td>Ivan</td> 
 						<td>Kirovograd</td>
 						<td>kravchenko_i</td>
 					</tr> 
 					<tr> 
-						<th scope="row"><a href="student_detail.html">6</a></th> 
+						<th scope="row">6</th> 
 						<td>Marchenko</td> 
 						<td>Mark</td> 
 						<td>Kirovograd</td>
 						<td>mark</td>
 					</tr> 
 					<tr> 
-						<th scope="row"><a href="student_detail.html">7</a></th> 
+						<th scope="row">7</th> 
 						<td>Ivanchenko</td> 
 						<td>Ivan</td> 
 						<td>Kirovograd</td>
@@ -106,20 +97,10 @@
 					</tr> 
 				</tbody> 
 			</table>
-			
-	
-			
-			
 			<h2 class="end-page-title">Come to us!!!</h2>
-	
         </div><!-- /.page-main -->
-
-
-
       </div><!-- /.row -->
-
     </div><!-- /.container -->
-
     <footer class="page-footer">
       <p>ItBursa - 2017</p>
       <p>
@@ -127,13 +108,11 @@
       </p>
     </footer>
 
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    
+    {% load staticfiles%}
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
   </body>
 </html>

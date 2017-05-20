@@ -6,28 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Contacts - ItBursa">
     <meta name="author" content="Arthur">
-    <link rel="icon" href="../static/images/favicon.ico">
+    {% load staticfiles %}
+    <link rel="icon" href="{% static "images/favicon.ico" %}">
 
     <title>Contacts - ItBursa</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-
+	{% load staticfiles %}
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
     
     <!-- Custom styles for this template -->
-    <link href="../static/css/style.css" rel="stylesheet">
-   
+    {% load staticfiles %}
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
   </head>
-
   <body>
-
     <div class="page-masthead">
       <div class="container">
         <nav class="page-nav">
-          <a class="page-nav-item" href="/">Main</a>
-          <a class="page-nav-item active" href="/contact/">Contacts</a>
-		  <a class="page-nav-item" href="/student_list/">Students</a>
-          
+          <a class="page-nav-item" href="{% url 'index' %}">Main</a>
+          <a class="page-nav-item active" href="{% url 'contact' %}">Contacts</a>
+		  <a class="page-nav-item" href="{% url 'student_list' %}">Students</a>
         </nav>
       </div>
     </div>
@@ -40,109 +38,96 @@
 	  <div class="row">
 		<div class="col-sm-12 page-main">
 			<p>Ukraine, Kyiv, Maidan Nezalezhnosty, 1. 01001</p>
-			
-			<img class="map-photo" src="../static/images/map.jpg" alt="Map">
-	  
-	  
+			{% load staticfiles %}
+			<img class="map-photo" src="{% static "images/map.jpg" %}" alt="Map">
 		</div>
 	  </div>
-
-	    
       <div class="row">
 
         <div class="col-sm-12 page-main">
 			<h2 class="end-page-title">Our team</h2>
 			
-		<div class="row">
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img class="team-photo" src="../static/images/incognito.png" alt="Director">
-					<div class="caption">
-						<h3 class="team-photo-title">Director</h3>
-						<table class="table table-condensed">
-						<tbody> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Name:</span> Ivan Bondarenko</td>
-							</tr> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Skype:</span> bondarenko_i</td>
-							</tr> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Email:</span> bondarenko_i@gmail.com</td>
-							</tr> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Phone:</span> +38(044)777-77-77</td>
-							</tr>
-						</tbody>
-						
-						</table>
-						
-						
-						<!-- Button trigger modal -->
-						<p>
-						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-						  Send message
-						</button>
-						</p>
-
-						<!-- Modal -->
-						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-						  <div class="modal-dialog" role="document">
-							<div class="modal-content">
-							  <div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="myModalLabel">Message to us!</h4>
-							  </div>
-							  <div class="modal-body">
-								<form>
-								  <div class="form-group">
-									<label>Email address</label>
-									<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+			<div class="row">
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						{% load staticfiles %}
+						<img class="team-photo" src="{% static "images/incognito.png" %}" alt="Director">
+						<div class="caption">
+							<h3 class="team-photo-title">Director</h3>
+							<table class="table table-condensed">
+								<tbody> 
+									<tr> 
+										<td class="contact-team-text"><span class="help-text">Name:</span> Ivan Bondarenko</td>
+									</tr> 
+									<tr> 
+										<td class="contact-team-text"><span class="help-text">Skype:</span> bondarenko_i</td>
+									</tr> 
+									<tr> 
+										<td class="contact-team-text"><span class="help-text">Email:</span> bondarenko_i@gmail.com</td>
+									</tr> 
+									<tr> 
+										<td class="contact-team-text"><span class="help-text">Phone:</span> +38(044)777-77-77</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- Button trigger modal -->
+							<p>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+							  Send message
+							</button>
+							</p>
+							<!-- Modal -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel">Message to us!</h4>
 								  </div>
-								  <div class="form-group">
-									<label >Text</label>
-									<textarea type="text" class="form-control" id="exampleInputPassword1" placeholder="Your comment..." row="4"></textarea>
+								  <div class="modal-body">
+									<form>
+									  <div class="form-group">
+										<label>Email address</label>
+										<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+									  </div>
+									  <div class="form-group">
+										<label >Text</label>
+										<textarea type="text" class="form-control" id="exampleInputPassword1" placeholder="Your comment..." row="4"></textarea>
+									  </div>
+									</form>
 								  </div>
-								  
-								  
-								</form>
-							  </div>
-							  <div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary" data-dismiss="modal">Send</button>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="submit" class="btn btn-primary" data-dismiss="modal">Send</button>
+								  </div>
+								</div>
 							  </div>
 							</div>
-						  </div>
 						</div>
-						
-						
 					</div>
 				</div>
-			</div>
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-					<img class="team-photo" src="../static/images/incognito.png" alt="...">
+					{% load static %}
+					<img class="team-photo" src="{% static "images/incognito.png" %}" alt="...">
 					<div class="caption">
 						<h3 class="team-photo-title">Manager</h3>
 						<table class="table table-condensed">
-						<tbody> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Name:</span> Vlad Bondarenko</td>
-							</tr> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Skype:</span> bondarenko_v</td>
-							</tr> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Email:</span> bondarenko_v@gmail.com</td>
-							</tr> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Phone:</span> +38(044)777-77-72</td>
-							</tr>
-						</tbody>
-						
+							<tbody> 
+								<tr> 
+									<td class="contact-team-text"><span class="help-text">Name:</span> Vlad Bondarenko</td>
+								</tr> 
+								<tr> 
+									<td class="contact-team-text"><span class="help-text">Skype:</span> bondarenko_v</td>
+								</tr> 
+								<tr> 
+									<td class="contact-team-text"><span class="help-text">Email:</span> bondarenko_v@gmail.com</td>
+								</tr> 
+								<tr> 
+									<td class="contact-team-text"><span class="help-text">Phone:</span> +38(044)777-77-72</td>
+								</tr>
+							</tbody>
 						</table>
-						
-						
 						<!-- Button trigger modal -->
 						<p>
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
@@ -153,66 +138,42 @@
 					</div>
 				</div>
 			</div>
-			
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-					<img class="team-photo" src="../static/images/incognito.png" alt="...">
+					{% load static %}
+					<img class="team-photo" src="{% static "images/incognito.png" %}" alt="...">
 					<div class="caption">
 						<h3 class="team-photo-title">Founder</h3>
 						<table class="table table-condensed">
-						<tbody> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Name:</span> Alex Bondarenko</td>
-							</tr> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Skype:</span> bondarenko_a</td>
-							</tr> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Email:</span> bondarenko_a@gmail.com</td>
-							</tr> 
-							<tr> 
-								<td class="contact-team-text"><span class="help-text">Phone:</span> +38(044)777-77-75</td>
-							</tr>
-						</tbody>
-						
+							<tbody> 
+								<tr> 
+									<td class="contact-team-text"><span class="help-text">Name:</span> Alex Bondarenko</td>
+								</tr> 
+								<tr> 
+									<td class="contact-team-text"><span class="help-text">Skype:</span> bondarenko_a</td>
+								</tr> 
+								<tr> 
+									<td class="contact-team-text"><span class="help-text">Email:</span> bondarenko_a@gmail.com</td>
+								</tr> 
+								<tr> 
+									<td class="contact-team-text"><span class="help-text">Phone:</span> +38(044)777-77-75</td>
+								</tr>
+							</tbody>
 						</table>
-						
-						
 						<!-- Button trigger modal -->
 						<p>
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 						  Send message
 						</button>
 						</p>
-					
 					</div>
 				</div>
 			</div>
-			
-			
 		</div>
-			
-			
-			
-			
-			
 			<h2 class="end-page-title">Come to us!!!</h2>
-			
-			
-			
-
-            
-
-          
-
         </div><!-- /.page-main -->
-
-
-
       </div><!-- /.row -->
-
     </div><!-- /.container -->
-
     <footer class="page-footer">
       <p>ItBursa - 2017</p>
       <p>
@@ -220,18 +181,16 @@
       </p>
     </footer>
 
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../static/js/bootstrap.min.js"></script>
+    {% load static %}
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
 	<script>
 		$('#myModal').on('shown.bs.modal', function () {
 		$('#myInput').focus()
 		})
 	</script>
-    
   </body>
 </html>
