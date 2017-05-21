@@ -28,14 +28,10 @@ def quadratic_results(request):
         else:
             d['message'] = 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
 
-    #print(a, b, c, d, x1, x2)
-
     return render(request, "results.html", { 'a': a, 'b': b, 'c': c, 'd': d, })
 
 
 def check_param(param):
-    #result = True
-    #print(param['value'])
     if param['value'] == '':
         param['message'] = 'коэффициент не определен'
         param['ok'] = False
@@ -45,6 +41,4 @@ def check_param(param):
         except:
             param['message'] = 'коэффициент не целое число'
             param['ok'] = False
-    #print(param['message'])
-    #return result
     
