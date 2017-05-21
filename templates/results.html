@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Our contacts">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Student list</title>
+
+    <!-- Bootstrap core CSS -->
+     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+	
+	    
+  </head>
+
+  <body>
+
+
+    <div class="blog-masthead">
+      <div class="container">
+
+        <nav class="blog-nav">
+          <a href="{% url 'index' %}">Main</a>
+          <a href="{% url 'contact' %}">Contacts</a>
+          <a href="{% url 'student_list' %}">Students</a>
+       </nav>
+      </div>
+    </div>
+
+
+    <div class="container">
+
+      
+			<div class="general-container">
+        <div class="container top-container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h3 class="title">Квадратное уравнение a*x*x + b*x + c = 0</h3>
+                  <ul class="text">
+	                    <li>a = {{a1}}</li>
+                           <p>{{resA}}</p>
+                        <li>b = {{b1}}</li>
+                           <p>{{resB}}</p>
+                        <li>c = {{c1}}</li>
+                           <p>{{resC}}</p>
+                  </ul>
+                <h4 class="h4">{{discriminant}}</h4>
+                <h4 class="h4">{{two_x}}{{one_x}}{{not_x}}</h4>
+            <div/>
+          <div/>
+        <div/>
+      <div/>      
+	
+	  <nav class="navbar navbar-default navbar-fixed-bottom">
+		<footer>
+			
+	     <p>&copy; 2017 Company, Inc.</p>
+	  
+		</footer>
+	  </nav>
+      
+
+    </div><!-- /.container -->
+
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+  </body>
+</html>
+</html>
