@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="КОНТРОЛЬНОЕ ЗАДАНИЕ № 1">
+    <meta name="author" content="Yurii Sokolov">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+
+    <title>PyBursa : Student details</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/starter-template.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">PyBursa</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'index' %}">Main</a></li>
+            <li><a href="{% url 'contact' %}">Contacts</a></li>
+            <li><a href="{% url 'student_list' %}">Students</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div>
+        <h1><b>Persianova Olena</b></h1>
+        	<table class="table_d">
+
+            <tr>
+                <th width=100px><b>Surname</b></th>
+                <td width=200px>Persianova</td>
+                
+            </tr>
+
+            <tr>
+                <th><b>Name</b></th>
+                <td>Olena</td>
+            </tr>
+
+            <tr>
+                <th><b>Patronymic</b></th>
+                <td>Yuriivna</td>                
+            </tr>
+
+            <tr>
+                <th><b>Rating</b></th>
+                <td>20</td>                
+            </tr>
+
+            <tr>
+                <th><b>Average Grade</b></th>
+                <td>99.9</td>                
+            </tr>
+
+            <tr>
+                <th><b>Package</b></th>
+                <td>Standard</td>                
+            </tr>
+
+            <tr>
+                <th><b>Birth Date</b></th>
+                <td>11/02/1989</td>                
+            </tr>
+
+            <tr>
+                <th><b>Address</b></th>
+                <td>Харьков, ул. Чугуевская 58</td>                
+            </tr>
+
+            <tr>
+                <th><b>Post</b></th>
+                <td>61140</td>                
+            </tr>
+
+            <tr>
+                <th><b>Skype</b></th>
+                <td>pers</td>                
+            </tr>
+
+            <tr>
+                <th><b>E-mail</b></th>
+                <td>pers@gmail.com</td>                
+            </tr>
+
+            </table>
+            <br />
+            <h3>Performance</h3>
+            <br />
+
+            <table class="table_blur">
+
+            <tr>
+                <th width=300px><b>Course</b></th>
+                <th width=100px><b>Week</b></th>
+                <th width=200px><b>Control type</b></th>
+                <th width=200px><b>Grade</b></th>
+            </tr>
+
+            <tr>
+                <td>PY101 Введение в Python</td>
+                <td>Week 1</td>
+                <td>Tests</td>
+                <td>99%</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Problem Task #1</td>
+                <td>100%</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Problem Task #2</td>
+                <td>100%</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>Week 2</td>
+                <td>Tests</td>
+                <td>100%</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Problem Task #1</td>
+                <td>100%</td>
+            </tr>
+
+            </table>
+            <br />
+        
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+  </body>
+</html>
