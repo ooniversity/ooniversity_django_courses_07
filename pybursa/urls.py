@@ -16,12 +16,15 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from . import views
+#from pybursa.views import index, contact, student_list, student_detail
+from quadratic.views import quadratic_results
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^student_list/$', views.student_list, name='student_list'),
     url(r'^student_detail/$', views.student_detail, name='student_detail'),
-    #url(r'^polls/', include('polls.urls')),
+    url(r'^quadratic/results/$', quadratic_results, name='quadratic_results'), #(?P<a>\d+)/(?P<b>\d+)/(?P<c>\d+)/
+    url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
 ]
