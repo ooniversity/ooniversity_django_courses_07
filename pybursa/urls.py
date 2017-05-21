@@ -25,9 +25,6 @@ from . import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^polls/',include('polls.urls')),
-    url(r'^quadratic/',include('quadratic.urls')),
-    url(r'^',include('courses.urls'),name ='index'),
-    url(r'^courses/',include('courses.urls',namespace="courses")),
     url(r'^contact/$',views.contact ,name = 'contact'),
     url(r'^student_list/$',views.student_list,name = 'student_list'),
     url(r'^student_detail/$',views.student_detail,name ='student_detail'),
