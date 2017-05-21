@@ -26,17 +26,20 @@ def quadratic_results(request):
 
     if not is_number(a):
         data['a_error'] = 'коэффициент не целое число'
+    else:
+        a = int(a)
     if not is_number(b):
         data['b_error'] = 'коэффициент не целое число'
+    else:
+        b = int(b)
     if not is_number(c):
         data['c_error'] = 'коэффициент не целое число'
+    else:
+        c = int(c)
 
     if a == 0:
         data['a_error'] = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
 
-    a = int(a)
-    b = int(b)
-    c = int(c)
 
     if len(data) == 0:
         discriminant = b * b - 4 * a * c
@@ -53,10 +56,8 @@ def quadratic_results(request):
         data['solution'] = solution
         data['discriminant'] = discriminant
 
-
     data['a'] = a
     data['b'] = b
     data['c'] = c
-
 
     return render(request, 'results.html', data)
