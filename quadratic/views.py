@@ -28,6 +28,8 @@ def quadratic_results(request):
             a = int(a)
         except ValueError:
             errors['error_a'] = 'коэффициент не целое число'
+        if a == 0:
+            errors['error_a'] = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
     if b:
         try:
             b = int(b)
