@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quadratic</title>
+</head>
+<body>
+Квадратное уравнение a*x*x + b*x + c = 0
+
+<ul>
+    <li>a = {{ a }}</li>
+        {% if a_error %}
+            {{ a_error }}
+        {% endif %}
+    <li>b = {{ b }}</li>
+        {% if b_error %}
+            {{ b_error }}
+        {% endif %}
+    <li>c = {{ c }}</li>
+        {% if c_error %}
+            {{ c_error }}
+        {% endif %}
+</ul>
+
+{% if discriminant != None %}
+    Дискриминант: {{ discriminant }} <br><br>
+    {{ solution }}
+{% endif %}
+
+
+</body>
+</html>
