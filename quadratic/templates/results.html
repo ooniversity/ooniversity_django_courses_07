@@ -1,0 +1,12 @@
+<p>Квадратное уравнение a*x*x + b*x + c = 0</p>
+
+<ul>
+<li>a = {{ a.value }}</li> <span style="font-style:italic;">{{ a.message }}</span>
+<li>b = {{ b.value }}</li> <span style="font-style:italic;">{{ b.message }}</span>
+<li>c = {{ c.value }}</li> <span style="font-style:italic;">{{ c.message }}</span>
+</ul>
+
+{% if d.value != None %}
+<p>Дискриминант: {{ d.value }}</p>
+<p>{{ d.message }}</p>
+{% endif %}
