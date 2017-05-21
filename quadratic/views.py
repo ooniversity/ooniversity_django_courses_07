@@ -2,9 +2,9 @@ from django.shortcuts import render
 from math import sqrt
 
 
-def is_number(str):
+def is_number(string):
     try:
-        int(str)
+        int(string)
         return True
     except ValueError:
         return False
@@ -19,27 +19,27 @@ def quadratic_results(request):
 
     if not a:
         data['a_error'] = 'коэффициент не определен'
-    if not b:
-        data['b_error'] = 'коэффициент не определен'
-    if not c:
-        c = 0
-
-    if not is_number(a):
+    elif not is_number(a):
         data['a_error'] = 'коэффициент не целое число'
     else:
         a = int(a)
-    if not is_number(b):
+
+    if not b:
+        data['b_error'] = 'коэффициент не определен'
+    elif not is_number(b):
         data['b_error'] = 'коэффициент не целое число'
     else:
         b = int(b)
-    if not is_number(c):
+
+    if not c:
+        c = 0
+    elif not is_number(c):
         data['c_error'] = 'коэффициент не целое число'
     else:
         c = int(c)
 
     if a == 0:
         data['a_error'] = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
-
 
     if len(data) == 0:
         discriminant = b * b - 4 * a * c
