@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import math
 
+
 def quadratic_results(request):
     message_a = message_b = message_c = message_d = ""
     try:
