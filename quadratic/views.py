@@ -29,8 +29,18 @@ def quadratic_results(request):
         q_dict["outc"] = "коэффициент не целое число"
     if c == '':
         q_dict["outc"] = "коэффициент не определен"
-    
+    if type(a) == int and type(b) == int and type(c) == int:
+        d = b ** 2 - 4 * a * c
+        q_dict["discriminant"] = "Дискриминант: %d" %(d)
+        if d == 0:
+            x1 = -b / (2 * a)
+            q_dict["one_param"] = "Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %.1f" %(x1)
+        elif d > 0:
+            x1 = (-b + (d ** 0.5)) / (2 * a)
+            x2 = (-b - (d ** 0.5)) / (2 * a)
+            print(x1)
+            q_dict["two_param"] = "Квадратное уравнение имеет два действительных корня: x1 = %.1f, x2 = %.1f" %(x1, x2)
+        
+        elif d < 0:
+            q_dict["no_param"] = 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
     return render(request, "results.html", q_dict)
-
-
-
