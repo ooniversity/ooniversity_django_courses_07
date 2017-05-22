@@ -35,8 +35,7 @@ def quadratic_results(request):
         return render(request,(template),context)
     elif(chck_params(a)==False or chck_params(b)==False or chck_params(c)==False):
         checker = False
-        context = {"a": a, "b": b, "c": c, "check_a": chck_params(a), "check_b": chck_params(b),
-                   "check_c": chck_params(b),"checker": checker}
+        context = {"a": a, "b": b, "c": c, "check_a": chck_params(a), "check_b": chck_params(b),   "check_c": chck_params(b),"checker": checker}
         return render(request, (template), context)
     else:
         qe = QuadraticEducation(int(a),int(b),int(c))
@@ -47,5 +46,5 @@ def quadratic_results(request):
         x1 = str(qe.calc_root())
         x2 = qe.calc_root(order=2)
         print(x1,x2)
-context = {"a":a,"b":b,"c":c,"check_a":chck_params(a),"check_b":chck_params(b),"check_c":chck_params(b),"discr":d,"x1":x1,"x2":x2,"checker": checker}
+	context = {"a":a,"b":b,"c":c,"check_a":chck_params(a),"check_b":chck_params(b),"check_c":chck_params(b),"discr":d,"x1":x1,"x2":x2,"checker": checker}
     return render(request,(template),context)
