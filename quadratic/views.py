@@ -7,7 +7,7 @@ from quadratic.quadratic_handler import QuadraticEducation
 
 def chck_params(parametr):
 	check_parametr = False
-	if ((parametr.isdigit()==True)or((len(parametr)>1)and(parametr[0]=='-')and####33(parametr[1:].isdigit())==True)):
+	if ((parametr.isdigit()==True)or((len(parametr)>1)and(parametr[0]=='-')and(parametr[1:].isdigit())==True)):
 		check_parametr = True
 	return check_parametr
 
