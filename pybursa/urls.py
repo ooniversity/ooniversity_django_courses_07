@@ -5,4 +5,6 @@ urlpatterns = [
     url(r'^quadratic/', include('quadratic.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^',include('courses.urls')),
+    url(r'^',include('students.urls')),
 ]
