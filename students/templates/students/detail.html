@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'courses:index' %}">Ooniversity</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'courses:index' %}">Главная</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="{% url 'students:list_view'%}">Студенты</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+        <h2>{{ student.name }} {{ student.surname }}</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Дата рождения</th>
+                <td>{{ student.date_of_birth }}</td>
+            </tr>
+            <tr>
+                <th>Адрес</th>
+                <td>{{ student.address }}</td>
+            </tr>
+            <tr>
+                <th>Почта</th>
+                <td>{{ student.email }}</td>
+            </tr>
+            <tr>
+                <th>Логин скайп</th>
+                <td>{{ student.skype }}</td>
+            </tr>
+            <tr>
+                <th>Телефон</th>
+                <td>{{ student.phone }}</td>
+            </tr>
+            <tr>
+                <th rowspan="{{ student.courses.count }}">Курсы</th>
+                {% for course in student.courses.all %}
+                        {% if student.courses.count > 1 and forloop.counter > 1 %}<tr>{% endif %}
+                        <td>
+                        <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                        </td>
+                        {% if student.courses.count > 1 %}</tr>{% endif %}
+                        {% endfor %}
+            {% if student.courses.count < 2 %} </tr>{% endif %}
+        </table>
+    </div>
+</body>
+</html>
