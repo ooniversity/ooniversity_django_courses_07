@@ -29,7 +29,7 @@
             <ul class="nav navbar-nav">
               <li><a href="{% url 'index' %}">Main</a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li class="active"><a href="{% url 'student_list' %}">Students</a></li>
+              <li class="active"><a href="{% url 'list_view' %}">Students</a></li>
               <li><a href="{% url 'results' %}">Equation</a></li>
             </ul>
          </div><!-- /.navbar-collapse -->
@@ -38,60 +38,37 @@
       <div class="general-container">
         <div class="container top-container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
+                <div class="col-lg-10 col-lg-offset-1">
                   <h2 class="title">Студенты курса PyBursa</h2>
                     <p><span class="p_list">Ниже представлен список студентов, выпуск - июнь 2017.</span></p>
                       <table class="table table-hover">
                         <thead>
                           <tr class="info">
-                            <th>No</th>
-                            <th>Surname</th>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Skype</th>
+                            <th>#</th>
+                            <th>фамилия имя</th>
+                            <th>адрес</th>
+                            <th>skype</th>
+                            <th>курсы</th>
                           </tr>
                         </thead>
                         <tbody class="danger">
-                          <tr class="success">
-                            <td><a href="{% url 'student_detail' %}">1</a></td>
-                            <td>Ivanov</td>
-                            <td>Ivan</td>
-                            <td>Украина, г.Киев, ул.Иванова, д.12, кв.13</td>
-                            <td>ivanov_i</td>
-                          </tr>
+                          {% for st in stud %}
                           <tr>
-                            <td>2</td>
-                            <td>Petrov</td>
-                            <td>Vlad</td>
-                            <td>Украина, г.Харьков, ул.Петрова, д.4, кв.1</td>
-                            <td>petrov_v</td>
+                            <td>{{ st.id }}</td>
+                              <td><a href="{% url 'detail' st.id %}">{{ st.surname }} {{ st.name }}</a></td>
+                            <td>{{ st.address }}</td>
+                            <td>{{ st.skype }}</td>
+                            <td>{% for c in st.course.all %}
+                                <a href="{% url 'courses:detail' c.id %}">{{c.name}}</a><br />
+                                {% endfor %}
+                            </td>
                           </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Sidorov</td>
-                            <td>Oleg</td>
-                            <td>Украина, г.Львов, ул.Сидорова, д.34</td>
-                            <td>sidr_o</td>
-                         </tr>
-                         <tr>
-                            <td>4</td>
-                            <td>Chernov</td>
-                            <td>Semen</td>
-                            <td>Украина, г.Одесса, ул.Б.Хмельницкого, д.15, кв.7</td>
-                            <td>chernov_s</td>
-                         </tr>
-                         <tr>
-                           <td>5</td>
-                           <td>Makarova</td>
-                           <td>Irina</td>
-                           <td>Украина, г.Полтава, ул.Петренко, д.119, кв.15</td>
-                           <td>makarova_i</td>
-                         </tr>
-                       </tbody>
-                  </table>
-               </div>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>   
+        </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

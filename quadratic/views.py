@@ -32,7 +32,6 @@ def quadratic_results(request):
         if d > 0:
             x1 = (-b + (d ** 0.5)) / (2 * a)
             x2 = (-b - (d ** 0.5)) / (2 * a)
-            print(x1)
             dict_quadratic["two_x"] = "Квадратное уравнение имеет два действительных корня: x1 = %.1f, x2 = %.1f" %(x1, x2)
         elif d == 0:
             x1 = -b / (2 * a)

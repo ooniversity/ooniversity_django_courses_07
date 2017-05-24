@@ -29,7 +29,7 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="{% url 'index' %}">Main</a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li><a href="{% url 'student_list' %}">Students</a></li>
+              <li><a href="{% url 'list_view' %}">Students</a></li>
               <li><a href="{% url 'results' %}">Equation</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -43,14 +43,25 @@
               <h2 class="title">Description</h2>
                 <p><span class="text">ItBursa — это современная онлайн школа веб-разработки и программирования. Мы хотим сделать IT образование качественным, полезным и доступным.</span></p>
                <h3 class="title">Program</h3>
-                <p><span class="text">Сейчас у нас открыта регистрация на курс по "Python&Django". Кроме того, вы можете предварительно зарегистрироваться на курсы, дата старта которых еще не определена:</span></p>
+                <p><span class="text">Сейчас у нас открыта регистрация на курс по "Python". Кроме того, вы можете предварительно зарегистрироваться на курсы, дата старта которых еще не определена:</span></p>
                  <div class="list">
-                     <ul class="panel-danger">
-	                    <li><a href="https://www.djangoproject.com/">Python&Django</a></li>
-                        <li><a href="https://www.python.org/">Python Advanced</a></li>
-                        <li><a href="https://www.java.com/en/">JavaScript</a></li>
-                    </ul>
-                </div>
+                     <table class="table table-striped">
+                       <thead>
+                          <tr>
+                            <th>Курс</th>
+                            <th>Описание</th>
+                          </tr>
+                       </thead>
+                       <tbody class="text1">
+                          {% for course in cour %}
+                          <tr>
+                            <td><a href='{% url "courses:detail" course.id %}'>{{ course.name }}</a></td>
+                            <td>{{ course.short_description }}</td>
+                          </tr>
+                           {% endfor %}
+                       </tbody>
+                     </table>
+                 </div>
            </div>
         </div>
     </div>   
