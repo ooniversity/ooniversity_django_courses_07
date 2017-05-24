@@ -102,4 +102,11 @@ html, body{
 .test_table{
     font-weight:bold;
 }
+.text1{
+    font-family: cursive;
+    color:darkslateblue;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 32px;
+}
 
