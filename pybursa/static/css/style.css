@@ -28,7 +28,7 @@ body {
 nav {
 	font-family: fontawesome;
 	font-size: 1.5em; 
-	font-weight: bold;
+	font-weight: 500;
 }
 
 .card {
@@ -70,11 +70,11 @@ nav {
 
 .navbar-brand{
 	height: auto !important;
-	padding-left: 67px !important;
+	padding-left: 65px !important;
 }
 
 ul {
-	padding-right: 150px;
+	padding-right: 50px;
 	padding-top: 8px;
 }
 
@@ -158,9 +158,9 @@ header {
 #wrapper {
 	/*padding-left: 1%;*/
 	/*float: center;*/
-	width: 60%;
+	width: 100%;
 	/*display: block;*/
-	text-align: center;
+	/*text-align: center;*/
 	margin: auto;
 }
 
