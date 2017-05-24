@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title>Main</title>
-
+	<title>Students</title>
+	
 	<meta name=viewport content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"/>
@@ -27,7 +27,9 @@
 						<!-- <div class="navbar-brand"> -->
 						<img class="navbar-brand" alt="brand" src="{% static '/images/it.png' %}">
 						<!-- </div> -->
+
 					</div>
+
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a class="li-a" href="{% url 'index' %}">Main</a></li>
@@ -37,28 +39,32 @@
 					</div>
 				</div>
 			</nav>
-			<div id="wrapper">
-				<h2>DjangoBursa</h2>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, doloremque odit veniam inventore, repudiandae rerum ducimus? Aperiam quo odio voluptates molestiae deleniti sed quod laudantium dolor, commodi modi. Perspiciatis ducimus ullam veniam, consectetur laboriosam itaque eum pariatur nisi, voluptas recusandae harum eius neque, soluta repudiandae molestias nulla expedita eligendi sapiente?
-				</p>
-				<br/>
-				<h3>Courses</h3>
-				<table class="table-striped table table-hover">
-					<thead>
-						<th>Курс</th>
-						<th>Описание</th>
-					</thead>
-					{% for course in courses %}
-					<tr>
-						<td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
-						<td>{{ course.short_description }}</td>
-					</tr>
-					{% endfor %}
-				</table>
-			</div>
-		</div>
+		<h2>Student List</h2>
+		<table class="table table-hover table-bordered">
+			<tr class="success">
+				<th>#</th>
+				<th>Name Surname</th>
+				<th>Address</th>
+				<th>Skype</th>
+				<th>Courses</th>
+			</tr>
+			{% for student in students %}
+			<tr>
+				<td>{{ student.id }}</td>
+				<td><a href="{% url 'students:detail' student.id %}">{{ student.name }} {{ student.surname }}</a></td>
+				<td>{{ student.address }}</td>
+				<td>{{ student.skype }}</td>
+				<td>
+				{% for course in student.courses.values %}
+				<a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br/>
+				{% endfor %}
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
 	</div>
+
+
 	<script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
 	<script src="{% static '/static/js/bootstrap.js' %}"></script>
 </body>

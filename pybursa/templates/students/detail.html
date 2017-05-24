@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load staticfiles %}<!DOCTYPE html>
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
@@ -6,7 +6,6 @@
 	
 	<meta name=viewport content="width=device-width, initial-scale=1">
 
-	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-theme.css' %}">
@@ -35,60 +34,46 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a class="li-a" href="{% url 'index' %}">Main</a></li>
 							<li><a class="li-a" href="{% url 'contact' %}">Contacts</a></li>
-							<li><a class="li-a" href="{% url 'student_list' %}">Students</a></li>
+							<li><a class="li-a" href="{% url 'students:list_view' %}">Students</a></li>
 						</ul>
 					</div>
 				</div>
 			</nav>
 
-		<h2>Ivanov Ivan</h2>
-		<br/>
-		<h5>Person Card</h5>
-		<table class="card table table-hover table-bordered">
+		<h2>{{ student.name }} {{ student.surname }}</h2>
+		<table class="card table table-hover">
 			<tr>
-				<td class="card-td">Surname</td>
-				<td>Ivanov</td>
-			</tr>
-			<tr>
-				<td class="card-td">Name</td>
-				<td>Ivan</td>
-			</tr>
-			<tr>
-				<td class="card-td">Patronymic</td>
-				<td>Ivanovich</td>
-			</tr>
-			<tr>
-				<td class="card-td">Rating</td>
-				<td>9</td>
-			</tr>
-			<tr>
-				<td class="card-td">Average Grade</td>
-				<td>50</td>
-			</tr>
-			<tr>
-				<td class="card-td">Package</td>
-				<td>VIP</td>
-			</tr>
-			<tr>
-				<td class="card-td">Birth Date</td>
-				<td>16.06.1996</td>
+				<td class="card-td">Birth</td>
+				<td>{{ student.date_of_birth }}</td>
 			</tr>
 			<tr>
 				<td class="card-td">Address</td>
-				<td>Moscow</td>
+				<td>{{ student.name }}</td>
 			</tr>
 			<tr>
-				<td class="card-td">E-mail</td>
-				<td>swag@my.com</td>
+				<td class="card-td">Email</td>
+				<td>{{ student.email }}</td>
 			</tr>
 			<tr>
 				<td class="card-td">Skype</td>
-				<td>Skype1</td>
+				<td>{{ student.skype }}</td>
+			</tr>
+			<tr>
+				<td class="card-td">Phone</td>
+				<td>{{ student.phone }}</td>
+			</tr>
+			<tr>
+				<td class="card-td">Courses</td>
+				<td>
+					{% for course in student.courses.values %}
+					<a href="{% url 'courses:detail' course.id%}">{{ course.name }}</a><br/>
+					{% endfor %}
+				</td>
 			</tr>
 		</table>
 		<br/>
 
-		Perfomance
+<!-- 		Perfomance
 		<table class="card table table-hover table-bordered">
 			<tr class="success">
 				<th>Course</th>
@@ -119,7 +104,7 @@
 				<td>Problem Task 1</td>
 				<td>80%</td>
 			</tr>
-		</table>
+		</table> -->
 	</div>
 
 

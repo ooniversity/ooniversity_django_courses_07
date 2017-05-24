@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load staticfiles %}<!DOCTYPE html>
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
@@ -6,7 +6,6 @@
 
 	<meta name=viewport content="width=device-width, initial-scale=1">
 
-	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-theme.css' %}">
@@ -35,7 +34,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a class="li li-a" href="{% url 'index' %}">Main</a></li>
 							<li><a class="li li-a" href="{% url 'contact' %}">Contacts</a></li>
-							<li><a class="li li-a" href="{% url 'student_list' %}">Students</a></li>
+							<li><a class="li li-a" href="{% url 'students:list_view' %}">Students</a></li>
 						</ul>
 					</div>
 				</div>
