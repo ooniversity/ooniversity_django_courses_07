@@ -55,10 +55,10 @@
                           {% for st in stud %}
                           <tr>
                             <td>{{ st.id }}</td>
-                              <td><a href="{% url 'detail' st.id %}">{{ st.surname }} {{ st.name }}</a></td>
+                              <td><a href="{% url 'students:detail' st.id %}">{{ st.surname }} {{ st.name }}</a></td>
                             <td>{{ st.address }}</td>
                             <td>{{ st.skype }}</td>
-                            <td>{% for c in st.course.all %}
+                            <td>{% for c in st.courses.all %}
                                 <a href="{% url 'courses:detail' c.id %}">{{c.name}}</a><br />
                                 {% endfor %}
                             </td>
