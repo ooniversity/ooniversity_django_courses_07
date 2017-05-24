@@ -10,6 +10,6 @@ urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^contact/$', contact, name='contact'),
     url(r'^students/', include('students.urls')),
-    url(r'^course/', include('courses.urls')),
+    url(r'^courses/', include('courses.urls')),
     url(r'^quadratic/results/$', quadratic_results, name='results')
 ]
