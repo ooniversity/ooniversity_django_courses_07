@@ -66,7 +66,7 @@
 				<td class="card-td">Courses</td>
 				<td>
 					{% for course in student.courses.values %}
-					<a href="{% url 'courses:detail' course.id%}">{{ course.name }}</a><br/>
+					<a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br/>
 					{% endfor %}
 				</td>
 			</tr>
