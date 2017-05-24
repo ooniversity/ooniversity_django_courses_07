@@ -22,8 +22,7 @@ def quadratic_results(request):
     a = request.GET['a']
     b = request.GET['b']
     c = request.GET['c']
-    context = {'a':a, 'b':b, 'c':c}
-    print(a, b, c)
+    context = {'a':a, 'b':b, 'c':c}    
     a_note = coeff_type(a)
     b_note = coeff_type(b)
     c_note = coeff_type(c)
@@ -33,8 +32,10 @@ def quadratic_results(request):
         d = discriminant(int(a),int(b),int(c))
         context['d'] = d
         if d >= 0:
-            context['x1'],context['x2'] = quadratic_roots(int(a),int(b),int(c),d)
-            print(context) 
+            x1,x2 = quadratic_roots(int(a),int(b),int(c),d)
+            context['x1'] = round(x1, 1)
+            context['x2'] = round(x2, 1)
+    print(context) 
     return render(request, 'results.html', context)
 
 # Create your views here.
