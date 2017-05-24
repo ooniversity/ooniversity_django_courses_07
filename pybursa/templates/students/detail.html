@@ -44,7 +44,7 @@
 		<table class="card table table-hover">
 			<tr>
 				<td class="card-td">Birth</td>
-				<td>{{ student.date_of_birth }}</td>
+				<td>{{ student.date_of_birth|date:"b. d, Y"|capfirst }}</td>
 			</tr>
 			<tr>
 				<td class="card-td">Address</td>
