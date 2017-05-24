@@ -1,0 +1,65 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'courses:index' %}">Ooniversity</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'courses:index' %}">Главная</a></li>
+          <li class="active"><a href="{% url 'contact' %}">Контакты</a></li>
+          <li><a href="{% url 'students:list_view'%}">Студенты</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+        <h2>Контакты</h2>
+        <table class="table table-striped">
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Skype</th>
+                        <th>Email</th>
+                    </tr>
+                    <tr>
+                        <td>Алексей Радченко</td>
+                        <td>Director</td>
+                        <td>Украина, г.Харьков, ул. Петрова, дом 4</td>
+                        <td>38096789828</td>
+                        <td>director</td>
+                        <td>director@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>Петро</td>
+                        <td>Manager</td>
+                        <td>Украина, г.Харьков, ул. Петрова, дом 4</td>
+                        <td>38096789828</td>
+                        <td>Manager</td>
+                        <td>Manager@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>Вася</td>
+                        <td>Founder </td>
+                        <td>Украина, г.Харьков, ул. Петрова, дом 4</td>
+                        <td>38096789828</td>
+                        <td>Founder</td>
+                        <td>Founder@gmail.com</td>
+                    </tr>
+        </table>
+    </div>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

@@ -1,11 +1,11 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
 </head>
 <body>
     <nav class="navbar navbar-inverse">
@@ -15,7 +15,7 @@
         </div>
         <ul class="nav navbar-nav">
           <li><a href="{% url 'courses:index' %}">Главная</a></li>
-          <li><a href="/">Контакты</a></li>
+          <li><a href="{% url 'contact' %}">Контакты</a></li>
           <li><a href="{% url 'students:list_view'%}">Студенты</a></li>
         </ul>
       </div>
@@ -56,5 +56,7 @@
             {% if student.courses.count < 2 %} </tr>{% endif %}
         </table>
     </div>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
 </body>
 </html>
