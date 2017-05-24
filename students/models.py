@@ -9,7 +9,7 @@ class Student(models.Model):
     phone = models.CharField(max_length=150)
     address = models.CharField(max_length=300)
     skype = models.CharField(max_length=150)
-    course = models.ManyToManyField(Course)
+    courses = models.ManyToManyField(Course)
 
 
 
