@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from students import views
+from students.views import detail
 
-#app_name = 'students'
+app_name = 'students'
 urlpatterns = (
-    url(r'^(?P<pk>\d+)/$', views.detail, name='detail'),
+    url(r'^(?P<pk>\d+)/$', detail, name='detail'),
 )
