@@ -3,7 +3,5 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^results/(?P<a>.*)$', views.results, name='results'),
+    url(r'^results/$', views.quadratic_results, name='quadratic_results'),
 ]
-
-#(?P<a>.*)(&P<b>.*)(&P<c>.*)
