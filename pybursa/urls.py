@@ -8,7 +8,7 @@ from students.views import list_view
 urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^contact/', contact, name='contact'),
-    url(r'^students/', list_view, name='list_view'),
+    url(r'^students/$', list_view, name='list_view'),
     url(r'^polls/', include('polls.urls')),
     url(r'^quadratic/', include('quadratic.urls')),
     url(r'^courses/', include('courses.urls')),
