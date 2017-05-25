@@ -1,5 +1,5 @@
 from django.db import models
-#from courses.models import Course
+
 
 class Course(models.Model):
     name = models.CharField(max_length=128)
@@ -8,7 +8,6 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class Lesson(models.Model):
     subject = models.CharField(max_length=254)
