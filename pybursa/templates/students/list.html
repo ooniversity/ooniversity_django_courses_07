@@ -43,7 +43,7 @@
 		<table class="table table-hover table-bordered">
 			<tr class="success">
 				<th>#</th>
-				<th>Name Surname</th>
+				<th>Surname Name</th>
 				<th>Address</th>
 				<th>Skype</th>
 				<th>Courses</th>
@@ -51,7 +51,7 @@
 			{% for student in students %}
 			<tr>
 				<td>{{ student.id }}</td>
-				<td><a href="{% url 'students:detail' student.id %}">{{ student.name }} {{ student.surname }}</a></td>
+				<td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
 				<td>{{ student.address }}</td>
 				<td>{{ student.skype }}</td>
 				<td>
