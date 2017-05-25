@@ -41,6 +41,15 @@
               <div class="col-lg-8 col-lg-offset-2">
                 <h1 class="title">{{ course.name }}</h1>
                   <p><span class="text">{{ course.description }}</span></p>
+                    <div>
+                     <h3 class="title">Преподаватели</h3>
+                       <h4 class="h4">Учитель</h4>
+	                     <p><b><a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a></b></p>
+                           <p class="name">{{ course.coach.description }}</p>
+                       <h4 class="h4">Ассистент</h4>
+	                     <p><b><a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a></b></p>
+	                       <p class="name">{{ course.assistant.description }}</p>
+	                </div>
                  <h3 class="title">План курса</h3>
                    <div class="list">
                      <table class="table table-striped">
