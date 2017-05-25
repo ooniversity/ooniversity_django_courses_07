@@ -9,8 +9,8 @@ class StudentAdmin(admin.ModelAdmin):
     list_filter = ['courses']
     search_fields = ['surname', 'email']
     fieldsets = (
-        ('Personal Info', {'fields': ['name', 'surname', 'date_of_birth']}),
-        ('Contact Info', {'fields': ['email', 'phone', 'address', 'skype']}),
+        ('Personal info', {'fields': ['name', 'surname', 'date_of_birth']}),
+        ('Contact info', {'fields': ['email', 'phone', 'address', 'skype']}),
         (None, {'fields': ['courses']})
     )
     formfield_overrides = {
