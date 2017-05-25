@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title>Course</title>
-
+	<title>Detail</title>
+	
 	<meta name=viewport content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}"/>
@@ -32,53 +32,57 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a class="li-a" href="{% url 'index' %}">Main</a></li>
 							<li><a class="li-a" href="{% url 'contact' %}">Contacts</a></li>
-							<li><a class="li-a" href="{% url 'students:list_view' %}?course_id={{ course.id }}">Students</a></li>
+							<li><a class="li-a" href="{% url 'students:list_view' %}">Students</a></li>
 						</ul>
 					</div>
 				</div>
 			</nav>
-			<div id="wrapper">
-				<h2>{{ course.name }}</h2>
-				<p>{{ course.description }}</p>
-				<h3>Преподаватели</h3>
-				<div class="panel panel-default">
-					<div class="panel-heading">Учитель</div>
-					<div class="panel-body">
-						<a href="{% url 'coaches:detail' course.coach.id %}">
-							{{ course.coach.user.first_name }}
-						</a>
+
+			<h2>{{ coach.user.first_name }} {{ coach.user.last_name }}</h2>
+			<table class="card table table-hover">
+				<tr>
+					<td>Birth</td>
+					<td>{{ coach.date_of_birth }}</td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td>{{ coach.address }}</td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td>{{ coach.user.email }}</td>
+				</tr>
+				<tr>
+					<td>Skype</td>
+					<td>{{ coach.skype }}</td>
+				</tr>
+				<tr>
+					<td>Phone</td>
+					<td>{{ coach.phone }}</td>
+				</tr>
+				<tr>
+					<td>Teacher</td>
+					<td>
+						{% for course in teacher %}
+						<a href="{% url 'courses:detail' course.id %}">{{ course }}</a> Студенты курса <a href="{% url 'students:list_view' %}?course_id={{ course.id }}"><span class='glyphicon glyphicon-eye-open' aria-hidden="true"></span></a>
+ 						<br/>
+						{% endfor %}
+					</td>
+				</tr>
+				<tr>
+					<td>Assistant</td>
+					<td>
+						{% for course in assistant %}
+						<a href="{% url 'courses:detail' course.id %}">{{ course }}</a> Студенты курса  <a href="{% url 'students:list_view' %}?course_id={{ course.id }}"><span class='glyphicon glyphicon-eye-open' aria-hidden="true"></span></a>
 						<br/>
-						{{ course.coach.description }}
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">Ассистент</div>
-					<div class="panel-body">
-						<a href="{% url 'coaches:detail' course.assistant.id %}">
-							{{ course.assistant.user.first_name }}
-						</a>
-						<br/>
-						{{ course.assistant.description }}
-					</div>
-				</div>
-				<h3>План курса</h3>
-				<table class="table-striped table table-hover">
-					<thead>
-						<th>#</th>
-						<th>Курс</th>
-						<th>Описание</th>
-					</thead>
-					{% for lesson in lessons %}
-					<tr>
-						<td>{{ lesson.order }}</td>
-						<td>{{ lesson.subject }}</td>
-						<td>{{ lesson.description }}</td>
-					</tr>
-					{% endfor %}
-				</table>
-			</div>
-		</div>
+						{% endfor %}
+					</td>
+				</tr>
+			</table>
+			<br/>
 	</div>
+
+
 	<script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
 	<script src="{% static '/static/js/bootstrap.js' %}"></script>
 </body>

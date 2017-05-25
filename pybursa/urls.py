@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^contact/$', contact, name='contact'),
     url(r'^students/', include('students.urls')),
     url(r'^courses/', include('courses.urls')),
+    url(r'^coaches/', include('coaches.urls')),
     url(r'^quadratic/results/$', quadratic_results, name='results')
 ]
