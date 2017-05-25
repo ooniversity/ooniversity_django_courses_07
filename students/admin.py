@@ -1,7 +1,6 @@
 from django.contrib import admin
 from students.models import Student
 from django.db import models
-from django.forms import widgets
 
 
 class StudentAdmin(admin.ModelAdmin):
