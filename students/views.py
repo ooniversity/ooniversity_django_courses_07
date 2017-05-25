@@ -11,7 +11,7 @@ def list_view(request):
         context = {'students': Student.objects.all()}
     return render(request, 'students/list.html', context)
 
-def detail(request, id=0):
+def detail(request, id):
     try:
         context = {'student': Student.objects.get(id=id)}
     except:
