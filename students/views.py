@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from students.models import Student
 
 
@@ -12,5 +12,8 @@ def list_view(request):
     return render(request, 'students/list.html', context)
 
 def detail(request, id):
-    context = {'student': Student.objects.get(id=id)}
+    try:
+        context = {'student': Student.objects.get(id=id)}
+    except:
+        return redirect('students:list_view')
     return render(request, 'students/detail.html', context)
