@@ -27,9 +27,7 @@
 						<!-- <div class="navbar-brand"> -->
 						<img class="navbar-brand" alt="brand" src="{% static '/images/it.png' %}">
 						<!-- </div> -->
-
 					</div>
-
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a class="li-a" href="{% url 'index' %}">Main</a></li>
@@ -40,38 +38,38 @@
 				</div>
 			</nav>
 
-		<h2>{{ student.name }} {{ student.surname }}</h2>
-		<table class="card table table-hover">
-			<tr>
-				<td class="card-td">Birth</td>
-				<td>{{ student.date_of_birth|date:"b. d, Y"|capfirst }}</td>
-			</tr>
-			<tr>
-				<td class="card-td">Address</td>
-				<td>{{ student.address }}</td>
-			</tr>
-			<tr>
-				<td class="card-td">Email</td>
-				<td>{{ student.email }}</td>
-			</tr>
-			<tr>
-				<td class="card-td">Skype</td>
-				<td>{{ student.skype }}</td>
-			</tr>
-			<tr>
-				<td class="card-td">Phone</td>
-				<td>{{ student.phone }}</td>
-			</tr>
-			<tr>
-				<td class="card-td">Courses</td>
-				<td>
-					{% for course in student.courses.values %}
-					<a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br/>
-					{% endfor %}
-				</td>
-			</tr>
-		</table>
-		<br/>
+			<h2>{{ student.name }} {{ student.surname }}</h2>
+			<table class="card table table-hover">
+				<tr>
+					<td class="card-td">Birth</td>
+					<td>{{ student.date_of_birth|date:"b. d, Y"|capfirst }}</td>
+				</tr>
+				<tr>
+					<td class="card-td">Address</td>
+					<td>{{ student.address }}</td>
+				</tr>
+				<tr>
+					<td class="card-td">Email</td>
+					<td>{{ student.email }}</td>
+				</tr>
+				<tr>
+					<td class="card-td">Skype</td>
+					<td>{{ student.skype }}</td>
+				</tr>
+				<tr>
+					<td class="card-td">Phone</td>
+					<td>{{ student.phone }}</td>
+				</tr>
+				<tr>
+					<td class="card-td">Courses</td>
+					<td>
+						{% for course in student.courses.values %}
+						<a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br/>
+						{% endfor %}
+					</td>
+				</tr>
+			</table>
+			<br/>
 
 <!-- 		Perfomance
 		<table class="card table table-hover table-bordered">
