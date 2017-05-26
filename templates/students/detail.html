@@ -58,7 +58,7 @@
                 <td>{{ student.email }}</td>
               </tr>
               <tr>
-                <td>skype</td>
+                <td>логин skype</td>
                 <td>{{ student.skype }}</td>
               </tr>
               <tr>
@@ -69,9 +69,7 @@
                 <td>курсы</td>
                 <td>
                   {% for course in courses_list %}
-                  <ul>  
-                    <li><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></li>
-                  </ul>
+                    <p><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></p>
                   {% endfor %}
                 </td>
               </tr>
