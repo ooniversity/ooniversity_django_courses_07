@@ -47,10 +47,10 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Фамилия Имя</th>
-                <th>Адрес</th>
-                <th>Skype</th>
-                <th>Курсы</th>
+                <th>фамилия имя</th>
+                <th>адрес</th>
+                <th>skype</th>
+                <th>курсы</th>
               </tr>
             </thead>
             <tbody>
@@ -62,9 +62,7 @@
                 <td>{{ student.skype }}</td>
                 <td>
                   {% for student_courses in student.get_courses %}
-                  <ul>
-                    <li><a href="{% url 'courses:detail' student_courses.id %}">{{ student_courses.name }}</a></li>
-                  </ul>
+                    <p><a href="{% url 'courses:detail' student_courses.id %}">{{ student_courses.name }}</a></p>
                   {% endfor %}
                 </td>
               </tr>
