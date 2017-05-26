@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>О курсе {{ course.name }}</title>
+    <title>Список  студентов</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
@@ -43,9 +43,9 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="{% url 'index' %}">Main</a></li>
+              <li><a href="{% url 'index' %}">Main</a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li><a href="{% url 'student_list' %}">Students</a></li>
+              <li class="active"><a href="">Students</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -53,26 +53,31 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h2>{{ course.name }}</h2>
-            <p> {{ course.description }}</p>
-           <div class="container">
+            <div class="container">
               <div class="row col-md-12  custyle">
               <table class="table table-striped custab">
               <thead>
-              <h2> План курса</h2>
+              <h2>Список студентов</h2>
                   <tr>
                       <th>#</th>
-                      <th>Тема</th>
-                      <th>Описание</th>
+                      <th>фамилия имя</th>
+                      <th>адрес</th>
+                      <th>skype</th>
+                      <th>курсы</th>
                   </tr>
               </thead>
-              {% for lesson in lessons %}
+                  {% for student in students %}
                 <tr>
-                    <td>{{ lesson.order }}</td>
-                    <td>{{ lesson.subject }}</td>
-                    <td>{{ lesson.description }}</td>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'students:detail' student.id %}">{{ student }}</a></td>
+                    <td>{{ student.address }}</td>
+                    <td>{{ student.skype }}</td>
+                    <td>
+                        {% for course in student.courses.all %}
+                            <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
+                            {% endfor %}</td>
                 </tr>
-              {% endfor %}
+                  {% endfor %}
               </table>
               </div>
             </div>

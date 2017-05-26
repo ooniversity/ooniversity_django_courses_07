@@ -10,13 +10,14 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Список студентов</title>
+    <title>О курсе {{ course.name }}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,7 +29,6 @@
   <body>
 
     <div class="container">
-
       <!-- Static navbar -->
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -39,13 +39,13 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'index' %}">DjangoBursa</a>
+            <a class="navbar-brand" href="/">DjangoBursa</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="{% url 'index' %}">Main</a></li>
+              <li class="active"><a href="{% url 'index' %}">Main</a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li class="active"><a href="{% url 'student_list' %}">Students</a></li>
+              <li><a href="{% url 'students:list_view' %}?course_id={{ course.id }}">Students</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -53,66 +53,30 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-            <div class="container">
+        <h2>{{ course.name }}</h2>
+            <p> {{ course.description }}</p>
+           <div class="container">
               <div class="row col-md-12  custyle">
               <table class="table table-striped custab">
               <thead>
-              <h2>Студенты курса DjangoBursa</h2>
-              <p><h5>Наши студенты</h5></p>
+              <h2> План курса</h2>
                   <tr>
-                      <th>No</th>
-                      <th>Surname</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Phone</th>
-                      <th>Skype</th>
+                      <th>#</th>
+                      <th>Тема</th>
+                      <th>Описание</th>
                   </tr>
               </thead>
+              {% for lesson in lessons %}
                 <tr>
-                    <td><a href="{% url 'student_detail' %}">1</a></td>
-                    <td>Андреев</td>
-                    <td>Александр</td>
-                    <td>Украина, г. Петропавловское, ул. Георгиевская, д.32, кв. 187</td>
-                    <td>8(904)536-90-46</td>
-                    <td>Andreev</td>
+                    <td>{{ lesson.order }}</td>
+                    <td>{{ lesson.subject }}</td>
+                    <td>{{ lesson.description }}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Асадова</td>
-                    <td>Елизавета</td>
-                    <td>Литва, г. Параньга, ул. Батайская, д.70, кв. 215</td>
-                    <td>8(939)463-24-16</td>
-                    <td>Asadova</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Волков</td>
-                    <td>Леон</td>
-                    <td>Армения, г. Шахунья, ул. Голландская, д.56, кв.53</td>
-                    <td>8(965)397-59-23</td>
-                    <td>Volkov</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ушакова</td>
-                    <td>Аза</td>
-                    <td>Беларусь, г. Лодейное Поле, ул. Башиловская, д.35, кв.41</td>
-                    <td>8(968)342-82-66</td>
-                    <td>Ushakova_aza</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Охота</td>
-                    <td>Дина</td>
-                    <td>РФ, г. Нивенское, ул. Ленина, дом 28, квартира 156</td>
-                    <td>8(977)251-77-12</td>
-                    <td> Ohota</td>
-                </tr>
+              {% endfor %}
               </table>
               </div>
             </div>
       </div>
-
     </div> <!-- /container -->
 
 

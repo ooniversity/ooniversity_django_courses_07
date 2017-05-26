@@ -42,85 +42,49 @@
             <ul class="nav navbar-nav">
               <li><a href="{% url 'index' %}">Main</a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li><a href="{% url 'student_list' %}">Students</a></li>
+              <li><a href="{% url 'students:list_view' %}">Students</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-           <h2>Андреев Александр</h2>
+           <h2>{{ student }}</h2>
             <div class="container">
-              <div class="row col-md-4  custyle">
+              <div class="row col-md-12  custyle">
               <table class="table table-striped custab">
-                  <thead>Students card</thead>
                 <tr>
-                    <td>Surname</td>
-                    <td>Андреев</td>
+                    <td>Дата рождения</td>
+                    <td>{{ student.date_of_birth }}</td>
                 </tr>
                 <tr>
-                    <td>Name</td>
-                    <td>Александр</td>
+                    <td>Адрес</td>
+                    <td>{{ student.address }}</td>
                 </tr>
                 <tr>
-                    <td>Patronymic</td>
-                    <td>Иванович</td>
+                    <td>Почта</td>
+                    <td>{{ student.email }}</td>
                 </tr>
                 <tr>
-                    <td>Birth date</td>
-                    <td>01.01.1980</td>
+                    <td>Логин skype</td>
+                    <td>{{ student.skype }}</td>
                 </tr>
                 <tr>
-                    <td>Address</td>
-                    <td>Украина, г. Петропавловское, ул. Георгиевская, д.32, кв. 187</td>
+                    <td>Телефон</td>
+                    <td>{{ student.phone }}</td>
                 </tr>
                 <tr>
-                    <td>E-mail</td>
-                    <td>andreev@mail.ru</td>
-                </tr>
-                  <tr>
-                    <td>Skype</td>
-                    <td>Andreev</td>
-                    </tr>
-                </table>
-              </div>
-            </div>
-          <div class="container">
-                <div class="row col-md-8">
-              <table class="table table-bordered">
-                  <thead>Performance
-                    <tr>
-                      <th>Course</th>
-                      <th>Week</th>
-                      <th>Control type</th>
-                      <th>Average Grade</th>
-                      <th>Rating</th>
-                  </tr>
-                  </thead>
-                <tr>
-                    <td>Django</td>
-                    <td>Week1</td>
-                    <td>Tests</td>
-                    <td>100%</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Problem task №1</td>
-                    <td>100%</td>
-                    <td>1</td>
-                </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Problem task №2</td>
-                    <td>90%</td>
-                    <td>1</td>
+                    <td>Курсы</td>
+                    <td>
+                        {% for course in student.courses.all %}
+                            <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
+                        {% endfor %}
+                    </td>
                 </tr>
                 </table>
               </div>
             </div>
+
       </div>
 
     </div> <!-- /container -->
