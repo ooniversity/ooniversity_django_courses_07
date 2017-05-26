@@ -13,5 +13,7 @@ class Student(models.Model):
     courses = models.ManyToManyField(Course, verbose_name='Курсы')
 
     def __str__(self):
-        full_name = self.surname + ' ' + self.name
-        return full_name
+        return self.name
+
+    def full_name(self):
+        return self.surname + ' ' + self.name
