@@ -13,7 +13,7 @@ class Coach(models.Model):
 
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
     def user_name(self):
