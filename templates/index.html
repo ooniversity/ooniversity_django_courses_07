@@ -54,9 +54,10 @@
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h2>Добро пожаловать в EgoIT Academy!</h2>
-            <p> Наши курсы - самый короткий путь в IT.</p>
+            Наши курсы - самый короткий путь в IT.
+      </div>
            <div class="container">
-              <div class="row col-md-12  custyle">
+              <div class="row col-xs-12  custyle">
               <table class="table table-striped custab">
               <thead>
               <h2> Наши курсы</h2>
@@ -68,13 +69,13 @@
               {% for course in courses %}
                 <tr>
                     <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
-                    <td>{{ course.description }}</td>
+                    <td>{{ course.short_description }}</td>
                 </tr>
               {% endfor %}
               </table>
               </div>
             </div>
-      </div>
+
     </div> <!-- /container -->
 
 
