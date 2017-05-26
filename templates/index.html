@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +9,8 @@
     <title>PyBursa - Main</title>
 
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-	<link href="../static/css/style.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
    
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +28,7 @@
 		  <ul class="nav navbar-nav">
 			<li class = "active"><a href="{% url 'index' %}">Main</a></li>
 			<li><a href="{% url 'contact' %}">Contacts</a></li>
-			<li><a href="{% url 'student_list' %}">Students</a></li>
+			<li><a href="{% url 'students:list_view' %}">Students</a></li>
 		  </ul>      
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
@@ -43,11 +44,34 @@
 		</p>
 	
 	</div>
+
+	<div>
+		{% if all_courses %}
+		<table class="tab1 table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Курс</th>
+					<th>Описание</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for course in all_courses %}
+					<tr>
+						<td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
+						<td>{{ course.short_description }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+    	<p>No course are available.</p>
+		{% endif %}
+	</div>
 	
 	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
   </body>
 </html>
