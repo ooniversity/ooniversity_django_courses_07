@@ -13,8 +13,12 @@ class Coach(models.Model):
 
 
     def __str__(self):
+        return self.user
+
+
+    def user_name(self):
         return self.user.first_name
-    name = property(__str__)
+    name = property(user_name)
 
 
     def user_surname(self):
