@@ -22,7 +22,7 @@ def list_view(request):
         students_list = Student.objects.filter(courses=course_id)
         active_course = Course.objects.get(id=course_id)
     
-    return render(request, 'students/student_list.html', {'st_list': students_list, 'active_course': active_course, 'without_c': without_c})
+    return render(request, 'students/list.html', {'st_list': students_list, 'active_course': active_course, 'without_c': without_c})
 
 
 # Create your views here.
