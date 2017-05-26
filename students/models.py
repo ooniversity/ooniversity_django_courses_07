@@ -14,3 +14,11 @@ class Student(models.Model):
     #def __str__(self):
     #    return self.name + self.surname
 
+    def fullname(self):
+        return self.surname + ' ' + self.name
+
+    def get_courses(self):
+        return self.courses.all()
+
+    def reformat_birthdate(self):
+        return self.date_of_birth.strftime("%b %d, %Y")

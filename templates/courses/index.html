@@ -33,8 +33,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'courses:index' %}">Main</a></li>
-            <!--<li><a href="{% url 'contact' %}">Contacts</a></li>
-            <li><a href="{% url 'student_list' %}">Students</a></li>-->
+            <li><a href="{% url 'contact' %}">Contacts</a></li>
+            <li><a href="{% url 'students:list_view' %}">Students</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -70,7 +70,7 @@
             <tbody>
               {% for course in courses_list %}
               <tr>
-                <td><a href="{% url 'courses:courses' course.id %}">{{ course.name }}</a></td>
+                <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
                 <td>{{ course.short_description }}</td>
               </tr>
               {% endfor %}
