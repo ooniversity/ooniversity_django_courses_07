@@ -6,4 +6,4 @@ def detail(request, id):
     """Для отображения информации о курсе"""
     course = Course.objects.get(id=id)
     lessons = Lesson.objects.filter(course=course)
-    return render(request, 'courses/course_detail.html', {'course': course, 'lessons': lessons})
+    return render(request, 'courses/detail.html', {'course': course, 'lessons': lessons})
