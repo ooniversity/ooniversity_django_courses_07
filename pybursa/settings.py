@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'students.apps.StudentsConfig',
+    'courses.apps.CoursesConfig',
     'polls.apps.PollsConfig',
     'quadratic.apps.QuadraticConfig',
     'django.contrib.admin',

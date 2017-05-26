@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>PyBursa - Profile</title>
+    <title>PyBursa</title>
 
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 	<link href="{% static 'css/style.css' %}" rel="stylesheet">
-   
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -28,89 +28,47 @@
 		  <ul class="nav navbar-nav">
 			<li><a href="{% url 'index' %}">Main</a></li>
 			<li><a href="{% url 'contact' %}">Contacts</a></li>
-			<li><a href="{% url 'student_list' %}">Students</a></li>
-		  </ul>      
+			<li><a href="{% url 'students:list_view' %}">Students</a></li>
+		  </ul>
 		</div>
 	  </div>
 	</nav>
 		<div class="container">
-			<h1>Denise Plant</h1>
-			<h2>Student's card</h2>
-			<br>
-			<table class="tab2 table">
-				<tbody>
-					<tr>
-						<td>Surname</td>
-						<td>Plant</td>
-					</tr>
-					<tr>
-						<td>Name</td>
-						<td>Denise</td>
-					</tr>
-					<tr>
-						<td>Patronymic</td>
-						<td>John</td>
-					</tr>
-					<tr>
-						<td>Birth Date</td>
-						<td>19/02/1990</td>
-					</tr>
-					<tr>
-						<td>Address</td>
-						<td>391 Vine Street Chicago, IL 60631</td>
-					</tr>
-					<tr>
-						<td>E-mail</td>
-						<td>Plant@yahoo.com</td>
-					</tr>
-					<tr>
-						<td>Skype</td>
-						<td>D_Plant</td>
-					</tr>
-					<tr>
-						<td>Average Grade </td>
-						<td>99.9</td>
-					</tr>
-					<tr>
-						<td>Rating</td>
-						<td>20</td>
-					</tr>
-					
-				</tbody>
-			</table>	
-			<br>
-			<h4>Perfomance</h4>
-		
-			<table class="tab3 table">
+
+			{% if students_list %}
+			<table class="tab1 table table-striped table-bordered table-condensed">
 				<thead>
 					<tr>
-						<th>Course</th>
-						<th>Week</th>
-						<th>Control Type</th>
-						<th>Grade</th>
+						<th>#</th>
+						<th>Фамилия, имя</th>
+						<th>Адрес</th>
+						<th>Skype</th>
+						<th>Курсы</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td rowspan="3">Py101</td>
-						<td rowspan="3">Week 1</td>
-						<td>Tests</td>
-						<td>99%</td>
-					</tr>
-					<tr>
-						<td>Problem Task № 1</td>
-						<td>100%</td>
-					</tr>
-					<tr>
-						<td>Problem Task № 2</td>
-						<td>100%</td>
-					</tr>
+					{% for student in students_list %}
+						<tr>
+							<td>{{ student.id }}</td>
+							<td><a href="{% url 'students:detail' student.id %}">{{student.name}} {{student.surname}}</a></td>
+							<td>{{ student.address }}</td>
+							<td>{{ student.skype }}</td>
+							<td>
+								{% for course in student.courses.all %}
+								<a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
+								{%endfor%}
+							</td>
+						</tr>
+					{% endfor %}
 				</tbody>
 			</table>
-	
+			{% else %}
+			<p>No students are available.</p>
+			{% endif %}
+
 		</div>
-	
-	
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
