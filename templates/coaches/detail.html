@@ -68,7 +68,29 @@
               <tr>
                 <td>курсы учитель</td>
                 <td>
-                  <a href="{% url 'courses:detail' coach.coach_courses.id %}">{{ coach.coach_courses.name }}</a>
+                  {% for course in courses_coach %}
+                    <p>
+                      <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                      студенты курса
+                      <a href="{% url 'students:list_view' %}?course_id={{course.id}}">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      </a>
+                    </p>
+                  {% endfor %}
+                </td>
+              </tr>
+              <tr>
+                <td>курсы ассистент</td>
+                <td>
+                  {% for course in courses_assistant %}
+                    <p>
+                      <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                      студенты курса
+                      <a href="{% url 'students:list_view' %}?course_id={{course.id}}">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      </a>
+                    </p>
+                  {% endfor %}
                 </td>
               </tr>
             </tbody>

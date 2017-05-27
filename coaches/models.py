@@ -25,3 +25,4 @@ class Coach(models.Model):
 
     def reformat_birthdate(self):
         return self.date_of_birth.strftime("%b. %d, %Y")
+

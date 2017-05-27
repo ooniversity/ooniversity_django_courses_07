@@ -17,6 +17,7 @@ class Course(models.Model):
     def __str__(self):
         return self.name
 
+
 class Lesson(models.Model):
     subject = models.CharField(max_length=254)
     description = models.TextField()
