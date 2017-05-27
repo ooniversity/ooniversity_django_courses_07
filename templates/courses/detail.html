@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Lessons DjangoBursa">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>Main page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  
+	        
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="{% url 'courses:index' %}">Main</a>
+          <a class="blog-nav-item" href="{% url 'contact' %}">Contacts</a>
+          <li><a href="{% url 'students:list_view' %}?course_id={{course_num.id}}">Students</a></li>
+       </nav>
+      </div>
+    </div>
+
+    <div class = "container">
+    
+    <h1>{{ course_num.name }}</h1>
+			<p class="lead blog-description">{{ course_num.description }}</p>
+			<h2>План курса</h2>
+            <table class="table table-hover">
+			  <thead>
+			    <tr>
+                  <th>#</th>
+				  <th>Тема</th>
+				  <th>Описание</th>
+				</tr>
+              </thead>
+              <tbody>
+                {% for item in course_shedule %}
+                <tr>
+                    <td>{{ item.order }}</td>
+                    <td>{{ item.subject }}</td>
+                    <td>{{ item.description }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+			</table>
+    
+    
+    </div>
+
+      
+	  
+	  
+      <nav class="navbar navbar-default navbar-fixed-bottom">
+		<footer>
+			
+	  
+        <p>&copy; 2017 Company, Inc.</p>
+	  
+		</footer>
+	  </nav>
+	  
+	  
+
+      </div><!-- /.container -->
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+   </body>
+</html>
+</html>
