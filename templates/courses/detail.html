@@ -63,14 +63,14 @@
         <div class="panel panel-success">
           <div class="panel-heading">Учитель</div>
           <div class="panel-body">
-              <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.name }} {{ course.coach.surname }}</a><br><br>
+              <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a><br><br>
               {{ course.coach.description }}
           </div>
         </div>
         <div class="panel panel-success">
           <div class="panel-heading">Ассистент</div>
           <div class="panel-body">
-            <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.name }} {{ course.assistant.surname }}</a><br><br>
+            <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name}} {{ course.assistant.user.last_name }}</a><br><br>
               {{ course.assistant.description }}
           </div>
         </div>
