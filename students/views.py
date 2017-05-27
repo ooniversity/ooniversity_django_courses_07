@@ -4,12 +4,13 @@ from courses.models import Course
 
 def list_view(request):
     if 'course_id' in request.GET:
-        course = Course.objects.get(pk=request.GET['course_id'])
-        students = Student.objects.filter(courses=course)
+        students = Student.objects.filter(courses__id=request.GET['course_id'])
     else:
         students = Student.objects.all()
-    return render(request, 'students/list.html', {'students': students})
+    context = {'students': students}
+    return render(request, 'students/list.html', context)
 
 def detail(request, id):
     student = Student.objects.get(id=id)
-    return render(request, 'students/detail.html', {'student': student})
+    context = {'student': student}
+    return render(request, 'students/detail.html', context)

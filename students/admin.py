@@ -9,13 +9,13 @@ class StudentAdmin(admin.ModelAdmin):
     search_fields = ('surname', 'email',)
     list_filter = ('courses',)
     fieldsets = (
-        (('Personal info'), {
+        ('Personal info', {
             'fields': ('name', 'surname', 'date_of_birth')
         }),
-        (('Contact info'), {
+        ('Contact info', {
             'fields': ('email', 'phone', 'address', 'skype')
         }),
-        ((), {
+        (None, {
             'fields': ('courses',)
         })
     )
