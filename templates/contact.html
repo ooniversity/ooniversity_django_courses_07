@@ -33,7 +33,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="{% url 'index' %}">Main</a></li>
+            <li><a href="{% url 'courses:index' %}">Main</a></li>
             <li class="active"><a href="{% url 'contact' %}">Contacts</a></li>
             <li><a href="{% url 'student_list' %}">Students</a></li>
           </ul>
@@ -101,4 +101,4 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'js/bootstrap.js' %}"></script>
   </body>
-</html> 
+</html>
