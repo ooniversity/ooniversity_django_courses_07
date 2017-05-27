@@ -33,7 +33,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="{% url 'index' %}">Main</a></li>
+            <li><a href="{% url 'courses:index' %}">Main</a></li>
             <li><a href="{% url 'contact' %}">Contacts</a></li>
             <li class="active"><a href="{% url 'student_list' %}">Students</a></li>
           </ul>
@@ -42,8 +42,8 @@
     </nav>
 
     <div class="container">
-        
-        
+
+
         <div class="panel panel-success">
           <!-- Default panel contents -->
           <div class="panel-heading">
@@ -72,42 +72,42 @@
                     <td>Lisa</td>
                     <td>742 Evergreen Terrace, Springfield, USA</td>
                     <td>GoodNight</td>
-                  </tr>  
+                  </tr>
                   <tr class="warning">
                     <td>2</td>
                     <td>Smithers</td>
                     <td>Waylon</td>
                     <td>150 Evergreen Terrace, Springfield, USA</td>
                     <td>waylon</td>
-                  </tr>      
+                  </tr>
                   <tr class="warning">
                     <td>3</td>
                     <td>Simpson</td>
                     <td>Homer</td>
                     <td>742 Evergreen Terrace, Springfield, USA</td>
                     <td>Homer.Simpson</td>
-                  </tr>      
+                  </tr>
                   <tr class="warning">
                     <td>4</td>
                     <td>Simpson</td>
                     <td>Bart</td>
                     <td>742 Evergreen Terrace, Springfield, USA</td>
                     <td>Baaart</td>
-                  </tr>      
+                  </tr>
                   <tr class="warning">
                     <td>5</td>
                     <td>Simpson</td>
                     <td>Marge</td>
                     <td>742 Evergreen Terrace, Springfield, USA</td>
                     <td>MarjorieJacqueline</td>
-                  </tr>      
+                  </tr>
                   <tr class="warning">
                     <td>6</td>
                     <td>Bouvier</td>
                     <td>Selma</td>
                     <td>133 Spring Terrace, NewYork, USA</td>
                     <td>selma_bouvier</td>
-                  </tr>      
+                  </tr>
                 </tbody>
               </table>
           </div>
@@ -120,4 +120,4 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'js/bootstrap.js' %}"></script>
   </body>
-</html> 
+</html>
