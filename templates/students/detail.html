@@ -25,45 +25,52 @@
       <div class="container">
 
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="{% url 'index' %}">Main</a>
+          <a class="blog-nav-item active" href="{% url 'courses:index' %}">Main</a>
           <a class="blog-nav-item" href="{% url 'contact' %}">Contacts</a>
-          <a class="blog-nav-item" href="{% url 'student_list' %}">Students</a>
+          <a class="blog-nav-item" href="{% url 'students:list_view' %}">Students</a>
        </nav>
       </div>
     </div>
 
     <div class="container">
 
-      <div class="blog-header">
-        <h1 class="blog-title">DjangoBursa</h1>
-       
-	
-	  </div>
-        <p class="lead blog-description">Представляем вашему вниманию каталог наших актуальных курсов:</p>
-		 
-		 
-            {% if course_list.count %}
-			<h2>Выбирай и приступай</h2>
-            <table class="table table-hover">
-			  <thead>
-			    <tr>
-				  <th>Курс</th>
-				  <th>Описание</th>
-				</tr>
-              </thead>
-              <tbody>
-                {% for item in course_list %}
-                
-                <tr>
-                    <th><a href="{% url 'courses:detail' item.id %}">{{ item.name }}</a></th>
-                    <td>{{ item.short_description }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-			</table>
-            {% endif %}
+     
+          <h2>{{ student_info }}</h2>
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>дата рождения</td>
+                <td>{{ student_info.birthdate_format }}</td>
+              </tr>
+              <tr>
+                <td>адрес</td>
+                <td>{{ student_info.address }}</td>
+              </tr>
+              <tr>
+                <td>почта</td>
+                <td>{{ student_info.email }}</td>
+              </tr>
+              <tr>
+                <td>логин skype</td>
+                <td>{{ student_info.skype }}</td>
+              </tr>
+              <tr>
+                <td>телефон</td>
+                <td>{{ student_info.phone }}</td>
+              </tr>
+              <tr>
+                <td>курсы</td>
+                <td>
+                  {% for course in courses_list %}
+                    <p><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></p>
+                  {% endfor %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
       
-	 
+
+	  
 	  
       <nav class="navbar navbar-default navbar-fixed-bottom">
 		<footer>

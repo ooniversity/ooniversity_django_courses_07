@@ -25,45 +25,42 @@
       <div class="container">
 
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="{% url 'index' %}">Main</a>
+          <a class="blog-nav-item active" href="{% url 'courses:index' %}">Main</a>
           <a class="blog-nav-item" href="{% url 'contact' %}">Contacts</a>
-          <a class="blog-nav-item" href="{% url 'student_list' %}">Students</a>
+          <li><a href="{% url 'students:list_view' %}?course_id={{course_num.id}}">Students</a></li>
        </nav>
       </div>
     </div>
 
-    <div class="container">
-
-      <div class="blog-header">
-        <h1 class="blog-title">DjangoBursa</h1>
-       
-	
-	  </div>
-        <p class="lead blog-description">Представляем вашему вниманию каталог наших актуальных курсов:</p>
-		 
-		 
-            {% if course_list.count %}
-			<h2>Выбирай и приступай</h2>
+    <div class = "container">
+    
+    <h1>{{ course_num.name }}</h1>
+			<p class="lead blog-description">{{ course_num.description }}</p>
+			<h2>План курса</h2>
             <table class="table table-hover">
 			  <thead>
 			    <tr>
-				  <th>Курс</th>
+                  <th>#</th>
+				  <th>Тема</th>
 				  <th>Описание</th>
 				</tr>
               </thead>
               <tbody>
-                {% for item in course_list %}
-                
+                {% for item in course_shedule %}
                 <tr>
-                    <th><a href="{% url 'courses:detail' item.id %}">{{ item.name }}</a></th>
-                    <td>{{ item.short_description }}</td>
+                    <td>{{ item.order }}</td>
+                    <td>{{ item.subject }}</td>
+                    <td>{{ item.description }}</td>
                 </tr>
                 {% endfor %}
               </tbody>
 			</table>
-            {% endif %}
+    
+    
+    </div>
+
       
-	 
+	  
 	  
       <nav class="navbar navbar-default navbar-fixed-bottom">
 		<footer>

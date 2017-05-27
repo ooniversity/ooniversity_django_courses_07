@@ -25,45 +25,39 @@
       <div class="container">
 
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="{% url 'index' %}">Main</a>
+          <a class="blog-nav-item active" href="{% url 'courses:index' %}">Main</a>
           <a class="blog-nav-item" href="{% url 'contact' %}">Contacts</a>
-          <a class="blog-nav-item" href="{% url 'student_list' %}">Students</a>
+          <a class="blog-nav-item" href="{% url 'students:list_view' %}">Students</a>
        </nav>
       </div>
     </div>
 
-    <div class="container">
+    <div class = "container">
+    
+    
+          <h2>Список курсов</h2>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Курс</th>
+                <th>Описание</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for course in courses_list %}
+              <tr>
+                <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
+                <td>{{ course.short_description }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    
+    
 
-      <div class="blog-header">
-        <h1 class="blog-title">DjangoBursa</h1>
-       
-	
-	  </div>
-        <p class="lead blog-description">Представляем вашему вниманию каталог наших актуальных курсов:</p>
-		 
-		 
-            {% if course_list.count %}
-			<h2>Выбирай и приступай</h2>
-            <table class="table table-hover">
-			  <thead>
-			    <tr>
-				  <th>Курс</th>
-				  <th>Описание</th>
-				</tr>
-              </thead>
-              <tbody>
-                {% for item in course_list %}
-                
-                <tr>
-                    <th><a href="{% url 'courses:detail' item.id %}">{{ item.name }}</a></th>
-                    <td>{{ item.short_description }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-			</table>
-            {% endif %}
       
-	 
+	  
 	  
       <nav class="navbar navbar-default navbar-fixed-bottom">
 		<footer>

@@ -25,45 +25,42 @@
       <div class="container">
 
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="{% url 'index' %}">Main</a>
-          <a class="blog-nav-item" href="{% url 'contact' %}">Contacts</a>
-          <a class="blog-nav-item" href="{% url 'student_list' %}">Students</a>
+          <a href="{% url 'courses:index' %}">Main</a>
+          <a  href="{% url 'contact' %}">Contacts</a>
+          <a class="blog-nav-item active" href="{% url 'students:list_view' %}">Students</a>
        </nav>
       </div>
     </div>
 
     <div class="container">
-
-      <div class="blog-header">
-        <h1 class="blog-title">DjangoBursa</h1>
-       
-	
-	  </div>
-        <p class="lead blog-description">Представляем вашему вниманию каталог наших актуальных курсов:</p>
-		 
-		 
-            {% if course_list.count %}
-			<h2>Выбирай и приступай</h2>
-            <table class="table table-hover">
-			  <thead>
-			    <tr>
-				  <th>Курс</th>
-				  <th>Описание</th>
-				</tr>
-              </thead>
-              <tbody>
-                {% for item in course_list %}
-                
-                <tr>
-                    <th><a href="{% url 'courses:detail' item.id %}">{{ item.name }}</a></th>
-                    <td>{{ item.short_description }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-			</table>
-            {% endif %}
-      
-	 
+	<h2>Список студентов</h2>
+                <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>фамилия имя</th>
+                <th>адрес</th>
+                <th>skype</th>
+                <th>курсы</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for student in student_list %}
+              <tr>
+                <td>{{ student.id }}</td>
+                <td><a href="{% url 'students:detail' student.id %}">{{ student.fullname }}</a></td>
+                <td>{{ student.address }}</td>
+                <td>{{ student.skype }}</td>
+                <td>
+                  {% for student_courses in student.get_courses %}
+                    <p><a href="{% url 'courses:detail' student_courses.id %}">{{ student_courses.name }}</a></p>
+                  {% endfor %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table> 
+	  
 	  
       <nav class="navbar navbar-default navbar-fixed-bottom">
 		<footer>
