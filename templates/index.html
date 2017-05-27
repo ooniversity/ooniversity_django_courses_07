@@ -33,16 +33,13 @@
       </div>
       <div class="row">
         <div class="col-sm-12 blog-main">
-			<h1 class="page-title">ItBursa course</h1>
+			<h1>ItBursa course</h1>
 			<br>
 			<p class="page-main">This course is the first of a two-course sequence: Introduction to Computer Science and Programming Using Python,
 			and Introduction to Computational Thinking and Data Science. Together, they are designed to help people with no prior exposure
 			to computer science or programming learn to think computationally and write programs to tackle useful problems. The people
 			taking the two courses will use them as a stepping stone to more...</p>
-        </div><!-- /.page-main -->
-      </div><!-- /.row -->
-      <div class="row">
-        <div class="col-sm-12 blog-main">
+
             {% if course_list.count > 0 %}
 			<h2>Our courses</h2>
             <table class="table table-hover">
@@ -56,7 +53,7 @@
                 {% for item in course_list %}
                 <tr>
                     <th scope="row"><a href="{% url 'courses:detail' item.id %}">{{ item.name }}</a></th>
-                    <td>{{ item.description }}</td>
+                    <td>{{ item.short_description }}</td>
                 </tr>
                 {% endfor %}
               </tbody>
