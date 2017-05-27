@@ -59,10 +59,12 @@
 						<td>{{ student.phone }}</td>
 					</tr>
 					<tr>
-						<td>phone</td>
-						<td>{% for course in student.courses.all %}
+						<td>Курсы</td>
+						<td>
+						{% for course in student.courses.all %}
 							<a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
-						{%endfor%}</td>
+						{%endfor%}
+						</td>
 					</tr>
 				</tbody>
 			</table>
