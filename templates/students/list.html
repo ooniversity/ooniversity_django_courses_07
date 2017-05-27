@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Students of ItBursa course {{ active_course.name }}">
     <meta name="author" content="Arthur">
-    <link rel="icon" href="../static/images/favicon.ico">
+    <link rel="icon" href="{% static "images/favicon.ico" %}">
 
     <title>Students of ItBursa course</title>
 
@@ -38,10 +38,10 @@
 				<thead> 
 					<tr> 
 						<th>#</th>
-						<th>surname name</th>
-						<th>address</th>
+						<th>фамилия имя</th>
+						<th>адрес</th>
 						<th>skype</th>
-						<th>courses</th>
+						<th>курсы</th>
 					</tr> 
 				</thead> 
 				<tbody>
@@ -51,9 +51,8 @@
 						<td><a href="{% url 'students:detail' item.id %}">{{ item.surname }} {{ item.name }}</a></td>
 						<td>{{ item.address }}</td>
 						<td>{{ item.skype }}</td>
-						<td>{% for i in item.courses.all %}
-							<a href="{% url 'courses:detail' i.id %}">
-								{{ i.name }}</a><br/>{% endfor %}</td>
+						<td>{% for i in item.courses.all %}<a href="{% url 'courses:detail' i.id %}">{{ i.name }}</a>
+                            <br>{% endfor %}</td>
 					</tr>
 					{% endfor %}
 
