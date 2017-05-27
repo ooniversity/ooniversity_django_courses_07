@@ -48,24 +48,38 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'index' %}">Main</a></li>
             <li><a href="{% url 'contact' %}">Contacts</a></li>
-            <li><a href="{% url 'student_list' %}">Students</a></li>
+            <li><a href="{% url 'students:list_view' %}">Students</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
+      <div class="row">
+        <div class="col-sm-12 blog-main">
+      <h1>ItBursa course</h1>
+      <br>
+      <p class="page-main">We'll help you to get to know programming :)</p>
+      <h2>Attend courses:</h2>
+            <table class="table table-hover">
+        <thead>
+          <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+              </thead>
+              <tbody>
+                {% for item in course_list %}
+                <tr>
+                    <th scope="row"><a href="{% url 'courses:detail' item.id %}">{{ item.name }}</a></th>
+                    <td>{{ item.short_description }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+      </table>
+        </div><!-- /.page-main -->
+      </div><!-- /.row -->
 
-      <div class="logo-block">
-      <img class="logo" src="{% static 'images/python-logo.png' %}" \>
-      </div>
-      <div class="main-template">
-        <h1 class="course-title">PyBursa</h1>
-        <h2 class="description-title">Description</h2>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-        <h3 class="program-title">Program</h3>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-      </div>
 
     </div><!-- /.container -->
 

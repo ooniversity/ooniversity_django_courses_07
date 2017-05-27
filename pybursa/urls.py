@@ -26,5 +26,7 @@ urlpatterns = [
 	url(r'^student_detail/$', views.student_detail, name='student_detail'),
     url(r'^polls/', include('polls.urls')),
     url(r'^quadratic/', include('quadratic.urls')),
+    url(r'^courses/', include('courses.urls')),
+    url(r'^students/', include('students.urls')),
     url(r'^admin/', admin.site.urls),
 ]
