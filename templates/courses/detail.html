@@ -27,8 +27,6 @@
   </head>
 
   <body>
-
-    <div class="container">
       <!-- Static navbar -->
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -43,18 +41,40 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="{% url 'index' %}">Main</a></li>
-              <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li><a href="{% url 'students:list_view' %}?course_id={{ course.id }}">Students</a></li>
+              <li class="active"><a href="{% url 'index' %}">Главная</a></li>
+              <li><a href="{% url 'contact' %}">Контакты</a></li>
+              <li><a href="{% url 'students:list_view' %}?course_id={{ course.id }}">Студенты</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
-
+    <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h2>{{ course.name }}</h2>
-            <p> {{ course.description }}</p>
+        <div class="panel panel-info">
+          <div class="panel-heading">О курсе</div>
+          <div class="panel-body">
+          <h3>{{ course.name }}</h3><br>
+          <p> {{ course.description }}</p>
+          </div>
+        </div>
+    <div class="panel panel-info">
+        <div class="panel-heading"><b>Преподаватели курса</b></div>
+    <div class="panel-body">
+        <div class="panel panel-success">
+          <div class="panel-heading">Учитель</div>
+          <div class="panel-body">
+              <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach }}</a><br><br>
+              {{ course.coach.description }}
+          </div>
+        </div>
+        <div class="panel panel-success">
+          <div class="panel-heading">Ассистент</div>
+          <div class="panel-body">
+            <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant }}</a><br><br>
+              {{ course.assistant.description }}
+          </div>
+        </div>
+    </div>
            <div class="container">
               <div class="row col-md-12  custyle">
               <table class="table table-striped custab">
