@@ -14,3 +14,10 @@ class Student(models.Model):
 
     def __str__ (self):
         return self.name
+
+    def fullname_field(self):
+        return self.name + ' ' + self.surname
+
+    fullname_field.short_description = "Full name"
+
+    fullname = property(fullname_field)
