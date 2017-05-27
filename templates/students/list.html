@@ -47,7 +47,7 @@
 				<tbody>
 					{% for item in st_list %}
 					<tr> 
-						<td>{{ forloop.counter }}</td>
+						<td>{{ item.id }}</td>
 						<td><a href="{% url 'students:detail' item.id %}">{{ item.surname }} {{ item.name }}</a></td>
 						<td>{{ item.address }}</td>
 						<td>{{ item.skype }}</td>
