@@ -49,7 +49,7 @@
       </nav>
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-           <h2>{{ coach.name }} {{ coach.surname }}</h2>
+           <h2>{{ coach.user.first_name }} {{ coach.user.last_name }}</h2>
             <div class="container">
               <div class="row col-md-12  custyle">
               <table class="table table-striped custab">
@@ -76,7 +76,7 @@
                 <tr>
                     <td>Курсы учитель</td>
                     <td>
-                        {% for course in coach.coaches_courses.all %}
+                        {% for course in coach.coach_courses.all %}
                             <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a> студенты курса
                             <a href="{% url 'students:list_view' %}?course_id={{ course.id }}">
                                 <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
