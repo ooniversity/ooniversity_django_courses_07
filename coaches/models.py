@@ -12,13 +12,4 @@ class Coach(models.Model):
     description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
-        return self.user.first_name
-
-    def name(self):
-        return self.user.first_name
-
-    def surname(self):
-        return self.user.last_name
-
-    def is_stuff(self):
-        return self.user.is_staff
+        return self.user.username
