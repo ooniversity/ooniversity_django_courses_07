@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Lessons DjangoBursa">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>Main page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  
+	        
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="{% url 'courses:index' %}">Main</a>
+          <a class="blog-nav-item" href="{% url 'contact' %}">Contacts</a>
+          <a class="blog-nav-item" href="{% url 'students:list_view' %}">Students</a>
+       </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+     
+          <h2>{{ student_info }}</h2>
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>дата рождения</td>
+                <td>{{ student_info.birthdate_format }}</td>
+              </tr>
+              <tr>
+                <td>адрес</td>
+                <td>{{ student_info.address }}</td>
+              </tr>
+              <tr>
+                <td>почта</td>
+                <td>{{ student_info.email }}</td>
+              </tr>
+              <tr>
+                <td>логин skype</td>
+                <td>{{ student_info.skype }}</td>
+              </tr>
+              <tr>
+                <td>телефон</td>
+                <td>{{ student_info.phone }}</td>
+              </tr>
+              <tr>
+                <td>курсы</td>
+                <td>
+                  {% for course in courses_list %}
+                    <p><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></p>
+                  {% endfor %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      
+
+	  
+	  
+      <nav class="navbar navbar-default navbar-fixed-bottom">
+		<footer>
+			
+	  
+        <p>&copy; 2017 Company, Inc.</p>
+	  
+		</footer>
+	  </nav>
+	  
+	  
+
+      </div><!-- /.container -->
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+   </body>
+</html>
+</html>
