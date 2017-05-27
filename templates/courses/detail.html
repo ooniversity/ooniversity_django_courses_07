@@ -45,24 +45,25 @@
       <!-- Main component for a primary marketing message or call to action -->
       <div class="container">
       <div class="jumbotron">
-        <li><h3>PyBursa o нас:</h3>
-        <h4><p>Description :</p> Мы специализируемся на "модных" языках программирования.Принципиальное наше отлицчие от других курсов-максимум
-                практики и  жесткая система обязательных домашних заданий .  </h4></li>
+        <li><h3>{{ course.name }}:</h3>
+        <h4><p>Description :</p> {{ course.description }}</h4></li>
       </div>
 	</div>
       <div class="container">
       <div class="jumbotron">
-      {% if courses_list %}
-       <h3>Наши  курсы:</h3>
+       <h3>Список уроков</h3>
+      {% if lessons_list %}
           <table id ="contact_table" width="100%" border="1px">
         <tr bgcolor="white">
-      <th>Название  Курса</th>
-      <th>Краткое описание</th>
+      <th>#</th>
+      <th>Тема</th>
+      <th>Описание</th>
     </tr>
-              {% for course in  courses_list %}
+              {% for lesson in  lessons_list %}
                   <tr>
-                  <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
-                  <td>{{ course.short_description }}</td>
+                  <td>{{ lesson.order }}</td>
+                  <td>{{ lesson.subject }}</td>
+                  <td>{{ lesson.description }}</td>
                   </tr>
               {% endfor %}
     <tr/>
