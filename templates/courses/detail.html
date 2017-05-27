@@ -36,6 +36,32 @@
         <div class="col-sm-12 blog-main">
 			<h1>{{ course_inf.name }}</h1>
 			<p class="page-main">{{ course_inf.description }}</p>
+            <table class="table table-hover">
+			  <thead>
+			    <tr>
+                  <th>Teacher</th>
+				</tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td><a href="{% url 'coaches:detail' teacher.id %}">{{ teacher.f_name }} {{ teacher.l_name }}</a>
+                  <p>{{ teacher.descr }}</p></td>
+                </tr>
+              </tbody>
+			</table>
+            <table class="table table-hover">
+			  <thead>
+			    <tr>
+                  <th>Assistant</th>
+				</tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="{% url 'coaches:detail' assistant.id %}">{{ assistant.f_name }} {{ assistant.l_name }}</a>
+                  <p>{{ assistant.descr }}</p></td>
+                </tr>
+              </tbody>
+			</table>
 			<h2>Course plan</h2>
             <table class="table table-hover">
 			  <thead>
