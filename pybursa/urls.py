@@ -18,6 +18,8 @@ from django.contrib import admin
 from . import views
 from courses.views import index
 
+admin.site.site_header = 'PyBursa Administration'
+
 urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^courses/', include('courses.urls')),
