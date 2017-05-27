@@ -34,72 +34,46 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'courses:index' %}">Main</a></li>
             <li><a href="{% url 'contact' %}">Contacts</a></li>
-            <li><a href="{% url 'students:list_view' %}?course_id={{course.id}}">Students</a></li>
+            <li><a href="{% url 'students:list_view' %}">Students</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
     <div class="container main_text">
-        <h2>{{ course.name }}</h2>
-        <p>{{ course.description }}</p>
-
-        <div>
-          <h2>Преподаватели</h2>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Учитель</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <p><a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.full_name }}</a></p>
-                  <p>{{ course.coach.description }}</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Ассистент</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <p><a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.full_name }}</a></p>
-                  <p>{{ course.assistant.description }}</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
         <div class="program">
-          <h2>План курса</h2>
+          <h2>{{ coach.full_name }}</h2>
           <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Тема</th>
-                <th>Описание</th>
-              </tr>
-            </thead>
             <tbody>
-              {% for lesson in lessons_list %}
               <tr>
-                <td>{{ lesson.order }}</td>
-                <td>{{ lesson.subject }}</td>
-                <td>{{ lesson.description }}</td>
+                <td>дата рождения</td>
+                <td>{{ coach.reformat_birthdate }}</td>
               </tr>
-              {% endfor %}
+              <tr>
+                <td>адрес</td>
+                <td>{{ coach.address }}</td>
+              </tr>
+              <tr>
+                <td>почта</td>
+                <td>{{ coach.user.email }}</td>
+              </tr>
+              <tr>
+                <td>логин skype</td>
+                <td>{{ coach.skype }}</td>
+              </tr>
+              <tr>
+                <td>телефон</td>
+                <td>{{ coach.phone }}</td>
+              </tr>
+              <tr>
+                <td>курсы учитель</td>
+                <td>
+                  <a href="{% url 'courses:detail' coach.coach_courses.id %}">{{ coach.coach_courses.name }}</a>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
-
 
     </div>
 
