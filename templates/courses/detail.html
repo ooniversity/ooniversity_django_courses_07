@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Lessons DjangoBursa">
     <meta name="author" content="">
-    <link rel="icon" href="../images/favicon.ico">
+    
 
     <title>Main page</title>
 
@@ -25,17 +25,43 @@
       <div class="container">
 
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="{% url 'courses:index' %}">Main</a>
+          <a class="blog-nav-item active" href="{% url 'index' %}">Main</a>
           <a class="blog-nav-item" href="{% url 'contact' %}">Contacts</a>
-          <a href="{% url 'students:list_view' %}?course_id={{course_num.id}}">Students</a>
+          <a href="{% url 'students:list_view' %}?course_id={{course_inf.id}}">Students</a>
        </nav>
       </div>
     </div>
 
     <div class = "container">
     
-    <h1>{{ course_num.name }}</h1>
-			<p class="lead blog-description">{{ course_num.description }}</p>
+    <h1>{{ course_inf.name }}</h1>
+			<p class="page-main">{{ course_inf.description }}</p>
+            <table class="table table-hover">
+			  <thead>
+			    <tr>
+                  <th>Преподаватель</th>
+				</tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td><a href="{% url 'coaches:detail' teacher.id %}">{{ teacher.f_name }} {{ teacher.l_name }}</a>
+                  <p>{{ teacher.descr }}</p></td>
+                </tr>
+              </tbody>
+			</table>
+            <table class="table table-hover">
+			  <thead>
+			    <tr>
+                  <th>Ассистент</th>
+				</tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="{% url 'coaches:detail' assistant.id %}">{{ assistant.f_name }} {{ assistant.l_name }}</a>
+                  <p>{{ assistant.descr }}</p></td>
+                </tr>
+              </tbody>
+			</table>
 			<h2>План курса</h2>
             <table class="table table-hover">
 			  <thead>
@@ -46,7 +72,7 @@
 				</tr>
               </thead>
               <tbody>
-                {% for item in course_shedule %}
+                {% for item in course_plan %}
                 <tr>
                     <td>{{ item.order }}</td>
                     <td>{{ item.subject }}</td>
