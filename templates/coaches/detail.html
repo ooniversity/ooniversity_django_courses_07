@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'courses:index' %}">Ooniversity</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'courses:index' %}">Главная</a></li>
+          <li><a href="{% url 'contact' %}">Контакты</a></li>
+          <li><a href="{% url 'students:list_view'%}">Студенты</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+        <h2>{{ coach.user.first_name }} {{ coach.user.last_name }}</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Дата рождения</th>
+                <td>{{ coach.date_of_birth }}</td>
+            </tr>
+            <tr>
+                <th>Адрес</th>
+                <td>{{ coach.address }}</td>
+            </tr>
+            <tr>
+                <th>Почта</th>
+                <td>{{ coach.user.email }}</td>
+            </tr>
+            <tr>
+                <th>Логин скайп</th>
+                <td>{{ coach.skype }}</td>
+            </tr>
+            <tr>
+                <th>Телефон</th>
+                <td>{{ coach.phone }}</td>
+            </tr>
+            <tr>
+                <th>Курсы учитель</th>
+                <td>
+                {% for course in coach.coach_courses.all %}
+                    <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                     студенты курса <a href="{% url 'students:list_view' %}?course_id={{course.id}}"><span class="glyphicon glyphicon-new-window"></span></a>
+                    <br/>
+                {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Курсы ассистент</th>
+                <td>
+                {% for course in coach.assistant_courses.all %}
+                    <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                     студенты курса <a href="{% url 'students:list_view' %}?course_id={{course.id}}"><span class="glyphicon glyphicon-new-window"></span></a>
+                    <br/>
+                {% endfor %}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

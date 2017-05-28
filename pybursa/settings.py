@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'quadratic.apps.QuadraticConfig',
     'polls.apps.PollsConfig',
+    'quadratic.apps.QuadraticConfig',
     'courses',
     'students',
+    'coaches',
 ]
 
 MIDDLEWARE = [
