@@ -39,10 +39,11 @@
 
             <p><b>Учитель</b></p>
             <a href="{% url 'coaches:detail' course.coach.id %}">
-                {{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a>
+                {{ course.coach.user.first_name }} {{ course.coach.user.last_name }}
+            </a>
             <p><i>({{ course.coach.description }})</i></p>
             <p><b>Ассистент</b></p>
-            <a href="{% url 'coaches:detail' course.coach.id %}">
+            <a href="{% url 'coaches:detail' course.assistant.id %}">
                 {{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}
             </a>
             <p><i>({{ course.assistant.description }})</i></p>
