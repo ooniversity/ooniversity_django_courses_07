@@ -25,7 +25,7 @@
       <div class="container">
 
         <nav class="blog-nav">
-          <a href="{% url 'courses:index' %}">Main</a>
+          <a href="{% url 'index' %}">Main</a>
           <a  href="{% url 'contact' %}">Contacts</a>
           <a class="blog-nav-item active" href="{% url 'students:list_view' %}">Students</a>
        </nav>
@@ -34,32 +34,31 @@
 
     <div class="container">
 	<h2>Список студентов</h2>
-                <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>фамилия имя</th>
-                <th>адрес</th>
-                <th>skype</th>
-                <th>курсы</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for student in student_list %}
-              <tr>
-                <td>{{ student.id }}</td>
-                <td><a href="{% url 'students:detail' student.id %}">{{ student.fullname }}</a></td>
-                <td>{{ student.address }}</td>
-                <td>{{ student.skype }}</td>
-                <td>
-                  {% for student_courses in student.get_courses %}
-                    <p><a href="{% url 'courses:detail' student_courses.id %}">{{ student_courses.name }}</a></p>
-                  {% endfor %}
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table> 
+                <table class="table table-hover"> 
+				<thead> 
+					<tr> 
+						<th>#</th>
+						<th>фамилия имя</th>
+						<th>адрес</th>
+						<th>skype</th>
+						<th>курсы</th>
+					</tr> 
+				</thead> 
+				<tbody>
+					{% for item in st_list %}
+					<tr> 
+						<td>{{ item.id }}</td>
+						<td><a href="{% url 'students:detail' item.id %}">{{ item.surname }} {{ item.name }}</a></td>
+						<td>{{ item.address }}</td>
+						<td>{{ item.skype }}</td>
+						<td>{% for i in item.courses.all %}<a href="{% url 'courses:detail' i.id %}">{{ i.name }}</a>
+                            <br>{% endfor %}</td>
+					</tr>
+					{% endfor %}
+
+
+				</tbody> 
+			</table>
 	  
 	  
       <nav class="navbar navbar-default navbar-fixed-bottom">
