@@ -30,3 +30,5 @@ urlpatterns = [
     url(r'^student_detail/$', views.student_detail, name='student_detail'),
 
 ]
+
+admin.site.site_header = 'PyBursa Administration'
