@@ -8,4 +8,4 @@ class CoachAdmin(admin.ModelAdmin):
     list_filter = ['user__is_staff']
 
 
-admin.site.register(Coach)
+admin.site.register(Coach, CoachAdmin)
