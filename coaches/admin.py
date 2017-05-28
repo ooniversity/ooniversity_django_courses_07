@@ -4,7 +4,7 @@ from courses.models import Coach
 # Register your models here.
 
 class CoachAdmin(admin.ModelAdmin):
-    list_display = ['user.first_name', 'user.last_name', 'gender', 'skype', 'description']
+    list_display = ['name', 'surname', 'gender', 'skype', 'description']
     list_filter = ['user__is_staff']
 
 
