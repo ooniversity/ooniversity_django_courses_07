@@ -6,13 +6,13 @@
 </head>
 <body>
 {% if latest_question_list %}
-<ul>
-    {% for quetion in  latest_question_list %}
-    <li><a href ="/polls/{{ quetion.id }}">{{ quetion.question_text }}</a></li>
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
     {% endfor %}
-</ul>
+    </ul>
 {% else %}
-<p>No polls are avalible.</p>
-{%  endif %}
+    <p>No polls are available.</p>
+{% endif %}
 </body>
 </html>

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Описание курсов</title>
+    <title>Список студентов</title>
 
     <!-- Bootstrap -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -27,45 +27,49 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="{% url 'index' %}">Main</a></li>
+              <li><a href="{% url 'index' %}">Main</a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li><a href="{% url 'students:list_view' %}">Students</a></li>
+              <li class="active"><a href="{% url 'students:list_view' %}">Students</a></li>
               <li><a href="{% url 'results' %}">Equation</a></li>
             </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+         </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
       <div class="general-container">
         <div class="container top-container">
-          <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-              <h1 class="title">Добро пожаловать в ItBursa</h1>
-              <h2 class="title">Description</h2>
-                <p><span class="text">ItBursa — это современная онлайн школа веб-разработки и программирования. Мы хотим сделать IT образование качественным, полезным и доступным.</span></p>
-               <h3 class="title">Program</h3>
-                <p><span class="text">Сейчас у нас открыта регистрация на курс по "Python". Кроме того, вы можете предварительно зарегистрироваться на курсы, дата старта которых еще не определена:</span></p>
-                 <div class="list">
-                     <table class="table table-striped">
-                       <thead>
-                          <tr>
-                            <th>Курс</th>
-                            <th>Описание</th>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                  <h2 class="title">Студенты курса PyBursa</h2>
+                    <p><span class="p_list">Ниже представлен список студентов, выпуск - июнь 2017.</span></p>
+                      <table class="table table-hover">
+                        <thead>
+                          <tr class="info">
+                            <th>#</th>
+                            <th>фамилия имя</th>
+                            <th>адрес</th>
+                            <th>skype</th>
+                            <th>курсы</th>
                           </tr>
-                       </thead>
-                       <tbody class="text1">
-                          {% for course in cour %}
+                        </thead>
+                        <tbody class="danger">
+                          {% for st in stud %}
                           <tr>
-                            <td><a href='{% url "courses:detail" course.id %}'>{{ course.name }}</a></td>
-                            <td>{{ course.short_description }}</td>
+                            <td>{{ st.id }}</td>
+                              <td><a href="{% url 'students:detail' st.id %}">{{ st.surname }} {{ st.name }}</a></td>
+                            <td>{{ st.address }}</td>
+                            <td>{{ st.skype }}</td>
+                            <td>{% for c in st.courses.all %}
+                                <a href="{% url 'courses:detail' c.id %}">{{c.name}}</a><br />
+                                {% endfor %}
+                            </td>
                           </tr>
-                           {% endfor %}
-                       </tbody>
-                     </table>
-                 </div>
-           </div>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>   
-</div>
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

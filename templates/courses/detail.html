@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Описание курсов</title>
+    <title>Информация о курсе</title>
 
     <!-- Bootstrap -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-    
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -29,42 +29,51 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="{% url 'index' %}">Main</a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li><a href="{% url 'students:list_view' %}">Students</a></li>
+              <li><a href="{% url 'students:list_view' %}?course_id={{ course.id }}">Students</a></li>
               <li><a href="{% url 'results' %}">Equation</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
-      <div class="general-container">
-        <div class="container top-container">
-          <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-              <h1 class="title">Добро пожаловать в ItBursa</h1>
-              <h2 class="title">Description</h2>
-                <p><span class="text">ItBursa — это современная онлайн школа веб-разработки и программирования. Мы хотим сделать IT образование качественным, полезным и доступным.</span></p>
-               <h3 class="title">Program</h3>
-                <p><span class="text">Сейчас у нас открыта регистрация на курс по "Python". Кроме того, вы можете предварительно зарегистрироваться на курсы, дата старта которых еще не определена:</span></p>
-                 <div class="list">
+        <div class="general-container">
+          <div class="container top-container">
+            <div class="row">
+              <div class="col-lg-8 col-lg-offset-2">
+                <h1 class="title">{{ course.name }}</h1>
+                  <p><span class="text">{{ course.description }}</span></p>
+                    <div>
+                     <h3 class="title">Преподаватели</h3>
+                       <h4 class="h4">Учитель</h4>
+	                     <p><b><a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a></b></p>
+                           <p class="name">{{ course.coach.description }}</p>
+                       <h4 class="h4">Ассистент</h4>
+	                     <p><b><a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a></b></p>
+	                       <p class="name">{{ course.assistant.description }}</p>
+	                </div>
+                 <h3 class="title">План курса</h3>
+                   <div class="list">
                      <table class="table table-striped">
                        <thead>
                           <tr>
-                            <th>Курс</th>
+                            <th>#</th>
+                            <th>Тема</th>
                             <th>Описание</th>
                           </tr>
                        </thead>
                        <tbody class="text1">
-                          {% for course in cour %}
-                          <tr>
-                            <td><a href='{% url "courses:detail" course.id %}'>{{ course.name }}</a></td>
-                            <td>{{ course.short_description }}</td>
-                          </tr>
-                           {% endfor %}
-                       </tbody>
+                          {% for les in lessons %}
+                         <tr>
+                            <td>{{ les.order }}</td>
+			                <td>{{ les.subject }}</td>
+                           <td>{{ les.description }}</td>
+    			         </tr>
+			               {% endfor %}
+                        </tbody>
                      </table>
                  </div>
            </div>
         </div>
-    </div>   
+    </div>
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
