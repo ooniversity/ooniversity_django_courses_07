@@ -10,7 +10,7 @@ class Coach(models.Model):
     address = models.CharField(max_length=100)
     skype = models.CharField(max_length=50)
     description = models.TextField(max_length=500)
-
+#	surname = property(user_surname)
 
     def __str__(self):
         return self.user.username
@@ -23,4 +23,4 @@ class Coach(models.Model):
 
     def user_surname(self):
         return self.user.last_name
-#	surname = property(user_surname)
+
