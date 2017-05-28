@@ -38,13 +38,12 @@
                     <td rowspan="{{ student.courses.count }}"> {{ student.address }}</td>
                     <td rowspan="{{ student.courses.count }}"> {{ student.skype }}</td>
                     {% for course in student.courses.all %}
-                        {% if student.courses.count > 1 and forloop.counter > 1 %}<tr>{% endif %}
+                        {% if forloop.counter > 1 %}<tr>{% endif %}
                         <td>
                         <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
                         </td>
-                        {% if student.courses.count > 1 %}</tr>{% endif %}
-                        {% endfor %}
-                {% if student.courses.count < 2 %} </tr>{% endif %}
+                        </tr>
+                    {% endfor %}
             {% endfor %}
         </table>
     </div>
