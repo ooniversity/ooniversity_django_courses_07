@@ -1,5 +1,4 @@
 from django.conf.urls import url
-
 from . import views
 
 urlpatterns = [
@@ -10,3 +9,4 @@ urlpatterns = [
 	url(r'^polls/latest\.html$',views.index),
 	url(r'^specifics/(?P<quetion_id>[0-9]+)/$',views.detail,name ='detail'),
 ]
+
