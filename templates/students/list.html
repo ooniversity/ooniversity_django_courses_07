@@ -33,17 +33,16 @@
             </tr>
             {% for student in students %}
                 <tr>
-                    <td rowspan="{{ student.courses.count }}"> {{ forloop.counter }}</td>
-                    <td rowspan="{{ student.courses.count }}"> <a href="{% url 'students:detail' student_id=student.id %} "> {{ student.name }} {{ student.surname }} </a></td>
-                    <td rowspan="{{ student.courses.count }}"> {{ student.address }}</td>
-                    <td rowspan="{{ student.courses.count }}"> {{ student.skype }}</td>
-                    {% for course in student.courses.all %}
-                        {% if forloop.counter > 1 %}<tr>{% endif %}
-                        <td>
-                        <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
-                        </td>
-                        </tr>
-                    {% endfor %}
+                    <td> {{ forloop.counter }}</td>
+                    <td> <a href="{% url 'students:detail' student_id=student.id %} "> {{ student.name }} {{ student.surname }} </a> </td>
+                    <td> {{ student.address }}</td>
+                    <td> {{ student.skype }}</td>
+                    <td>
+                        {% for course in student.courses.all %}
+                            <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a> <br/>
+                        {% endfor %}
+                    </td>
+                </tr>
             {% endfor %}
         </table>
     </div>
