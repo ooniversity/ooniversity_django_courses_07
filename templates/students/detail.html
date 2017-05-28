@@ -45,14 +45,13 @@
                 <td>{{ student.phone }}</td>
             </tr>
             <tr>
-                <th rowspan="{{ student.courses.count }}">Курсы</th>
+                <th>Курсы</th>
+                <td>
                 {% for course in student.courses.all %}
-                        {% if forloop.counter > 1 %}<tr>{% endif %}
-                            <td>
-                                <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
-                            </td>
-                        </tr>
+                    <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a> <br/>
                 {% endfor %}
+                </td>
+            </tr>
         </table>
     </div>
     <script src="{% static 'js/jquery.js' %}"></script>
