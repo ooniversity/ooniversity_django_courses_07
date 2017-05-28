@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Course(models.Model):
-    name = models.CharField(max_length=25)
+    name = models.CharField(max_length=50)
     short_description = models.CharField(max_length=50)
     description = models.TextField()
 
@@ -11,7 +11,7 @@ class Course(models.Model):
 
 
 class Lesson(models.Model):
-    subject = models.CharField(max_length=25)
+    subject = models.CharField(max_length=50)
     description = models.TextField()
     course = models.ForeignKey(Course)
     order = models.PositiveIntegerField()
