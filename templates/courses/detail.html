@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>PyBursa</title>
+    <title>Courses detail</title>
 
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -36,6 +36,17 @@
 		<div class="container">
             <h1>{{ course.name }}</h1>
             <p>{{ course.description }}</p>
+
+            <p><b>Учитель</b></p>
+            <a href="{% url 'coaches:detail' course.coach.id %}">
+                {{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a>
+            <p><i>({{ course.coach.description }})</i></p>
+            <p><b>Ассистент</b></p>
+            <a href="{% url 'coaches:detail' course.coach.id %}">
+                {{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}
+            </a>
+            <p><i>({{ course.assistant.description }})</i></p>
+
             {% if course_lessons %}
             <table class="tab1 table table-striped table-bordered table-condensed">
                 <thead>

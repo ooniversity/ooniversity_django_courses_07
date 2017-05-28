@@ -11,9 +11,9 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ["name"]
     list_display = ['name', 'short_description']
 
-    fieldsets = [
-        (None, {'fields': ["name", "short_description", "description"]}),
-    ]
+    # fieldsets = [
+    #     (None, {'fields': ["name", "short_description", "description"]}),
+    # ]
     inlines = [LessonInline]
 
 
