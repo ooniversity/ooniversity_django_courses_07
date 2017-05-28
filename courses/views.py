@@ -3,7 +3,7 @@ from courses.models import Course, Lesson
 
 def index(request):
     courses = Course.objects.all()
-    return render(request,'courses/index.html',{'Courses':courses})
+    return render(request,'index.html',{'Courses':courses})
 
 def detail(request,course_id):
     course = get_object_or_404(Course,id=course_id)

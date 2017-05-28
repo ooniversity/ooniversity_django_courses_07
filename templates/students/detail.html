@@ -47,13 +47,12 @@
             <tr>
                 <th rowspan="{{ student.courses.count }}">Курсы</th>
                 {% for course in student.courses.all %}
-                        {% if student.courses.count > 1 and forloop.counter > 1 %}<tr>{% endif %}
-                        <td>
-                        <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
-                        </td>
-                        {% if student.courses.count > 1 %}</tr>{% endif %}
-                        {% endfor %}
-            {% if student.courses.count < 2 %} </tr>{% endif %}
+                        {% if forloop.counter > 1 %}<tr>{% endif %}
+                            <td>
+                                <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                            </td>
+                        </tr>
+                {% endfor %}
         </table>
     </div>
     <script src="{% static 'js/jquery.js' %}"></script>
