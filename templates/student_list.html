@@ -49,13 +49,14 @@
         <div class="panel-body">
       <h4>Ниже  представлен  список  студентов .</h4>
       </div>
+          {% if students_list %}
       <table id ="contact_table" width="100%" border="1px">
         <tr bgcolor="white">
-      <th>No</th>
-      <th>Surname</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Skype</th>
+      <th>#</th>
+      <th>фамилия имя</th>
+      <th>адрес</th>
+      <th>skype</th>
+      <th>список курсов</th>
     </tr>
     <tr>
         <td><a href="{% url 'student_detail' %}">1</a></td>
@@ -93,6 +94,7 @@
         <td>44</td>
     </tr> 
       </table>
+          {% endif %}
       </div>       
       </div>
     </div>

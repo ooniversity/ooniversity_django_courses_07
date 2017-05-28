@@ -18,6 +18,7 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from . import views
 from courses.views import get_all_courses_info
+from students.views import students_all
 
 
 
@@ -25,10 +26,11 @@ from courses.views import get_all_courses_info
 urlpatterns = [
     url(r'^$',get_all_courses_info,name='index'),
     url(r'^admin/', admin.site.urls),
+    url(r'^courses/',include('courses.urls')),
+    url(r'^students/',include('students.urls')),
+    url(r'^contact/$',views.contact ,name = 'contact'),
+    url(r'^student_list/$',students_all,name = 'student_list'),
+    url(r'^student_detail/$',views.student_detail,name ='student_detail'),
     url(r'^polls/',include('polls.urls')),
     url(r'^quadratic/',include('quadratic.urls')),
-    url(r'^courses/',include('courses.urls')),
-    url(r'^contact/$',views.contact ,name = 'contact'),
-    url(r'^student_list/$',views.student_list,name = 'student_list'),
-    url(r'^student_detail/$',views.student_detail,name ='student_detail'),
 ]
