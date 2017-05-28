@@ -1,72 +1,111 @@
-body{ background-color: #766f6f; }
+html, body{
+    height: 100%;
+    max-height: 100%;
+    font-family: 'Roboto', sans-serif;
+  }
+.collapse navbar-collapse{
+    min-height: 10px;
+    height: 20px;
+    background-color: green;
+    border: none;
+    border-radius: 0;
+}
+.active{
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  text-align: left;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+.title{
+    text-align: center;
+    color: grey;
+    font-weight: 100;
+    line-height: 50px;
+}
+.general-container{
+    height: 100%;
+}
+.container{
+    color: black;
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.text{
+    font-family: cursive;
+    color:black;
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 32px;
+}
+.panel-danger{
+  color: darkorange;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: left;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+.h3{
+    color: grey;
+    font-weight: 100px;
+    line-height: 50px;
+    padding-bottom: 10px;
+    }
+.h4{
+    font-size: 18px;
+    font-family: inherit;
+    color: darkslateblue;
+}
 
-.container {
-  	
-  	padding-right: 10px;
-  	padding-left: 10px;
-  	/*margin-right: auto;
-  	margin-left: auto;*/
-	/*margin: 5%;
-	padding: 10px;*/
-	
+.hr1{
+    font-family: 'Raleway';
+    font-size: 16px;
 }
-.container-fluid,.jumbotron{
-	background: #cccc00;
-	padding-left: 10px;
-	padding-right:10px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
-	color: white; 
-    text-shadow: 1px 1px 2px black, 0 0 1em red;
-    font-size: 1.5em;
-}
-.navbar-brand{
-	text-shadow: 1px 1px 2px black, 0 0 1em red; 
-    color: white; 
-    font-size: 2em;
-}
-#all_space{
-	
-	margin-left: 5%;
-	margin-right: 5%;
 
-	padding: 10px;	
+.btm{
+    color: black;
 }
-h4{
-	font-size: 25px;
-	color: #807C7C
+.name{
+    font-family: cursive;
+    color: darkslategray;
 }
-#contact_table{
-	font-size: 15px;
-	color: #5c5757
+.skipe{
+   font-family: inherit; 
+   color: dimgrey;
 }
-.panel, .panel-heading, .panel-default
-{
-  background-color: #cccc00;
-  
+.p_list{
+    font-size: 16px;
 }
-#student_detail_panel
-{
-	width: 35%;
-	float: left;
+.danger{
+    background-color:lightgoldenrodyellow;
 }
-#students_about
-{
-	width: 60%;
-	
-	float: left;
-	margin-left: 5%;
-	margin-top:10%;
+.ivan{
+    text-align: left;
+    font-family:inherit;
+    line-height: 2;
 }
-.well {
-	width: 15%;
-  min-height: 20px;
-  padding: 5px;
-  margin-bottom: 5px;
-  background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+.card{
+    font-size: 12px;
+    font-family: cursive;
+    line-height: 1;
+}
+.table_stud{
+    background-color: lightyellow;
+}
+.test_table{
+    font-weight:bold;
+}
+.text1{
+    font-family: cursive;
+    color:darkslateblue;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 32px;
 }
