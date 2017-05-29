@@ -76,7 +76,7 @@
                     <td>Courses</td>
                     <td>
                         {% for course in student.courses.all %}
-                            {{ course }} <br>
+                            <a href="{% url 'courses:detail' course.id %}">{{ course }}</a> <br>
                         {% endfor %}
                     </td>
                 </tr>

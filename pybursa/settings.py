@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'quadratic.apps.QuadraticConfig',
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
+    'coaches.apps.CoachesConfig',
 ]
 
 MIDDLEWARE = [
