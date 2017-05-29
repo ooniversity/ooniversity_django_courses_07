@@ -17,6 +17,6 @@ class Coach(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return self.user.first_name + " " + self.user.last_name
+        return self.user.username
 
 
