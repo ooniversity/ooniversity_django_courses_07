@@ -7,8 +7,8 @@ class StudentAdmin(admin.ModelAdmin):
     search_fields = ['surname', 'email']
     list_display = ['Full_name', 'email', 'skype']
     list_display_links = ['Full_name']
-    list_filter = ['courses']
-    filter_horizontal = ['courses']
+    list_filter = ['course']
+    filter_horizontal = ['course']
     
     def Full_name(self, obj):
         return obj.name + ' ' + obj.surname
@@ -16,8 +16,8 @@ class StudentAdmin(admin.ModelAdmin):
     fieldsets = [
 		('Personal info',       {'fields': ['name', 'surname', 'date_of_birth']}),
 		('Contact info', {'fields': ['email', 'phone', 'address', 'skype']}),
-		(None, {'fields': ['courses']}),
+		(None, {'fields': ['course']}),
 	]
 
-admin.site.register(Student)
+admin.site.register(Student, StudentAdmin)
 
