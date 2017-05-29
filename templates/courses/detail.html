@@ -6,18 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="КОНТРОЛЬНОЕ ЗАДАНИЕ № 5">
+    <meta name="description" content="КОНТРОЛЬНОЕ ЗАДАНИЕ № 1">
     <meta name="author" content="Yurii Sokolov">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
 
-    <title>PyBursa : Main</title>
+    <title>PyBursa : Course details {{ course_info.name }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-    
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/starter-template.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
@@ -44,9 +47,9 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'index' %}">Главная</a></li>
+            <li><a href="{% url 'index' %}">Главная</a></li>
             <li><a href="{% url 'contact' %}">Контакты</a></li>
-            <li><a href="{% url 'student_list' %}">Студенты</a></li>
+            <li><a href="{% url 'students:list_view' %}?course_id={{ course_info.id }}">Студенты</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -54,36 +57,28 @@
 
     <div class="container">
 
-      <div class="starter-template">
-      <!-- <span class="label label-default">Описание PyBursa</span> -->
-        <h1 id="Description"><b>Description</b></h1>
-        <p class="lead" align="justify">Мы считаем, что возможность повторять пройденные материал и возможность сразу замечать и исправлять свои ошибки – это главные условия хорошего обучения. 
+      <h1>{{ course_info.name }}</h1>
+            <p class="page-main">{{ course_info.description }}</p>
 
-Наш курс проходит полностью онлайн. В рамках каждой недели студенты и студентки сами выбирают, когда смотреть видео с теорией, когда проходить тесты и когда выполнять практические задания. Задания проверяются автоматически, так что вы сразу увидите, все ли правильно сделали. Наши преподаватели каждый день отвечают на вопросы в онлайн чате и при необходимости работают индивидуально с каждым.</p><br>
-
-
-
-{% if course_list.count > 0 %}
-      <h2>Наши курсы</h2>
+        <h2>План курса</h2>
             <table class="table table-hover">
-        <thead>
-          <tr>
-          <th>#</th>
-          <th>Название</th>
-          <th>Описание</th>
-        </tr>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Тема</th>
+                  <th>Описание</th>
+                </tr>
               </thead>
               <tbody>
-                {% for item in course_list %}
+                {% for item in course_plan %}
                 <tr>
-                    <th scope="row">{{ item.id }}</th>
-                    <th scope="row"><a href="{% url 'courses:detail' item.id %}"/>{{ item.name }}</a></th>
-                    <td align="left">{{ item.short_description }}</td>
+                    <td>{{ item.order }}</td>
+                    <td>{{ item.subject }}</td>
+                    <td>{{ item.description }}</td>
                 </tr>
                 {% endfor %}
               </tbody>
-      </table>
-            {% endif %}
+            </table>
 
     </div><!-- /.container -->
 

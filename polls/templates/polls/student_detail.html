@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Students">
+    <meta name="description" content="КОНТРОЛЬНОЕ ЗАДАНИЕ № 1">
     <meta name="author" content="Yurii Sokolov">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
 
-    <title>PyBursa : Students</title>
+    <title>PyBursa : Student details</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
@@ -49,7 +49,8 @@
           <ul class="nav navbar-nav">
             <li><a href="{% url 'index' %}">Main</a></li>
             <li><a href="{% url 'contact' %}">Contacts</a></li>
-            <li class="active"><a href="{% url 'students:list_view' %}">Students</a></li>
+            <li><a href="{% url 'student_list' %}">Students</a></li>
+            <li><a href="{% url 'quadratic_results' %}">Equation</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -58,58 +59,116 @@
     <div class="container">
 
       <div>
-        <h1><b>Студенты курса PyBursa</b></h1>
-        	<table class="table_blur">
+        <h1><b>Persianova Olena</b></h1>
+        	<table class="table_d">
 
             <tr>
-                <th width=50px><b>No</b></th>
                 <th width=100px><b>Surname</b></th>
-                <th width=200px><b>Name</b></th>
-                <th width=300px><b>Address</b></th>
-                <th width=100px><b>Skype</b></th>
+                <td width=200px>Persianova</td>
+                
             </tr>
 
             <tr>
-                <td><a href="{% url 'student_detail' %}">1</a></td>
-                <td>Persianova</td>
+                <th><b>Name</b></th>
                 <td>Olena</td>
-                <td>Харьков, ул. Чугуевская 58</td>
-                <td>pers</td>
             </tr>
 
             <tr>
-                <td>2</td>
-                <td>Shulga</td>
-                <td>Marina</td>
-                <td>Харьков, ул. Мира 102</td>
-                <td>shulga</td>
+                <th><b>Patronymic</b></th>
+                <td>Yuriivna</td>                
             </tr>
 
             <tr>
-                <td>3</td>
-                <td>Polischuk</td>
-                <td>Volodymyr</td>
-                <td>Харьков, ул. Южнопроектная 23</td>
-                <td>polis</td>
+                <th><b>Rating</b></th>
+                <td>20</td>                
             </tr>
 
             <tr>
-                <td>4</td>
-                <td>Zhuvanov</td>
-                <td>Yaroslav</td>
-                <td>Харьков, ул. Пушкинская 14</td>
-                <td>zhuva</td>
+                <th><b>Average Grade</b></th>
+                <td>99.9</td>                
             </tr>
 
             <tr>
-                <td>5</td>
-                <td>Kozlov</td>
-                <td>Pavel</td>
-                <td>Дергачи, ул. Железнодорожная 3</td>
-                <td>kpavel</td>
+                <th><b>Package</b></th>
+                <td>Standard</td>                
+            </tr>
+
+            <tr>
+                <th><b>Birth Date</b></th>
+                <td>11/02/1989</td>                
+            </tr>
+
+            <tr>
+                <th><b>Address</b></th>
+                <td>Харьков, ул. Чугуевская 58</td>                
+            </tr>
+
+            <tr>
+                <th><b>Post</b></th>
+                <td>61140</td>                
+            </tr>
+
+            <tr>
+                <th><b>Skype</b></th>
+                <td>pers</td>                
+            </tr>
+
+            <tr>
+                <th><b>E-mail</b></th>
+                <td>pers@gmail.com</td>                
             </tr>
 
             </table>
+            <br />
+            <h3>Performance</h3>
+            <br />
+
+            <table class="table_blur">
+
+            <tr>
+                <th width=300px><b>Course</b></th>
+                <th width=100px><b>Week</b></th>
+                <th width=200px><b>Control type</b></th>
+                <th width=200px><b>Grade</b></th>
+            </tr>
+
+            <tr>
+                <td>PY101 Введение в Python</td>
+                <td>Week 1</td>
+                <td>Tests</td>
+                <td>99%</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Problem Task #1</td>
+                <td>100%</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Problem Task #2</td>
+                <td>100%</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>Week 2</td>
+                <td>Tests</td>
+                <td>100%</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Problem Task #1</td>
+                <td>100%</td>
+            </tr>
+
+            </table>
+            <br />
         
       </div>
 
