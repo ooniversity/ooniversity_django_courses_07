@@ -49,7 +49,8 @@
           <ul class="nav navbar-nav">
             <li><a href="{% url 'index' %}">Main</a></li>
             <li class="active"><a href="{% url 'contact' %}">Contacts</a></li>
-            <li><a href="{% url 'students:list_view' %}">Students</a></li>
+            <li><a href="{% url 'student_list' %}">Students</a></li>
+            <li><a href="{% url 'quadratic_results' %}">Equation</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -57,44 +58,39 @@
 
     <div class="container">
 
-      <div>
-        <h1><b>Информация об организаторах курса</b></h1>
-        	<h3 class="lead" align="left">Director</h3>
-        	<div class="alert alert-success" role="alert">
-        		
-        	
-        		<p><span class="label label-default">Name:</span> Alexey Radchenko</p>
-        		<p><span class="label label-default">Skype:</span> alexrad</p>
-        		<p><span class="label label-default">E-Mail:</span> courses@itbursa.com</p>
-        		<p><span class="label label-default">Phone:</span> +38 (093) 353-65-44</p>
-	
-        	</div>
-        	
-
-        	<h3 class="lead" align="left">Manager</h3>
-        	<div class="alert alert-info" role="alert">
-        		
-        	
-        		<p><span class="label label-default">Name:</span> Valentina Pikalova</p>
-        		<p><span class="label label-default">Skype:</span> vpikalova</p>
-        		<p><span class="label label-default">E-Mail:</span> vp@itbursa.com</p>
-        		<p><span class="label label-default">Phone:</span> +38 (099) 121-91-09</p>
-	
-        	</div>
-        	
-        	<h3 class="lead" align="left">Founder</h3>
-        	<div class="alert alert-warning" role="alert">
-        		
-        	
-        		<p><span class="label label-default">Name:</span> Daria</p>
-        		<p><span class="label label-default">Skype:</span> daria</p>
-        		<p><span class="label label-default">E-Mail:</span> dar@itbursa.com</p>
-        		<p><span class="label label-default">Phone:</span> +38 (057) 727-47-77</p>
-	
-        	</div>
-        
+      <div class="page-header">
+        <h1 class="page-title">Equation</h1>
       </div>
-
+      <div class="row">
+        <div class="col-sm-12 page-main">
+            <p>Квадратное уравнение: a*x*x + b*x + c = 0</p>
+            <ul>
+                <li> a = {{ a }}
+                {% if a == '' %}<p><i>{{ 'коэффициент не определен' }}</i></p>
+                {% elif a == '0' %}<p><i>{{ 'коэффициент при первом слагаемом уравнения не может быть равным нулю' }}</i></p>
+                {% elif not a_norm %}<p><i>{{ 'коэффициент не целое число' }}</i></p>
+                {% endif %}
+                
+                </li>
+                <li> b = {{ b }}
+                {% if b == '' %}<p><i>{{ 'коэффициент не определен' }}</i></p>
+                {% elif not b_norm %}<p><i>{{ 'коэффициент не целое число' }}</i></p>
+                {% endif %}</li>
+                <li> c = {{ c }}
+                {% if c == '' %}<p><i>{{ 'коэффициент не определен' }}</i></p>
+                {% elif not c_norm %}<p><i>{{ 'коэффициент не целое число' }}</i></p>
+                {% endif %}</li>
+            </ul>
+            {% if next %}<p>{{ 'Дискриминант: ' }}{{ d }}</p>{% endif %}
+            {% if d < 0 %}<p>{{ 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.' }}</p>
+            {% elif d == 0 %}<p>{{ 'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = ' }}{{ x1 }}</p>
+            {% elif d > 0 %}<p>{{ 'Квадратное уравнение имеет два действительных корня: x1 = ' }}{{ x1 }}{{ ', x2 = ' }}{{ x2 }}</p>
+            {% endif %} 
+            
+        </div>
+      </div>
+     
+        
     </div><!-- /.container -->
 
 
