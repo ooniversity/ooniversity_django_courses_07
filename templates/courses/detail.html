@@ -27,15 +27,15 @@
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="{% url 'index' %}">Main</a>
           <a class="blog-nav-item" href="{% url 'contact' %}">Contacts</a>
-          <a href="{% url 'students:list_view' %}?course_id={{course_inf.id}}">Students</a>
+          <a href="{% url 'students:list_view' %}?course_id={{course_info.id}}">Students</a>
        </nav>
       </div>
     </div>
 
     <div class = "container">
     
-    <h1>{{ course_inf.name }}</h1>
-			<p class="page-main">{{ course_inf.description }}</p>
+    <h1>{{ course_info.name }}</h1>
+			<p class="page-main">{{ course_info.description }}</p>
             <table class="table table-hover">
 			  <thead>
 			    <tr>
@@ -44,7 +44,7 @@
               </thead>
               <tbody>
                 <tr>
-                    <td><a href="{% url 'coaches:detail' teacher.id %}">{{ teacher.f_name }} {{ teacher.l_name }}</a>
+                    <td><a href="{% url 'coaches:detail' teacher.id %}">{{ teacher.first_name }} {{ teacher.last_name }}</a>
                   <p>{{ teacher.descr }}</p></td>
                 </tr>
               </tbody>
@@ -57,7 +57,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><a href="{% url 'coaches:detail' assistant.id %}">{{ assistant.f_name }} {{ assistant.l_name }}</a>
+                  <td><a href="{% url 'coaches:detail' assistant.id %}">{{ assistant.first_name }} {{ assistant.last_name }}</a>
                   <p>{{ assistant.descr }}</p></td>
                 </tr>
               </tbody>
