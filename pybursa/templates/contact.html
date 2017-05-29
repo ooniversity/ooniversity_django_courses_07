@@ -16,39 +16,34 @@
 		<div class="container">
 			<nav class="navbar navbar-inverse navbar-fixed-top">
 				<div class="container-fluid">
-
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<!-- <div class="navbar-brand"> -->
-						<img class="navbar-brand" alt="brand" src="{% static '/images/it.png' %}">
-						<!-- </div> -->
-
+						<img class="navbar-brand" src="{% static '/images/it.png' %}">
 					</div>
-
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a class="li li-a" href="{% url 'index' %}">Main</a></li>
-							<li><a class="li li-a" href="{% url 'contact' %}">Contacts</a></li>
-							<li><a class="li li-a" href="{% url 'students:list_view' %}">Students</a></li>
+							<li><a href="{% url 'index' %}">Main</a></li>
+							<li class="active"><a href="{% url 'contact' %}">Contacts</a></li>
+							<li><a href="{% url 'students:list_view' %}">Students</a></li>
 						</ul>
 					</div>
 				</div>
 			</nav>
+			<div id="wrapper">
+				<div class="row">
+					<div class="col-md-12 col-md-offset-1">
+						<!-- <div class="col-md-3"></div> -->
+						<div class="col-md-3">
+							<div class="thumbnail">
+								<img src="../static/images/person.png">
+								<div class="caption">
+									<center><h3>Director</h3></center>
 
-			<div class="row">
-				<div class="col-md-12 col-md-offset-1">
-				<!-- <div class="col-md-3"></div> -->
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<img src="../static/images/person.png">
-							<div class="caption">
-								<center><h3>Director</h3></center>
-								
 									<table class='contact'>
 										<tr>
 											<td>Name:</td>
@@ -67,16 +62,16 @@
 											<td class="right">+7(999)999-99-99</td>
 										</tr>
 									</table>
-								
+
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<img src="../static/images/person.png">
-							<div class="caption">
-								<center><h3>Manager</h3></center>
-							
+						<div class="col-md-3">
+							<div class="thumbnail">
+								<img src="../static/images/person.png">
+								<div class="caption">
+									<center><h3>Manager</h3></center>
+
 									<table class='contact'>
 										<tr>
 											<td>Name:</td>
@@ -95,16 +90,16 @@
 											<td class="right">+7(999)999-99-99</td>
 										</tr>
 									</table>
-								
+
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="thumbnail">
-							<img src="../static/images/person.png">
-							<div class="caption">
-								<center><h3>Founder</h3></center>
-								
+						<div class="col-md-3">
+							<div class="thumbnail">
+								<img src="../static/images/person.png">
+								<div class="caption">
+									<center><h3>Founder</h3></center>
+
 									<table class='contact'>
 										<tr>
 											<td>Name:</td>
@@ -123,7 +118,8 @@
 											<td class="right">+7(999)999-99-99</td>
 										</tr>
 									</table>
-								
+
+								</div>
 							</div>
 						</div>
 					</div>
@@ -131,7 +127,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
 	<script src="{% static '/static/js/bootstrap.js' %}"></script>
 </body>
