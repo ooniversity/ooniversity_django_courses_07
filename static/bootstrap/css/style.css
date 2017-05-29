@@ -18,11 +18,11 @@ body{ background-color: #766f6f; }
 	margin-right: auto;
 	width: 100%;
 	color: white; 
-    text-shadow: 1px 1px 2px black, 0 0 1em red;
+    /*text-shadow: 1px 1px 2px black, 0 0 1em red;*/
     font-size: 1.5em;
 }
 .navbar-brand{
-	text-shadow: 1px 1px 2px black, 0 0 1em red; 
+	/*text-shadow: 1px 1px 2px black, 0 0 1em red; */
     color: white; 
     font-size: 2em;
 }
