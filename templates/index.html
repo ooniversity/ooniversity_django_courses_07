@@ -1,34 +1,13 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
-</head>
-<body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="{% url 'index' %}">Ooniversity</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="{% url 'index' %}">Главная</a></li>
-          <li><a href="{% url 'contact' %}">Контакты</a></li>
-          <li><a href="{% url 'students:list_view'%}">Студенты</a></li>
-          <li><a href="{% url 'results' %}">Equation</a></li>
-        </ul>
-      </div>
-    </nav>
+{% extends "base.html" %}
 
-    <div class="container">
-      <div class="jumbotron">
-        <h1>ooniversity</h1>
-        <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
-        responsive, mobile-first projects on the web.</p>
-      </div>
-    </div>
+{% block title %}Index{% endblock title %}
+
+{% block nav_class_index %}active{% endblock %}
+
+{% block main %}
+
+    {% include "inc_ooniversity_desc.html" %}
+
     <div class="container">
         <h2>Выбирай на каком курсе хочешь учиться</h2>
         <table class="table table-striped">
@@ -44,8 +23,4 @@
             {% endfor %}
         </table>
     </div>
-
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-</body>
-</html>
+{% endblock main %}

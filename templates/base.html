@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}pyBursa{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'index' %}">Ooniversity</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="{% block nav_class_index %}{% endblock %}">
+              <a href="{% url 'index' %}">Главная</a></li>
+          <li class="{% block nav_class_contact %}{% endblock %}">
+              <a href=" {% url 'contact' %} ">Контакты</a></li>
+          <li class="{% block nav_class_student %}{% endblock %}">
+              <a href=" {% url 'students:list_view'%}{% block course_id %}{% endblock %}">Студенты</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    {% block main %}
+    {% endblock main %}
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>
