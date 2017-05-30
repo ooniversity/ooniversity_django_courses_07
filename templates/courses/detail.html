@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block title %}Course{% endblock title %}
+
+
+{% block nav_main %}active{% endblock %}
+
+
+{% block students_course_id %}?course_id={{ course.id }}{% endblock %}
+
+
+{% block content %}
+
+
+<h2>{{ course.name }}</h2>
+<p>{{ course.description|truncatechars:32 }}</p>
+<h3>Преподаватели</h3>
+<div class="panel panel-default panel-success">
+	<div class="panel-heading">Учитель</div>
+	<div class="panel-body">
+		<a href="{% url 'coaches:detail' course.coach.id %}">
+			{{ course.coach.user.first_name }}
+		</a>
+		<br/>
+		{{ course.coach.description }}
+	</div>
+</div>
+<div class="panel panel-default panel-success">
+	<div class="panel-heading">Ассистент</div>
+	<div class="panel-body">
+		<a href="{% url 'coaches:detail' course.assistant.id %}">
+			{{ course.assistant.user.first_name }}
+		</a>
+		<br/>
+		{{ course.assistant.description }}
+	</div>
+</div>
+<h3>План курса</h3>
+<table class="table-striped table table-hover">
+	<thead>
+		<tr class="success">
+			<th>#</th>
+			<th>Курс</th>
+			<th>Описание</th>
+		</tr>
+	</thead>
+	{% for lesson in lessons %}
+	<tr>
+		<td>{{ lesson.order }}</td>
+		<td>{{ lesson.subject }}</td>
+		<td>{{ lesson.description }}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+
+{% endblock content %}

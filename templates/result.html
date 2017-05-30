@@ -6,14 +6,18 @@
 </head>
 <body>
 	<p>Квадратное уравнение a*x*x + b*x + c = 0</p>
-	<ul>
+	<form method="post">
+		{{ form.as_p }}
+		<input type="submit" value="Пересчитать">
+	</form>
+	<!-- <ul>
 		<li>a = {{ values.a }}</li>
 		{{ messages.a }}
 		<li>b = {{ values.b }}</li>
 		{{ messages.b }}
 		<li>c = {{ values.c }}</li>
 		{{ messages.c }}
-	</ul>
+	</ul> -->
 	<p>{{ values.desc }}</p>
 	<p>{{ messages.result }}</p>
 </body>

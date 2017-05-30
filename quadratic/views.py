@@ -1,7 +1,19 @@
 from django.shortcuts import render
+from django import forms
+
+
+class QuadraticForm(forms.Form):
+	a = forms.CharField(max_length=10)
+	b = forms.CharField(max_length=10)
+	c = forms.CharField(max_length=10)
 
 
 def quadratic_results(request):
+
+	context = {}
+
+	form = QuadraticForm()
+	context['form'] = form
 
 	values = {}
 	messages = {}
@@ -42,6 +54,7 @@ def quadratic_results(request):
 
 		messages['result'] = result
 
-	context = {'values': values, 'messages': messages}
+	context['values'] = values
+	context['messages'] = messages
 
 	return render(request, 'result.html', context)
