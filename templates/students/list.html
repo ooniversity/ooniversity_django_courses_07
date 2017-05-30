@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -8,8 +9,8 @@
     <title>Students</title>
 
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.css" rel="stylesheet">
-      <link href="../static/css/style.css" rel="stylesheet">
+    <link href="{% static 'pybursa/css/bootstrap.css' %}" rel="stylesheet">
+      <link href="{% static 'pybursa/css/style.css' %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,15 +31,15 @@
             <span class="icon-bar"></span>
           </button>
           <a  href="https://courses.itbursa.com">
-              <img class="navbar-brand-img" alt="ITBursa" src="../static/images/logo.png">
+              <img class="navbar-brand-img" alt="ITBursa" src="{% static 'pybursa/images/logo.png' %}">
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Main</span></a></li>
-            <li><a href="contact.html">Contacts</a></li>
-            <li class="active"><a href="student_list.html">Students<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'index' %}">Main</span></a></li>
+            <li><a href="{% url 'contact' %}">Contacts</a></li>
+            <li class="active"><a href="{% url 'students:list_view' %}">Students<span class="sr-only">(current)</span></a></li>
            </ul>      
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -57,53 +58,39 @@
                           <h3 class="panel-title">PyBursa#07</h3>
                       </div>
                       <div class="panel-body">
-                          <table class="table">                             
-            
-            <tr class="row-2">
-                <td>No</td>
-                <td>Surname</td>
-                <td>Name</td>
-                <td>Address</td>
-                <td>Skype</td>
-            </tr>
-            <tr class="row-3">
-                <td><a href="student_detail.html">1.</td>
-                <td>Denisenko</td>
-                <td>Olga</td>
-                <td>Kharkov, Pushkina str.,14</td>
-                <td>o_denisenko</td>
-            </tr>
-            <tr class="row-3">
-                <td>2.</td>
-                <td>Kolesnik</td>
-                <td>Igor</td>
-                <td>Kharkov, Pobedy ave.,144</td>
-                <td>igor.kolesnik</td>
-            </tr>
-            <tr class="row-3">
-                <td>3.</td>
-                <td>Habanov</td>
-                <td>Vladimir</td>
-                <td>Kharkov, Nauki ave.,14</td>
-                <td>v_habanov</td>
-            </tr>
-            <tr class="row-3">
-                <td>4.</td>
-                <td>Kim</td>
-                <td>Chen</td>
-                <td>Kharkov, Yakira str.,148</td>
-                <td>chen.kim</td>
-            </tr>
-            <tr class="row-3">
-                <td>5.</td>
-                <td>Selivanova</td>
-                <td>Katerina</td>
-                <td>Kharkov, Merefyanskoe highway, 25</td>
-                <td>katerina.selivanova</td>
-            </tr>                  
-        </table>
-                              
-                                            
+                          <table class="table"> 
+                            <tr class="row-2">
+                                <td>No</td>
+                                <td>Фамилия Имя</td>
+                                <td>Адрес</td>
+                                <td>Skype</td>
+                                <td>Курсы</td>
+                            </tr>
+                              {% for student in students %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
+                <td>{{ student.address }}</td>
+                <td>{{ student.skype }}</td>
+                <td>
+                  {% for course in student.courses.all %}
+                    <p><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></p>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endfor %}
+                              {% for student in students %}
+                            <tr class="row-3">                                
+                                <td>{{ student.id }}</td>
+                                <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}}</a></td>
+                                <td>{{student.address}}</td>
+                                <td>{{student.skype}}</td>
+                                <td>{% for course in student.courses.all %}
+                                    <a href="{% url 'courses:detail' course.id %}">{{course.name}}</a><br>
+                                     {% endfor %}</td>
+                            </tr>
+                              {% endfor %} 
+                            </table>      
                        </div>                      
                   
                   </div>                 
@@ -116,6 +103,6 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../static/js/bootstrap.js"></script>
+    <script src="{% static 'pybursa/js/bootstrap.js' %}""></script>
   </body>
 </html>

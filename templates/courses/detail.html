@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>ITBursa contacts</title>
+    <title>Courses</title>
 
     <!-- Bootstrap -->
     <link href="{% static 'pybursa/css/bootstrap.css' %}" rel="stylesheet">
@@ -37,49 +37,52 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li ><a href="{% url 'index' %}">Main <span class="sr-only">(current)</span></a></li>
-            <li class="active"><a href="{% url 'contact' %}">Contacts<span class="sr-only">(current)</span></a></li>
-            <li><a href="{% url 'students:list_view' %}">Students</a></li>
+            <li class="active"><a href="{% url 'index' %}">Main<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'contact' %}">Contacts</a></li>
+            <li><a href="{% url 'students:list_view' %}?course_id={{ course.id }}">Students</a></li>
            </ul>      
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-</nav>
-      <div class="media">
-        <a class="pull-left" href="{% static 'pybursa/images/no_photo.jpg' %}">
-            <img class="media-object" src="{% static 'pybursa/images/no_photo.jpg' %}" alt="No photo">
-        </a>
-          <div class="media-body">
-            <h4 class="media-heading">Director</h4>
-            <p>Name:Ivan Ivanov <br>Skype:iv_ivanov <br>Email:ivanov@gmail.com <br>Phone:(097)111-22-33              
-            </p>
-          </div>
-      </div>
-      <div class="media">
-        <a class="pull-left" href="{% static 'pybursa/images/no_photo.jpg' %}">
-            <img class="media-object" src="{% static 'pybursa/images/no_photo.jpg' %}" alt="No photo">
-        </a>
-          <div class="media-body">
-            <h4 class="media-heading">Manager</h4>
-            <p>Name:Peter Petrov <br>Skype:p_petrov <br>Email:petrov@gmail.com <br>Phone: (097)222-33-44              
-            </p>
-          </div>
-      </div>
-      <div class="media">
-        <a class="pull-left" href="{% static 'pybursa/images/no_photo.jpg' %}">
-            <img class="media-object" src="{% static 'pybursa/images/no_photo.jpg' %}" alt="No photo">
-        </a>
-          <div class="media-body">
-            <h4 class="media-heading">Founder</h4>
-            <p>Name:Simon Simonov <br>Skype:s_simonov <br>Email:simonov@gmail.com <br>Phone: (097)333-44-55              
-            </p>
-          </div>
-      </div>  
-          
+</nav>     
+    
+      <div>
+          <h1>{{ course.name }}</h1>
+          <p>{{ course.description }}
+          </p>
+      </div>                
+                
+           <div class="container-fluid">
+              <div class="row-fluid">
+                  <div class="panel panel-info">
+                      <div class="panel-heading">
+                          <h3 class="panel-title">Содержание курса</h3>
+                      </div>                      
+                      <div class="panel-body">
+                          <table class="table">
+                            <tr class="row-2">
+                              <td>No</td>
+                              <td>Тема</td>
+                              <td>Описание</td>                
+                            </tr>
+                              {% for lesson in lesson_list %}
+                             <tr class="row-3">
+                              <td>{{ lesson.order }}</td>
+                              <td>{{ lesson.subject }}</td>
+                              <td>{{ lesson.description }}</td>                
+                             </tr>
+                              {% endfor %} 
+                          </table>                               
+                       </div>
+                  </div>                 
+              </div>
+          </div>          
+             
+      
     
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'pybursa/js/bootstrap.js' %}"></script>
+    <script src="{% static 'pybursa/js/bootstrap.js' %}""></script>
   </body>
 </html>
