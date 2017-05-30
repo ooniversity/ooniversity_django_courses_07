@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+
+
+  {% include "links_include.html" %}
+
+
+</head>
+<body>
+  <div class="splash">
+    <div class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <img class="navbar-brand" src="{% static '/images/it.png' %}">
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="{% block nav_main %}{% endblock %}"><a href="{% url 'index' %}">Main</a></li>
+              <li class="{% block nav_contact %}{% endblock %}"><a href="{% url 'contact' %}">Contacts</a></li>
+              <li class="{% block nav_students %}{% endblock %}"><a href="{% url 'students:list_view' %}{% block students_course_id %}{% endblock %}">Students</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div id="wrapper">
+
+        {% block content %}{% endblock %}
+
+      </div>
+    </div>
+  </div>
+
+
+  {% include "scripts_include.html" %}
+
+
+</body>
+</html>

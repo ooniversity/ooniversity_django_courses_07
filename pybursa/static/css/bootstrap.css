@@ -4035,6 +4035,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555;
+  /*color: #fff;*/
   cursor: default;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -4324,8 +4325,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin: 7.5px -15px;
 }
 .navbar-nav > li > a {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   line-height: 20px;
 }
 @media (max-width: 767px) {

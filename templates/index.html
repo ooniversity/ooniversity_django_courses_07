@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block title %}Main{% endblock %}
+
+
+{% block nav_main %}active{% endblock %}
+
+
+{% block content %}
+
+
+<div id="wrapper">
+	<h2>DjangoBursa</h2>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, doloremque odit veniam inventore, repudiandae rerum ducimus? Aperiam quo odio voluptates molestiae deleniti sed quod laudantium dolor, commodi modi. Perspiciatis ducimus ullam veniam, consectetur laboriosam itaque eum pariatur nisi, voluptas recusandae harum eius neque, soluta repudiandae molestias nulla expedita eligendi sapiente?
+	</p>
+	<br/>
+	<h3>Courses</h3>
+	<table class="table-striped table table-hover">
+		<thead>
+			<tr class='success'>
+				<th>Курс</th>
+				<th>Описание</th>
+			</tr>
+		</thead>
+		{% for course in courses %}
+		<tr>
+			<td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
+			<td>{{ course.short_description|title }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+
+
+{% endblock content %}
