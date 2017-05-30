@@ -1,8 +1,10 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from pybursa.views import contact
+from courses.views import index
 
 urlpatterns = [
+    url(r'^$',index,name='index'),
     url(r'^quadratic/', include('quadratic.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
