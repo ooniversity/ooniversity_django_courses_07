@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Detail</title>
+    <title>StudentDetail</title>
 
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.css" rel="stylesheet">
-      <link href="../static/css/style.css" rel="stylesheet">
+    <link href="{% static 'pybursa/css/bootstrap.css' %}" rel="stylesheet">
+      <link href="{% static 'pybursa/css/style.css' %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,15 +31,15 @@
             <span class="icon-bar"></span>
           </button>
           <a  href="https://courses.itbursa.com">
-              <img class="navbar-brand-img" alt="ITBursa" src="../static/images/logo.png">
+              <img class="navbar-brand-img" alt="ITBursa" src="{% static 'pybursa/images/logo.png' %}">
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Main</span></a></li>
-            <li><a href="contact.html">Contacts</a></li>
-            <li class="active"><a href="student_list.html">Students<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'index' %}">Main</a></li>
+            <li><a href="{% url 'contact' %}">Contacts</a></li>
+            <li class="active"><a href="{% url 'students:list_view' %}">Students<span class="sr-only">(current)</span></a></li>
            </ul>      
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -54,58 +55,43 @@
                           <table class="table">                              
                             <caption>Student's card</caption>            
                             <tr class="row-1">
-                                <td>Surname</td>
-                                <td>Denisenko</td>                
+                                <td>Фамилия:</td>
+                                <td>{{ student.surname }}</td>                
                             </tr>
                             <tr class="row-1">
-                                <td>Name</td>
-                                <td>Olga</td>                
+                                <td>Имя:</td>
+                                <td>{{ student.name }}</td>                
                             </tr>
                             <tr class="row-1">
-                                <td>Patronymic</td>
-                                <td>Vladimirovna</td>                
+                                <td>Дата рождения:</td>
+                                <td>{{ student.date_of_birth }}</td>                
                             </tr>
                             <tr class="row-1">
-                                <td>Birth Date</td>
-                                <td>10.10.1982</td>                
+                                <td>E-mail:</td>
+                                <td>{{ student.email }}</td>                
                             </tr>
                             <tr class="row-1">
-                                <td>Address</td>
-                                <td>Kharkov, Nauki ave., 14</td>                
+                                <td>Телефон:</td>
+                                <td>{{ student.phone }}</td>                
                             </tr>
                             <tr class="row-1">
-                                <td>E-mail</td>
-                                <td>denisenko@gmail.com</td>                
+                                <td>Адрес</td>
+                                <td>{{ student.address }}</td>                
                             </tr>
                             <tr class="row-1">
                                 <td>Skype</td>
-                                <td>o_denisenko</td>                
+                                <td>{{ student.skype }}</td>                
                             </tr>
                             <tr class="row-1">
-                                <td>Average Grade</td>
-                                <td>100%</td>                
+                                <td>Курсы</td>
+                                <td>{% for course in student.courses.all %}
+                                    <a href="{% url 'courses:detail' course.id %}">{{course.name}}</a><br>
+                                     {% endfor %}</td>                
                             </tr> 
-                            <tr class="row-1">
-                                <td>Rating</td>
-                                <td>1</td>                
-                            </tr>                   
+                                              
                         </table> 
-                          <table class="table">
-                              
-                            <caption>Results</caption>
-                            <tr class="row-2">
-                                <th rowspan="2">Week 1</th>
-                                <th>Tests</th>
-                                <th>100%</th>
-                            </tr>
-                            <tr class="row-2">
-                                <th>Problem Task</th>
-                                <th>100%</th>
-                            </tr>
-                          </table>
-                                            
-                       </div>                      
-                  
+                                                                  
+                       </div>
                   </div>                 
               </div>
           </div>          
@@ -115,6 +101,6 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../static/js/bootstrap.js"></script>
+    <script src="{% static 'pybursa/js/bootstrap.js' %}"></script>
   </body>
 </html>

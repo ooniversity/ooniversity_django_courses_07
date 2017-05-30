@@ -39,81 +39,28 @@
           <ul class="nav navbar-nav">
               <li class="active"><a href="{% url 'index' %}">Main<span class="sr-only">(current)</span></a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li><a href="{% url 'student_list' %}">Students</a></li>
+              <li><a href="{% url 'students:list_view' %}">Students</a></li>
               <li><a href="{% url 'results' %}">QuadrEquestion </a></li>                  
            </ul>      
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-</nav>
-      
-    
+</nav> 
       <div>
-          <p>AdvancedBursa
-          </p>
-          <h1>Description</h1>
-          <p>Не понимаете, с чего начать учиться программированию?<br>Устали от однообразных туториалов?<br>Начали слушать онлайн курс и бросили?<br> Приходите к нам.
-У нас не бросают.
-          </p>
-      </div>
-      <div>          
-          <h1>Program</h1>          
           <div class="container-fluid">
               <div class="row-fluid">
-                  <div class="col-xs-4" >
-                      <div class="block2" >
-                          <h3>1 неделя.<br> Введение в курс дела и основы Python</h3>
-                          <ul>
-                                <li>Подготовка к курсу. Работа с системой автоматической проверки домашних заданий</li>
-                                <li>Работа с консолью</li>
-                                <li>типы данных, операторы</li>
-                                <li>работа со строками и итерируемыми типами</li>
-                                <li>запуск скрипта и параметры</li>
-                                <li>синтаксис управляющих конструкций, условные операторы и циклы (if, for...)</li>
-                                <li>исключения и разбор стектрейса</li>
-                                <li>zen, pep8</li>
-                          </ul>
-                      </div>
-                  </div>
-                  <div class="col-xs-4">
-                      <div class="block2" >
-                      <h3>2 неделя. Функции и модульность</h3>                
+                  <div class="col-xs-8" "col-xs-offset-2" >
+                      <div>      
+                        <h1>ITBursa</h1>
+                          <p>Не понимаете, с чего начать учиться программированию?<br>Устали от однообразных туториалов?<br>Начали слушать онлайн курс и бросили?<br> Приходите к нам.У нас не бросают.
+                           </p>
+                     </div>
+                      <h1>Наши курсы</h1> 
                       <ul>
-                            <li>Функции (def, lambda)</li>
-                            <li>модули, структура</li>
-                            <li>встроенные библиотеки http://docs.python.org/</li>
-                            <li>сторонние библиотеки (менеджер пакетов) PYPI</li>
-                            <li>PYTHONPATH и виртуальное окружение</li>
-                            
-                            <li>исключения и разбор стектрейса</li>
-                            <li>zen, pep8</li>
-                      </ul> 
-                      </div>
-                  </div>
-                  <div class="col-xs-4">
-                      <div class="block2" >
-                      <h3>3 неделя. ООП, IO, daytimen</h3>                     
-
-   
-                      <ul>
-                            <li>Работа с классами. Наследование</li>
-                            <li>Работа с файлами</li>
-                            <li>Работа с данными. Запись данных в .csv и .json форматы</li>
-                            <li>Работа со стандартным модулем datetime</li>
-                            <li>синтаксис, атрибуты, методы, инстанцирование</li>
-                            <li>все объект, служебные методы</li>
-                            <li>инкапсуляция, наследование, полиморфизм</li>
-                            <li>переопределение методов</li>
-                            <li>super</li>
-                            <li>абстрактные классы</li>
-                            <li>статические методы</li>
-                            <li>запись и чтение файлов</li>
-                            <li>методы объектов-файлов</li>
-                            <li>csv, json</li>
-                            <li>модуль datetime</li> 
-                            
-                      </ul> 
-                      </div>
-                  </div>
+                          {% for course in courses %}
+                          <li><a href="{% url 'courses:detail' course.id %}"><strong>{{ course.name }}</strong></a><br>{{ course.short_description }}</li>
+                          {% endfor %}
+                      </ul>                  
+                   </div>
               </div>
           </div>          
       </div>
