@@ -15,3 +15,8 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
+    def full_name_field(self ):
+        return self.name+' '+self.surname
+    full_name_field.short_description = "Full name"
+    fullname = property(full_name_field)
+
