@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Course, Lesson
 
 
-def detail(request, course_id):
-    lessons = Lesson.objects.filter(course__id = course_id)
-    context = {'lesson_list': lessons}
+def detail(request, pk):
+    course = get_object_or_404(Course, pk=pk)
+    context = {'course': course}
     return render (request, 'courses/detail.html', context)
 
 
