@@ -81,8 +81,8 @@
             {% endfor %}
                               {% for student in students %}
                             <tr class="row-3">                                
-                                <td>{{ student.id }}</td>
-                                <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}}</a></td>
+                                <td>{{ forloop.counter }}</td>
+                                <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
                                 <td>{{student.address}}</td>
                                 <td>{{student.skype}}</td>
                                 <td>{% for course in student.courses.all %}
