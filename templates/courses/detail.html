@@ -49,7 +49,30 @@
           <h1>{{ course.name }}</h1>
           <p>{{ course.description }}
           </p>
-      </div>                
+      </div>
+      <div class="page-header">
+        <h1>Преподаватели</h1>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Учитель</h3>
+        </div>
+        <div class="panel-body">
+          <p><a href="{% url 'coaches:detail' course.coach_id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a></p>
+          <p>{{ course.coach.description }}</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Ассистент</h3>
+        </div>
+        <div class="panel-body">
+          <p><a href="{% url 'coaches:detail' course.assistant_id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a></p>
+          <p>{{ course.assistant.description }}</p>
+        </div>
+      </div>
                 
            <div class="container-fluid">
               <div class="row-fluid">
