@@ -7,10 +7,16 @@
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
+
 body {
   margin: 0;
+  background: url(../chalkboard.jpg) center no-repeat;
+  background-size:100% 100%;
+  background-attachment: fixed;
+  background-repeat:repeat;
+  padding-top: 70px;
 }
 article,
 aside,
@@ -2264,6 +2270,7 @@ th {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -4956,9 +4963,9 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
   color: inherit;
   background-color: #eee;
 }
@@ -4985,8 +4992,8 @@ a.badge:focus {
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 10px;
+    padding-bottom: 20px;
   }
   .container .jumbotron,
   .container-fluid .jumbotron {
