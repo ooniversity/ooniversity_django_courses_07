@@ -59,8 +59,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR,'templates'),
-                 os.path.join(BASE_DIR,'quadratic/templates'),
-                 os.path.join(BASE_DIR,'coaches/templates')],
+                 os.path.join(BASE_DIR,'quadratic/templates')
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

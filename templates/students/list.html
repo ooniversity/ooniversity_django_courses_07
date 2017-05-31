@@ -65,20 +65,7 @@
                                 <td>Адрес</td>
                                 <td>Skype</td>
                                 <td>Курсы</td>
-                            </tr>
-                              {% for student in students %}
-              <tr>
-                <td>{{ forloop.counter }}</td>
-                <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
-                <td>{{ student.address }}</td>
-                <td>{{ student.skype }}</td>
-                <td>
-                  {% for course in student.courses.all %}
-                    <p><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></p>
-                  {% endfor %}
-                </td>
-              </tr>
-            {% endfor %}
+                            </tr>                             
                               {% for student in students %}
                             <tr class="row-3">                                
                                 <td>{{ forloop.counter }}</td>
