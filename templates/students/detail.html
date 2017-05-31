@@ -35,98 +35,47 @@
       <ul class="nav navbar-nav">
         <li><a href="{% url 'index' %}">Main</a></li>
         <li><a href="{% url 'contact' %}">Contacts</a></li>
-        <li class="active"><a href="{% url 'student_list'%}">Students</a></li>
+        <li class="active"><a href="{% url 'students:list_view'%}">Students</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div class="well"><h2>Pupkin Kolya</h2></div>
-<img src="../static/bootstrap/images/python.png" class="img-circle" alt="Cinque Terre" width="304" height="236">
-<div class="well"><h3>Студент о себе</h3></div>
+<div><h2>{{ student_detail.name }} {{ student_detail.surname }}</h2></div>
 <div>
 <div class="panel panel-default" id = "student_detail_panel">
-  <div class="panel-body" >
-  <h4>Student's card</h4>
-  </div> 
-   <table class="table " width="25%"  >
+
+   <table class="table " width="25%" align="center"  >
    <tr>
       <td>Surname</td>
-      <td>Pupkin</td>
+      <td>{{ student_detail.surname }}</td>
     </tr>
     <tr>
       <td>Name</td>
-      <td>Kolya</td>
-    </tr>
-    <tr>
-      <td>Patronomic</td>
-      <td>Alexandrovich</td>
-    </tr>
-    <tr>
-      <td>Rating</td>
-      <td>25</td>
-    </tr>
-    <tr>
-      <td>Average Grade</td>
-      <td>85.4</td>
-    </tr>
-    <tr>
-      <td>Package</td>
-      <td>Standart</td>
+      <td>{{ student_detail.name }}</td>
     </tr>
     <tr>
       <td>Birth Date</td>
-      <td>31/12/1991</td>
+      <td>{{ student_detail.date_of_birth }}</td>
     </tr>
     <tr>
       <td>Address</td>
-      <td>Украина,г.Киев,ул.Кировская,д.10,кв.48</td>
-    </tr>
-    <tr>
-      <td>Post</td>
-      <td>61010</td>
+      <td>{{ student_detail.address }}</td>
     </tr>
     <tr>
       <td>Skype</td>
-      <td>pupkin.k</td>
+      <td>{{ student_detail.skype }}</td>
     </tr>
+       <tr>
+						<td>Курсы</td>
+						<td>
+						{% for course in student_detail.courses.all %}
+							<a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
+						{%endfor%}
+						</td>
    </table>
    </div>
    </div>
-   
-   <div class="panel panel-default"  id = "students_about" >
-  
-   <table class="table " width="75%"  >
-   <tr>
-      <th>Course</th>
-      <th>Week</th>
-      <th>Control Type</th>
-      <th>Gradle</th>
-   </tr>
-   <tr>
-      <td rowspan="5">Py101 Введение в Python</td>
-      <td rowspan="3">Week 1</td>
-      <td>Test</td>
-      <td>99%</td>   
-    </tr>
-    <tr>
-      <td>Problem Task №1</td>
-      <td>100%</td>  
-    </tr>
-    <tr>
-      <td>Problem Task №2</td>
-      <td>100%</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Week 2</td>
-      <td>Tests</td>
-      <td>100%</td>   
-    </tr>
-    <tr>          
-      <td>Problem Task №1</td>
-      <td>100%</td>
-    </tr>
-   </table>
-   </div>
+
    </div>
    </div>
    </div>

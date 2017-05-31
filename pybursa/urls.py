@@ -29,8 +29,8 @@ urlpatterns = [
     url(r'^courses/',include('courses.urls')),
     url(r'^students/',include('students.urls')),
     url(r'^contact/$',views.contact ,name = 'contact'),
-    url(r'^student_list/$',students_all,name = 'student_list'),
-    url(r'^student_detail/$',views.student_detail,name ='student_detail'),
+    # url(r'^student_list/$',students_all,name = 'student_list'),
+    # url(r'^student_detail/$',views.student_detail,name ='student_detail'),
     url(r'^polls/',include('polls.urls')),
     url(r'^quadratic/',include('quadratic.urls')),
 ]
