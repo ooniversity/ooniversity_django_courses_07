@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block main_content %}
+{% block title %}О курсе{% endblock title %}
+{% block content %}
       <!-- Main component for a primary marketing message or call to action -->
         <div class="panel panel-info">
           <div class="panel-heading">О курсе</div>
           <div class="panel-body">
           <h3>{{ course.name }}</h3><br>
-          <p> {{ course.description }}</p>
+          <p> {{ course.description|truncatechars:32 }}</p>
           </div>
         </div>
     <div class="panel panel-info">
@@ -48,4 +49,4 @@
       </div>
     </div>
 
-{% endblock main_content %}
+{% endblock content %}

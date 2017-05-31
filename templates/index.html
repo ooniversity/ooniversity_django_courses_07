@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block title %}Главная{% endblock title %}
 {% block nav_class_index %}active{% endblock %}
-{% block main_content %}
+{% block content %}
     {% include 'include/description_include.html' %}
            <div class="jumbotron">
                <div class="container">
@@ -17,15 +17,15 @@
                   </thead>
                   {% for course in courses %}
                     <tr>
-                        <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
-                        <td>{{ course.short_description }}</td>
+                        <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
+                        <td>{{ course.short_description|title }}</td>
                     </tr>
                   {% endfor %}
                   </table>
                   </div>
                </div>
             </div>
-{% endblock main_content %}
+{% endblock content %}
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
