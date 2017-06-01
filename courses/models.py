@@ -1,5 +1,5 @@
 from django.db import models
-from coaches.models import Coach
+
 # Create your models here.
 
 class Course(models.Model):
