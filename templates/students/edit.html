@@ -17,11 +17,11 @@
         {% endfor %}
     {% endif %}
 
-    <h2>Edit Student</h2>
+    <h2>Редактирование данных студента</h2>
     <form class='student-create' method='post'>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Save">
+        <input type="submit" value="Изменить">
     </form>
 
 {% endblock content %}

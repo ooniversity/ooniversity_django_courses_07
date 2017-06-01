@@ -8,10 +8,10 @@
 
 
 {% block content %}
-    <h2>Create Student</h2>
+    <h2>Добавить студента</h2>
     <form class='student-create' method='post'>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Create">
+        <input type="submit" value="Создать">
     </form>
 {% endblock content %}
