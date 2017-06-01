@@ -1,0 +1,14 @@
+            <table class="table table-hover">
+			  <thead>
+			    <tr>
+                  <th>{{ block_title }}</th>
+				</tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td><a href="{% url 'coaches:detail' instructor.id %}">{{ instructor.f_name }} {{ instructor.l_name }}</a>
+                  <p>{{ instructor.descr }}</p></td>
+                </tr>
+              </tbody>
+			</table>
+
