@@ -2,12 +2,10 @@ from django import forms
 
 
 class QuadraticForm(forms.Form):
-    a = forms.IntegerField(label='коэффициент a',
-                           error_messages={'required': 'This field is required.'})
-    b = forms.IntegerField(label='коэффициент b',
-                           error_messages={'required': 'This field is required.'})
-    c = forms.IntegerField(label='коэффециент c',
-                           error_messages={'required': 'This field is required.'})
+    a = forms.IntegerField(label='коэффициент a')
+    b = forms.IntegerField(label='коэффициент b')
+    c = forms.IntegerField(label='коэффециент c')
+
 
     def clean_a(self):
         a = self.cleaned_data['a']
