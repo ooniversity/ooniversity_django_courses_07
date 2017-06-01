@@ -7,9 +7,9 @@ def quadratic_results(request):
 	if request.GET:
 		form = QuadraticForm(request.GET)
 		if form.is_valid():
-			a = int(request.GET.get('a'))
-			b = int(request.GET.get('b'))
-			c = int(request.GET.get('c'))
+			a = form.cleaned_data.get('a')
+			b = form.cleaned_data.get('b')
+			c = form.cleaned_data.get('c')
 			desc = b**2 - 4*a*c
 			context['desc'] = 'Дискриминант: %d' % desc
 			if desc < 0:
