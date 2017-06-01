@@ -10,6 +10,7 @@ def quadratic_results(request):
         form = QuadraticForm()
     context = {'form': form}
     if form.is_valid():
+        print('Valid')
         a = int(request.GET['a'])
         b = int(request.GET['b'])
         c = int(request.GET['c'])
