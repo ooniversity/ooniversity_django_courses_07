@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block title %}Students{% endblock title %}
+
+
+{% block nav_students %}active{% endblock %}
+
+
+{% block content %}
+    <h2>Create Student</h2>
+    <form class='student-create' method='post'>
+        {{ form.as_p }}
+        <input type="submit" value="Create">
+    </form>
+{% endblock content %}
