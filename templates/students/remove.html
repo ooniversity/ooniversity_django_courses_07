@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Удаление студента{% endblock title %}
+{% block nav_class_students %}active{% endblock %}
+
+{% block content %}
+
+      <div class="jumbotron">
+        <div class="container">
+            {% if messages %}
+                <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+          <h4>Внимание! Студент {{ student.name }} {{ student.surname }} будет удален</h4>
+        <form method="post">
+                     {% csrf_token %}
+                     {{ form.as_p }}
+                     <input type="submit" class="btn btn-danger" value="Удалить">
+                  </form>
+      </div>
+
+{% endblock content %}

@@ -7,9 +7,18 @@
 
 
 {% block content %}
+
       <div class="jumbotron">
             <div class="container">
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                 {% endif %}
               <div class="row col-md-12  custyle">
+
               <table class="table table-striped custab" style="margin-top:20px;margin-bottom:20px">
               <thead>
               <h2>Наши студенты</h2>
@@ -19,6 +28,8 @@
                       <th>Адрес</th>
                       <th>Skype</th>
                       <th>Курсы</th>
+                      <th></th>
+                      <th></th>
                   </tr>
               </thead>
                   {% for student in students %}
@@ -31,10 +42,23 @@
                         {% for course in student.courses.all %}
                             <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
                             {% endfor %}</td>
+                    <td>
+                        <a href="{% url 'students:edit' student.id %}" class="btn btn-sm btn-primary" >
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'students:remove' student.id %}" class="btn btn-sm btn-danger" >
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </a>
+                    </td>
                 </tr>
                   {% endfor %}
               </table>
               </div>
+            <a href="{% url 'students:create' %}" class="btn btn-primary" >
+                <i class="glyphicon glyphicon-plus"></i>Добавить нового студента
+            </a>
             </div>
       </div>
 {% endblock content %}
