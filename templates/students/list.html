@@ -20,8 +20,11 @@
               <div class="row col-md-12  custyle">
 
               <table class="table table-striped custab" style="margin-top:20px;margin-bottom:20px">
+                          <a href="{% url 'students:create' %}" class="btn btn-primary" >
+                <i class="glyphicon glyphicon-plus"></i>Добавить нового студента
+            </a>
               <thead>
-              <h2>Наши студенты</h2>
+              <h2>Список студентов</h2>
                   <tr>
                       <th>#</th>
                       <th>Фамилия Имя</th>
@@ -44,21 +47,19 @@
                             {% endfor %}</td>
                     <td>
                         <a href="{% url 'students:edit' student.id %}" class="btn btn-sm btn-primary" >
-                            <i class="glyphicon glyphicon-edit"></i>
+                            <i class="glyphicon glyphicon-edit"></i> Изменить
                         </a>
                     </td>
                     <td>
                         <a href="{% url 'students:remove' student.id %}" class="btn btn-sm btn-danger" >
-                            <i class="glyphicon glyphicon-remove"></i>
+                            <i class="glyphicon glyphicon-remove"></i> Удалить
                         </a>
                     </td>
                 </tr>
                   {% endfor %}
               </table>
               </div>
-            <a href="{% url 'students:create' %}" class="btn btn-primary" >
-                <i class="glyphicon glyphicon-plus"></i>Добавить нового студента
-            </a>
+
             </div>
       </div>
 {% endblock content %}
