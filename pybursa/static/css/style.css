@@ -28,6 +28,10 @@ body {
 	color: #6DB854;
 }
 
+td.buttons {
+	max-width: 106px;
+}
+
 nav {
 	font-family: fontawesome;
 	font-size: 1.5em; 
