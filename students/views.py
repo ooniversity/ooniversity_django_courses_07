@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from students.models import Student
+from .models import Student
+from .forms import StudentModelForm
 
 
 def list_view(request):
@@ -17,3 +18,8 @@ def detail(request, id):
     except:
         return redirect('students:list_view')
     return render(request, 'students/detail.html', context)
+
+def create(request):
+    form = StudentModelForm()
+    context = {'form': form}
+    return render(request, 'students/add.html', context)

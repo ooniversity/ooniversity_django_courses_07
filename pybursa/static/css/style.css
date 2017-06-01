@@ -24,8 +24,8 @@ body {
 	line-height: 135%;
 }
 
-#wrapper a {
-	color: #6DB854 !important;
+.panel a, table a {
+	color: #6DB854;
 }
 
 nav {
@@ -52,7 +52,6 @@ nav {
 }
 
 .contact tr td {
-	/*width: 250px;*/
 	vertical-align: top;
 }
 
@@ -110,143 +109,57 @@ li.active > a:hover {
 	color: #101010 !important;
 }
 
-/*.panel-success > div.panel-heading {
-	background: #6DB854 !important;
-	}*/
+.table {
+	margin-top: 50px;
+}
 
-	.table {
-		margin-top: 50px;
-	}
+.person {
+	max-width: 100px;
 
-	.person {
-		max-width: 100px;
+}
 
-	}
+hr {
+	display: block;
+	border: 0;
+	height: 1px;
+	border-top: 2px solid #ccc;
+	padding: 0;
+}
 
-	hr {
-		display: block;
-		border: 0;
-		height: 1px;
-		border-top: 2px solid #ccc;
-		padding: 0;
-	}
+.right {
+	float: right;
+}
 
-	.right {
-		float: right;
-	}
+.left {
+	float: left;
+}
 
-	.left {
-		float: left;
-	}
+.clear {
+	clear: both;
+}
 
-	.clear {
-		clear: both;
-	}
+#wrapper {
+	width: 100%;
+	margin: auto;
+}
 
-	header, footer {
-		width: 100%;
-		background-color: #fff;
-		float: left;
-		/*min-height: 50px;*/
-	}
+a.student-btn {
+	color: #fff;
+}
 
-	header {
-		/*border-bottom: 2px solid silver;*/
-		padding-left: 1%;
-		padding-top: 1%;
-		font-family: fontawesome;
-		font-size: 30px;
-		font-weight: bold;
-		color: #5A5A5A;
-	}
+.student-create {
+	margin-top: 50px;
+	max-width: 350px;
+}
 
-	#wrapper {
-		/*padding-left: 1%;*/
-		/*float: center;*/
-		width: 100%;
-		/*display: block;*/
-		/*text-align: center;*/
-		margin: auto;
-	}
+.student-create input[type=text], input[type=email], select {
+	float: right;
+}
 
-	#wrapper #articles {
-		float: left;
-		width: 80%;
-		margin-left: 10%;
-		margin-top: 25px;
-	}
+.student-create input[type=submit] {
+	margin-top: 50px;
+}
 
-	#wrapper #articles article {
-		float: left;
-		width: 31.3%;
-		border: 5px solid #5A5A5A;
-		box-sizing: border-box;
-		border-radius: 5px;
-		background-color: #F6F6F6;
-		margin-right: 2%;
-		min-height: 400px;
-	}
-
-	#wrapper #articles article img {
-		width: 100%;
-		height: 200px;
-		/*border-radius: 5px 5px 0px 0px;*/
-		border-bottom: 5px solid #5A5A5A;
-		/*margin-bottom: 10px;*/
-		/*height: 150px;*/
-	}
-
-	#wrapper #articles article h2 {
-		width: 90%;
-		padding: 5%;
-		font-weight: normal;
-		font-family: Impact, sans-serif;
-		font-size: 1.5em;
-		color: #EA9B80;
-		/*background-color: #5A5A5A;*/
-		/*display: inline;*/
-	}
-
-	#wrapper #articles article p {
-		width: 80%;
-		margin-left: 10%;
-		color: #5A5A5A;
-		text-indent: 0.5em;  /*Отступ для абзаца*/ 
-	}
-
-	#wrapper #articles article a {
-		padding: 5px;
-		float: right; 
-		margin-right: 5%;
-		font-family: Impact, sans-serif;
-		border-radius: 5px;
-		background-color: #5A5A5A;
-	}
-
-	#wrapper #articles article a:hover {
-		background-color: #82D1AD;
-		color: #5A5A5A;
-	}
-
-	/* Стили футера */
-
-	footer {
-		padding: 1%;
-		border-top: 2px solid silver;
-		margin-top: 10px;
-		padding-bottom: 2%;
-	}
-
-	#page-wrap:after {
-		content: "";
-		display: block;
-	}
-
-	footer, #page-wrap:after {
-		height: 10px;
-	}
-
-	#page-wrap {
-		min-height: 90%;
-		margin-bottom: -10px;
-	}
+.student-create select {
+	width: 218px;
+}
