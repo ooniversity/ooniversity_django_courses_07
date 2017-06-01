@@ -6,4 +6,3 @@ class StudentModelForm(forms.ModelForm):
     class Meta:
         model = Student
         fields = "__all__"
-        widgets = {'courses': forms.CheckboxSelectMultiple}

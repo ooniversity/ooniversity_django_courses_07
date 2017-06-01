@@ -3,14 +3,14 @@ from courses.models import Course
 
 
 class Student(models.Model):
-    name = models.CharField(verbose_name='Имя', max_length=255)
-    surname = models.CharField(verbose_name='Фамилия', max_length=255)
-    date_of_birth = models.DateField(verbose_name='Дата рождения')
+    name = models.CharField(max_length=255)
+    surname = models.CharField(max_length=255)
+    date_of_birth = models.DateField()
     email = models.EmailField()
-    phone = models.CharField(verbose_name='Контактный телефон', max_length=20)
-    address = models.CharField(verbose_name='Адрес', max_length=255)
+    phone = models.CharField(max_length=20)
+    address = models.CharField(max_length=255)
     skype = models.CharField(max_length=20)
-    courses = models.ManyToManyField(Course, verbose_name='Курсы')
+    courses = models.ManyToManyField(Course)
 
     def __str__(self):
         return self.name
