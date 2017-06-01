@@ -28,7 +28,7 @@ def create(request):
         form = StudentModelForm(request.POST)
         if form.is_valid():
             form.save()
-            fullname = form.cleaned_data.get('surname') + ' ' + form.cleaned_data.get('name')
+            fullname = form.cleaned_data['surname'] + ' ' + form.cleaned_data['name']
             messages.success(request, 'Student %s has been successfully added.' % fullname)
             return redirect('students:list_view')
     else:
