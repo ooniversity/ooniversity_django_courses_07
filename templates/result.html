@@ -6,19 +6,29 @@
 </head>
 <body>
 	<p>Квадратное уравнение a*x*x + b*x + c = 0</p>
-	<form method="post">
-		{{ form.as_p }}
+	{% if message %}<p>{{ message }}</p>{% endif %}
+	<form method="get">
+		<p>
+			{{ form.a.errors }}
+			{{ form.a.label_tag }}
+   			{{ form.a }}
+    		{% if err_a %}<p>{{ err_a }}</p>{% endif %}
+		</p>
+		<p>
+			{{ form.b.errors }}
+    		{{ form.b.label_tag }}
+   			{{ form.b }}
+    		{% if err_b %}<p>{{ err_b }}</p>{% endif %}
+		</p>
+		<p>
+			{{ form.c.errors }}
+    		{{ form.c.label_tag }}
+   			{{ form.c }}
+    		{% if err_c %}<p>{{ err_c }}</p>{% endif %}
+		</p>
 		<input type="submit" value="Пересчитать">
 	</form>
-	<!-- <ul>
-		<li>a = {{ values.a }}</li>
-		{{ messages.a }}
-		<li>b = {{ values.b }}</li>
-		{{ messages.b }}
-		<li>c = {{ values.c }}</li>
-		{{ messages.c }}
-	</ul> -->
-	<p>{{ values.desc }}</p>
-	<p>{{ messages.result }}</p>
+	<p>{{ desc }}</p>
+	<p>{{ result }}</p>
 </body>
 </html>
