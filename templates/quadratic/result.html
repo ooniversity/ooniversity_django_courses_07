@@ -6,25 +6,11 @@
 </head>
 <body>
 	<p>Квадратное уравнение a*x*x + b*x + c = 0</p>
-	<form method="get">
-		<p>
-			{{ form.a.label_tag }}
-   			{{ form.a }}
-   			{{ form.a.errors }}
-		</p>
-		<p>
-    		{{ form.b.label_tag }}
-   			{{ form.b }}
-    		{{ form.b.errors }}
-		</p>
-		<p>
-    		{{ form.c.label_tag }}
-   			{{ form.c }}
-    		{{ form.c.errors }}
-		</p>
-		<input type="submit" value="Решить">
-	</form>
-	<p>{{ desc }}</p>
-	<p>{{ result }}</p>
+    <form method="get">
+        {{ form.as_p }}
+        <input type="submit" value="Решить">
+    </form>
+	{% if desc %}<p>{{ desc }}</p>{% endif %}
+	{% if result %}<p>{{ result }}</p>{% endif %}
 </body>
 </html>
