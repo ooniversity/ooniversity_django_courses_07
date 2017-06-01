@@ -3,17 +3,13 @@ from .forms import QuadraticForm
 
 
 def quadratic_results(request):
-	errors = False
 	context = {}
-
-	if request.method == 'GET' and request.GET:
+	if request.GET:
 		form = QuadraticForm(request.GET)
 		if form.is_valid():
-			for key in ['a', 'b', 'c']:
-				context[key] = int(request.GET.get(key))
-			a = context['a']
-			b = context['b']
-			c = context['c']
+			a = int(request.GET.get('a'))
+			b = int(request.GET.get('b'))
+			c = int(request.GET.get('c'))
 			desc = b**2 - 4*a*c
 			context['desc'] = 'Дискриминант: %d' % desc
 			if desc < 0:
