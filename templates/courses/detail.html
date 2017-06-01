@@ -1,41 +1,24 @@
+{% extends 'base.html' %}
+
 
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Arthur">
-    <link rel="icon" href="{% static "images/favicon.ico" %}">
 
-    <title>ItBursa {{ course_inf.name }}</title>
 
-    <!-- Bootstrap core CSS -->
-	<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="{% static "css/style.css" %}" rel="stylesheet">
-  </head>
+{% block title %}ItBursa {{ course_inf.name }}{% endblock title %}
 
-  <body>
-    <div class="page-masthead">
-      <div class="container">
-        <nav class="page-nav">
-          <a class="page-nav-item" href="{% url 'index' %}">Main</a>
-          <a class="page-nav-item" href="{% url 'contact' %}">Contacts</a>
-          <a class="page-nav-item" href="{% url 'students:list_view' %}?course_id={{ course_inf.id }}" >Students</a>
-        </nav>
-      </div>
-    </div>
+{% block nav_main_active %} active{% endblock nav_main_active %}
+
+
+{% block container %}
     <div class="container">
-      <div class="page-header">
-			<p class="lead page-description">Very useful course!!!</p>
-      </div>
-      <div class="row">
+
+        {% include 'include/usefull_courses.html' %}
+
+
+        <div class="row">
         <div class="col-sm-12 blog-main">
 			<h1>{{ course_inf.name }}</h1>
-			<p class="page-main">{{ course_inf.description }}</p>
+			<p class="page-main">{{ course_inf.description|truncatechars:32 }}</p>
             <table class="table table-hover">
 			  <thead>
 			    <tr>
@@ -84,16 +67,4 @@
         </div><!-- /.page-main -->
       </div><!-- /.row -->
     </div><!-- /.container -->
-    <footer class="page-footer">
-      <p>ItBursa - 2017</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
-    </footer>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-  </body>
-</html>
+{% endblock container %}
