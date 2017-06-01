@@ -14,7 +14,7 @@ def create(request):
             return redirect('students:list_view')
     else:
         form = StudentModelForm()
-        context = {'form': form}
+    context = {'form': form}
     return render(request, 'students/add.html', context)
 
 
