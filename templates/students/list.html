@@ -35,7 +35,7 @@
       <ul class="nav navbar-nav">
         <li><a href="{% url 'index' %}">Main</a></li>
         <li><a href="{% url 'contact' %}">Contacts</a></li>
-        <li class="active"><a href="{% url 'student_list'%}">Students</a></li>
+        <li class="active"><a href="{% url 'students:list_view'%}">Students</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -64,8 +64,8 @@
         <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
         <td>{{ student.address }}</td>
         <td>{{ student.skype }}</td>
-        <td>{% for cours in students_list %}
-                    <h4>{{ cours.courses.all }}</h4>
+        <td>{% for course in student.courses.all %}
+                    <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
             {% endfor %}
         </td>
     </tr>

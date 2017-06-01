@@ -8,12 +8,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <title>Student List</title>
+    <title>PyBursa main</title>
     <!-- Bootstrap core CSS -->
       {% load static %}
-    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="{% static 'bootstrap/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/style.css'%}" rel="stylesheet">
   </head>
   <body>
   <div id="all_space">
@@ -33,57 +33,52 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="{% url 'index' %}">Main</a></li>
+        <li class="active"><a href="{% url 'index' %}">Main</a></li>
         <li><a href="{% url 'contact' %}">Contacts</a></li>
-        <li class="active"><a href="{% url 'student_list'%}">Students</a></li>
+        <li><a href="{% url 'students:list_view' %}">Students</a></li>
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 </div>
       <!-- Main component for a primary marketing message or call to action -->
-      
       <div class="container">
       <div class="jumbotron">
-      <h1>Студенты курса PyBursa</h1>
-        <div class="panel-body">
-      <h4>Ниже  представлен  список  студентов .</h4>
+        <p><h2>{{ course.name }}:</h2>
+        <h4> {{ course.description }}</h4></p>
       </div>
-          {% if students_list %}
-      <table id ="contact_table" width="100%" border="1px">
+	</div>
+      <div class="container">
+      <div class="jumbotron">
+       <h3>Список уроков</h3>
+{#      {% if course_lessons %}#}
+          <table id ="contact_table" width="100%" border="1px">
         <tr bgcolor="white">
       <th>#</th>
-      <th>фамилия имя</th>
-      <th>адрес</th>
-      <th>skype</th>
-      <th>список курсов</th>
+      <th>Тема</th>
+      <th>Описание</th>
     </tr>
-          {% for student in  students_list %}
-    <tr>
-        <td><a href="{% url 'students:detail' student.id %}"> {{ student.id }}</a></td>
-        <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
-        <td>{{ student.address }}</td>
-        <td>{{ student.skype }}</td>
-        <td>{% for cours in students_list %}
-                    <h4>{{ cours.courses.all }}</h4>
-            {% endfor %}
-        </td>
-    </tr>
-          {% endfor %}
-
-      </table>
-          {% endif %}
-      </div>       
+              {% for lesson in  lessons_list %}
+                  <tr>
+                  <td>{{ lesson.order }}</td>
+                  <td>{{ lesson.subject }}</td>
+                  <td>{{ lesson.description }}</td>
+                  </tr>
+              {% endfor %}
+    <tr/>
+          </table>
+{#      {% endif %}#}
       </div>
-    </div>
+      </div>
     </div> <!-- /container -->
-    </div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
     
   </body>
 </html>

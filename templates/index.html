@@ -35,7 +35,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'index' %}">Main</a></li>
         <li><a href="{% url 'contact' %}">Contacts</a></li>
-        <li><a href="{% url 'student_list' %}">Students</a></li>
+        <li><a href="{% url 'students:list_view' %}">Students</a></li>
         
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -45,18 +45,31 @@
       <!-- Main component for a primary marketing message or call to action -->
       <div class="container">
       <div class="jumbotron">
-        <h3>Program:</h3>
-        <li><h3>PyBursa</h3>
-        <h4><p>Description :</p> Мы специализируемся на "модных" языках программирования.Принципиальное наше отлицчие от других курсов-максимум
-                практики и  жесткая система обязательных домашних заданий .  </h4></li>
-                <li>AdvancedBursa
-        <h4><p>Description :</p> Мы специализируемся на "модных" языках программирования.Принципиальное наше отлицчие от других курсов-максимум
-                практики и  жесткая система обязательных домашних заданий .  </h4></li>
-                <li>DjangoBursa
-        <h4><p>Description :</p> Мы специализируемся на "модных" языках программирования.Принципиальное наше отлицчие от других курсов-максимум
-                практики и  жесткая система обязательных домашних заданий .  </h4></li>
+        <p><h2>PyBursa o нас:</h2>
+        <h4> Мы специализируемся на "модных" языках программирования.Принципиальное наше отлицчие от других курсов-максимум
+                практики и  жесткая система обязательных домашних заданий .  </h4></p>
       </div>
 	</div>
+      <div class="container">
+      <div class="jumbotron">
+      {% if courses_list %}
+       <h3>Наши  курсы:</h3>
+          <table id ="contact_table" width="100%" border="1px">
+        <tr bgcolor="white">
+      <th>Название  Курса</th>
+      <th>Краткое описание</th>
+    </tr>
+              {% for course in  courses_list %}
+                  <tr>
+                  <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
+                  <td>{{ course.short_description }}</td>
+                  </tr>
+              {% endfor %}
+    <tr/>
+          </table>
+      {% endif %}
+      </div>
+      </div>
     </div> <!-- /container -->
 
     <!-- Bootstrap core JavaScript

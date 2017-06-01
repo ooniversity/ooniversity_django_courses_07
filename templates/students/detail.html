@@ -8,8 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <title>Student List</title>
-    <!-- Bootstrap core CSS -->
+    <title>Student Detail</title>
+     <!-- Bootstrap core CSS -->
       {% load static %}
     <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -19,7 +19,7 @@
   <div id="all_space">
 <div class="container">
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
+ <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -35,55 +35,56 @@
       <ul class="nav navbar-nav">
         <li><a href="{% url 'index' %}">Main</a></li>
         <li><a href="{% url 'contact' %}">Contacts</a></li>
-        <li class="active"><a href="{% url 'student_list'%}">Students</a></li>
+        <li class="active"><a href="{% url 'students:list_view'%}">Students</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-</div>
-      <!-- Main component for a primary marketing message or call to action -->
-      
-      <div class="container">
-      <div class="jumbotron">
-      <h1>Студенты курса PyBursa</h1>
-        <div class="panel-body">
-      <h4>Ниже  представлен  список  студентов .</h4>
-      </div>
-          {% if students_list %}
-      <table id ="contact_table" width="100%" border="1px">
-        <tr bgcolor="white">
-      <th>#</th>
-      <th>фамилия имя</th>
-      <th>адрес</th>
-      <th>skype</th>
-      <th>список курсов</th>
-    </tr>
-          {% for student in  students_list %}
-    <tr>
-        <td><a href="{% url 'students:detail' student.id %}"> {{ student.id }}</a></td>
-        <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
-        <td>{{ student.address }}</td>
-        <td>{{ student.skype }}</td>
-        <td>{% for cours in students_list %}
-                    <h4>{{ cours.courses.all }}</h4>
-            {% endfor %}
-        </td>
-    </tr>
-          {% endfor %}
+<div><h2>{{ student_detail.name }} {{ student_detail.surname }}</h2></div>
+<div>
+<div class="panel panel-default" id = "student_detail_panel">
 
-      </table>
-          {% endif %}
-      </div>       
-      </div>
-    </div>
-    </div> <!-- /container -->
-    </div>
+   <table class="table " width="25%" align="center"  >
+   <tr>
+      <td>Surname</td>
+      <td>{{ student_detail.surname }}</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{ student_detail.name }}</td>
+    </tr>
+    <tr>
+      <td>Birth Date</td>
+      <td>{{ student_detail.date_of_birth }}</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td>{{ student_detail.address }}</td>
+    </tr>
+    <tr>
+      <td>Skype</td>
+      <td>{{ student_detail.skype }}</td>
+    </tr>
+       <tr>
+						<td>Курсы</td>
+						<td>
+						{% for course in student_detail.courses.all %}
+							<a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
+						{%endfor%}
+						</td>
+   </table>
+   </div>
+   </div>
+
+   </div>
+   </div>
+   </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js'  %}"></script>
     
   </body>
 </html>
