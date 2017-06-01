@@ -9,22 +9,19 @@
 	{% if message %}<p>{{ message }}</p>{% endif %}
 	<form method="get">
 		<p>
-			{{ form.a.errors }}
 			{{ form.a.label_tag }}
    			{{ form.a }}
-    		{% if err_a %}<p>{{ err_a }}</p>{% endif %}
+   			{{ form.a.errors }}
 		</p>
 		<p>
-			{{ form.b.errors }}
     		{{ form.b.label_tag }}
    			{{ form.b }}
-    		{% if err_b %}<p>{{ err_b }}</p>{% endif %}
+    		{{ form.b.errors }}
 		</p>
 		<p>
-			{{ form.c.errors }}
     		{{ form.c.label_tag }}
    			{{ form.c }}
-    		{% if err_c %}<p>{{ err_c }}</p>{% endif %}
+    		{{ form.c.errors }}
 		</p>
 		<input type="submit" value="Решить">
 	</form>
