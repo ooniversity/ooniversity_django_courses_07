@@ -1,10 +1,10 @@
 <html lang="en">
 Квадратное уравнение a*x*x + b*x + c = 0
-<ul>
-    <li>a = {{ a }}<br>{{ message_a }}</li>
-    <li>b = {{ b }}<br>{{ message_b }}</li>
-    <li>c = {{ c }}<br>{{ message_c }}</li>
-</ul>
+<form method="get">
+    {{ form.as_p }}
+    <input type="submit" value="Решить">
+</form>
+
 {% if message_d %}
 <p>Дискриминант: {{ D }}</p>
     <p>{{ message_d }}</p>
