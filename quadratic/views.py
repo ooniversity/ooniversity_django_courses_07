@@ -23,4 +23,4 @@ def quadratic_results(request):
 			x1 = (-b + desc**0.5)/(2*a)
 			x2 = (-b - desc**0.5)/(2*a)
 			context['result'] = 'Квадратное уравнение имеет два действительных корня: x1 = {0}, x2 = {1}'.format(x1, x2)
-	return render(request, 'result.html', context)
+	return render(request, 'quadratic/result.html', context)
