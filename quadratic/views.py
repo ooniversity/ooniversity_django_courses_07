@@ -2,28 +2,13 @@ from django.shortcuts import render
 from .forms import QuadraticForm
 
 
-def check(val):
-	if val is None:
-		output = None
-	else:
-		try:
-			output = int(val)
-		except:
-			output = 'not_int'
-	return output
-
 def quadratic_results(request):
 	errors = False
 	form = QuadraticForm(request.GET)
 	context = {'form': form}
-	for key in ['a', 'b', 'c']:
-		context[key] = check(request.GET.get(key))
-		if context[key] is None:
-			errors = True
-		if context[key] is 'not_int':
-			context['err_' + key] = 'коэффициент не целое число'
-			errors = True
-	if not errors:
+	if form.is_valid():
+		for key in ['a', 'b', 'c']:
+			context[key] = int(request.GET.get(key))
 		a = context['a']
 		b = context['b']
 		c = context['c']
