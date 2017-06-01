@@ -8,11 +8,9 @@
       <div class="jumbotron">
         <div class="container">
             {% if messages %}
-                <ul class="messages">
                 {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {{ message }}
                 {% endfor %}
-                </ul>
             {% endif %}
            <h2> Редактирование данных студента</h2>
               <div class="row col-md-12  custyle">
