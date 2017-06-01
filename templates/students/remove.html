@@ -8,10 +8,12 @@
 
 
 {% block content %}
-    <h2>Create Student</h2>
-    <form class='student-create' method='post'>
+
+    <h3>Студент {{ student.name }} {{ student.surname }} будет удален.</h3>
+    <hr>
+    <form method='post'>
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Create">
+        <input type="submit" class="btn btn-danger" value="Delete">
     </form>
+
 {% endblock content %}
