@@ -22,7 +22,6 @@ def create(request):
         form = StudentModelForm(request.POST)
         if form.is_valid():
             instance = form.save()
-            print(instance)
             messages.success(request, "Student " + instance.name + " " + instance.surname + " has been successfully added.")
             return redirect('/students/')
     else:
@@ -41,7 +40,7 @@ def edit(request,student_id):
     else:
         form = StudentModelForm(instance=student)
     return render(request,'students/edit.html',{'form':form})
-
+#Удаления
 def remove(request,student_id):
     student = get_object_or_404(Student, pk=student_id)
     if request.method=="POST":

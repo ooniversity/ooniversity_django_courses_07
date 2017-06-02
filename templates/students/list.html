@@ -2,7 +2,6 @@
 {% block title %}Студенты{% endblock title %}
 {% block nav_class_student %}active{% endblock %}
 {% block content %}
-    {% include "students/succes_message_include.html" %}
     <div class="container">
     <a class="btn btn-primary" href="{% url 'students:add' %}" role="button">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
