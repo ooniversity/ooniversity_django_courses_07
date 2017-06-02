@@ -18,10 +18,11 @@
     {% endif %}
 
     <h2>Редактирование данных студента</h2>
+    <hr>
     <form class='student-create' method='post'>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Изменить">
+        <input type="submit" class="btn btn-info" value="Изменить">
     </form>
 
 {% endblock content %}
