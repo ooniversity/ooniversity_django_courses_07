@@ -6,7 +6,7 @@ app_name = 'students'
 urlpatterns = [
     url(r'^$', list_view, name='list_view'),
     url(r'^(?P<id>\d+)/$', detail, name='detail'),
-    url(r'^add/$', create, name='add'),
+    url(r'^add/$', create, name='create'),
     url(r'^edit/(?P<id>\d+)/$', edit, name='edit'),
     url(r'^remove/(?P<id>\d+)/$', remove, name='remove'),
 ]
