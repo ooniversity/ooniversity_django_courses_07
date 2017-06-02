@@ -23,7 +23,7 @@ def detail(request, id):
     return render(request, 'students/detail.html', context)
 
 
-def create(request):
+def add(request):
     if request.method == 'POST':
         form = StudentModelForm(request.POST)
         if form.is_valid():
