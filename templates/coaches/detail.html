@@ -1,11 +1,14 @@
 {% extends "base.html" %}
-{% block main %}
+
+{% block title %}Инструктор{% endblock title %}
+
+{% block content %}
     <div class="container">
         <h2>{{ coach.user.first_name }} {{ coach.user.last_name }}</h2>
         <table class="table table-striped">
             <tr>
                 <th>Дата рождения</th>
-                <td>{{ coach.date_of_birth }}</td>
+                <td>{{ coach.date_of_birth|date:'j F, Y' }}</td>
             </tr>
             <tr>
                 <th>Адрес</th>
@@ -45,4 +48,4 @@
             </tr>
         </table>
     </div>
-{% endblock main %}
+{% endblock content %}

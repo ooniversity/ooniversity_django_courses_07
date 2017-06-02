@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Index{% endblock title %}
+{% block title %}Главная{% endblock title %}
 
 {% block nav_class_index %}active{% endblock %}
 
-{% block main %}
+{% block content %}
 
-    {% include "inc_ooniversity_desc.html" %}
+    {% include "include/ooniversitydesc_include.html" %}
 
     <div class="container">
         <h2>Выбирай на каком курсе хочешь учиться</h2>
@@ -17,10 +17,10 @@
             </tr>
             {% for course in Courses %}
                 <tr>
-                    <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
-                    <td>{{ course.short_description }}</td>
+                    <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
+                    <td>{{ course.short_description|title }}</td>
                 </tr>
             {% endfor %}
         </table>
     </div>
-{% endblock main %}
+{% endblock content %}

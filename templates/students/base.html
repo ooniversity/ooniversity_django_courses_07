@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Студенты - pyBursa{% endblock title %}
+{% block title %}Студенты{% endblock title %}
 
 {% block nav_class_student %}active{% endblock %}
 
-{% block main %}
+{% block content %}
+
     <div class="container">
         <h2>{% block page_header %}{% endblock page_header %}</h2>
         {% block page_content %}
         {% endblock page_content %}
     </div>
 
-{% endblock main %}
+{% endblock content %}
