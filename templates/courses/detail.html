@@ -12,6 +12,13 @@
 
 {% block content %}
 
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-info">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
 
 	<h2>{{ course.name }}</h2>
 	<p>{{ course.description|truncatechars:32 }}</p>
@@ -23,17 +30,8 @@
 
 	{% include "include/coach_table_include.html" with title="Ассистент" instructor=course.assistant %}
 	
+
 	<br/>
-
-	{% if messages %}
-		{% for message in messages %}
-			<div class="alert alert-info">
-				{{ message }}
-			</div>
-		{% endfor %}
-	{% endif %}
-
-
 	<div>
 		<a href="{% url 'courses:add-lesson' course.id %}" class="btn btn-info right">
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
