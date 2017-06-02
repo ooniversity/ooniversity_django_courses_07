@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Student
-from .forms import StudentModelForm
+from students.models import Student
+from students.forms import StudentModelForm
 
 
 def list_view(request):
