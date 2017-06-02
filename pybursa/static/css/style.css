@@ -167,3 +167,24 @@ a.student-btn {
 .student-create select {
 	width: 218px;
 }
+
+.course-create {
+	max-width: 400px;
+}
+
+.course-create input[type=text], input[type=email],  input[type=number], select {
+	float: right;
+}
+
+.course-create textarea {
+	max-width: 400px;
+	max-height: 100px;
+}
+
+.course-edit {
+	margin-left: 10px;
+}
+
+.course-h3 {
+	margin-top: -5px;
+}
