@@ -19,10 +19,10 @@
 
     <h2>Редактирование данных студента</h2>
     <hr>
-    <form class='student-create' method='post'>
+    <form method='post' class='student-create'>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="btn btn-info" value="Изменить">
+        <input type="submit" value="Изменить" class="btn btn-info">
     </form>
 
 {% endblock content %}

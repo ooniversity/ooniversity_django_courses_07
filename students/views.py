@@ -28,7 +28,7 @@ def create(request):
         form = StudentModelForm(request.POST)
         if form.is_valid():
             form.save()
-            fullname = form.cleaned_data['surname'] + ' ' + form.cleaned_data['name']
+            fullname =  form.cleaned_data['name'] + ' ' + form.cleaned_data['surname']
             messages.success(request, 'Student %s has been successfully added.' % fullname)
             return redirect('students:list_view')
     else:
@@ -54,10 +54,9 @@ def edit(request, id):
 def remove(request, id):
     student = Student.objects.get(id=id)
     if request.method == 'POST':
-        fullname = student.name + ' ' + student.surname
         student.delete()
+        fullname = student.name + ' ' + student.surname
         messages.success(request, 'Info on %s has been successfully deleted.' % fullname)
         return redirect('students:list_view')
-
     context = {'student': student}
     return render(request, 'students/remove.html', context)
