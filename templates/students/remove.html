@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Удаления студента{% endblock title %}
+{% block nav_class_student %}active{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>Студент {{ student.name }} {{ student.surname }} будет удален</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Удалить" class="btn btn-danger">
+        </form>
+    </div>
+{% endblock content %}

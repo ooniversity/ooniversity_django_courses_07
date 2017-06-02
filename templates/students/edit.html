@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Редактирование данных студента{% endblock title %}
+{% block nav_class_student %}active{% endblock %}
+{% block content %}
+    {% include "students/succes_message_include.html" %}
+    <div class="container">
+        <h2>Редактирование данных студента</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Изменить" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock content %}
