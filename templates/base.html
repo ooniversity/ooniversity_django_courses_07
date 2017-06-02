@@ -33,7 +33,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="{% block nav_class_index %}{% endblock %}"><a href="{% url 'courses:list_view' %}">Main</a></li>
+            <li class="{% block nav_class_index %}{% endblock %}"><a href="{% url 'courses:index' %}">Main</a></li>
             <li class="{% block nav_class_contact %}{% endblock %}"><a href="{% url 'contact' %}">Contacts</a></li>
             <li class="{% block nav_class_students %}{% endblock %}"><a href="{% url 'students:list_view' %}{% block link_students %}{% endblock %}">Students</a></li>
           </ul>
