@@ -11,10 +11,12 @@
 
     <h2>Добавить занятие</h2>
     <hr>
-    <form method='post' class='course-create'>
+    <form method='post'>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Создать" class="btn btn-info">
+        <input type="submit" value="Создать">
     </form>
 
+<!-- class='course-create' -->
+<!-- class="btn btn-info" -->
 {% endblock content %}
