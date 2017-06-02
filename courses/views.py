@@ -41,13 +41,12 @@ def remove(request,course_id):
     course = get_object_or_404(Course, pk=course_id)
     if request.method=="POST":
         course.delete()
-        messages.success(request, "Course " + course.name + " has been successfully deleted.")
+        messages.success(request, "Course " + course.name + " has been deleted.")
         return redirect('/')
     return render(request,'courses/remove.html',{'course':course})
 
 #Добавления урока
 def add_lesson(request,course_id):
-    course = get_object_or_404(Course, pk=course_id)
     if request.method == "POST":
         form = LessonModelForm(request.POST)
         if form.is_valid():
