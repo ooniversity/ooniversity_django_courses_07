@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>PyBursa - Students</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-	<link href="{% static 'css/style.css' %}" rel="stylesheet">
-   
+	<link href="{% static '/css/style.css' %}" rel="stylesheet">
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -26,67 +26,23 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  <ul class="nav navbar-nav">
-			<li><a href="{% url 'index' %}">Main</a></li>
-			<li><a href="{% url 'contact' %}">Contacts</a></li>
-			<li class="active"><a href="{% url 'student_list' %}">Students</a></li>
+			<li class="{% block menu_class_main %}{% endblock %}">
+                <a href="{% url 'index' %}">Main</a>
+            </li>
+			<li class="{% block menu_class_contacts %}{% endblock %}">
+                <a href="{% url 'contact' %}">Contacts</a>
+            </li>
+			<li class="{% block menu_class_students %}{% endblock %}">
+                <a href="{% url 'students:list_view' %}">Students</a>
+            </li>
 		  </ul>
-		</div>	  
-	</nav>
-	<div class="container text-center">
-		<h1 class="main-title">PyBursa</h1>
-		<h4> Список студентов</h4>
-	
-		<table class="tab1 table table-striped table-bordered table-condensed">
-			<thead>
-				<tr>
-					<th>No</th>
-					<th>Surname</th>
-					<th>Name</th>
-					<th>Address</th>
-					<th>Skype</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><a href="{% url 'student_detail' %}">1</a></td>
-					<td>Plant</td>
-					<td>Denise</td>
-					<td>391 Vine Street Chicago, IL 60631</td>
-					<td>D_Plant</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>Morales</td>
-					<td>Beverly</td>
-					<td>1667 Lightning Point Drive Memphis, TN 38110</td>
-					<td>Morales</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>Aikin</td>
-					<td>Amy</td>
-					<td>2611 Khale Street Folly Beach, SC 29439</td>
-					<td>Amy_R</td>
-				</tr>
-					<tr>
-					<td>4</td>
-					<td>Valenzuela</td>
-					<td>Joshua</td>
-					<td>3148 Fire Access Road Elkin, NC 28621</td>
-					<td>Jvalen</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>Strain</td>
-					<td>Cynthia</td>
-					<td>2560 Ford Street Sunnyvale, CA 94089</td>
-					<td>Stranger</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	
-	
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
