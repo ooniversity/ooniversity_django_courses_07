@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Удаление студента{% endblock title %}
+{% block title %}Удаление курса{% endblock title %}
 {% block nav_class_students %}active{% endblock %}
 
 {% block content %}
 
       <div class="jumbotron">
         <div class="container">
-          <h4>Внимание! Студент {{ student.name }} {{ student.surname }} будет удален</h4>
+          <h4>Внимание! Курс {{ course.name }} будет удален</h4>
         <form method="post">
                      {% csrf_token %}
                      {{ form.as_p }}
