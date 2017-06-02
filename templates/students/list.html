@@ -18,9 +18,6 @@
               <div class="row col-md-12  custyle">
 
               <table class="table table-striped custab" style="margin-top:20px;margin-bottom:20px">
-                          <a href="{% url 'students:create' %}" class="btn btn-primary" >
-                <i class="glyphicon glyphicon-plus"></i>Добавить нового студента
-            </a>
               <thead>
               <h2>Список студентов</h2>
                   <tr>
@@ -45,17 +42,20 @@
                             {% endfor %}</td>
                     <td>
                         <a href="{% url 'students:edit' student.id %}" class="btn btn-sm btn-primary" >
-                            <i class="glyphicon glyphicon-edit"></i> Изменить
+                            <i class="glyphicon glyphicon-edit"></i>
                         </a>
                     </td>
                     <td>
                         <a href="{% url 'students:remove' student.id %}" class="btn btn-sm btn-danger" >
-                            <i class="glyphicon glyphicon-remove"></i> Удалить
+                            <i class="glyphicon glyphicon-remove"></i>
                         </a>
                     </td>
                 </tr>
                   {% endfor %}
               </table>
+            <a href="{% url 'students:add' %}" class="btn btn-primary" >
+                <i class="glyphicon glyphicon-plus"></i>Добавить нового студента
+            </a>
               </div>
 
             </div>
