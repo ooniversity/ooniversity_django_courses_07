@@ -1,29 +1,8 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
-</head>
-<body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="{% url 'index' %}">Ooniversity</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li><a href="{% url 'index' %}">Главная</a></li>
-          <li><a href="{% url 'contact' %}">Контакты</a></li>
-          <li class="active"><a href="{% url 'students:list_view'%}">Студенты</a></li>
-            <li><a href="{% url 'results' %}">Equation</a></li>
-        </ul>
-      </div>
-    </nav>
+{% extends "students/base.html" %}
 
-    <div class="container">
-        <h2>Список студентов</h2>
+{% block page_header %}Список студентов{% endblock %}
+
+{% block page_content %}
         <table class="table table-striped">
             <tr>
                 <th>#</th>
@@ -46,9 +25,4 @@
                 </tr>
             {% endfor %}
         </table>
-    </div>
-
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-</body>
-</html>
+{% endblock page_content %}

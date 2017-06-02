@@ -1,52 +1,23 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
-</head>
-<body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="{% url 'index' %}">Ooniversity</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li><a href="{% url 'index' %}">Главная</a></li>
-          <li><a href="{% url 'contact' %}">Контакты</a></li>
-          <li><a href="{% url 'students:list_view'%}?course_id={{ course.id }}">Студенты</a></li>
-            <li><a href="{% url 'results' %}">Equation</a></li>
-        </ul>
-      </div>
-    </nav>
+{% extends "base.html" %}
+
+{% block title %}Информация о курса{% endblock %}
+
+{% block course_id %}?course_id={{ course.id }}{% endblock course_id %}
+
+{% block content %}
+
+    {% include "include/ooniversitydesc_include.html" %}
 
     <div class="container">
       <div class="jumbotron">
         <h1>{{ course.name }}</h1>
-        <p>{{ course.description }}</p>
+        <p>{{ course.description|truncatechars:32 }}</p>
       </div>
     </div>
 
-    <div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading">Учитель</div>
-      <div class="panel-body">
-          <p><a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a></p>
-          <p>{{ course.coach.description }}</p>
-      </div>
-    </div>
-    </div>
-        <div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading">Ассистент</div>
-      <div class="panel-body">
-          <p><a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a></p>
-          <p>{{ course.assistant.description }}</p>
-      </div>
-    </div>
-    </div>
+    {% include "include/instructor_include.html" with block_title="Учитель" instructor=course.coach %}
+    {% include "include/instructor_include.html" with block_title="Ассистент!" instructor=course.assistant %}
+
     <div class="container">
         <h2>План курса</h2>
         <table class="table table-striped">
@@ -64,8 +35,4 @@
             {% endfor %}
         </table>
     </div>
-
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-</body>
-</html>
+{% endblock content %}
