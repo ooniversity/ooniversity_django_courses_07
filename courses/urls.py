@@ -5,4 +5,7 @@ app_name = 'courses'
 
 urlpatterns = [
     url(r'^(?P<id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^add/$', views.add, name='add'),
+    url(r'^edit/(?P<id>[0-9]+)/$', views.edit, name='edit'),
+    url(r'^remove/(?P<id>[0-9]+)/$', views.remove, name='remove'),
 ]
