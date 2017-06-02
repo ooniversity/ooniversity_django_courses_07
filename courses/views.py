@@ -2,10 +2,10 @@ from django.shortcuts import render
 from courses.models import Course, Lesson
 
 
-def list_view(request):
+def index(request):
 
     courses_list = Course.objects.all()
-    return render(request, "courses/list.html", {"courses_list": courses_list})
+    return render(request, "courses/index.html", {"courses_list": courses_list})
 
 
 def detail(request, course_id):
