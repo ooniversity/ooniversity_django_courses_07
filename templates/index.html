@@ -9,7 +9,9 @@
 {% block content %}
     {% include 'include/description_include.html' %}
            <div class="jumbotron">
+
                <div class="container">
+
                   <div class="row col-xs-12  custyle">
                   <table class="table table-striped custab" style=" margin-top:20px;margin-bottom:20px">
                   <thead>
@@ -17,17 +19,29 @@
                       <tr>
                           <th>Курс</th>
                           <th>Описание</th>
+                          <th></th>
+                          <th></th>
                       </tr>
                   </thead>
                   {% for course in courses %}
                     <tr>
                         <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
                         <td>{{ course.short_description|title }}</td>
+                        <td>
+                            <a href="{% url 'courses:edit' course.id %}" class="btn btn-sm btn-primary" >
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'courses:remove' course.id %}" class="btn btn-sm btn-danger" >
+                                <i class="glyphicon glyphicon-remove"></i>
+                            </a>
+                        </td>
                     </tr>
                   {% endfor %}
                   </table>
             <a href="{% url 'courses:add' %}" class="btn btn-primary" >
-                <i class="glyphicon glyphicon-plus"></i>Добавить нового студента
+                <i class="glyphicon glyphicon-plus"></i>Добавить новый курс
             </a>
                   </div>
                </div>

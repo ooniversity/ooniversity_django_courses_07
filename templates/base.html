@@ -40,6 +40,15 @@
     </nav>
 
   <div class="container">
+     {% if messages %}
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                    {% for message in messages %}
+                    {{ message }}
+                    {% endfor %}
+              </div>
+            </div>
+    {% endif %}
     {% block content %}
     {% endblock content %}
   </div>

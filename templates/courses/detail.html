@@ -15,6 +15,7 @@
     <div class="panel panel-info">
         <div class="panel-heading"><b>Преподаватели и план курса</b></div>
     <div class="panel-body">
+    {% if course.coach %}
         <div class="panel panel-success">
           <div class="panel-heading">Учитель</div>
           <div class="panel-body">
@@ -22,6 +23,8 @@
               {{ course.coach.description }}
           </div>
         </div>
+    {% endif %}
+    {% if course.assistant %}
         <div class="panel panel-success">
           <div class="panel-heading">Ассистент</div>
           <div class="panel-body">
@@ -29,8 +32,12 @@
               {{ course.assistant.description }}
           </div>
         </div>
+    {% endif %}
             <div class="panel panel-success">
           <div class="panel-heading"><h5>План курса</h5></div>
+                <a href="{% url 'courses:add_lesson' course.id %}" class="btn btn-primary" >
+                    <i class="glyphicon glyphicon-plus"></i>Добавить занятие
+                </a>
                   <table class="table table-striped ">
                       <thead>
                           <tr>
