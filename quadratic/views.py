@@ -33,5 +33,5 @@ def quadratic_results(request):
     if flag and d>=0:
         x1=(-1*b + sqrt(d)) / float(2*a)
         x2=(-1*b - sqrt(d)) / float(2*a)
-    return render(request,'quadratic/results.html',{'a':a,'b':b,'c':c, 'D':d,'x1':x1,'x2':x2,
+    return render(request, 'quadratic/results.html', {'a':a, 'b':b, 'c':c, 'D':d, 'x1':x1, 'x2':x2,
                                           'c1':c1,'c2':c2,'c3':c3})

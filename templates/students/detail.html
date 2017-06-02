@@ -1,10 +1,9 @@
-{% extends "students/base.html" %}
-
-{% block title %}Сведени о студенте{% endblock title %}
-
-{% block page_header %}{{ student.name }} {{ student.surname }}{% endblock page_header %}
-
-{% block page_content %}
+{% extends "base.html" %}
+{% block title %}Сведение о студенте{% endblock title %}
+{% block nav_class_student %}active{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>{{ student.name }} {{ student.surname }}</h2>
         <table class="table table-striped">
             <tr>
                 <th>Дата рождения</th>
@@ -35,4 +34,5 @@
                 </td>
             </tr>
         </table>
-{% endblock page_content %}
+    </div>
+{% endblock content %}
