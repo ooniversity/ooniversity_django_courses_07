@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Редактирование данных студента{% endblock title %}
-{% block nav_class_student %}active{% endblock %}
+{% block title %}Редактирование курса{% endblock title %}
+
 {% block content %}
     <div class="container">
-        <h2>Редактирование данных студента</h2>
+        <h2>Редактирование курса</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
