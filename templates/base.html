@@ -33,22 +33,17 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'index' %}">Main</a></li>
-            <li><a href="{% url 'contact' %}">Contacts</a></li>
-            <li><a href="{% url 'student_list' %}">Students</a></li>
+            <li class="{% block nav_class_index %}{% endblock %}"><a href="{% url 'courses:list_view' %}">Main</a></li>
+            <li class="{% block nav_class_contact %}{% endblock %}"><a href="{% url 'contact' %}">Contacts</a></li>
+            <li class="{% block nav_class_students %}{% endblock %}"><a href="{% url 'students:list_view' %}{% block link_students %}{% endblock %}">Students</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
+{% block content %}
     <div class="container main_text">
-        <div class="first_title">
-            <h1>PyBursa - мы лучшие!</h1>
-            <h2>Description</h2>
-        </div>
-        <h3>Курс по WEB-разработке</h3>
-        <p>Уважаемые студенты!</p>
-        <p>Теоретические материалы первой недели курса по Django вам станут доступны в воскресенье 30.04.2017.</p>
+        <h1>PyBursa - мы лучшие!</h1>
         <p>Курс подразумевает, что студенты уже освоили базовый python.
         В рамках курса даются азы html/css, достаточные для формирования html страниц браузеру, но не достаточные для профессиональной верстки.
         Глубина освоения django будет достаточной для самостоятельного написания web-проектов, которые содержат редактируемые страницы, структуру
@@ -66,17 +61,27 @@
         </div>
 
         <div class="program">
-          <h1>Program</h1>
-          <p>Материал разбит на три модуля:</p>
-          <ul>
-           <li>Основы ООП в python </li>
-           <li>Работа с файлами</li>
-           <li>Работа с модулем datetime</li>
-          </ul>
+          <h2>Список курсов</h2>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Курс</th>
+                <th>Описание</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for course in courses_list %}
+              <tr>
+                <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
+                <td>{{ course.short_description }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
 
     </div>
-
+{% endblock content %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
