@@ -1,0 +1,86 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{% block title %}pyBursa{% endblock title %}</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'index' %}">Main</a></li>
+            <li><a href="{% url 'contact' %}">Contacts</a></li>
+            <li><a href="{% url 'student_list' %}">Students</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container main_text">
+        <div class="first_title">
+            <h1>PyBursa - мы лучшие!</h1>
+            <h2>Description</h2>
+        </div>
+        <h3>Курс по WEB-разработке</h3>
+        <p>Уважаемые студенты!</p>
+        <p>Теоретические материалы первой недели курса по Django вам станут доступны в воскресенье 30.04.2017.</p>
+        <p>Курс подразумевает, что студенты уже освоили базовый python.
+        В рамках курса даются азы html/css, достаточные для формирования html страниц браузеру, но не достаточные для профессиональной верстки.
+        Глубина освоения django будет достаточной для самостоятельного написания web-проектов, которые содержат редактируемые страницы, структуру
+        специфических данных, отображение их на фронтенде и создание-редактирование этих данных. Все разделы django будут освещены.</p>
+        <div class="media">
+            <div class="media-left">
+              <a href="https://dou.ua/users/dixon-che/">
+                <img class="media-object" src="https://s.dou.ua/img/avatars/100x100_8318.png" alt="Алексей Радченко">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Инструктор курса</h4>
+              Алексей Радченко
+            </div>
+        </div>
+
+        <div class="program">
+          <h1>Program</h1>
+          <p>Материал разбит на три модуля:</p>
+          <ul>
+           <li>Основы ООП в python </li>
+           <li>Работа с файлами</li>
+           <li>Работа с модулем datetime</li>
+          </ul>
+        </div>
+
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+  </body>
+</html>

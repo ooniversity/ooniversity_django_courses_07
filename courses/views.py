@@ -11,6 +11,7 @@ def index(request):
 def detail(request, course_id): 
 
     course_obj = Course.objects.get(id=course_id)
+    #lessons_list = course_obj.lesson_set.all()  #course_obj.lesson_set.all
     lessons_list = Lesson.objects.filter(course=course_id)
     return render(request, "courses/detail.html", {"course": course_obj, "lessons_list": lessons_list })
 
