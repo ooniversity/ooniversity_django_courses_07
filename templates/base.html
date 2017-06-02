@@ -20,6 +20,8 @@
               <a href=" {% url 'contact' %} ">Контакты</a></li>
           <li class="{% block nav_class_student %}{% endblock %}">
               <a href=" {% url 'students:list_view'%}{% block course_id %}{% endblock %}">Студенты</a></li>
+          <li class="{% block nav_class_quadratic %}{% endblock %}">
+              <a href=" {% url 'results'%}">Квадратное уравнения</a></li>
         </ul>
       </div>
     </nav>

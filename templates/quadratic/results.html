@@ -1,25 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Квадратное уравнения</title>
-</head>
-<body>
-    <h2>Квадратное уравнения a*x*x + b*x + c*x = 0</h2>
-    <ul>
-        <li>a = {{ a }}{% if c1 != None %} <br> {{ c1 }} {% endif %}</li>
-        <li>b = {{ b }}{% if c2 != None %} <br> {{ c2 }} {% endif %}</li>
-        <li>c = {{ c }}{% if c3 != None %} <br> {{ c3 }} {% endif %}</li>
-    </ul>
-    {% if D != None %}
-        <h4>Дискриминант: {{ D }}</h4>
-        <h3>{% if D > 0 %}
-            Квадратное уравнение имеет два действительных корня: x1 = {{ x1 }}, x2 = {{ x2 }}
-            {% elif D == 0 %}
-            Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {{ x1 }}
-            {% elif D < 0 %}
-            Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.
-        {% endif %}</h3>
-    {% endif %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Квадратное уравнения{% endblock title %}
+{% block nav_class_quadratic %}active{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <div class="jumbotron">
+        <h2>Квадратное уравнения a*x*x + b*x + c*x = 0</h2>
+        <form method="get">
+            {{ form.as_p }}
+            <input type="submit" value="Решить" class="btn btn-primary">
+        </form>
+
+        {% if result.d != empty %}
+            <h4>Дискриминант: {{ result.d }}</h4>
+            <h3>{% if result.d > 0 %}
+                Квадратное уравнение имеет два действительных корня: x1 = {{ result.x1 }}, x2 = {{ result.x2 }}
+                {% elif result.d == 0 %}
+                Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {{ result.x }}
+                {% elif result.d < 0 %}
+                Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.
+            {% endif %}</h3>
+        {% endif %}
+    </div>
+    </div>
+{% endblock content %}

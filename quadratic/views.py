@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from math import sqrt
+from quadratic.forms import QuadraticForm
+from quadratic.quadratic import QuadraticEquation
 #Инт в стринг с исключениями и переопределениям для квадротного уравнения
 def int_to_str(num):
     flag=True
@@ -19,19 +21,14 @@ def int_to_str(num):
 
 #Квадратное уравнения вьюха
 def quadratic_results(request):
-    a,b,c=request.GET.get('a'),request.GET.get('b'),request.GET.get('c');
-    a,f1,c1=int_to_str(a)
-    if a == 0:
-        c1 ='коэффициент при первом слагаемом уравнения не может быть равным нулю'
-        f1=False
-    b, f2,c2 = int_to_str(b)
-    c, f3,c3 = int_to_str(c)
-    flag=f1 and f2 and f3
-    d = b*b-4*a*c if flag else None
-    message = ''
-    x1=x2=None
-    if flag and d>=0:
-        x1=(-1*b + sqrt(d)) / float(2*a)
-        x2=(-1*b - sqrt(d)) / float(2*a)
-    return render(request, 'quadratic/results.html', {'a':a, 'b':b, 'c':c, 'D':d, 'x1':x1, 'x2':x2,
-                                          'c1':c1,'c2':c2,'c3':c3})
+    if request.GET == {}:
+        form = QuadraticForm()
+        context = {'form': form}
+    else:
+        form = QuadraticForm(request.GET)
+        context = {'form': form}
+        if form.is_valid():
+            result = QuadraticEquation(**form.cleaned_data)
+            result.solve()
+            context['result'] = result
+    return render(request, 'quadratic/results.html', context)
