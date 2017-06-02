@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block title %}Подтверждение удаления курса{% endblock title %}
+
+
+{% block nav %}{% include "include/nav_include.html" with active_main='active' %}{% endblock nav %}
+
+
+{% block content %}
+<div class="container">
+          <div class="container main-container">
+             <div class="row">
+                 <div class="col-lg-8">
+                     <h2>Курс {{ course.name }} будет удален</h2>
+                       <div class="table-responsive">
+                         <form method="post">
+                          {% csrf_token %}
+                          <input type="submit" value="Удалить">
+                          </form>
+                       </div>
+                 </div>
+             </div>
+          </div>
+</div>
+{% endblock content %}
