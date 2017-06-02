@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 
+
 {% block title %}Добро пожаловать на ItBursa Django{% endblock title %}
+
+
+{% block nav_class_index %}active{% endblock %}
+
 
 {% block content %}
 <div class="container main_text">
-    <div class="first_title">
-        <h1>PyBursa - мы лучшие!</h1>
-        <h2>Description</h2>
-    </div>
-    <h3>Курс по WEB-разработке</h3>
-    <p>Уважаемые студенты!</p>
-    <p>Теоретические материалы первой недели курса по Django вам станут доступны в воскресенье 30.04.2017.</p>
+    <h1>PyBursa - мы лучшие!</h1>
     <p>Курс подразумевает, что студенты уже освоили базовый python.
     В рамках курса даются азы html/css, достаточные для формирования html страниц браузеру, но не достаточные для профессиональной верстки.
     Глубина освоения django будет достаточной для самостоятельного написания web-проектов, которые содержат редактируемые страницы, структуру
@@ -28,13 +27,23 @@
     </div>
 
     <div class="program">
-      <h1>Program</h1>
-      <p>Материал разбит на три модуля:</p>
-      <ul>
-       <li>Основы ООП в python </li>
-       <li>Работа с файлами</li>
-       <li>Работа с модулем datetime</li>
-      </ul>
+      <h2>Список курсов</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Курс</th>
+            <th>Описание</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for course in courses_list %}
+          <tr>
+            <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
+            <td>{{ course.short_description|title }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
 
 </div>

@@ -1,11 +1,12 @@
-{% load staticfiles %}<!DOCTYPE html>
+{% load staticfiles %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Добро пожаловать на ItBursa Django</title>
+    <title>{% block title %}pyBursa{% endblock title %}</title>
 
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
@@ -32,14 +33,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'courses:index' %}">Main</a></li>
-            <li><a href="{% url 'contact' %}">Contacts</a></li>
-            <li><a href="{% url 'students:list_view' %}">Students</a></li>
+            <li class="{% block nav_class_index %}{% endblock %}"><a href="{% url 'courses:list_view' %}">Main</a></li>
+            <li class="{% block nav_class_contact %}{% endblock %}"><a href="{% url 'contact' %}">Contacts</a></li>
+            <li class="{% block nav_class_students %}{% endblock %}"><a href="{% url 'students:list_view' %}{% block link_students %}{% endblock %}">Students</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
+{% block content %}
     <div class="container main_text">
         <h1>PyBursa - мы лучшие!</h1>
         <p>Курс подразумевает, что студенты уже освоили базовый python.
@@ -79,7 +81,7 @@
         </div>
 
     </div>
-
+{% endblock content %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

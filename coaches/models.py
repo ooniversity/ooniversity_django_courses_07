@@ -22,7 +22,3 @@ class Coach(models.Model):
 
     def full_name(self):
         return self.user.get_full_name()
-
-    def reformat_birthdate(self):
-        return self.date_of_birth.strftime("%b. %d, %Y")
-

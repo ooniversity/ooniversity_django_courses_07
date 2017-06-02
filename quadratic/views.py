@@ -2,7 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from math import sqrt
 
+from django import forms
+
+class QuadraticForm(forms.Form):
+    a = forms.CharField(max_length=10)
+    b = forms.CharField(max_length=10)
+    c = forms.CharField(max_length=10)
+
 def quadratic_results(request): 
+    form = QuadraticForm()
+    context = {'form': form }
     a = {'value': request.GET.get('a', ''), 'message': '', 'ok': True}
     b = {'value': request.GET.get('b', ''), 'message': '', 'ok': True}
     c = {'value': request.GET.get('c', ''), 'message': '', 'ok': True}
@@ -28,7 +37,7 @@ def quadratic_results(request):
         else:
             d['message'] = 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
 
-    return render(request, "results.html", { 'a': a, 'b': b, 'c': c, 'd': d, })
+    return render(request, "results.html", { 'a': a, 'b': b, 'c': c, 'd': d, 'context': context })
 
 
 def check_param(param):
