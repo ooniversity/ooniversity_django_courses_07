@@ -13,34 +13,50 @@
 {% block content %}
 
 
-<h2>{{ course.name }}</h2>
-<p>{{ course.description|truncatechars:32 }}</p>
-<h3>Преподаватели</h3>
+	<h2>{{ course.name }}</h2>
+	<p>{{ course.description|truncatechars:32 }}</p>
+	<h3>Преподаватели</h3>
 
 
-{% include "include/coach_table_include.html" with title="Учитель" instructor=course.coach %}
+	{% include "include/coach_table_include.html" with title="Учитель" instructor=course.coach %}
 
 
-{% include "include/coach_table_include.html" with title="Ассистент" instructor=course.assistant %}
+	{% include "include/coach_table_include.html" with title="Ассистент" instructor=course.assistant %}
+	
+	<br/>
+
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
 
 
-<h3>План курса</h3>
-<table class="table-striped table table-hover">
-	<thead>
-		<tr class="success">
-			<th>#</th>
-			<th>Курс</th>
-			<th>Описание</th>
+	<div>
+		<a href="{% url 'courses:add-lesson' course.id %}" class="btn btn-info right">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	 		Добавить занятие
+	 	</a>
+		<h3>План курса</h3>
+	</div>
+	<table class="table-striped table table-hover">
+		<thead>
+			<tr class="success">
+				<th>#</th>
+				<th>Курс</th>
+				<th>Описание</th>
+			</tr>
+		</thead>
+		{% for lesson in lessons %}
+		<tr>
+			<td>{{ lesson.order }}</td>
+			<td>{{ lesson.subject }}</td>
+			<td>{{ lesson.description }}</td>
 		</tr>
-	</thead>
-	{% for lesson in lessons %}
-	<tr>
-		<td>{{ lesson.order }}</td>
-		<td>{{ lesson.subject }}</td>
-		<td>{{ lesson.description }}</td>
-	</tr>
-	{% endfor %}
-</table>
+		{% endfor %}
+	</table>
 
 
 {% endblock content %}

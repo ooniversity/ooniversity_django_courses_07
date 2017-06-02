@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block title %}Добавить занятие{% endblock title %}
+
+
+{% block nav_main %}active{% endblock %}
+
+
+{% block content %}
+
+    <h2>Добавить занятие</h2>
+    <hr>
+    <form method='post' class='course-create'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Создать" class="btn btn-info">
+    </form>
+
+{% endblock content %}
