@@ -8,8 +8,8 @@
             <h1>{{ course.name }}</h1>
             <p>{{ course.description|truncatechars:32 }}</p>
 
-           {% include "include/inc_instructor.html" with block_title="Учитель" instructor=course.coach %}
-           {% include "include/inc_instructor.html" with block_title="Ассистент" instructor=course.assistant %}
+           {% include "include/instructor_include.html" with block_title="Учитель" instructor=course.coach %}
+           {% include "include/instructor_include.html" with block_title="Ассистент" instructor=course.assistant %}
 
 
             {% if course_lessons %}
