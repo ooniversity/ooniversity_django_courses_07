@@ -9,7 +9,7 @@ class CourseModelForm(forms.ModelForm):
 
 
 class LessonModelForm(forms.ModelForm):
-    # order = forms.IntegerField(localize=True)
+    order = forms.IntegerField(localize=True)
     class Meta:
         model = Lesson
         fields = '__all__'
