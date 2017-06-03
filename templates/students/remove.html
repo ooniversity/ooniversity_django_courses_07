@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block title %}Students list {% endblock title %}
+
+{% block content %}
+    <div class="container">
+{% if messages %}
+                 <div class="alert alert-success" role="alert">
+                   {% for message in messages %}
+                   {{ message }}
+                   {% endfor %}
+                 </div>
+{% endif %}
+    
+	<h2>Студент {{ student.name }} {{ student.surname }} будет удален</h2>
+                       <div class="table-responsive">
+                         <form method="post">
+                          {% csrf_token %}
+                          <input type="submit" value="Удалить">
+                          </form>
+    </div>			
+{% endblock content %}  
+	  
+     

@@ -8,6 +8,17 @@
 
 {% block content %}
     <div class="container">
+    
+{% if messages %}
+                 <div class="alert alert-success" role="alert">
+                   {% for message in messages %}
+                   {{ message }}
+                   {% endfor %}
+		 </div>
+{% endif %}
+    
+    <p><a class="btn btn-primary glyphicon"
+                   href="{% url 'students:add' %}" role="button"> Добавить нового студента</a></p><br/>
 	<h2>Список студентов</h2>
                 <table class="table table-hover"> 
 				<thead> 
@@ -28,6 +39,10 @@
 						<td>{{ item.skype }}</td>
 						<td>{% for i in item.courses.all %}<a href="{% url 'courses:detail' i.id %}">{{ i.name }}</a>
                             <br>{% endfor %}</td>
+			                         <td><a class="btn btn-primary glyphicon"
+                             href="{% url 'students:edit' item.id %}" role="button"> Изменить</a></td>
+			                         <td><a class="btn btn-primary glyphicon"
++                            href="{% url 'students:remove' item.id %}" role="button"> Удалить</a></td>
 					</tr>
 					{% endfor %}
 

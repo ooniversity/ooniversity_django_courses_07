@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block title %}Students list {% endblock title %}
+
+{% block content %}
+    <div class="container">
+{% if messages %}
+                 <div class="alert alert-success" role="alert">
+                   {% for message in messages %}
+                   {{ message }}
+                   {% endfor %}
+                 </div>
+{% endif %}
+    
+	<h2>Добавить студента</h2>
+           <form method="post">
+	{% csrf_token %}
+                   {{ form.as_p }}
+		   <input type="submit" value="добавить">
+	</form>     
+    </div>			
+{% endblock content %}  
+	  
+     
