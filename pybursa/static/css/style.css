@@ -156,6 +156,10 @@ a.student-btn {
 	max-width: 350px;
 }
 
+td.buttons {
+	max-width: 103px; 
+}
+
 .student-create input[type=text], .student-create input[type=email],
 .student-create select {
 	float: right;
