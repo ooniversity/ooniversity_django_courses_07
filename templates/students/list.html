@@ -8,36 +8,49 @@
 
 
 {% block content %}
-			{% if students_list %}
-			<table class="tab1 table table-striped table-bordered table-condensed">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Фамилия, имя</th>
-						<th>Адрес</th>
-						<th>Skype</th>
-						<th>Курсы</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for student in students_list %}
-						<tr>
-							<td>{{ student.id }}</td>
-							<td><a href="{% url 'students:detail' student.id %}">{{student.name}} {{student.surname}}</a></td>
-							<td>{{ student.address }}</td>
-							<td>{{ student.skype }}</td>
-							<td>
-								{% for course in student.courses.all %}
-								<a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
-								{%endfor%}
-							</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-			{% else %}
-			<p>No students are available.</p>
-			{% endif %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'students:add' %}">Добавить нового студента</a>
+    {% if students_list %}
+    <table class="tab1 table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Фамилия, имя</th>
+                <th>Адрес</th>
+                <th>Skype</th>
+                <th>Курсы</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students_list %}
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td><a href="{% url 'students:detail' student.id %}">{{student.name}} {{student.surname}}</a></td>
+                    <td>{{ student.address }}</td>
+                    <td>{{ student.skype }}</td>
+                    <td>
+                        {% for course in student.courses.all %}
+                        <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
+                        {%endfor%}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-xs" href="{% url 'students:edit' student.id %}">Изменить</a>
+                        <a class="btn btn-primary btn-xs" href="{% url 'students:remove' student.id %}">Удалить</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No students are available.</p>
+    {% endif %}
 
-		</div>
+</div>
 {% endblock content %}

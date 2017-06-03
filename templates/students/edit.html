@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block title %}Students edit{% endblock %}
+
+
+{% block menu_class_students %}active{% endblock %}
+
+
+{% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form method="post">
+        <table>
+            {{ model_form.as_table }}
+        </table>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock content %}
