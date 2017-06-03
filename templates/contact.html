@@ -1,23 +1,10 @@
 {% extends "base.html" %}
-{% load static %}
 
+{% load static %}
 
 {% block title %}Our contacts{% endblock title %}	    
 
-{% block menu %}
-
-    <div class="blog-masthead">
-      <div class="container">
-
-        <nav class="blog-nav">
-          <a class="blog-nav-item" href="{% url 'index' %}">Main</a>
-          <a class="blog-nav-item active" href="{% url 'contact' %}">Contacts</a>
-          <a class="blog-nav-item" href="{% url 'students:list_view' %}">Students</a>
-       </nav>
-      </div>
-    </div>
-    
-{% endblock menu %}
+{% block nav_contacts_active %} active{% endblock nav_contacts_active %}
 
 {% block content %}
 
