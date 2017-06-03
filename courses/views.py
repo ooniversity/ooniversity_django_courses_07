@@ -11,8 +11,8 @@ def detail(request,course_id):
     lessons = Lesson.objects.filter(course__id=course_id)
     return render(request, 'courses/detail.html', {'course':course, 'lessons':lessons})
 
-#создание курса
-def create(request):
+#Добавлении курса
+def add(request):
     if request.method == "POST":
         form = CourseModelForm(request.POST)
         if form.is_valid():
@@ -23,7 +23,7 @@ def create(request):
         form = CourseModelForm()
     return render(request,'courses/add.html',{'form':form})
 
-#Редактирования курса
+#Изменении курса
 def edit(request,course_id):
     course = get_object_or_404(Course,pk=course_id)
     if request.method == "POST":
