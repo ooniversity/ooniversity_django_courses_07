@@ -8,5 +8,5 @@ class CourseModelForm(forms.ModelForm):
 
 class LessonModelForm(forms.ModelForm):
     class Meta:
-        model=Lesson
-        exclude=['']
+        model = Lesson
+        fields = "__all__"
