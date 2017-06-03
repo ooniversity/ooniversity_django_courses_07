@@ -5,6 +5,13 @@
 
 
 {% block content %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <a class="btn btn-primary" href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
             <h1>{{ course.name }}</h1>
             <p>{{ course.description|truncatechars:32 }}</p>
