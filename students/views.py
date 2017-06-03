@@ -35,7 +35,7 @@ def create(request):
             data = form.cleaned_data
             text_for_success = 'Student ' + data['name'] + ' ' + data['surname'] + ' has been successfully added.'
             messages.success(request, text_for_success)
-            return redirect("/students/")
+            return redirect("students:list_view")
     else:
         form = StudentModelForm()
     return render(request, 'students/add.html', {'form': form})
@@ -49,7 +49,7 @@ def edit(request, student_id):
             data = form.cleaned_data
             text_for_success = 'Info on the student has been successfully changed.'
             messages.success(request, text_for_success)
-            return render(request, 'students/edit.html', {'form': form})
+            return redirect('students:edit', id=student_id)
     else:
         form = StudentModelForm(instance=edit_student)
     return render(request, 'students/edit.html', {'form': form})
