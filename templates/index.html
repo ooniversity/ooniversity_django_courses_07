@@ -8,7 +8,16 @@
 
 
 {% block content %}
-	<div class="text-center">
+    {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'courses:add' %}">Добавить новый курс</a>
+
+    <div class="text-center">
 		<h1 class="main-title">PyBursa</h1>
 		<h2>Description</h2>
 		<p class="desc">some text, <a href="https://courses.itbursa.com">some link</a></p>
@@ -34,6 +43,10 @@
 					<tr>
 						<td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
 						<td>{{ course.short_description|title }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-xs" href="{% url 'courses:edit' course.id %}">Изменить</a>
+                            <a class="btn btn-primary btn-xs" href="{% url 'courses:remove' course.id %}">Удалить</a>
+                        </td>
 					</tr>
 				{% endfor %}
 			</tbody>
