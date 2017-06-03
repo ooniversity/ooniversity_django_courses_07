@@ -16,7 +16,7 @@ class Course(models.Model):
 class Lesson(models.Model):
     subject = models.CharField(max_length=255)
     description = models.TextField()
-    course = models.ForeignKey(Course, default=1)
+    course = models.ForeignKey(Course)
     order = models.PositiveIntegerField()
 
     def __str__(self):
