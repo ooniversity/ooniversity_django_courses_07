@@ -10,7 +10,7 @@
     <meta name="author" content="">
     
 
-    <title>{% block title %} {% endblock title %}</title>
+    <title>{% block title %}Base{% endblock title %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -20,7 +20,19 @@
   </head>
 
 <body>
-     {% block menu %}{% endblock menu %}
+    
+     <div class="blog-masthead">
+      <div class="container">
+
+        <nav class="blog-nav">
+     <a class="page-nav-item{% block nav_main_active %}{% endblock nav_main_active %}" href="{% url 'index' %}">Main</a>
+     <a class="page-nav-item{% block nav_contacts_active %}{% endblock nav_contacts_active %}" href="{% url 'contact' %}">Contacts</a>
+     <a class="page-nav-item{% block nav_students_active %}{% endblock nav_students_active %}" href="{% url 'students:list_view' %}">Students</a>
+        </nav>
+      </div>
+     </div>
+     
+ 
     
      
      {% block content %}{% endblock content %}
@@ -46,4 +58,4 @@
     
 </body>
 </html>
-</html>
+
