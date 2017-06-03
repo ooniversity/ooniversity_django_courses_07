@@ -47,10 +47,9 @@ def add_lesson(request, id):
     if request.method == 'POST':
         form = LessonModelForm(request.POST)
         if form.is_valid():
-            form.save()
-            subject = form.cleaned_data['subject']
-            messages.success(request, ('Lesson %s has been successfully added.' % subject))
-            return redirect('courses:detail', id)
+            lesson = form.save()
+            messages.success(request, ('Lesson %s has been successfully added.' % lesson.subject))
+            return redirect('courses:detail', lesson.course.id)
     context = {'form': form, 'course': course}
     return render(request, 'courses/add_lesson.html', context)
 
