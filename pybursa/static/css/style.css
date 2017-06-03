@@ -156,7 +156,8 @@ a.student-btn {
 	max-width: 350px;
 }
 
-.student-create input[type=text], input[type=email], select {
+.student-create input[type=text], .student-create input[type=email],
+.student-create select {
 	float: right;
 }
 
@@ -172,7 +173,8 @@ a.student-btn {
 	max-width: 400px;
 }
 
-.course-create input[type=text], input[type=email],  input[type=number], select {
+.course-create input[type=text], .course-create input[type=number],
+.course-create select {
 	float: right;
 }
 
