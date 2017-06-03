@@ -15,14 +15,23 @@
 		<br>
 			<h1>Students of ItBursa course</h1>
 			<p>Here is list of students of ItBursa 2017</p>
+			{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+					<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+			<a href="{% url 'students:add' %}"><button type="button" class="btn btn-success">Add new student</button></a>
 			<table class="table table-hover"> 
 				<thead> 
 					<tr> 
 						<th>#</th>
-						<th>фамилия имя</th>
-						<th>адрес</th>
+						<th>surname name</th>
+						<th>address</th>
 						<th>skype</th>
-						<th>курсы</th>
+						<th>courses</th>
+						<th></th>
 					</tr> 
 				</thead> 
 				<tbody>
@@ -34,6 +43,11 @@
 						<td>{{ item.skype }}</td>
 						<td>{% for i in item.courses.all %}<a href="{% url 'courses:detail' i.id %}">{{ i.name }}</a>
                             <br>{% endfor %}</td>
+						<td>
+						  <a href="{% url 'students:edit' item.id %}">
+							<button type="button" class="btn btn-info">Edit</button>
+						  </a>
+						</td>
 					</tr>
 					{% endfor %}
 
