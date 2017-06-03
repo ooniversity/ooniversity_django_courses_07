@@ -21,7 +21,7 @@
     <div class="container">
         <h2>План курса</h2>
 
-        <p><a class="btn btn-primary" href="{% url 'courses:add_lesson' course_id=course.id %}" role="button">
+        <p><a class="btn btn-primary" href="{% url 'courses:add-lesson' course_id=course.id %}" role="button">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         Добавить занятие</a></p>
 
@@ -33,7 +33,7 @@
             </tr>
             {% for lesson in lessons %}
                 <tr>
-                    <td>{{ forloop.counter }}</td>
+                    <td>{{ lesson.order }}</td>
                     <td>{{ lesson.subject }}</td>
                     <td>{{ lesson.description }}</td>
                 </tr>
