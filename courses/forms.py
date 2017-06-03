@@ -12,4 +12,3 @@ class LessonModelForm(forms.ModelForm):
     class Meta:
         model = Lesson
         fields = ['subject', 'description', 'course', 'order']
-        readonly_fields = ['course']
