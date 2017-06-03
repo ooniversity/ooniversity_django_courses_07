@@ -4,18 +4,7 @@
 
 {% block title %}Students list {% endblock title %}
 
-{% block menu %}
-    <div class="blog-masthead">
-      <div class="container">
-
-        <nav class="blog-nav">
-          <a href="{% url 'index' %}">Main</a>
-          <a  href="{% url 'contact' %}">Contacts</a>
-          <a class="blog-nav-item active" href="{% url 'students:list_view' %}">Students</a>
-       </nav>
-      </div>
-    </div>
-{% endblock menu %}
+{% block nav_students_active %} active{% endblock nav_students_active %}
 
 {% block content %}
     <div class="container">
