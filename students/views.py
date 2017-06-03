@@ -28,7 +28,6 @@ def list_view(request):
     return render(request, 'students/list.html', {'st_list': students_list})
 
 def create(request):
-    print(request.method)
     if request.method == "POST":
         form = StudentModelForm(request.POST)
         if form.is_valid():
@@ -36,7 +35,7 @@ def create(request):
             data = form.cleaned_data
             text_for_success = 'Student ' + data['name'] + ' ' + data['surname'] + ' has been successfully added.'
             messages.success(request, text_for_success)
-            return redirect("../")
+            return redirect("/students/")
     else:
         form = StudentModelForm()
     return render(request, 'students/add.html', {'form': form})
@@ -57,7 +56,6 @@ def edit(request, student_id):
 
 def remove(request, student_id):
     remove_student = Student.objects.get(id=student_id)
-    print(remove_student.surname)
     if request.method == "POST":
         text_for_success = 'Info on ' + str(remove_student.name) + ' ' + str(remove_student.surname) + ' has been successfully deleted.'
         messages.success(request, text_for_success)
@@ -67,4 +65,3 @@ def remove(request, student_id):
         return render(request, 'students/remove.html', {'remove_student': remove_student})
 
 
-# Create your views here.

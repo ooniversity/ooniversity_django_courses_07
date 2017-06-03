@@ -12,9 +12,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 blog-main">
-		<br>
-			<h1>Students of ItBursa course</h1>
-			<p>Here is list of students of ItBursa 2017</p>
+			<br>
 			{% if messages %}
 				<ul class="messages">
 					{% for message in messages %}
@@ -22,6 +20,9 @@
 					{% endfor %}
 				</ul>
 				{% endif %}
+			<h1>Students of ItBursa course</h1>
+			<p>Here is list of students of ItBursa 2017</p>
+
 			<a href="{% url 'students:add' %}"><button type="button" class="btn btn-success">Add new student</button></a>
 			<table class="table table-hover"> 
 				<thead> 
