@@ -8,19 +8,15 @@
   
 
     <div class="container">
-    
+	<h3 class="title">Квадратное уравнение a*x*x + b*x + c = 0</h3>
+	<form method="get">
+	{% csrf_token %}
+                   {{ form.as_p }}
+		   <input type="submit" value="Решить">
+	</form>
+              {% if desc %}<p>{{ desc }}</p>{% endif %}
+	{% if result %}<p>{{ result }}</p>{% endif %}
                 
-                <h2>Квадратное уравнение a*x*x + b*x + c = 0</h2>
-                  
-		      <p>a = {{a1}}</p>
-                        <b>{{outa}}</b>
-                      <p>b = {{b1}}</p>
-                         <b>{{outb}}</b>
-                      <p>c = {{c1}}</p>
-                         <b>{{outb}}</b>
-                
-                <h3>{{discriminant}}</h3>
-                <h3>{{two_param}}{{one_param}}{{no_param}}</h3>
   </div>
           
         
