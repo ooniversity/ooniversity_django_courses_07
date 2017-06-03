@@ -11,7 +11,8 @@
 
 
     <h2>Добавить занятие</h2>
-    <form method='post' class='course-create'>
+    <hr/>
+    <form method="post" class="course-create">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Создать" class="btn btn-info">

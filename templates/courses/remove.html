@@ -10,7 +10,8 @@
 {% block content %}
 
     <h3>Курс {{ course.name }} будет удален.</h3>
-    <form method='post'>
+    <hr/>
+    <form method="post">
         {% csrf_token %}
         <input type="submit" class="btn btn-danger" value="Удалить">
     </form>

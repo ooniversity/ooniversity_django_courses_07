@@ -21,7 +21,7 @@ def add(request):
                 'Course %s has been successfully added.' % form.cleaned_data['name'])
             return redirect('index')
     else:
-        form = CourseModelForm(initial={'coach': 1})
+        form = CourseModelForm()
     context = {'form': form}
     return render(request, 'courses/add.html', context)
 
