@@ -25,7 +25,7 @@ def add(request):
         if form.is_valid():
             course = form.save()
             messages.success(request, "Course %s has been successfully added." % course.name)
-            return redirect('/')
+            return redirect('courses:index')
     else:
          form = CourseModelForm()
     return render(request, "courses/add.html", {'form': form })
@@ -53,7 +53,7 @@ def remove(request, pk):
     if request.method == "POST":
         course.delete()
         messages.success(request, "Course %s has been deleted." % course.name)
-        return redirect('/')
+        return redirect('courses:index')
     else:
         form = CourseModelForm(instance=course)
     return render(request, "courses/remove.html", {'form': form })
