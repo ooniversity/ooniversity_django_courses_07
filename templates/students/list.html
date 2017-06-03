@@ -47,6 +47,9 @@
 						  <a href="{% url 'students:edit' item.id %}">
 							<button type="button" class="btn btn-info">Edit</button>
 						  </a>
+							<a href="{% url 'students:remove' item.id %}">
+							<button type="button" class="btn btn-info">Remove</button>
+						  </a>
 						</td>
 					</tr>
 					{% endfor %}
