@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block title %}Редактирование курса{% endblock title %}
+
+
+{% block nav_class_index %}active{% endblock %}
+
+
+{% block content %}
+{% if messages %}
+<div class="alert alert-info">
+  <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+</div>
+{% endif %}
+<div class="container main_text">
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" />
+  </form>
+</div>
+{% endblock content %}
