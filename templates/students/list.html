@@ -8,13 +8,6 @@
 
 
 {% block content %}
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
     <a class="btn btn-primary" href="{% url 'students:add' %}">Добавить нового студента</a>
     {% if students_list %}
     <table class="tab1 table table-striped table-bordered table-condensed">

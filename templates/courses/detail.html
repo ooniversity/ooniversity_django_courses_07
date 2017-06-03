@@ -5,42 +5,33 @@
 
 
 {% block content %}
-            {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-            <a class="btn btn-primary" href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
-            <h1>{{ course.name }}</h1>
-            <p>{{ course.description|truncatechars:32 }}</p>
+    <a class="btn btn-primary" href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
+    <h1>{{ course.name }}</h1>
+    <p>{{ course.description|truncatechars:32 }}</p>
 
-           {% include "include/instructor_include.html" with block_title="Учитель" instructor=course.coach %}
-           {% include "include/instructor_include.html" with block_title="Ассистент" instructor=course.assistant %}
+   {% include "include/instructor_include.html" with block_title="Учитель" instructor=course.coach %}
+   {% include "include/instructor_include.html" with block_title="Ассистент" instructor=course.assistant %}
 
-
-            {% if course_lessons %}
-            <table class="tab1 table table-striped table-bordered table-condensed">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Тема</th>
-                        <th>Описание</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for lesson in course_lessons %}
-                        <tr>
-                            <td>{{ lesson.order }}</td>
-                            <td>{{ lesson.subject }}</td>
-                            <td>{{ lesson.description }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-            <p>No lessons are available.</p>
-            {% endif %}
-        </div>
+    {% if course_lessons %}
+    <table class="tab1 table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Тема</th>
+                <th>Описание</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lesson in course_lessons %}
+                <tr>
+                    <td>{{ lesson.order }}</td>
+                    <td>{{ lesson.subject }}</td>
+                    <td>{{ lesson.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No lessons are available.</p>
+    {% endif %}
 {% endblock content %}
