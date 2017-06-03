@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block title %}{{ student_info.surname }} {{ student_info.name }}{% endblock title %}
+
+{% block nav_students_active %} active{% endblock nav_students_active %}
+
+{% block content %}
+    <div class="container">
+      <div class="row">
+<p>Student {{ remove_student.neme }} {{ remove_student.surname }} will be deleted.</p>
+		  <form method="post">
+                  {% csrf_token %}
+
+              <input class="btn btn-success" type="Submit" value="Remove">
+              </form>
+
+
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+{% endblock content %}

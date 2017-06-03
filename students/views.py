@@ -55,5 +55,16 @@ def edit(request, student_id):
         form = StudentModelForm(instance=edit_student)
     return render(request, 'students/edit.html', {'form': form})
 
+def remove(request, student_id):
+    remove_student = Student.objects.get(id=student_id)
+    if request.method == "POST":
+
+        text_for_success = 'Info on ' + remove_student['name'] + ' ' + remove_student['surname'] + ' has been successfully deleted.'
+        messages.success(request, text_for_success)
+        remove_student.delete()
+        return redirect("../..")
+    else:
+        return render(request, 'students/remove.html', {'remove_student': remove_student})
+
 
 # Create your views here.
