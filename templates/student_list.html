@@ -1,3 +1,4 @@
+{% extends "base.html"%}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Student list</title>
+    <title>{% block title %} Student list {% endblock title %}</title>
 
     <!-- Bootstrap core CSS -->
      <link href="{% static 'css/style.css' %}" rel="stylesheet">
