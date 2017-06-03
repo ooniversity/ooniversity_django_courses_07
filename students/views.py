@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from students.models import Student
 from courses.models import Course
+from .forms import StudentModelForm
+from django.contrib import messages
+from django.core.urlresolvers import reverse
 
 
 def detail(request, student_id):
@@ -23,6 +26,34 @@ def list_view(request):
         active_course = Course.objects.get(id=course_id)
     
     return render(request, 'students/list.html', {'st_list': students_list})
+
+def create(request):
+    print(request.method)
+    if request.method == "POST":
+        form = StudentModelForm(request.POST)
+        if form.is_valid():
+            instance = form.save()
+            data = form.cleaned_data
+            text_for_success = 'Student ' + data['name'] + ' ' + data['surname'] + ' has been successfully added.'
+            messages.success(request, text_for_success)
+            return redirect("../")
+    else:
+        form = StudentModelForm()
+    return render(request, 'students/add.html', {'form': form})
+
+def edit(request, student_id):
+    edit_student = Student.objects.get(id=student_id)
+    if request.method == "POST":
+        form = StudentModelForm(request.POST, instance=edit_student)
+        if form.is_valid():
+            edit_student = form.save()
+            data = form.cleaned_data
+            text_for_success = 'Info on the student has been successfully changed.'
+            messages.success(request, text_for_success)
+            return render(request, 'students/edit.html', {'form': form})
+    else:
+        form = StudentModelForm(instance=edit_student)
+    return render(request, 'students/edit.html', {'form': form})
 
 
 # Create your views here.
