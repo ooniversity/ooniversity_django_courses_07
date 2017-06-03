@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Уравнение{% endblock title %}
+
+{% block nav %}{% include "include/nav_include.html" with active_equation='active' %}{% endblock nav %}
+  
+{% block content %}  
+
+
+    <div class="container">
+    
+                
+                <h2>Квадратное уравнение a*x*x + b*x + c = 0</h2>
+                  
+		      <p>a = {{a1}}</p>
+                        <b>{{outa}}</b>
+                      <p>b = {{b1}}</p>
+                         <b>{{outb}}</b>
+                      <p>c = {{c1}}</p>
+                         <b>{{outb}}</b>
+                
+                <h3>{{discriminant}}</h3>
+                <h3>{{two_param}}{{one_param}}{{no_param}}</h3>
+  </div>
+          
+        
+ {% endblock content %}       
+	
