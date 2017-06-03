@@ -34,14 +34,14 @@ def create(request):
     return render(request, 'students/add.html', context)
 
 def edit(request, student_id):
+    instance = get_object_or_404(Student, pk=student_id)
     if request.method == 'POST':
-        model_form = StudentModelForm(request.POST)
+        model_form = StudentModelForm(request.POST, instance=instance)
         if model_form.is_valid():
             instance = model_form.save()
             messages.success(request, 'Info on the student has been successfully changed.')
             return redirect(reverse('students:edit', kwargs={'student_id': instance.id}))
     else:
-        instance = get_object_or_404(Student, pk=student_id)
         model_form = StudentModelForm(instance=instance)
     context = {'model_form': model_form}
     return render(request, 'students/edit.html', context)

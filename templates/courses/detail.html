@@ -5,6 +5,7 @@
 
 
 {% block content %}
+            <a class="btn btn-primary" href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
             <h1>{{ course.name }}</h1>
             <p>{{ course.description|truncatechars:32 }}</p>
 
