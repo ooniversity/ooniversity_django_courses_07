@@ -57,12 +57,12 @@ def edit(request, student_id):
 
 def remove(request, student_id):
     remove_student = Student.objects.get(id=student_id)
+    print(remove_student.surname)
     if request.method == "POST":
-
-        text_for_success = 'Info on ' + remove_student['name'] + ' ' + remove_student['surname'] + ' has been successfully deleted.'
+        text_for_success = 'Info on ' + str(remove_student.name) + ' ' + str(remove_student.surname) + ' has been successfully deleted.'
         messages.success(request, text_for_success)
         remove_student.delete()
-        return redirect("../..")
+        return redirect("/students/")
     else:
         return render(request, 'students/remove.html', {'remove_student': remove_student})
 
