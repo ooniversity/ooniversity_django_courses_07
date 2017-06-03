@@ -31,7 +31,7 @@ def create(request):
     if request.method == "POST":
         form = StudentModelForm(request.POST)
         if form.is_valid():
-            instance = form.save()
+            form.save()
             data = form.cleaned_data
             text_for_success = 'Student ' + data['name'] + ' ' + data['surname'] + ' has been successfully added.'
             messages.success(request, text_for_success)
@@ -45,7 +45,7 @@ def edit(request, student_id):
     if request.method == "POST":
         form = StudentModelForm(request.POST, instance=edit_student)
         if form.is_valid():
-            edit_student = form.save()
+            form.save()
             data = form.cleaned_data
             text_for_success = 'Info on the student has been successfully changed.'
             messages.success(request, text_for_success)
