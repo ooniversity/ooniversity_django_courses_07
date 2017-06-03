@@ -1,16 +1,12 @@
-<h3>Квадратное уравнение a*x*x + b*x + c = 0</h3>
-
-a = {{ a }}<br>
-{% if errors.error_a %}
-{{ errors.error_a }}<br>
-{% endif %}
-b = {{ b }}<br>
-{% if errors.error_b %}
-{{ errors.error_b }}<br>
-{% endif %}
-c = {{ c }}<br>
-{% if errors.error_c %}
-{{ errors.error_c }}<br>
-{% endif %}
-<br>
-{{str}}<br>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Квадратное уравнение</title>
+  </head>
+    <body>
+    <form method="get">
+        {{ form.as_p }}
+        <input type="submit" value="Решить">
+    </form>
+    {{ Discriminant }}
+    </body>
