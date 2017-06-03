@@ -42,4 +42,4 @@ def quadratic_results(request):
             q_dict["two_param"] = 'Квадратное уравнение имеет два действительных корня: x1 = {}, x2 = {}'.format(x1, x2)
         elif d < 0:
             q_dict["no_param"] = 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
-    return render(request, "results.html", q_dict)
+    return render(request, "quadratic/results.html", q_dict)
