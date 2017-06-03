@@ -8,7 +8,9 @@
 
 
 {% block content %}
+
 <div class="container main_text">
+
   {% if messages %}
   <div class="alert alert-info">
     <ul class="messages">
@@ -18,10 +20,14 @@
     </ul>
   </div>
   {% endif %}
-  <form method="post">
+
+
+  <form method="post" >
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" />
   </form>
+
 </div>
+
 {% endblock content %}

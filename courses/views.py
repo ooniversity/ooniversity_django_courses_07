@@ -23,11 +23,12 @@ def add(request):
     if request.method == "POST":
         form = CourseModelForm(request.POST)
         if form.is_valid():
-            course = form.save()
-            messages.success(request, "Course %s has been successfully added." % course.name)
+            instance = form.save()
+            messages.success(request, "Course %s has been successfully added." % instance.name)
             return redirect('courses:index')
     else:
          form = CourseModelForm()
+
     return render(request, "courses/add.html", {'form': form })
 
 
@@ -38,11 +39,12 @@ def edit(request, pk):
     if request.method == "POST":
         form = CourseModelForm(request.POST, instance=course)
         if form.is_valid():
-            course = form.save()
+            form.save()
             messages.success(request, "The changes have been saved.")
             return render(request, "courses/edit.html", {'form': form })
     else:
         form = CourseModelForm(instance=course)
+
     return render(request, "courses/edit.html", {'form': form })
 
 
@@ -56,6 +58,7 @@ def remove(request, pk):
         return redirect('courses:index')
     else:
         form = CourseModelForm(instance=course)
+
     return render(request, "courses/remove.html", {'form': form })
 
 
@@ -64,11 +67,12 @@ def add_lesson(request, course_id):
     if request.method == "POST":
         form = LessonModelForm(request.POST)
         if form.is_valid():
-            lesson = form.save()
-            lesson.course = Course.objects.get(id=course_id)
-            lesson.save()
-            messages.success(request, "Lesson %s has been successfully added." % lesson.subject)
+            instance = form.save()
+            instance.course = Course.objects.get(id=course_id)
+            instance.save()
+            messages.success(request, "Lesson %s has been successfully added." % instance.subject)
             return redirect('courses:detail', course_id = course_id)
     else:
          form = LessonModelForm(initial={'course': course_id, })
+
     return render(request, "courses/add_lesson.html", {'form': form })

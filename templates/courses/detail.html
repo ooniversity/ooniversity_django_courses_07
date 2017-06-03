@@ -11,6 +11,7 @@
 
 
 {% block content %}
+
     <div class="container main_text">
 
       {% if messages %}
@@ -23,7 +24,7 @@
       </div>
       {% endif %}
 
-      <a href="{% url 'courses:add_lesson' course.id %}" class="btn btn-primary" role="button">Добавить занятие</a>
+      <a href="{% url 'courses:add-lesson' course.id %}" class="btn btn-primary" role="button">Добавить занятие</a>
 
       {% include "include/course_include.html" %}
         <div>
@@ -82,4 +83,5 @@
           </table>
         </div>
     </div>
+
 {% endblock content %}
