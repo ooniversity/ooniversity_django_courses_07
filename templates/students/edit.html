@@ -9,20 +9,20 @@
 
 {% block content %}
 
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-info">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-info">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
 
-    <h2>Редактирование данных студента</h2>
-    <hr>
-    <form method='post' class='student-create'>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Изменить" class="btn btn-info">
-    </form>
+	<h2>Редактирование данных студента</h2>
+	<hr>
+	<form method='post' class='student-create'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Изменить" class="btn btn-info">
+	</form>
 
 {% endblock content %}
