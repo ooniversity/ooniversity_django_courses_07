@@ -49,7 +49,7 @@ def edit(request, student_id):
             data = form.cleaned_data
             text_for_success = 'Info on the student has been successfully changed.'
             messages.success(request, text_for_success)
-            return redirect('students:edit', id=student_id)
+            return redirect('students:edit', student_id=student_id)
     else:
         form = StudentModelForm(instance=edit_student)
     return render(request, 'students/edit.html', {'form': form})
