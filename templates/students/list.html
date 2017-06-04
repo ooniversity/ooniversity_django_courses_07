@@ -45,12 +45,8 @@
 						<td>{% for i in item.courses.all %}<a href="{% url 'courses:detail' i.id %}">{{ i.name }}</a>
                             <br>{% endfor %}</td>
 						<td>
-						  <a href="{% url 'students:edit' item.id %}">
-							<button type="button" class="btn btn-info">Edit</button>
-						  </a>
-							<a href="{% url 'students:remove' item.id %}">
-							<button type="button" class="btn btn-info">Remove</button>
-						  </a>
+						  <a href="{% url 'students:edit' item.id %}" class="btn btn-info">Edit</a>
+							<a href="{% url 'students:remove' item.id %}" class="btn btn-info">Remove</a>
 						</td>
 					</tr>
 					{% endfor %}
