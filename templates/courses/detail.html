@@ -11,15 +11,17 @@
 
 {% block content %}
     <div class="container">
-        <div class="row">
-        <div class="col-sm-12 blog-main">
-            {% if messages %}
+        {% if messages %}
+            <div class="alert alert-success" role="alert">
 				<ul class="messages">
 					{% for message in messages %}
 					<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
 					{% endfor %}
 				</ul>
-				{% endif %}
+            </div>
+            {% endif %}
+        <div class="row">
+        <div class="col-sm-12 blog-main">
 			<h1>{{ course_inf.name }}</h1>
 			<p class="page-main">{{ course_inf.description|truncatechars:32 }}</p>
 
