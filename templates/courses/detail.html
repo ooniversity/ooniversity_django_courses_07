@@ -21,6 +21,14 @@
 
     <div class = "container">
     
+    {% if messages %}
+                     <div class="alert alert-success" role="alert">
+                        {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}
+                     </div>
+    {% endif %}
+    
     <h1>{{ course_info.name }}</h1>
 			<p class="page-main">{{ course_info.description|truncatechars:32 }}</p>
             <table class="table table-hover">
@@ -50,6 +58,9 @@
               </tbody>
 			</table>
 			<h2>План курса</h2>
+			<p><a class="btn btn-primary glyphicon"
+                   href="{% url 'courses:add-lesson' course_info.id %}" role="button"> Добавить занятие</a></p><br />
+			
             <table class="table table-hover">
 			  <thead>
 			    <tr>
