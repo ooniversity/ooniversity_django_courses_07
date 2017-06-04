@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block title %}Students list {% endblock title %}
+
+{% block content %}
+<div class="container">
+<h2>Курс {{ course.name }} будет удален</h2>
+
+	<form method="post">
+		{% csrf_token %}
+		<input type="submit" value="Удалить">
+	</form>
+</div>			
+{% endblock content %}  
+	  
+     

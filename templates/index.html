@@ -12,9 +12,21 @@
      
         <p class="lead blog-description">Представляем вашему вниманию каталог наших актуальных курсов:</p>
 		 
+	{% if messages %}
+                    <div class="alert alert-success" role="alert">
+			     {% for message in messages %}
+			     {{ message }}
+			     {% endfor %}
+                    </div>
+	{% endif %}
+	
+	<p><a class="btn btn-primary glyphicon"
+                 href="{% url 'courses:add' %}" role="button"> Добавить курс</a></p><br />
 		 
             {% if course_list.count %}
 			<h2>Выбирай и приступай</h2>
+			
+		                 			
             <table class="table table-hover">
 			  <thead>
 			    <tr>
@@ -28,13 +40,17 @@
                 <tr>
                     <th><a href="{% url 'courses:detail' item.id %}">{{ item.name|upper }}</a></th>
                     <td>{{ item.short_description|title }}</td>
+		    <td><a class="btn btn-primary glyphicon glyphicon-pencil"
+                             href="{% url 'courses:edit' item.id %}" role="button"> Изменить</a></td>
+		    <td><a class="btn btn-primary glyphicon"
+                             href="{% url 'courses:remove' item.id %}" role="button"> Удалить</a></td>
                 </tr>
                 {% endfor %}
               </tbody>
 			</table>
             {% endif %}
       
-     <div 	 
+<div> 	 
 
 {% endblock content %}
 
