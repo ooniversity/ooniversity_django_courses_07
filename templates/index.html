@@ -11,6 +11,13 @@
 
 {% block content %}
     <div class="container">
+        {% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+					<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
       <div class="page-header">
 			<p class="lead page-description">Very useful courses!!!</p>
       </div>
@@ -25,11 +32,15 @@
 
             {% if course_list.count > 0 %}
 			<h2>Our courses</h2>
+            <a href="{% url 'courses:add' %}"><button type="button" class="btn btn-primary">Add new course</button></a>
+
             <table class="table table-hover">
 			  <thead>
 			    <tr>
 				  <th>Name</th>
 				  <th>Description</th>
+                  <th></th>
+                  <th></th>
 				</tr>
               </thead>
               <tbody>
@@ -37,6 +48,8 @@
                 <tr>
                     <th scope="row"><a href="{% url 'courses:detail' item.id %}">{{ item.name|upper }}</a></th>
                     <td>{{ item.short_description|title }}</td>
+                    <td><a href="{% url 'courses:edit' item.id  %}"><button type="button" class="btn btn-info">Edit</button></a>
+                    <td><a href="{% url 'courses:remove' item.id  %}"><button type="button" class="btn btn-danger">Remove course</button></a></td>
                 </tr>
                 {% endfor %}
               </tbody>
