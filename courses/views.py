@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from courses.models import Course, Lesson
-from .forms import CourseModelForm, LessonModelForm
+from courses.forms import CourseModelForm, LessonModelForm
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 
@@ -20,17 +20,13 @@ def detail(request, course_id):
     return render(request, 'courses/detail.html', {'course_inf': course_inf, 'course_plan': course_plan,
                                                     'teacher': teacher, 'assistant': assistant})
 
-
-
-
 def add(request):
     if request.method == "POST":
         form = CourseModelForm(request.POST)
         if form.is_valid():
             form.save()
             data = form.cleaned_data
-            text_for_success = 'Course ' + data['name'] +  ' has been successfully added.'
-            messages.success(request, text_for_success)
+            messages.success(request, ('Course %s has been successfully added.' % data['name']))
             return redirect("index")
     else:
         form = CourseModelForm()
