@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from courses.models import Course, Lesson
 from courses.forms import CourseModelForm, LessonModelForm
 from django.contrib import messages
@@ -25,7 +25,7 @@ def add(request):
             form.save()
             course = form.cleaned_data['name']
             messages.success(request, ('Course %s has been successfully added.' % course))
-            return redirect('index')
+            return redirect('/')
     else:
         form = CourseModelForm()
     context = {'form': form}
