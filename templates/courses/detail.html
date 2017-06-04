@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 
-{% block title %}Course{% endblock title %}
+{% block title %}Курсы{% endblock title %}
 
 
 {% block nav_main %}active{% endblock %}
@@ -14,7 +14,7 @@
 
 	{% if messages %}
 		{% for message in messages %}
-			<div class="alert alert-info">
+			<div class="alert alert-info" role="alert">
 				{{ message }}
 			</div>
 		{% endfor %}
@@ -42,7 +42,7 @@
 		<thead>
 			<tr class="success">
 				<th>#</th>
-				<th>Курс</th>
+				<th>Тема</th>
 				<th>Описание</th>
 			</tr>
 		</thead>

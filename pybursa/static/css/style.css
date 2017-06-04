@@ -157,7 +157,7 @@ a.student-btn {
 }
 
 td.buttons {
-	max-width: 103px; 
+	max-width: 200px; 
 }
 
 .student-create input[type=text], .student-create input[type=email],
