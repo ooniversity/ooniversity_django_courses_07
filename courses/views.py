@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from courses.models import Course, Lesson
 from courses.forms import CourseModelForm, LessonModelForm
 from django.contrib import messages
