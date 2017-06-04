@@ -115,6 +115,7 @@ li.active > a:hover {
 
 .table {
 	margin-top: 50px;
+	text-align: center;
 }
 
 .person {
@@ -156,8 +157,12 @@ a.student-btn {
 	max-width: 350px;
 }
 
-td.buttons {
-	max-width: 145px; 
+td.student-buttons {
+	text-align: right;
+}
+
+td.courses-buttons {
+	text-align: right;
 }
 
 .student-create input[type=text], .student-create input[type=email], .student-create select {
