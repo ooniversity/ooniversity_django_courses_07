@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 
-{% load staticfiles %}
+{% load static %}
 
 
-{% block title %}Students of ItBursa course{% endblock title %}
+{% block title %}Список студентов курсов{% endblock title %}
 
 {% block nav_students_active %} active{% endblock nav_students_active %}
 
@@ -20,18 +20,19 @@
 					{% endfor %}
 				</ul>
 				{% endif %}
+			<a href="{% url 'students:add' %}" class="btn btn-success">Добавить нового студента</a>
 			<h1>Students of ItBursa course</h1>
 			<p>Here is list of students of ItBursa 2017</p>
 
-			<a href="{% url 'students:add' %}"><button type="button" class="btn btn-success">Add new student</button></a>
+
 			<table class="table table-hover"> 
 				<thead> 
 					<tr> 
 						<th>#</th>
-						<th>surname name</th>
-						<th>address</th>
+						<th>фамилия имя</th>
+						<th>адресс</th>
 						<th>skype</th>
-						<th>courses</th>
+						<th>курсы</th>
 						<th></th>
 					</tr> 
 				</thead> 
@@ -45,8 +46,8 @@
 						<td>{% for i in item.courses.all %}<a href="{% url 'courses:detail' i.id %}">{{ i.name }}</a>
                             <br>{% endfor %}</td>
 						<td>
-						  <a href="{% url 'students:edit' item.id %}" class="btn btn-info">Edit</a>
-							<a href="{% url 'students:remove' item.id %}" class="btn btn-info">Remove</a>
+						  <a href="{% url 'students:edit' item.id %}" class="btn btn-info">Изменить</a>
+							<a href="{% url 'students:remove' item.id %}" class="btn btn-info">Удалить</a>
 						</td>
 					</tr>
 					{% endfor %}
