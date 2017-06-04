@@ -7,7 +7,7 @@ from courses.forms import CourseModelForm, LessonModelForm
 def detail(request, id):
     context = {
         'course': Course.objects.get(id=id),
-        'lessons': Lesson.objects.filter(course=id).order_by('order'),
+        'lessons': Lesson.objects.filter(course=id).order_by('order')
     }
     return render(request, 'courses/detail.html', context)
 
@@ -60,5 +60,6 @@ def add_lesson(request, course_id):
             return redirect('courses:detail', course_id)
     else:
         form = LessonModelForm(initial={'course':course_id})
+        print(form)
     context = {'form': form}
     return render(request, 'courses/add_lesson.html', context)
