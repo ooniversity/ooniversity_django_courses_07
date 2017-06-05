@@ -49,7 +49,7 @@ def remove(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     if request.method == 'POST':
         course.delete()
-        messages.success(request, ("Course %s has been deleted" % course.name))
+        messages.success(request, ("Course %s has been deleted." % course.name))
         return redirect('index')
     return render(request, 'courses/remove.html', {'course': course})
 
