@@ -3,14 +3,6 @@ from math import sqrt
 from quadratic.forms import QuadraticForm
 
 
-def is_number(string):
-    try:
-        int(string)
-        return True
-    except ValueError:
-        return False
-
-
 def quadratic_results(request):
     context = {}
 
