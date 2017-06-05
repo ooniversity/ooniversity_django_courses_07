@@ -10,9 +10,7 @@
 
 
 {% block content %}
-    <div class="container">
-        <div class="container">
-        {% if messages %}
+{% if messages %}
             <div class="alert alert-success" role="alert">
 				<ul class="messages">
 					{% for message in messages %}
@@ -21,6 +19,9 @@
 				</ul>
         </div>
         {% endif %}
+    <div class="container">
+        <div class="container">
+
       <div class="page-header">
 			<p class="lead page-description">Very useful courses!!!</p>
       </div>
