@@ -7,6 +7,12 @@
 <body>
 Квадратное уравнение a*x*x + b*x + c = 0
 
+<form method="get">
+    {{ form.as_p }}
+    <input type="submit" value="Решить">
+</form>
+
+
 <ul>
     <li>a = {{ a }}</li>
         {% if a_error %}
