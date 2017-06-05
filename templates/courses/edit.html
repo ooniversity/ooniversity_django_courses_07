@@ -20,20 +20,13 @@
         </div>
         {% endif %}
       <div class="row">
-        <div class="col-sm-12 blog-main">
-			<h1 class="page-title">Edit Course info</h1>
-			<br>
-		</div><!-- /.page-main -->
-			<div class="col-sm-6">
-				<form method="post">
+        	<form method="post">
                   {% csrf_token %}
                 <table>
                 {{ form.as_table }}
                 </table>
               <input class="btn btn-info" type="Submit" value="Edit">
               </form>
-
-			</div>
 
 
       </div><!-- /.row -->
