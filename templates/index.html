@@ -12,7 +12,7 @@
                       {% include "include/itb_include.html" %}
                       <h1>Наши курсы</h1>
                       <div>
-                          <button type="button" class="btn btn-info" id="s_button"    onclick="window.open('{% url 'courses:add' %}', '_blank')">Добавить курс<span class="glyphicon glyphicon-plus"></span></button>
+                          <a href="{% url 'courses:add' %}"><span class="glyphicon glyphicon-plus"></span><strong>  Добавить курс</strong></a>  
                       </div>
                       {% if messages %}
                       <ul class="messages">

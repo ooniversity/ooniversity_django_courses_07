@@ -50,7 +50,7 @@
                           <h3 class="panel-title">Содержание курса</h3>
                       </div>
                       <div>
-                          <button type="button" class="btn btn-info" id="s_button"    onclick="window.open('{% url 'courses:add_lesson' course.id %}', '_blank')"><span class="glyphicon glyphicon-plus">  Добавить занятие</span></button>
+                          <a href="{% url 'courses:add-lesson' course.id  %}"><span class="glyphicon glyphicon-plus"></span><strong>  Добавить занятие</strong></a>  
                       </div>
                       <div class="panel-body">
                           <table class="table">
