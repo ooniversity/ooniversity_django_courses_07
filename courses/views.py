@@ -60,9 +60,9 @@ def add_lesson(request, course_id):
         form = LessonModelForm(request.POST)
         if form.is_valid():
             lesson = form.save()
-            messages.success(request, 'Lesson %s has been successfully added.' % lesson)
+            messages.success(request, 'Lesson %s has been successfully added.' % lesson.subject)
             return redirect(reverse('courses:detail', kwargs={'course_id': course_id}))
     else:
         form = LessonModelForm(initial={'course': course_id})
 
-    return render(request, 'courses/add.html', {'form': form})
+    return render(request, 'courses/add_lesson.html', {'form': form})
