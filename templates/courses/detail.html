@@ -4,6 +4,8 @@
 
 
 {% block content %}
+    <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'courses:add-lesson' course.id %}">Add new lesson</a></p><br />
+
     {% include 'include/course_include.html' %}
     <h2>Coach</h2>
     <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a><br>
@@ -11,8 +13,6 @@
     <h2>Assistant</h2>
     <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a><br>
     {{ course.assistant.description }}
-    <p>
-    <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'courses:add-lesson' course.id %}">Add new lesson</a></p><br />
     <p>
     <table class="table table-striped">
         <thead>
