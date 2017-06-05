@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}QuadrEquestion{% endblock title %}
+
+{% block nav_class_results %}"active"{% endblock %}
+
+    {% block content %}
+         <div class="row-fluid">
+                  <div class="col-xs-8" "col-xs-offset-2" >
+                      <div class="block2" >
+                          <h4>Решение квадратного уравнения вида: <br> a*x*x+b*x+c=0</h4>
+                          <form method="post">
+                              {% csrf_token %}
+                              {{ form.as_p }}
+                              <input type="submit" value="Решить"/>
+                          </form>
+                          
+                          {% if not ValidationError in form %}
+                          <p>Дискриминант: {{ d }}</p>
+                          <p>{{ result_message }}</p>
+                          {% endif %}
+                          
+                          
+                          <ul>
+                             <li>a = {{ a }} 
+                                {% if a == '0' %}<p>{{ 'коэффициент при первом слагаемом уравнения не может быть равным нулю' }}</p>
+                                 {% elif a == '' %}<p>{{ 'коэффициент не определен'}}</p>
+                                 {% elif not a_note %}<p>{{ 'коэффициент не целое число'}}</p>{% endif %}</li>
+                            <li>b = {{ b }} 
+                                {% if b == '' %}<p>{{ 'коэффициент не определен'}}</p>
+                                 {% elif not b_note %}<p>{{ 'коэффициент не целое число'}}</p>{% endif %}</li>
+                            <li>c = {{ c }} 
+                                {% if c == '' %}<p>{{ 'коэффициент не определен'}}</p>
+                                 {% elif not c_note %}<p>{{ 'коэффициент не целое число'}}</p>{% endif %}</li>
+                              {% if d or d == 0 %}<p>{{ 'Дискриминант: '}}{{ d }}</p>{% endif %}
+                                {% if d < 0 %}<p>{{ 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений'}}</p>
+                                {% elif d == 0 %}<p>{{ 'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: ' }}{{ 'x1 = x2 ='}}{{ x1 }}</p>
+                                {% elif d > 0 %}<p>{{ 'Квадратное уравнение имеет два действительных корня:'}}{{ ' x1 = '}}{{ x1 }}{{ ' x2 = ' }}{{ x2 }}</p>{% endif %}
+                                  
+                             </ul>
+                      </div>
+                  </div>                 
+                
+              </div>
+         {% endblock content %}

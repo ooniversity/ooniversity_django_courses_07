@@ -8,15 +8,21 @@
 
 {% block content %} 
 {% include "include/itb_include.html" %}
-      <div>
-          <h1>{{ course.name }}</h1>
-          <p>{{ course.description|truncatechars:32 }}
-          </p>
-      </div>
+      
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div>
+    <h1>{{ course.name }}</h1>
+    <p>{{ course.description|truncatechars:32 }}</p>
+</div>
       <div class="page-header">
         <h1>Преподаватели</h1>
       </div>
-
       <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">Учитель</h3>
@@ -42,7 +48,10 @@
                   <div class="panel panel-info">
                       <div class="panel-heading">
                           <h3 class="panel-title">Содержание курса</h3>
-                      </div>                      
+                      </div>
+                      <div>
+                          <button type="button" class="btn btn-info" id="s_button"    onclick="window.open('{% url 'courses:add_lesson' course.id %}', '_blank')"><span class="glyphicon glyphicon-plus">  Добавить занятие</span></button>
+                      </div>
                       <div class="panel-body">
                           <table class="table">
                             <tr class="row-2">
@@ -59,7 +68,7 @@
                               {% endfor %} 
                           </table>                               
                        </div>
-                  </div>                 
+                  </div> 
               </div>
           </div> 
 {% endblock content %}            
