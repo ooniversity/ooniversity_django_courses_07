@@ -10,11 +10,11 @@
 {% block content %}
 
 	{% if messages %}
-	{% for message in messages %}
-	<div class="alert alert-info" role="alert">
-		{{ message }}
-	</div>
-	{% endfor %}
+		{% for message in messages %}
+			<div class="alert alert-info" role="alert">
+				{{ message }}
+			</div>
+		{% endfor %}
 	{% endif %}
 
 	<h2>Редактирование курса</h2>
