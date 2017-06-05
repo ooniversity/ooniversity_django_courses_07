@@ -18,6 +18,10 @@ body {
   margin: 0 0;
 }
 
+.donate-block {
+  text-align: center;
+}
+
 .contacts-form {
     margin: 10px 15px;
 }
