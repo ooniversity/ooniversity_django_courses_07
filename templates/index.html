@@ -6,12 +6,14 @@
 
 {% block content %}
     <h1>Courses <span class="PyBursa">PyBursa</span></h1>
+    <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'courses:add' %}">Add new course</a></p><br />
     <h2>Program</h2>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Course</th>
                 <th>Description</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +21,10 @@
             <tr>
                 <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
                 <td>{{ course.short_description|title }}</td>
+                <td>
+                    <a class="btn btn-primary glyphicon glyphicon-pencil" href="{% url 'courses:edit' course.id %}">Edit</a>
+                    <a class="btn btn-primary glyphicon glyphicon-trash" href="{% url 'courses:remove' course.id %}">Remove</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
