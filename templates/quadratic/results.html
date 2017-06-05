@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+{% block title %}Уравнение{% endblock title %}
+
+
+{% block nav %}{% include "include/nav_include.html" with active_equation='active' %}{% endblock nav %}
+
+
+{% block content %}
+      <div class="general-container">
+        <div class="container top-container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h3 class="title">Квадратное уравнение a*x*x + b*x + c = 0</h3>
+                  <form method="get">
+                   {{ form.as_p }}
+                     <input type="submit" value="Решить">
+                  </form>
+                  <div class="h4">
+                  {% if result.d > 0 %}
+                  <p>Дискриминант: {{ result.d }}</p>
+                  <p>Квадратное уравнение имеет два действительных корня: x1 = {{ result.x1 }}, x2 = {{ result.x2 }}</p>
+                  {% elif result.d == 0 %}
+                  <p>Дискриминант: {{ result.d }}</p>
+                  <p>Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {{ result.x }}</p>
+                  {% elif result.d < 0 %}
+                  <p>Дискриминант: {{ result.d }}</p>
+                  <p>Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.</p>
+                  {% else %}
+                  {% endif %}
+                  </div>
+                <div/>
+           <div/>
+         <div/>
+      <div/>
+{% endblock content %}
