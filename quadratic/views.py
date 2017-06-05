@@ -21,48 +21,15 @@ def quadratic_results(request):
             b = form.cleaned_data['b']
             c = form.cleaned_data['c']
 
-            if not a:
-                context['a_error'] = 'коэффициент не определен'
-            elif not is_number(a):
-                context['a_error'] = 'коэффициент не целое число'
-            else:
-                a = int(a)
+            discriminant = b * b - 4 * a * c
 
-            if not b:
-                context['b_error'] = 'коэффициент не определен'
-            elif not is_number(b):
-                context['b_error'] = 'коэффициент не целое число'
-            else:
-                b = int(b)
+            if discriminant > 0:
+                context['x1'] = (-b + sqrt(discriminant)) / (2 * a)
+                context['x2'] = (-b - sqrt(discriminant)) / (2 * a)
+            elif discriminant == 0:
+                context['x1'] = (-b - sqrt(discriminant))/(2 * a)
 
-            if not c:
-                c = 0
-            elif not is_number(c):
-                context['c_error'] = 'коэффициент не целое число'
-            else:
-                c = int(c)
-
-            if a == 0:
-                context['a_error'] = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
-
-            if len(context) == 0:
-                discriminant = b * b - 4 * a * c
-                if discriminant > 0:
-                    x1 = (-b + sqrt(discriminant)) / (2 * a)
-                    x2 = (-b - sqrt(discriminant)) / (2 * a)
-                    solution = 'Квадратное уравнение имеет два действительных корня: x1 = %s, x2 = %s' % (x1, x2)
-                elif discriminant == 0:
-                    x1 = (-b - sqrt(discriminant))/(2 * a)
-                    solution = 'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %s' % (x1)
-                else:
-                    solution = 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений'
-
-                context['solution'] = solution
-                context['discriminant'] = discriminant
-
-            context['a'] = a
-            context['b'] = b
-            context['c'] = c
+            context['discriminant'] = discriminant
 
     else:
         form = QuadraticForm()
