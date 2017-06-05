@@ -13,26 +13,16 @@
 </form>
 
 
-<ul>
-    <li>a = {{ a }}</li>
-        {% if a_error %}
-            {{ a_error }}
-        {% endif %}
-    <li>b = {{ b }}</li>
-        {% if b_error %}
-            {{ b_error }}
-        {% endif %}
-    <li>c = {{ c }}</li>
-        {% if c_error %}
-            {{ c_error }}
-        {% endif %}
-</ul>
-
-{% if discriminant != None %}
-    Дискриминант: {{ discriminant }} <br><br>
-    {{ solution }}
+{% if discriminant > 0 %}
+    <p>Дискриминант: {{ discriminant }}</p>
+    <p>Квадратное уравнение имеет два действительных корня: x1 = {{ x1 }}, x2 = {{ x2 }}</p>
+{% elif d == 0 %}
+    <p>Дискриминант: {{ discriminant }}</p>
+    <p>Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {{ x1 }}</p>
+{% else %}
+    <p>Дискриминант: {{ discriminant }}</p>
+    <p>Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.</p>
 {% endif %}
-
 
 </body>
 </html>
