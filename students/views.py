@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from students.models import Student
 from courses.models import Course
 from students.forms import StudentModelForm
@@ -24,7 +24,7 @@ def list_view(request):
     return render(request, 'students/list.html', {'st_list': students_list})
 
 def create(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = StudentModelForm(request.POST)
         if form.is_valid():
             form.save()
@@ -37,18 +37,20 @@ def create(request):
     return render(request, 'students/add.html', {'form': form})
 
 def edit(request, student_id):
-    edit_student = Student.objects.get(id=student_id)
-    form = StudentModelForm(instance=edit_student)
+    instance = get_object_or_404(Student, pk=student_id)
+    form = StudentModelForm(instance=instance)
     if request.method == "POST":
-        form = StudentModelForm(request.POST, instance=edit_student)
+        form = StudentModelForm(request.POST, instance=instance)
         if form.is_valid():
-            form.save()
-            messages.success(request, ('Info on the student has been successfully changed.'))
-            return redirect('students:edit', student_id=student_id)
+            instance = form.save()
+            messages.success(request, 'Info on the student has been successfully changed.')
+            return redirect(reverse('students:edit', kwargs={'student_id': instance.id}))
+    else:
+        form = StudentModelForm(instance=instance)
     return render(request, 'students/edit.html', {'form': form})
 
 def remove(request, student_id):
-    remove_student = Student.objects.get(id=student_id)
+    remove_student = get_object_or_404(Student, pk=student_id)
     if request.method == "POST":
         text_for_success = 'Info on ' + str(remove_student.name) + ' ' + str(remove_student.surname) + ' has been successfully deleted.'
         remove_student.delete()
