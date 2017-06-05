@@ -75,6 +75,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pybursa.wsgi.application'
 
 
+APPEND_SLASH = False
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
