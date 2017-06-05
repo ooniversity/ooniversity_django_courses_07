@@ -49,7 +49,7 @@ def remove(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     if request.method == 'POST':
         course.delete()
-        messages.success(request, ("Course %s has been deleted" % course))
+        messages.success(request, ("Course %s has been deleted" % course.name))
         return redirect('index')
     return render(request, 'courses/remove.html', {'course': course})
 
@@ -60,7 +60,7 @@ def add_lesson(request, course_id):
         form = LessonModelForm(request.POST)
         if form.is_valid():
             lesson = form.save()
-            messages.success(request, 'Lesson %s has been successfully added.' % lesson)
+            messages.success(request, 'Lesson %s has been successfully added.' % lesson.name)
             return redirect(reverse('courses:detail', kwargs={'course_id': course_id}))
     else:
         form = LessonModelForm(initial={'course': course_id})
