@@ -30,15 +30,18 @@
               <tbody>
                 {% for item in course_list %}
                 <tr>
-                    <th scope="row"><a href="{% url 'courses:detail' item.id %}">{{ item.name }}</a></th>
-                    <td>{{ item.short_description }}</td>
+                    <th scope="row"><a href="{% url 'courses:detail' item.id %}">{{ item.name|upper }}</a></th>
+                    <td>{{ item.short_description|title }}</td>
                 </tr>
                 {% endfor %}
               </tbody>
       </table>
-        </div><!-- /.page-main -->
+              </div><!-- /.page-main -->
       </div><!-- /.row -->
     </div><!-- /.container -->
+
+
+{% include 'include/ome_include.html' %}
 
 
 {% endblock content %}
