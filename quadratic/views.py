@@ -6,7 +6,7 @@ from quadratic.forms import QuadraticForm
 def quadratic_results(request):
     context = {}
 
-    if request.GET:
+    if request.method == "GET":
         form = QuadraticForm(request.GET)
         if form.is_valid():
             a = form.cleaned_data['a']

@@ -5,6 +5,7 @@
 {% block navbar_nav_class_students %}class = "active"{% endblock %}
 
 {% block content %}
+    <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'students:add' %}">Add new student</a></p><br />
     <h1>Students list</h1>
     <table class="table table-striped">
         <thead>
@@ -14,6 +15,7 @@
                 <th>Address</th>
                 <th>Skype</th>
                 <th>Courses</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +29,10 @@
                         {% for course in student.courses.all %}
                             <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a> <br>
                         {% endfor %}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary glyphicon glyphicon-pencil" href="{% url 'students:edit' student.id %}">Edit</a>
+                        <a class="btn btn-primary glyphicon glyphicon-trash" href="{% url 'students:remove' student.id %}">Remove</a>
                     </td>
                 </tr>
             {% endfor %}
