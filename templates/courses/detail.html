@@ -2,9 +2,9 @@
 
 {% block title %}PyBursa: {{ course.name }}{% endblock %}
 
+
 {% block content %}
-    <h1>{{ course.name }}</h1>
-    <p>{{ course.description }}</p>
+    {% include 'include/course_include.html' %}
     <h2>Coach</h2>
     <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a><br>
     {{ course.coach.description }}

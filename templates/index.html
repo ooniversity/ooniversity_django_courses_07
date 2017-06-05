@@ -2,6 +2,8 @@
 
 {% block title %}PyBursa{% endblock %}
 
+{% block navbar_nav_class_main %}class = "active"{% endblock %}
+
 {% block content %}
     <h1>Courses <span class="PyBursa">PyBursa</span></h1>
     <h2>Program</h2>
@@ -15,8 +17,8 @@
         <tbody>
         {% for course in courses_list %}
             <tr>
-                <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
-                <td>{{ course.short_description }}</td>
+                <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
+                <td>{{ course.short_description|title }}</td>
             </tr>
         {% endfor %}
         </tbody>
