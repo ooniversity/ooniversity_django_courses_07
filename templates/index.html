@@ -10,12 +10,22 @@
               <div class="row-fluid">
                   <div class="col-xs-8" "col-xs-offset-2" >
                       {% include "include/itb_include.html" %}
-                      <h1>Наши курсы</h1> 
+                      <h1>Наши курсы</h1>
+                      <div>
+                          <button type="button" class="btn btn-info" id="s_button"    onclick="window.open('{% url 'courses:add' %}', '_blank')">Добавить курс<span class="glyphicon glyphicon-plus"></span></button>
+                      </div>
+                      {% if messages %}
+                      <ul class="messages">
+                          {% for message in messages %}
+                          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
                       <ul>
                           {% for course in courses %}
-                          <li><a href="{% url 'courses:detail' course.id %}"><strong>{{ course.name|upper }}</strong></a><br>{{ course.short_description|title }}</li>
+                          <li><a href="{% url 'courses:detail' course.id %}"><strong>{{ course.name|upper }} </strong></a><a href="{% url 'courses:edit' course.id %}">  <span class="glyphicon glyphicon-edit"></span></a><a href="{% url 'courses:remove' course.id %}">  <span class="glyphicon glyphicon-remove"></span></a><br>{{ course.short_description|title }}</li>
                           {% endfor %}
-                      </ul>                  
+                      </ul>      
                    </div>
               </div>
               {% endblock content %}
