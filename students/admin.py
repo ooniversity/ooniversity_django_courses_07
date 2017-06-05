@@ -11,7 +11,7 @@ class StudentAdmin(admin.ModelAdmin):
 		('Personal info', {'fields': ('name', 'surname', 'date_of_birth')}),
 		('Contact info', {'fields': ('email', 'phone', 'address', 'skype')}),
 		(None, {'fields': ('courses', )}),
-	]
+		]
 	filter_horizontal = ('courses',)
 
 
