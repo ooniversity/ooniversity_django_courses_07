@@ -105,6 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Slash In The End Url
+APPEND_SLASH = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
