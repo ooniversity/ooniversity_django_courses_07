@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block title %}Отредактировать курс{% endblock title %}
+
+
+{% block nav %}{% include "include/nav_include.html" with active_main='active' %}{% endblock nav %}
+
+
+{% block content %}
+        <div class="container">
+          <div class="container main-container">
+             <div class="row">
+                 <div class="col-lg-8">
+                     {% if messages %}
+                       <div class="alert alert-success" role="alert">
+                        {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}
+                       </div>
+                     {% endif %}
+                     <h2>Отредактировать курс</h2>
+                        <div class="table-responsive">
+                          <form method="post">
+                          {% csrf_token %}
+                          {{ form.as_p }}
+                          <input type="submit" value="Изменить">
+                          </form>
+                        </div>
+                 </div>
+             </div>
+          </div>
+        </div>
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+{% block title %}Описание курсов{% endblock title %}
+
+
+{% block nav %}{% include "include/nav_include.html" with active_main='active' %}{% endblock nav %}
+
+{% block content %}
+<div class="general-container">
+    <div class="container top-container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <h1 class="title">Добро пожаловать в ItBursa</h1>
+              <h2 class="title">Description</h2>
+                <p><span class="text">ItBursa — это современная онлайн школа веб-разработки и программирования. Мы хотим сделать IT образование качественным, полезным и доступным.</span></p>
+               <h3 class="title">Program</h3>
+                <p><span class="text">Сейчас у нас открыта регистрация на курс по "Python". Кроме того, вы можете предварительно зарегистрироваться на курсы, дата старта которых еще не определена:</span></p>
+                  {% if messages %}
+                    <div class="alert alert-success" role="alert">
+                     {% for message in messages %}
+                     {{ message }}
+                     {% endfor %}
+                    </div>
+                  {% endif %}
+                 <p><a class="btn btn-primary glyphicon glyphicon-plus"
+                 href="{% url 'courses:add' %}" role="button"> Добавить курс</a></p><br />
+                 <div class="list">
+                     <table class="table table-striped">
+                       <thead>
+                          <tr>
+                            <th>Курс</th>
+                            <th>Описание</th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                       </thead>
+                       <tbody class="text1">
+                          {% for course in cour %}
+                          <tr>
+                            <td><a href='{% url "courses:detail" course.id %}'>{{ course.name|upper }}</a></td>
+                            <td>{{ course.short_description|title }}</td>
+                            <td><a class="btn btn-primary glyphicon glyphicon-pencil"
+                             href="{% url 'courses:edit' course.id %}" role="button"> Изменить</a></td>
+                            <td><a class="btn btn-primary glyphicon glyphicon-remove"
+                             href="{% url 'courses:remove' course.id %}" role="button"> Удалить</a></td>
+                          </tr>
+                           {% endfor %}
+                       </tbody>
+                     </table>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

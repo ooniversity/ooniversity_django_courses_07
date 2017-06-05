@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+{% block title %}Информация о курсе{% endblock title %}
+
+
+{% block nav %}{% include "include/nav_include.html" with active_main='active' get='?course_id=' id=course.id %}{% endblock nav %}
+
+
+{% block content %}
+        <div class="general-container">
+          <div class="container top-container">
+            <div class="row">
+              <div class="col-lg-8 col-lg-offset-2">
+                  {% if messages %}
+                     <div class="alert alert-success" role="alert">
+                        {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}
+                     </div>
+                  {% endif %}
+                <h1 class="title">{{ course.name }}</h1>
+                  <p><span class="text">{{ course.description|truncatechars:32 }}</span></p>
+                    <div>
+                     <h3 class="title">Преподаватели</h3>
+                       <h4 class="h4">Учитель</h4>
+	                     <p><b><a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a></b></p>
+                           <p class="name">{{ course.coach.description }}</p>
+                       <h4 class="h4">Ассистент</h4>
+	                     <p><b><a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a></b></p>
+	                       <p class="name">{{ course.assistant.description }}</p>
+	                </div>
+                 <h3 class="title">План курса</h3>
+                  <p><a class="btn btn-primary glyphicon glyphicon-plus"
+                   href="{% url 'courses:add-lesson' course.id %}" role="button"> Добавить занятие</a></p><br />
+                   <div class="list">
+                     <table class="table table-striped">
+                       <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Тема</th>
+                            <th>Описание</th>
+                          </tr>
+                       </thead>
+                       <tbody class="text1">
+                          {% for les in lessons %}
+                         <tr>
+                            <td>{{ les.order }}</td>
+			                <td>{{ les.subject }}</td>
+                           <td>{{ les.description }}</td>
+    			         </tr>
+			               {% endfor %}
+                        </tbody>
+                     </table>
+                 </div>
+           </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
