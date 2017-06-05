@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}PyBursa: Remove student{% endblock %}
+
+{% block navbar_nav_class_students %}class = "active"{% endblock %}
+
+{% block content %}
+    <h2>Do you want to remove student: {{ student }} ?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Remove">
+    </form>
+{% endblock content %}

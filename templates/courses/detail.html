@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}PyBursa: {{ course.name }}{% endblock %}
+
+
+{% block content %}
+    <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'courses:add-lesson' course.id %}">Add new lesson</a></p><br />
+
+    {% include 'include/course_include.html' %}
+    <h2>Coach</h2>
+    <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a><br>
+    {{ course.coach.description }}
+    <h2>Assistant</h2>
+    <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a><br>
+    {{ course.assistant.description }}
+    <p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Subject</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lesson in lessons_list %}
+                <tr>
+                    <td>{{ lesson.order }}</td>
+                    <td>{{ lesson.subject }}</td>
+                    <td>{{ lesson.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

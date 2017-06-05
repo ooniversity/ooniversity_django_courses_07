@@ -1,0 +1,39 @@
+body{
+	background-color: #ddd;
+}
+
+h2{
+	font-size: 25px;
+}
+
+p.indent {
+    text-indent: 20px;
+}
+
+.week{
+	color: red;
+}
+
+.week_text{
+	font-family: serif;
+}
+
+.PyBursa {
+	font-weight: bold;
+}
+
+.email{
+	color: blue;
+}
+
+.name{
+	font-weight: bold;
+}
+
+.skype{
+	text-decoration: underline;
+}
+
+.phone{
+	font-style: italic;
+}

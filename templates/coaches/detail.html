@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}PyBursa: {{ coach }}{% endblock %}
+
+{% block content %}
+    <h1>{{ student }}</h1>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td>Date of birth</td>
+                <td>{{ coach.date_of_birth|date:'j F, Y'}}</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>{{ coach.address }}</td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td>{{ coach.user.email }}</td>
+            </tr>
+            <tr>
+                <td>Skype</td>
+                <td>{{ coach.skype }}</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>{{ coach.phone }}</td>
+            </tr>
+            <tr>
+                <td>Courses coach</td>
+                <td>
+                    {% for course in coach.coach_courses.all %}
+                        <a href="{% url 'courses:detail' course.id %}">{{ course }}</a>
+                        students <a href="{% url 'students:list_view' %}?course_id={{ course.id }}"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>
+                        <br>
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>Courses assistant</td>
+                <td>
+                    {% for course in coach.assistant_courses.all %}
+                        <a href="{% url 'courses:detail' course.id %}">{{ course }}</a>
+                        students <a href="{% url 'students:list_view' %}?course_id={{ course.id }}"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>
+                        <br>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock content %}
