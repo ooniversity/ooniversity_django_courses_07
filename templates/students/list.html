@@ -17,11 +17,9 @@
         <div class="col-sm-12 blog-main">
 		<br>
            {% if messages %}
-	            <ul class="messages">
 	                    {% for message in messages %}
-	                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	                    {{ message }}
 	                    {% endfor %}
-	            </ul>
 	       {% endif %}
 
 			<h1>List of Students</h1>
