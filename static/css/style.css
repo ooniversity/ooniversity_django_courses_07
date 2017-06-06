@@ -6,6 +6,11 @@ body {
   text-align: left;
 }
 
+form {
+    display: block;
+    margin-top: 10px;
+}
+
 .contacts-template {
   padding: 40px 35px;
   text-align: left;
@@ -19,6 +24,10 @@ body {
 }
 
 .donate-block {
+  text-align: center;
+}
+
+.students-add {
   text-align: center;
 }
 
