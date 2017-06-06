@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+{% block title %}Students{% endblock title %}
+
+
+{% block nav_students %}active{% endblock %}
+
+
+{% block content %}
+
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <div>
+        <a href="{% url 'students:add' %}" class="student-btn btn btn-info right">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Добавить студента
+        </a>
+        <h2>Student List</h2>
+    </div>
+    <table class="table table-hover table-striped">
+        <tr class="success">
+            <th>#</th>
+            <th>Surname Name</th>
+            <th>Address</th>
+            <th>Skype</th>
+            <th>Courses</th>
+            <th></th>
+        </tr>
+        {% for student in object_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
+            <td>{{ student.address }}</td>
+            <td>{{ student.skype }}</td>
+            <td>
+                {% for course in student.courses.values %}
+                <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br/>
+                {% endfor %}
+            </td>
+            <td class="student-buttons">
+                <a href="{% url 'students:edit' student.id %}" class="student-btn btn btn-info">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Изменить
+                </a>
+                <a href="{% url 'students:remove' student.id %}" class="student-btn btn btn-danger">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Удалить
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock content %}
