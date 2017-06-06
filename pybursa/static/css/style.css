@@ -164,7 +164,9 @@ td.courses-buttons {
 	text-align: right;
 }
 
-.student-create input[type=text], .student-create input[type=email], .student-create select {
+.student-create input[type=text],
+.student-create input[type=email],
+.student-create select {
 	float: right;
 }
 
@@ -180,7 +182,9 @@ td.courses-buttons {
 	max-width: 400px;
 }
 
-.course-create input[type=text], .course-create input[type=number], .course-create select {
+.course-create input[type=text],
+.course-create input[type=number],
+.course-create select {
 	float: right;
 }
 

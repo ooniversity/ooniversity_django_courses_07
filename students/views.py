@@ -3,8 +3,7 @@ from django.contrib import messages
 from students.models import Student
 from students.forms import StudentModelForm
 from django.views.generic.list import ListView
-from django.views.generic import DetailView
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 

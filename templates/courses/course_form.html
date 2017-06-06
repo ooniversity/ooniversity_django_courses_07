@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 
 
-{% block title %}Добавить студента{% endblock title %}
+{% block title %}Добавить курс{% endblock title %}
 
 
-{% block nav_students %}active{% endblock %}
+{% block nav_main %}active{% endblock %}
 
 
 {% block content %}
 
     <h2>{{ title }}</h2>
-    <hr>
-    <form method='post' class='student-create'>
+    <hr/>
+    <form method="post" class="course-create">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Создать" class="btn btn-info">
