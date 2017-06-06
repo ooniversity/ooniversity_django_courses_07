@@ -25,7 +25,9 @@
 	<br/>
 	
 	<div>
-		<a href="{% url 'courses:add' %}" class="course-h3 btn btn-info right">Добавить курс</a>
+		<a href="{% url 'courses:add' %}" class="course-h3 btn btn-info right">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить курс
+		</a>
 		<h3>Courses</h3>
 	</div>
 	<table class="table-striped table table-hover">
@@ -41,8 +43,12 @@
 			<td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
 			<td>{{ course.short_description|title }}</td>
 			<td class="courses-buttons">
-				<a href="{% url 'courses:edit' course.id %}" class="course-edit btn btn-warning">Изменить</a>
-				<a href="{% url 'courses:remove' course.id %}" class="course-edit btn btn-danger">Удалить</a>
+				<a href="{% url 'courses:edit' course.id %}" class="course-edit btn btn-info">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Изменить
+				</a>
+				<a href="{% url 'courses:remove' course.id %}" class="course-edit btn btn-danger">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Удалить
+				</a>
 			</td>
 		</tr>
 		{% endfor %}
