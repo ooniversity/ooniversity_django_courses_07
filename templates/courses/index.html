@@ -50,14 +50,22 @@
           {% for course in courses_list %}
           <tr>
             <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
-            <td>{{ course.short_description|title }}</td>
+            <td>
+                {{ course.short_description|title }}
+                <a href="{% url 'courses:edit' course.id %}">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </a>
+                <a href="{% url 'courses:remove' course.id %}">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </a>
+            </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
 
-    <a href="{% url 'courses:add' %}" class="btn btn-primary" role="button">Добавить курс</a>
+    <a href="{% url 'courses:add' %}">Добавить курс</a>
 
 </div>
 {% endblock content %}
