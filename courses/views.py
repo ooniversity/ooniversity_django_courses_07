@@ -7,7 +7,7 @@ from courses.forms import CourseModelForm, LessonModelForm
 def index(request):
 
     courses_list = Course.objects.all()
-    return render(request, "courses/index.html", {"courses_list": courses_list})
+    return render(request, "index.html", {"courses_list": courses_list})
 
 
 def detail(request, course_id):
@@ -25,7 +25,7 @@ def add(request):
         if form.is_valid():
             instance = form.save()
             messages.success(request, "Course %s has been successfully added." % instance.name)
-            return redirect('courses:index')
+            return redirect('index')
     else:
          form = CourseModelForm()
 
@@ -55,7 +55,7 @@ def remove(request, pk):
     if request.method == "POST":
         course.delete()
         messages.success(request, "Course %s has been deleted." % course.name)
-        return redirect('courses:index')
+        return redirect('index')
     else:
         form = CourseModelForm(instance=course)
 
