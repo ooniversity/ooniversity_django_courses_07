@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from . import views
-#from pybursa.views import index, contact, student_list, student_detail
 from quadratic.views import quadratic_results
+from courses.views import index
 
 urlpatterns = [
-    url(r'^', include('courses.urls')),
+    url(r'^$', index, name='index'),
+    url(r'^courses/', include('courses.urls')),
     url(r'^students/', include('students.urls')),
     url(r'^coaches/', include('coaches.urls')),
     url(r'^contact/$', views.contact, name='contact'),
