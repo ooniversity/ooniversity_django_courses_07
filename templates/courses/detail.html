@@ -24,9 +24,9 @@
       </div>
       {% endif %}
 
-      <a href="{% url 'courses:edit' course.id %}" class="btn btn-primary" role="button">Редактировать курс</a>
-      <a href="{% url 'courses:remove' course.id %}" class="btn btn-warning" role="button">Удалить курс</a>
-      <a href="{% url 'courses:add-lesson' course.id %}" class="btn btn-primary" role="button">Добавить занятие</a>
+      <a href="{% url 'courses:edit' course.id %}">Редактировать курс</a>
+      <a href="{% url 'courses:remove' course.id %}">Удалить курс</a>
+      <a href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
 
       {% include "include/course_include.html" %}
         <div>
