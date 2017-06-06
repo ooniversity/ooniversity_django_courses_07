@@ -1,10 +1,10 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
     <link rel="icon" href="{% static "images/favicon.ico" %}">
 
     <title>Quadratic result</title>
@@ -26,14 +26,22 @@
 	  <div class="row">
 		<div class="col-sm-12 page-main">
 			<p>Квадратное уравнение: a*x*x + b*x + c = 0</p>
-			            <form method="get">
-			{{ form.as_p }}
-            <input type="submit" value="Solve">
-            </form>
 			<ul>
-				<li> a = {{ a }}</li>
-				<li> b = {{ b }}</li>
-				<li> c = {{ c }}</li>
+				<li> a = {{ a }}
+				{% if a == '' %}<p><i>{{ 'коэффициент не определен' }}</i></p>
+				{% elif a == '0' %}<p><i>{{ 'коэффициент при первом слагаемом уравнения не может быть равным нулю' }}</i></p>
+				{% elif not a_norm %}<p><i>{{ 'коэффициент не целое число' }}</i></p>
+				{% endif %}
+				
+				</li>
+				<li> b = {{ b }}
+				{% if b == '' %}<p><i>{{ 'коэффициент не определен' }}</i></p>
+				{% elif not b_norm %}<p><i>{{ 'коэффициент не целое число' }}</i></p>
+				{% endif %}</li>
+				<li> c = {{ c }}
+				{% if c == '' %}<p><i>{{ 'коэффициент не определен' }}</i></p>
+				{% elif not c_norm %}<p><i>{{ 'коэффициент не целое число' }}</i></p>
+				{% endif %}</li>
 			</ul>
 			{% if next %}<p>{{ 'Дискриминант: ' }}{{ d }}</p>{% endif %}
 			{% if d < 0 %}<p>{{ 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.' }}</p>
