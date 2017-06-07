@@ -1,4 +1,4 @@
-from django.conf.urls import include, url
+from django.conf.urls import url
 from students.views import (StudentListView, StudentDetailView,
     StudentCreateView, StudentUpdateView, StudentDeleteView)
 
