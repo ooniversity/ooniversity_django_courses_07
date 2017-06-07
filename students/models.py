@@ -16,8 +16,3 @@ class Student(models.Model):
     def fullname(self):
         return self.name + ' ' + self.surname
     full_name = property(fullname)
-
-
-
-
-
