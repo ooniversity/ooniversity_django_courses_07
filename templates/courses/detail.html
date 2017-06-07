@@ -16,12 +16,26 @@
 	<p>{{ course.description|truncatechars:32 }}</p>
 	<h3>Преподаватели</h3>
 
-
-	{% include "include/coach_table_include.html" with title="Учитель" instructor=course.coach %}
-
-
-	{% include "include/coach_table_include.html" with title="Ассистент" instructor=course.assistant %}
-	
+	<div class="panel panel-default panel-success">
+		<div class="panel-heading">Учитель</div>
+		<div class="panel-body">
+			<a href="{% url 'coaches:detail' course.coach.id %}">
+				{{ course.coach.user.first_name }}
+			</a>
+			<br/>
+			{{ course.coach.description }}
+		</div>
+	</div>
+	<div class="panel panel-default panel-success">
+		<div class="panel-heading">Ассистент</div>
+		<div class="panel-body">
+			<a href="{% url 'coaches:detail' course.coach.id %}">
+				{{ course.assistant.user.first_name }}
+			</a>
+			<br/>
+			{{ course.assistant.description }}
+		</div>
+	</div>
 
 	<br/>
 	<div>

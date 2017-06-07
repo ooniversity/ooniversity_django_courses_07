@@ -1,6 +1,6 @@
 from django.db import models
 from courses.models import Course
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 class Student(models.Model):
