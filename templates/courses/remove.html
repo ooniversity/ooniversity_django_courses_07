@@ -4,7 +4,7 @@
 {% block title %}Удаление курса{% endblock title %}
 
 
-{% block nav_class_index %}active{% endblock %}
+{% block nav_class_index %} class="active"{% endblock %}
 
 
 {% block content %}
@@ -15,7 +15,7 @@
     <form method='post'>
 
       {% csrf_token %}
-      
+
       {{ form.as_p }}
 
       <input type='submit' />

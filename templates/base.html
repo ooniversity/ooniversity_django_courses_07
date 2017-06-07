@@ -33,9 +33,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="{% block nav_class_index %}{% endblock %}"><a href="{% url 'index' %}">Main</a></li>
-            <li class="{% block nav_class_contact %}{% endblock %}"><a href="{% url 'contact' %}">Contacts</a></li>
-            <li class="{% block nav_class_students %}{% endblock %}"><a href="{% url 'students:list_view' %}{% block link_students %}{% endblock %}">Students</a></li>
+            <li{% block nav_class_index %}{% endblock %}><a href="{% url 'index' %}">Main</a></li>
+            <li{% block nav_class_contact %}{% endblock %} class=""><a href="{% url 'contact' %}">Contacts</a></li>
+            <li{% block nav_class_students %}{% endblock %} class=""><a href="{% url 'students:list_view' %}{% block link_students %}{% endblock %}">Students</a></li>
+            <li{% block nav_class_quadratic %}{% endblock %} class=""><a href="{% url 'quadratic_results' %}">Quadratic</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
