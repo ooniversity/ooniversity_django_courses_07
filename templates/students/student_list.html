@@ -36,7 +36,7 @@
                           </tr>
                         </thead>
                         <tbody class="danger">
-                          {% for st in stud %}
+                          {% for st in object_list %}
                           <tr>
                             <td>{{ st.id }}</td>
                               <td><a href="{% url 'students:detail' st.id %}">{{ st.surname }} {{ st.name }}</a></td>
