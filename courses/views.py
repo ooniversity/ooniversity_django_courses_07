@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from courses.models import Course, Lesson
 from courses.forms import CourseModelForm, LessonModelForm
@@ -12,10 +12,12 @@ def index(request):
 
 def detail(request, course_id):
 
-    course_obj = Course.objects.get(id=course_id)
-    lessons_list = course_obj.lesson_set.all()  #course_obj.lesson_set.all
+    #course_obj = Course.objects.get(id=course_id)
+    course = get_object_or_404(Course, id=course_id)
+
+    lessons_list = course.lesson_set.all()  #course_obj.lesson_set.all
     #lessons_list = Lesson.objects.filter(course=course_id)
-    return render(request, "courses/detail.html", {"course": course_obj, "lessons_list": lessons_list })
+    return render(request, "courses/detail.html", {"course": course, "lessons_list": lessons_list })
 
 
 def add(request):
@@ -34,7 +36,8 @@ def add(request):
 
 def edit(request, pk):
 
-    course = Course.objects.get(id=pk)
+    #course = Course.objects.get(id=pk)
+    course = get_object_or_404(Course, id=pk)
 
     if request.method == "POST":
         form = CourseModelForm(request.POST, instance=course)
@@ -51,7 +54,8 @@ def edit(request, pk):
 
 def remove(request, pk):
 
-    course = Course.objects.get(id=pk)
+    #course = Course.objects.get(id=pk)
+    course = get_object_or_404(Course, id=pk)
 
     if request.method == "POST":
         course.delete()
