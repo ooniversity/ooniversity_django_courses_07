@@ -8,15 +8,6 @@
 
 
 {% block content %}
-
-
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-info">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
     
     <div>
         <a href="{% url 'students:add' %}" class="student-btn btn btn-info right">

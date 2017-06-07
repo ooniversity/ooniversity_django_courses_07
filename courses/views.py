@@ -22,6 +22,7 @@ class CourseCreateView(CreateView):
     form_class = CourseModelForm
     template_name = 'courses/form.html'
     context_object_name = 'course'
+    success_url = reverse_lazy('index')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
