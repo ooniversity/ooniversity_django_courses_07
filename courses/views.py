@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 
 def detail(request, course_id):
     course_inf = Course.objects.get(id=course_id)
-    teacher = {'f_name': course_inf.coach.user.first_name, 
+    trainer = {'f_name': course_inf.coach.user.first_name, 
                 'l_name': course_inf.coach.user.last_name,
                 'descr': course_inf.coach.description,
                 'id': course_inf.coach.id}
@@ -18,7 +18,7 @@ def detail(request, course_id):
     print(assistant)
     course_plan = Lesson.objects.filter(course=course_id)
     return render(request, 'courses/detail.html', {'course_inf': course_inf, 'course_plan': course_plan,
-                                                    'teacher': teacher, 'assistant': assistant})
+                                                    'trainer': trainer, 'assistant': assistant})
 
 def add(request):
     if request.method == "POST":
