@@ -15,32 +15,32 @@
           <div class="container main-container">
              <div class="row">
                  <div class="col-lg-8">
-                     <h2><span class="ivan">{{ stud.surname }} {{ stud.name }}</span></h2>
+                     <h2><span class="ivan">{{ student.surname }} {{ student.name }}</span></h2>
                          <table class="table table-condensed">
                             <tbody class="table_stud">
                               <tr>
                                  <td class="test_table">дата рождения</td>
-                                 <td>{{ stud.date_of_birth }}</td>
+                                 <td>{{ student.date_of_birth }}</td>
                              </tr>
                              <tr>
                                 <td class="test_table">адрес</td>
-                                <td>{{ stud.address }}</td>
+                                <td>{{ student.address }}</td>
                              </tr>
                              <tr>
                                 <td class="test_table">почта</td>
-                                <td>{{ stud.email }}</td>
+                                <td>{{ student.email }}</td>
                              </tr>
                              <tr>
                                 <td class="test_table">логин skype</td>
-                                <td>{{ stud.skype }}</td>
+                                <td>{{ student.skype }}</td>
                              </tr>
                              <tr>
                                 <td class="test_table">телефон</td>
-                                <td>{{ stud.phone }}</td>
+                                <td>{{ student.phone }}</td>
                              </tr>
                              <tr>
                                 <td class="test_table">курсы</td>
-                                <td>{% for c in stud.courses.all %}
+                                <td>{% for c in student.courses.all %}
                                 <a href="{% url 'courses:detail' c.id %}">{{c.name}}</a><br />
                                 {% endfor %}
                                 </td>
