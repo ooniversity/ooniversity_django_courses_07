@@ -12,14 +12,6 @@
 
 {% block content %}
 
-	{% if messages %}
-		{% for message in messages %}
-			<div class="alert alert-info" role="alert">
-				{{ message }}
-			</div>
-		{% endfor %}
-	{% endif %}
-
 	<h2>{{ course.name }}</h2>
 	<p>{{ course.description|truncatechars:32 }}</p>
 	<h3>Преподаватели</h3>

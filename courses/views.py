@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from courses.models import Course, Lesson
 from courses.forms import CourseModelForm, LessonModelForm
@@ -8,16 +8,20 @@ from django.urls import reverse_lazy
 
 class CourseDetailView(DetailView):
     model = Course
+    template_name = 'courses/detail.html'
+    context_object_name = 'course'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['lessons'] = Lesson.objects.filter(course=self.kwargs['pk']).order_by('order')
+        context['lessons'] = self.object.lesson_set.all().order_by('order')
         return context
 
 
 class CourseCreateView(CreateView):
     model = Course
     form_class = CourseModelForm
+    template_name = 'courses/form.html'
+    context_object_name = 'course'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,6 +37,8 @@ class CourseCreateView(CreateView):
 class CourseUpdateView(UpdateView):
     model = Course
     form_class = CourseModelForm
+    template_name = 'courses/form.html'
+    context_object_name = 'course'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -46,6 +52,8 @@ class CourseUpdateView(UpdateView):
 
 class CourseDeleteView(DeleteView):
     model = Course
+    template_name = 'courses/remove.html'
+    context_object_name = 'course'
     success_url = reverse_lazy('index')
 
     def get_context_data(self, **kwargs):
