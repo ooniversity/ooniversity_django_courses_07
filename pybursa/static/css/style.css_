@@ -24,11 +24,7 @@ body {
 	line-height: 135%;
 }
 
-.panel a {
-	color: #6DB854;
-}
-
-table a {
+.panel a, table a {
 	color: #6DB854;
 }
 
@@ -168,14 +164,8 @@ td.courses-buttons {
 	text-align: right;
 }
 
-.student-create input[type=text] {
-	float: right;
-}
-
-.student-create input[type=email]{
-	float: right;
-}
-
+.student-create input[type=text],
+.student-create input[type=email],
 .student-create select {
 	float: right;
 }
@@ -192,14 +182,8 @@ td.courses-buttons {
 	max-width: 400px;
 }
 
-.course-create input[type=text] {
-	float: right;
-}
-
-.course-create input[type=number]{
-	float: right;
-}
-
+.course-create input[type=text],
+.course-create input[type=number],
 .course-create select {
 	float: right;
 }
