@@ -8,10 +8,15 @@
 
 
 {% block content %}  
-
 </div>
  <div class="container">
     <div class="row">
+        {% if messages %}
+            <div>
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+        {% endif %}    
         <div class="col-sm-12 blog-main">
                         <h1>{{ course_inf.name }}</h1>
                         <p class="page-main">{{ course_inf.description|truncatechars:32 }}</p>
@@ -66,6 +71,7 @@
       </table>
         </div><!-- /.page-main -->
       </div><!-- /.row -->
+    <a href="{% url 'courses:add-lesson' course_inf.id %}">Добавить занятие</a>      
     </div><!-- /.container -->
 
 {% include 'include/ome_include.html' %}
