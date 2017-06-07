@@ -10,10 +10,10 @@ from django.core.urlresolvers import reverse_lazy
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/detail.html'
+    context_object_name = "course"
 
     def get_context_data(self, *args, **kwargs):
         context = super(CourseDetailView, self).get_context_data(*args, **kwargs)
-        context["course"] = self.object
         context["lessons"] = self.object.lesson_set.all()
         return context
 
