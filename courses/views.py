@@ -11,9 +11,9 @@ class CourseDetailView(DetailView):
     template_name = 'courses/detail.html'
     context_object_name = 'course'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['lessons'] = self.object.lesson_set.all().order_by('order')
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['lessons'] = self.object.lesson_set.all()
         return context
 
 
