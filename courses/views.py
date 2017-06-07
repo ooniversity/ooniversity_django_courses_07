@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from courses.models import Course, Lesson
 from courses.forms import CourseModelForm, LessonModelForm
-from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 
@@ -11,9 +12,9 @@ class CourseDetailView(DetailView):
     template_name = 'courses/detail.html'
     context_object_name = 'course'
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['lessons'] = self.object.lesson_set.all()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['lessons'] = self.object.lesson_set.all().order_by('order')
         return context
 
 
