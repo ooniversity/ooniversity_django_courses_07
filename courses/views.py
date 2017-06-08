@@ -13,7 +13,7 @@ def index(request):
 class CourseDetailView(DetailView):
     model = Course
     template_name = "courses/detail.html"
-    context_object_name = "course"
+    #context_object_name = "course"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
