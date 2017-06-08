@@ -18,6 +18,7 @@ class CourseDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['lessons'] = self.object.lesson_set.all()
+        context['title'] = 'Course detail'
         return context
 
 
