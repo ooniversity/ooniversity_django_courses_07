@@ -9,7 +9,7 @@
 
 {% block content %}
     <a class="btn btn-primary" href="{% url 'students:add' %}">Добавить нового студента</a>
-    {% if students_list %}
+    {% if object_list %}
     <table class="tab1 table table-striped table-bordered table-condensed">
         <thead>
             <tr>
@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for student in students_list %}
+            {% for student in object_list %}
                 <tr>
                     <td>{{ student.id }}</td>
                     <td><a href="{% url 'students:detail' student.id %}">{{student.name}} {{student.surname}}</a></td>
