@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from pybursa.views import contact
 from courses.views import index
+from feedbacks import views
 
 
 urlpatterns = [
@@ -12,6 +13,7 @@ urlpatterns = [
     url(r'^courses/', include('courses.urls')),
     url(r'^students/', include('students.urls')),
     url(r'^coaches/', include('coaches.urls')),
+    url(r'^feedback/', views.FeedbackView.as_view(), name='feedback'),
     url(r'^admin/', admin.site.urls),
 ]
 
