@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'courses',
     'students',
     'coaches',
+    'feedbacks',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,17 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+ADMINS = (('Ponomarenko Valerii', 'ponomarenko.valerij@gmail.com'), ('Valerii Ponomarenko', 'panval@mail.ru'))
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+
+EMAIL_PORT = '587'
+
+EMAIL_SUBJECT_PREFIX = '[PyBursa]'
+
+SERVER_EMAIL = 'ValeriiPonomarenko.sendgrid'
+
+EMAIL_HOST_USER = 'ValeriiPonomarenko.sendgrid'
+
+EMAIL_HOST_PASSWORD = 'send9379992'
