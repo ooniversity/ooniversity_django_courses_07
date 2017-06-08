@@ -9,10 +9,18 @@
 {% block content %}
       <div>
           <h1>Курс PyBursa</h1>
-          <p>Список студентов курса 
-          </p>
-      </div>                
-                
+          {% if messages %}
+                      <ul class="messages">
+                          {% for message in messages %}
+                          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
+          <div>
+              <a href="{% url 'students:add' %}"><span class="glyphicon glyphicon-plus"></span><strong>  Добавить нового студента</strong></a>
+          </div>
+          <p>Список студентов</p>
+      </div>    
            <div class="container-fluid">
               <div class="row-fluid">
                   <div class="panel panel-info">
@@ -27,6 +35,8 @@
                                 <td>Адрес</td>
                                 <td>Skype</td>
                                 <td>Курсы</td>
+                                <td></td>
+                                <td></td>                                
                             </tr>                             
                               {% for student in students %}
                             <tr class="row-3">                                
@@ -37,11 +47,12 @@
                                 <td>{% for course in student.courses.all %}
                                     <a href="{% url 'courses:detail' course.id %}">{{course.name}}</a><br>
                                      {% endfor %}</td>
+                                <td><a href="{% url 'students:edit' student.id %}">  <span class="glyphicon glyphicon-edit"></span>  Изменить</a></td>
+                                <td><a href="{% url 'students:remove' student.id %}">  <span class="glyphicon glyphicon-remove">  Удалить</span></a></td> 
                             </tr>
                               {% endfor %} 
                             </table>      
-                       </div>                      
-                  
+                       </div>   
                   </div>                 
               </div>
           </div>
