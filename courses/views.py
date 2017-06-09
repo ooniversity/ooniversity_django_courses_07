@@ -33,7 +33,7 @@ class CourseCreateView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, 'Course %s has been successfully added.' % (form.instance.name))
+        messages.success(self.request, 'Course %s has been successfully added.' % (self.object.name))
         return response
 
     def get_context_data(self, **kwargs):
@@ -71,7 +71,7 @@ class CourseDeleteView(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         response = super().delete(self, request, *args, **kwargs)
-        messages.success(self.request, 'Deleted')
+        messages.success(request, 'Course %s has been deleted.' % self.object.name)
         return response
 
     def get_context_data(self, **kwargs):
