@@ -51,24 +51,39 @@
     </div>
 
     {% if is_paginated %}
-        <ul class="pagination">        
-            {% if page_obj.has_previous %}
-                <li><a href="?page={{ contacts.previous_page_number }}"><< previous</a></li>
-            {% endif %}
-            
-            {% for page in page_obj.paginator.page_range %}
-                {% if page == page_obj.number %}
-                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
-                {% else %}
-                    <li><a href="?page={{ page }}">{{ page }}</a></li>
+        {% if request.GET.course_id %}
+            <ul class="pagination">        
+                {% if page_obj.has_previous %}
+                    <li><a href="?course_id={{ request.GET.course_id }}&page={{ page_obj.previous_page_number }}"><< previous</a></li>
                 {% endif %}
-            {% endfor %}
-            
-            {% if page_obj.has_next %}
-                <li><a href="?page={{ page_obj.next_page_number }}">next >></a></li>
-            {% endif %}
-            
-        </ul>
+                
+                {% for page in page_obj.paginator.page_range %}
+                    <li {% if page == page_obj.number %}class="active"{% endif %}><a href="?course_id={{ request.GET.course_id }}&page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                    <li><a href="?course_id={{ request.GET.course_id }}&page={{ page_obj.next_page_number }}">next >></a></li>
+                {% endif %}
+                
+            </ul>
+        {% else %}
+            <ul class="pagination">        
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}"><< previous</a></li>
+                {% endif %}
+                
+                {% for page in page_obj.paginator.page_range %}
+                    <li {% if page == page_obj.number %}class="active"{% endif %}><a href="?page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">next >></a></li>
+                {% endif %}
+                
+            </ul>
+        {% endif %}
+
+
     {% endif %}
 
 {% endblock content %}
