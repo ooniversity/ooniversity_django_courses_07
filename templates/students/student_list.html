@@ -54,7 +54,7 @@
     <ul class="pagination">
         
         {% if object_list.has_previous %}
-            <li><a href="?page={{ contacts.previous_page_number }}"><<</a></li>
+            <li><a href="?page={{ contacts.previous_page_number }}"><< previous</a></li>
         {% endif %}
         
         {% for page in object_list.paginator.page_range %}
@@ -66,7 +66,7 @@
         {% endfor %}
         
         {% if object_list.has_next %}
-            <li><a href="?page={{ object_list.next_page_number }}">>></a></li>
+            <li><a href="?page={{ object_list.next_page_number }}">next >></a></li>
         {% endif %}
         
     </ul>
