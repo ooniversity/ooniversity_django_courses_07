@@ -1,11 +1,12 @@
 from django.conf.urls import url
 from students.views import list_view, detail, create, edit, remove
+from students import views
 
 app_name = 'students'
 urlpatterns = [
-    url(r'^$', list_view, name='list_view'),
-    url(r'^add/$', create, name='add'),
-    url(r'^edit/(?P<student_id>\d+)/$', edit, name='edit'),
-    url(r'^remove/(?P<student_id>\d+)/$', remove, name='remove'),
-    url(r'^(?P<student_id>[0-9]+)/$', detail, name='detail'),
+    url(r'^$', views.StudentListView.as_view(), name='list_view'),
+    url(r'^add/$', views.StudentCreateView.as_view(), name='add'),
+    url(r'^edit/(?P<pk>\d+)/$', views.StudentUpdateView.as_view(), name='edit'),
+    url(r'^remove/(?P<pk>\d+)/$', views.StudentDeleteView.as_view(), name='remove'),
+    url(r'^(?P<pk>[0-9]+)/$', views.StudentDetailView.as_view(), name='detail'),
 ]
