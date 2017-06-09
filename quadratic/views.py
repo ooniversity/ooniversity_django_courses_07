@@ -33,3 +33,5 @@ class QuadraticEquation:
             self.x2 = (-1 * self.b - sqrt(self.d)) / (2 * self.a)
         elif self.d == 0:
             self.x1 = (-1 * self.b + sqrt(self.d)) / (2 * self.a)
+
+            
