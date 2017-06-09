@@ -1,5 +1,4 @@
 from django.conf.urls import url
-from students.views import list_view, detail, create, edit, remove
 from students import views
 
 app_name = 'students'
