@@ -5,4 +5,4 @@ from feedbacks.models import Feedback
 class FeedbackModelForm(forms.ModelForm):
     class Meta:
         model = Feedback
-        fields = '__all__'
+        fields = ['subject', 'from_email', 'name', 'message']
