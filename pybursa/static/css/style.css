@@ -230,8 +230,9 @@ td.courses-buttons {
 
 .feedback-form textarea {
 	float: right;
+	max-width: 600px;
 	width: 600px;
-	height: 300px;
+	height: 200px;
 	margin-bottom: 20px;
 }
 
