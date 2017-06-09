@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Course, Lesson
 from django.contrib import messages
 from .forms import CourseModelForm, LessonModelForm
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 
@@ -16,6 +16,12 @@ class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/detail.html'
     context_object_name = 'course'
+    pk_url_kwarg = 'course_id'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['course_lessons'] = Lesson.objects.filter(course__id__exact = self.kwargs.get('course_id')).order_by('order')
+        return context
 
 
 class CourseCreateView(CreateView):
