@@ -215,3 +215,26 @@ td.courses-buttons {
 .course-h3 {
 	margin-top: -5px;
 }
+
+/*Feedback form*/
+
+.feedback-form input[type=text] {
+	float: right;
+	width: 400px;
+}
+
+.feedback-form input[type=email] {
+	float: right;
+	width: 400px;
+}
+
+.feedback-form textarea {
+	float: right;
+	width: 600px;
+	height: 300px;
+	margin-bottom: 20px;
+}
+
+.feedback-form {
+	max-width: 600px;
+}
