@@ -11,11 +11,10 @@ class StudentListView(ListView):
     paginate_by = 2
 
     def get_queryset(self):
+        students = super().get_queryset()
         course_id = self.request.GET.get('course_id', None)
         if course_id:
-            students = Student.objects.filter(courses=course_id)
-        else:
-            students = Student.objects.all()
+            students = students.filter(courses=course_id)
         return students
 
 
