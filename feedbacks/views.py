@@ -3,12 +3,12 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.core.mail import mail_admins
 from feedbacks.models import Feedback
-from feedbacks.forms import FeedbackModelForm
+from feedbacks.forms import FeedbackForm
 
 
 class FeedbackCreateView(CreateView):
     model = Feedback
-    form_class = FeedbackModelForm
+    form_class = FeedbackForm
     template_name = 'feedback.html'
     context_object_name = 'feedback'
     success_url = reverse_lazy('feedback')
