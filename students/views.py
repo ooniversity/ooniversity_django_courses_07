@@ -1,20 +1,30 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from students.models import Student
-from students.forms import StudentModelForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from students.models import Student
+from students.forms import StudentModelForm
 
 
 class StudentListView(ListView):
     model = Student
+    template_name = 'students/student_list.html'
 
     def get_queryset(self):
         course_id = self.request.GET.get('course_id', None)
         if course_id:
-            students = Student.objects.filter(courses=course_id)
+            students_list = Student.objects.filter(courses=course_id)
         else:
-            students = Student.objects.all()
+            students_list = Student.objects.all()
+        paginator = Paginator(students_list, 2)
+        page = self.request.GET.get('page')
+        try:
+            students = paginator.page(page)
+        except PageNotAnInteger:
+            students = paginator.page(1)
+        except EmptyPage:
+            students = paginator.page(paginator.num_pages)
         return students
 
 

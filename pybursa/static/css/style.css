@@ -239,3 +239,7 @@ td.courses-buttons {
 .feedback-form {
 	max-width: 600px;
 }
+
+.student-table {
+	height: 200px;
+}
