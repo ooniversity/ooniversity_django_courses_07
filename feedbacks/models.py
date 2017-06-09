@@ -6,4 +6,4 @@ class Feedback(models.Model):
     from_email = models.EmailField()
     name = models.CharField(max_length=50)
     message = models.TextField()
-    create_date = models.DateTimeField(auto_now=True)
+    create_date = models.DateTimeField(auto_now=True, editable=False)
