@@ -9,6 +9,17 @@
 
 {% block content %}
     <div class="container main_text">
+
+        {% if messages %}
+        <div class="alert alert-info">
+          <ul class="messages">
+              {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
         <div class="program">
           <h2>Список студентов</h2>
           <table class="table table-hover">
@@ -25,18 +36,29 @@
               {% for student in student_list %}
               <tr>
                 <td>{{ forloop.counter }}</td>
-                <td><a href="{% url 'students:detail' student.id %}">{{ student.fullname }}</a></td>
+                <td>
+                    <a href="{% url 'students:detail' student.id %}">{{ student.fullname }}</a>
+                </td>
                 <td>{{ student.address }}</td>
                 <td>{{ student.skype }}</td>
                 <td>
                   {% for student_courses in student.get_courses %}  <!-- in student.courses.all -->
                     <p><a href="{% url 'courses:detail' student_courses.id %}">{{ student_courses.name }}</a></p>
                   {% endfor %}
+                    <a href="{% url 'students:edit' student.id %}">
+                      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </a>
+                    <a href="{% url 'students:remove' student.id %}">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
                 </td>
               </tr>
               {% endfor %}
             </tbody>
           </table>
         </div>
+
+        <a href="{% url 'students:add' %}" class="btn btn-info" role="button">Добавить студента</a>
+
     </div>
 {% endblock content %}

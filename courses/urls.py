@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from courses.views import detail, add, edit, remove, add_lesson
+from courses.views import detail, add, edit, remove, add_lesson, remove
 
 app_name = 'courses'
 urlpatterns = [
