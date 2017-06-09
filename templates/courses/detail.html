@@ -4,6 +4,9 @@
 {% block title %}Courses detail{% endblock %}
 
 
+{% block menu_student_list_params %}?course_id={{ course.id }}{% endblock %}
+
+
 {% block content %}
     <a class="btn btn-primary" href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
     <h1>{{ course.name }}</h1>
