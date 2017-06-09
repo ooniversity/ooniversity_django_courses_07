@@ -6,7 +6,7 @@ from feedbacks.models import Feedback
 from feedbacks.forms import FeedbackForm
 
 
-class FeedbackCreateView(CreateView):
+class FeedbackView(CreateView):
     model = Feedback
     form_class = FeedbackForm
     template_name = 'feedback.html'
