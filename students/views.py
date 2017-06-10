@@ -1,61 +1,74 @@
-from django.shortcuts import render, redirect
 from students.models import Student
 from students.forms import StudentModelForm
-from courses.models import Course
 from django.contrib import messages
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 
-def detail(request, student_id):
-    student_info = Student.objects.get(id=student_id)
-    return render(request, 'students/detail.html', {'student_info': student_info})
+
+
+class StudentDetailView(DetailView):
+    model = Student
     
-def list_view(request):
-    without_c = False
-    try:
-        course_id = request.GET['course_id']
-    except KeyError:
-        without_c = True
+
+class StudentListView(ListView):
+    model = Student
+    context_object_name = "students"
         
-    if without_c == True:
-        students_list = Student.objects.all
-        active_course = None
-    else:
-        students_list = Student.objects.filter(courses=course_id)
-        active_course = Course.objects.get(id=course_id)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        course_id = self.request.GET.get('course_id', None)
+        if course_id:
+            qs = qs.filter(courses=course_id)
+        return qs    
     
-    return render(request, 'students/list.html', {'st_list': students_list})
-    
-def create(request):
-    if request.method == 'POST':
-        form = StudentModelForm(request.POST)
-        if form.is_valid():
-            form.save()
-            student = form.cleaned_data['name'] + ' ' + form.cleaned_data['surname']
-            messages.success(request, 'Student %s has been successfully added.' % student)
-            return redirect('students:list_view')
-    else:
-        form = StudentModelForm()
-    context = {'form': form}
-    return render(request, 'students/add.html', context)
-    
-def edit(request, id):
-    student = Student.objects.get(id=id)
-    form = StudentModelForm(instance=student)
-    if request.method == 'POST':
-        form = StudentModelForm(request.POST, instance=student)
-        if form.is_valid():
-            form.save()
-            messages.success(request, ('Info on the student has been successfully changed.'))
-            return redirect('students:edit', id=id)
-    context = {'form': form}
-    return render(request, 'students/edit.html', context)
 
-def remove(request, id):
-    student = Student.objects.get(id=id)
-    if request.method == 'POST':
-        student.delete()
-        student_name = student.name + ' ' + student.surname
-        messages.success(request, ("Info on %s has been successfully deleted." % student_name))
-        return redirect('students:list_view')
-    context = {'student': student}
-    return render(request, 'students/remove.html', context)
+class StudentCreateView(CreateView):
+    model = Student
+    success_url = reverse_lazy ('students:list_view')
+    form_class = StudentModelForm
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Student registration"
+        return context
+	
+    def form_valid(self, form):
+        fullname = form.instance.name + ' ' + form.instance.surname
+        messages.success(self.request, 'Student %s has been successfully added.' % fullname)
+        return super().form_valid(form)
+
+
+class StudentUpdateView(UpdateView):
+    model = Student
+    success_url = reverse_lazy ('students:list_view')
+    form_class = StudentModelForm
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Student info update"
+        return context
+	
+    def form_valid(self, form):
+        fullname = form.instance.name + ' ' + form.instance.surname
+        messages.success(self.request, 'Student %s has been successfully update.' % fullname)
+        return super().form_valid(form)
+
+    
+class StudentDeleteView(DeleteView):
+    model = Student
+    success_url = reverse_lazy ('students:list_view')   
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Student info suppression"
+        return context
+	
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Student has been successfully delete.')
+        return super().delete(self, request, *args, **kwargs)
+
+
+
