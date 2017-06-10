@@ -52,7 +52,7 @@ class StudentUpdateView(UpdateView):
         return context
 	
     def form_valid(self, form):
-	messages.success(self.request, 'Info on the student has been successfully changed')
+        messages.success(self.request, 'Info on the student has been successfully changed')
         return super().form_valid(form)
 
     
@@ -66,7 +66,7 @@ class StudentDeleteView(DeleteView):
         return context
 	
     def delete(self, request, *args, **kwargs):
-        student = self.object.name + ' ' + self.object.surname
+        student = Student.objects.get(id=kwargs.get('pk'))
         messages.success(self.request, 'Info on %s has been successfully deleted.' % student)
         return super().delete(self, request, *args, **kwargs)
 
