@@ -20,7 +20,7 @@
   </head>
 
 <body>
-    
+ {% block menu %}   
      <div class="blog-masthead">
       <div class="container">
 
@@ -30,14 +30,9 @@
      <a class="page-nav-item{% block nav_students_active %}{% endblock nav_students_active %}" href="{% url 'students:list_view' %}">Students</a>
         </nav>
       </div>
-     </div>
-     
- 
-    
-     
+     </div>    
+  {% endblock menu %}   
      {% block content %}{% endblock content %}
-     
-  
      
     <div class="container">
 	      
