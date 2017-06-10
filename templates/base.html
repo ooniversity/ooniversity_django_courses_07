@@ -36,6 +36,7 @@
       </nav>
       <div id="wrapper">
 
+
       {% if messages %}
         {% for message in messages %}
           <div class="alert alert-info" role="alert">
@@ -44,7 +45,9 @@
         {% endfor %}
       {% endif %}
 
+
         {% block content %}{% endblock %}
+
 
       </div>
     </div>
