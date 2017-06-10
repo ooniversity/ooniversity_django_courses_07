@@ -24,7 +24,7 @@
       </div>
       {% endif %}
 
-      <a href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
+      <a href="{% url 'courses:add-lesson' course.id %}" class="btn btn-info" role="button">Добавить занятие</a>
 
       {% include "include/course_include.html" %}
         <div>
@@ -72,7 +72,7 @@
               </tr>
             </thead>
             <tbody>
-              {% for lesson in lessons_list %}
+              {% for lesson in course.lesson_set.all %}
               <tr>
                 <td>{{ lesson.order }}</td>
                 <td>{{ lesson.subject }}</td>
