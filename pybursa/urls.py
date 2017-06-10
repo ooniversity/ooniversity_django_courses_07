@@ -25,8 +25,6 @@ urlpatterns = [
     url(r'^students/', include('students.urls')),
     url(r'^coaches/', include('coaches.urls')),
     url(r'^contact/$', views.contact, name='contact'),
-    url(r'^student_list/$', views.student_list, name='student_list'),
-    url(r'^student_detail/$', views.student_detail, name='student_detail'),
     url(r'^quadratic/results/$', quadratic_results, name='quadratic_results'), #(?P<a>\d+)/(?P<b>\d+)/(?P<c>\d+)/
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),

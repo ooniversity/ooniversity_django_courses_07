@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 
-{% block title %}Удаление курса{% endblock title %}
+{% block title %}{{ title }}{% endblock title %}
 
 
 {% block nav_class_index %} class="active"{% endblock %}
@@ -11,13 +11,13 @@
 
   <div class="container main_text">
 
-  <h2>Удалить курс: {{ course.name }}?</h2>
 
     <form method='post'>
       {% csrf_token %}
+      {{ form.as_p }}
       <input type='submit' />
     </form>
- 
+
   </div>
 
 {% endblock content %}
