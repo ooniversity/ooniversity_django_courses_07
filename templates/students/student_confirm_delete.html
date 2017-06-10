@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Students list {% endblock title %}
+{% block title %}Удалить студента{% endblock title %}
 
 {% block content %}
     <div class="container">
@@ -14,7 +14,7 @@
                  </div>
 {% endif %}
     
-	<h2>Студент {{ student.name }} {{ student.surname }} будет удален</h2>
+	<h2>{{ title }}</h2>
                        <div class="table-responsive">
                          <form method="post">
                           {% csrf_token %}
