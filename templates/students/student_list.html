@@ -28,7 +28,7 @@
             </tr>
             {% for student in object_list %}
             <tr>
-                <td>{{ student.id }}</td>
+                <td>{{ forloop.counter }}</td>
                 <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
                 <td>{{ student.address }}</td>
                 <td>{{ student.skype }}</td>
@@ -50,21 +50,22 @@
         </table>
     </div>
 
+
     {% if is_paginated %}
         <center>
             <ul class="pagination">
             {% if page_obj.has_previous %}
-                <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.previous_page_number }}"><< previous</a></li>
+                <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&amp;{% endif %}page={{ page_obj.previous_page_number }}"><< previous</a></li>
             {% endif %}            
             {% for page in page_obj.paginator.page_range %}
                 {% if page == page_obj.number %}
-                    <li class="active"><a href="#">{{ page }}</a></li>
+                    <li class="active"><a>{{ page }}</a></li>
                 {% else %}
-                    <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page }}">{{ page }}</a></li>
+                    <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&amp;{% endif %}page={{ page }}">{{ page }}</a></li>
                 {% endif %}
             {% endfor %}    
             {% if page_obj.has_next %}
-                <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.next_page_number }}">next >></a></li>
+                <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&amp;{% endif %}page={{ page_obj.next_page_number }}">next >></a></li>
             {% endif %}
             </ul>
         </center>
