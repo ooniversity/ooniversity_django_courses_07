@@ -1,6 +1,8 @@
 from django.contrib import admin
 from feedbacks.models import Feedback
 
-# Register your models here.
-admin.site.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ["from_email", "create_date"]
+
+admin.site.register(Feedback, FeedbackAdmin)
 

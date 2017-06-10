@@ -4,14 +4,24 @@
 {% block title %}Обратная связь{% endblock title %}
 
 
-{% block nav_class_index %} class="active"{% endblock %}
+{% block nav_class_feedback %} class="active"{% endblock %}
 
 
 {% block content %}
 
   <div class="container main_text">
-    <h1>Заполните форму для связи</h1>
 
+    {% if messages %}
+    <div class="alert alert-info">
+      <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <h1>Заполните форму для связи</h1>
 
     <form method="post" >
       {% csrf_token %}
