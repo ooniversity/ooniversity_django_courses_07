@@ -1,0 +1,60 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+{% block menu %}
+    <div class="blog-masthead">
+      <div class="container">
+
+        <nav class="blog-nav">
+          <a class="blog-nav-item " href="{% url 'index' %}">Main</a>
+          <a class="blog-nav-item" href="{% url 'contact' %}">Contacts</a>
+          <a class="blog-nav-item active" href="{% url 'students:list_view' %}">Students</a>
+       </nav>
+      </div>
+    </div>
+{% endblock menu%}
+
+{% block content %}
+    <div class="container">
+
+     
+          <h2>{{ student.surname }} {{ student.name }}</h2>
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>дата рождения</td>
+                <td>{{ student.birthdate_format }}</td>
+              </tr>
+              <tr>
+                <td>адрес</td>
+                <td>{{ student.address }}</td>
+              </tr>
+              <tr>
+                <td>почта</td>
+                <td>{{ student.email }}</td>
+              </tr>
+              <tr>
+                <td>логин skype</td>
+                <td>{{ student.skype }}</td>
+              </tr>
+              <tr>
+                <td>телефон</td>
+                <td>{{ student.phone }}</td>
+              </tr>
+              <tr>
+                <td>курсы</td>
+                <td>
+                  {% for i in student.courses.all %}
+							<a href="{% url 'courses:detail' i.id %}">
+								{{ i }}</a><br/>{% endfor %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      
+</div><!-- /.container -->
+
+{% endblock content %}	  
+	  
+      
