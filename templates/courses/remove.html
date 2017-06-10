@@ -1,12 +1,10 @@
 {% extends "base.html"%}
 
-{% load static %}
-
-{% block title %}{{ title }}{% endblock title %}
+{% block title %}Подтверждение удаления курса{% endblock title %}
 
 {% block content %}
 <div class="container">
-<h2>Курс {{ course.name }} будет удален</h2>
+<h2>{{ title }}</h2>
 
 	<form method="post">
 		{% csrf_token %}

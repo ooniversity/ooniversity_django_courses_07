@@ -1,12 +1,11 @@
 {% extends "base.html"%}
 
-{% load static %}
+{% block title %}Добавить новый курс{% endblock title %}
 
-{% block title %}{{ title }} {% endblock title %}
 
 {% block content %}
     <div class="container">
-	<h2>Добавить новый курс</h2>
+	<h2>{{ title }}</h2>
                         
 	<form method="post">
 	{% csrf_token %}
