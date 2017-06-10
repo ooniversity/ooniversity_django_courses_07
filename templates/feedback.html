@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block title %}Обратная связь{% endblock title %}
+
+
+{% block nav_class_index %} class="active"{% endblock %}
+
+
+{% block content %}
+
+  <div class="container main_text">
+    <h1>Заполните форму для связи</h1>
+
+
+    <form method="post" >
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" />
+    </form>
+
+  </div>
+
+{% endblock content %}
