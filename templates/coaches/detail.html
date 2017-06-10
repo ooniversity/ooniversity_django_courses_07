@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+
+{% block title %}Студенты курса ItBursa Django{% endblock title %}
+
+
+{% block nav_class_index %} class="active"{% endblock %}
+
+
+{% block content %}
+    <div class="container main_text">
+        <div class="program">
+          <h2>{{ coach.full_name }}</h2>
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>дата рождения</td>
+                <td>{{ coach.date_of_birth|date:"d F, Y" }}</td>
+              </tr>
+              <tr>
+                <td>адрес</td>
+                <td>{{ coach.address }}</td>
+              </tr>
+              <tr>
+                <td>почта</td>
+                <td>{{ coach.user.email }}</td>
+              </tr>
+              <tr>
+                <td>логин skype</td>
+                <td>{{ coach.skype }}</td>
+              </tr>
+              <tr>
+                <td>телефон</td>
+                <td>{{ coach.phone }}</td>
+              </tr>
+              <tr>
+                <td>курсы учитель</td>
+                <td>
+                  {% for course in courses_coach %}
+                    <p>
+                      <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                      студенты курса
+                      <a href="{% url 'students:list_view' %}?course_id={{course.id}}">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      </a>
+                    </p>
+                  {% endfor %}
+                </td>
+              </tr>
+              <tr>
+                <td>курсы ассистент</td>
+                <td>
+                  {% for course in courses_assistant %}
+                    <p>
+                      <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                      студенты курса
+                      <a href="{% url 'students:list_view' %}?course_id={{course.id}}">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      </a>
+                    </p>
+                  {% endfor %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+{% endblock content %}

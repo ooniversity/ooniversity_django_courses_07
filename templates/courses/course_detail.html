@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+
+{% block title %}Курс - {{ course.name }}{% endblock title %}
+
+
+{% block nav_class_index %} class="active"{% endblock %}
+
+
+{% block link_students %}?course_id={{course.id}}{% endblock %}
+
+
+{% block content %}
+
+    <div class="container main_text">
+
+      {% if messages %}
+      <div class="alert alert-info">
+        <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <a href="{% url 'courses:add-lesson' course.id %}" class="btn btn-info" role="button">Добавить занятие</a>
+
+      {% include "include/course_include.html" %}
+        <div>
+          <h2>Преподаватели</h2>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Учитель</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <p><a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.full_name }}</a></p>
+                  <p>{{ course.coach.description }}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Ассистент</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <p><a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.full_name }}</a></p>
+                  <p>{{ course.assistant.description }}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="program">
+          <h2>План курса</h2>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Тема</th>
+                <th>Описание</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for lesson in course.lesson_set.all %}
+              <tr>
+                <td>{{ lesson.order }}</td>
+                <td>{{ lesson.subject }}</td>
+                <td>{{ lesson.description }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    </div>
+
+{% endblock content %}

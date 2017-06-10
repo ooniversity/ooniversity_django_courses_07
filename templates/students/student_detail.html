@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+
+{% block title %}Студент курса ItBursa Django - {{ student.name }} {{ student.surname }}{% endblock title %}
+
+
+{% block nav_class_students %} class="active"{% endblock %}
+
+
+{% block content %}
+    <div class="container main_text">
+        <div class="program">
+          <h2>{{ student.name }} {{ student.surname }}</h2>
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>дата рождения</td>
+                <td>{{ student.reformat_birthdate }}</td>
+              </tr>
+              <tr>
+                <td>адрес</td>
+                <td>{{ student.address }}</td>
+              </tr>
+              <tr>
+                <td>почта</td>
+                <td>{{ student.email }}</td>
+              </tr>
+              <tr>
+                <td>логин skype</td>
+                <td>{{ student.skype }}</td>
+              </tr>
+              <tr>
+                <td>телефон</td>
+                <td>{{ student.phone }}</td>
+              </tr>
+              <tr>
+                <td>курсы</td>
+                <td>
+                  {% for course in student.courses.all %}
+                    <p><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></p>
+                  {% endfor %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+{% endblock content %}

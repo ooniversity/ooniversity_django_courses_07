@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ title }}{% endblock title %}
+
+
+{% block nav_class_students %} class="active"{% endblock %}
+
+
+{% block content %}
+  <div class="container main_text">
+
+  <h2>Удалить данные о студенте: {{ student.name }} {{ student.surname }}?</h2>
+  
+    <form method='post'>
+      {% csrf_token %}
+      <input type='submit' />
+    </form>
+
+  </div>
+
+{% endblock content %}
