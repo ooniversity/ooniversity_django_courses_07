@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from courses.views import add, edit, remove, add_lesson, remove
+from courses.views import add_lesson
 from courses import views
 
 app_name = 'courses'

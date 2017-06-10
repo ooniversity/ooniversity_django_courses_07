@@ -66,59 +66,6 @@ def index(request):
     return render(request, "index.html", {"courses_list": courses_list})
 
 
-def detail(request, course_id):
-
-    #course_obj = Course.objects.get(id=course_id)
-    course = get_object_or_404(Course, id=course_id)
-
-    lessons_list = course.lesson_set.all()  #course_obj.lesson_set.all
-    #lessons_list = Lesson.objects.filter(course=course_id)
-    return render(request, "courses/detail.html", {"course": course, "lessons_list": lessons_list })
-
-
-def add(request):
-
-    if request.method == "POST":
-        form = CourseModelForm(request.POST)
-        if form.is_valid():
-            instance = form.save()
-            messages.success(request, "Course %s has been successfully added." % instance.name)
-            return redirect('index')
-    else:
-         form = CourseModelForm()
-
-    return render(request, "courses/add.html", {'form': form })
-
-
-def edit(request, pk):
-
-    #course = Course.objects.get(id=pk)
-    course = get_object_or_404(Course, id=pk)
-
-    if request.method == "POST":
-        form = CourseModelForm(request.POST, instance=course)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "The changes have been saved.")
-            return redirect('courses:edit', pk = course.id)
-    else:
-        form = CourseModelForm(instance=course)
-
-    return render(request, "courses/edit.html", {'form': form })
-
-
-def remove(request, pk):
-
-    course = get_object_or_404(Course, id=pk)
-
-    if request.method == "POST":
-        course.delete()
-        messages.success(request, "Course %s has been deleted." % course.name)
-        return redirect('index')
-
-    return render(request, "courses/remove.html", {'course': course })
-
-
 def add_lesson(request, pk):
 
     if request.method == "POST":
@@ -133,3 +80,4 @@ def add_lesson(request, pk):
          form = LessonModelForm(initial={'course': pk, })
 
     return render(request, "courses/add_lesson.html", {'form': form })
+
