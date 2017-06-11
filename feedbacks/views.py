@@ -19,6 +19,5 @@ class FeedbackView(CreateView):
 
     def form_valid(self, form):
         messages.success(self.request,"Thank you for your feedback! We will keep in touch with you very soon!")
-        instance = form.cleaned_data()
-        mail_admins(instance['subject'],instance['message'])
+        mail_admins(form.instance.subject,form.instance.message)
         return super().form_valid(form)
