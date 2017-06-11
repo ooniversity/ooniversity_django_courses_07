@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'^quadratic/', include('quadratic.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^contact/', views.contact, name='contact'),
-    url(r'^feedback/', FeedbackView.as_view(), name='feedbacks'),
+    url(r'^feedback/', FeedbackView.as_view(), name='feedback'),
 ]
