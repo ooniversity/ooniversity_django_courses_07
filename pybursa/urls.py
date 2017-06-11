@@ -18,6 +18,7 @@ from django.contrib import admin
 from . import views
 from quadratic.views import quadratic_results
 from courses.views import index
+from feedbacks.views import FeedbackView
 
 urlpatterns = [
     url(r'^$', index, name='index'),
@@ -25,6 +26,7 @@ urlpatterns = [
     url(r'^students/', include('students.urls')),
     url(r'^coaches/', include('coaches.urls')),
     url(r'^contact/$', views.contact, name='contact'),
+    url(r'^feedback/$', FeedbackView.as_view(), name='feedback'),
     url(r'^quadratic/results/$', quadratic_results, name='quadratic_results'), #(?P<a>\d+)/(?P<b>\d+)/(?P<c>\d+)/
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
