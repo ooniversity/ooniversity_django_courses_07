@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'courses',
     'students',
     'coaches',
+    'feedbacks',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     #'/var/www/static/',
 )
+
+ADMINS = (('Misha','misha.beliy15@gmail.com'),('test','test@yopmail.com'))
+EMAIL_HOST = "localhost"
+EMAIL_PORT = '1025'
