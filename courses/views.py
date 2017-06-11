@@ -11,6 +11,7 @@ from django.urls import reverse_lazy
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/detail.html'
+    context_object_name = 'course'
 
 
 class CourseCreateView(CreateView):
@@ -33,9 +34,8 @@ class CourseCreateView(CreateView):
 
 class CourseUpdateView(UpdateView):
     model = Course
-    fields = ['name', 'short_description', 'description', 'coach', 'assistant']
+    form_class = CourseModelForm
     template_name = 'courses/edit.html'
-    pk_url_kwarg = 'course_id'
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -55,7 +55,7 @@ class CourseDeleteView(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         response = super().delete(request, *args, **kwargs)
-        messages.success(self.request, "Course has been deleted.")
+        messages.success(self.request, "Course %s has been deleted." % self.object.name)
         return response
 
     def get_context_data(self, **kwargs):
