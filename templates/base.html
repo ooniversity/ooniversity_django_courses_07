@@ -22,6 +22,8 @@
               <a href=" {% url 'students:list_view'%}{% block course_id %}{% endblock %}">Студенты</a></li>
           <li class="{% block nav_class_quadratic %}{% endblock %}">
               <a href=" {% url 'results'%}">Квадратное уравнения</a></li>
+          <li class="{% block nav_class_feedback %}{% endblock %}">
+              <a href=" {% url 'feedback'%}">Обратная связь</a></li>
         </ul>
       </div>
     </nav>
