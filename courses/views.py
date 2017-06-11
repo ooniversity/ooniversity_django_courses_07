@@ -34,7 +34,7 @@ class CourseCreateView(CreateView):
 
 class CourseUpdateView(UpdateView):
     model = Course
-    form_class = CourseModelForm
+    fields = ['name', 'short_description', 'description', 'coach', 'assistant']
     template_name = 'courses/edit.html'
 
     def form_valid(self, form):
