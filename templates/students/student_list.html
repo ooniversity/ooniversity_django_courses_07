@@ -49,6 +49,32 @@
 
 				</tbody> 
 			</table>
+{% if is_paginated %}
+        <center>
+            <ul class="pagination">
+            
+            {% if page_obj.has_previous %}
+                <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.previous_page_number }}"><< previous</a></li>
+            {% endif %}
+
+            {% for i in page_obj.paginator.page_range %}
+                {% if i == page_obj.number %}
+                    <li class="active"><span>{{ i }}</span></li>
+                {% else %}
+                    <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.next_page_number }}">next >></a></li>
+            {% endif %}
+
+            </ul>
+        </center>
+    {% endif %}
+
+			
+			
 		</div><!-- /.container -->
 			
 	{% endblock content %}  
