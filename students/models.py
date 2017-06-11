@@ -1,6 +1,6 @@
 from django.db import models
 from courses.models import Course
-
+from django.urls import reverse
 
 class Student(models.Model):
     name = models.CharField(max_length=25)
