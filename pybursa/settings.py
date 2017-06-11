@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'quadratic',
-	'courses',
-	'students',
-	'coaches',
+    'courses',
+    'students',
+    'coaches',
+    'feedbacks',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pybursa.wsgi.application'
 
+APPEND_SLASH = False
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -124,3 +126,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+ADMINS = (('Bulkin Stanislav', 'Bulikstasmagn@gmail.com'))
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+
+EMAIL_PORT = '600'
+
+EMAIL_SUBJECT_PREFIX = '[PyBursa]'
+
+SERVER_EMAIL = 'StasBulkin.sendgrid'
+
+EMAIL_HOST_USER = 'StasBulkin.sendgrid'
+
+EMAIL_HOST_PASSWORD = 'send9380000'
+
+
+
+
