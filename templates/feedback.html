@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block title %}Отправить сообщение{% endblock title %}
+
+
+{% block nav %}{% include "include/nav_include.html" with active_feedback='active' %}{% endblock nav %}
+
+
+{% block content %}
+<div class="general-container">
+        <div class="container top-container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              {% if messages %}
+                <div class="alert alert-success" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+                </div>
+                {% endif %}
+                  <h2 class="title">Связаться с администрацией</h2><br />
+                    <div class="table-responsive">
+                      <form method="post">
+                       {% csrf_token %}
+                       {{ form.as_p }}
+                       <input type="submit" value="Отправить сообщение">
+                      </form>
+                    </div>
+            <div/>
+          <div/>
+        <div/>
+<div/>
+{% endblock content %}
