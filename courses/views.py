@@ -10,11 +10,13 @@ from django.urls import reverse_lazy
 
 class CourseDetailView(DetailView):
     model = Course
+    template_name = 'courses/detail.html'
 
 
 class CourseCreateView(CreateView):
     model = Course
     fields = ['name', 'short_description', 'description', 'coach', 'assistant']
+    template_name = 'courses/add.html'
     success_url = reverse_lazy('index')
 
     def form_valid(self, form):
@@ -32,7 +34,8 @@ class CourseCreateView(CreateView):
 class CourseUpdateView(UpdateView):
     model = Course
     fields = ['name', 'short_description', 'description', 'coach', 'assistant']
-    success_url = reverse_lazy('index')
+    template_name = 'courses/edit.html'
+    pk_url_kwarg = 'course_id'
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -47,6 +50,7 @@ class CourseUpdateView(UpdateView):
 
 class CourseDeleteView(DeleteView):
     model = Course
+    template_name = 'courses/remove.html'
     success_url = reverse_lazy('index')
 
     def delete(self, request, *args, **kwargs):
