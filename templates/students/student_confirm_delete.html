@@ -5,9 +5,10 @@
 {% block navbar_nav_class_students %}class = "active"{% endblock %}
 
 {% block content %}
-    <h2>Do you want to remove student: {{ student }} ?</h2>
     <form method="post">
         {% csrf_token %}
+        <p><b>{{ title }}</b></p>
+        <p>Do you want to remove student: {{ student }} ?</p>
         <input type="submit" value="Remove">
     </form>
 {% endblock content %}
