@@ -10,14 +10,14 @@
       <div>
           <h1>Курс PyBursa</h1>
           {% if messages %}
-                      <ul class="messages">
-                          {% for message in messages %}
-                          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                          {% endfor %}
-                      </ul>
-                      {% endif %}
+              <div class="alert alert-success" role="alert">
+                  {% for message in messages %}
+                    {{ message }}
+                  {% endfor %}
+              </div>
+          {% endif %}
           <div>
-              <a href="{% url 'students:add' %}"><span class="glyphicon glyphicon-plus"></span><strong>  Добавить нового студента</strong></a>
+              <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'students:add' %}" role="button"><strong>Добавить нового студента</strong></a>
           </div>
           <p>Список студентов</p>
       </div>    
@@ -27,9 +27,9 @@
                       <div class="panel-heading">
                           <h3 class="panel-title">PyBursa#07</h3>
                       </div>
-                      <div class="panel-body">
-                          <table class="table"> 
-                            <tr class="row-2">
+                      <div class="list">
+                          <table class="table table-striped"> 
+                            <thead >
                                 <td>No</td>
                                 <td>Фамилия Имя</td>
                                 <td>Адрес</td>
@@ -37,9 +37,9 @@
                                 <td>Курсы</td>
                                 <td></td>
                                 <td></td>                                
-                            </tr>                             
-                              {% for student in students %}
-                            <tr class="row-3">                                
+                            </thead>                             
+                              {% for student in object_list %}
+                            <tbody >                                
                                 <td>{{ forloop.counter }}</td>
                                 <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
                                 <td>{{student.address}}</td>
@@ -49,7 +49,7 @@
                                      {% endfor %}</td>
                                 <td><a href="{% url 'students:edit' student.id %}">  <span class="glyphicon glyphicon-edit"></span>  Изменить</a></td>
                                 <td><a href="{% url 'students:remove' student.id %}">  <span class="glyphicon glyphicon-remove">  Удалить</span></a></td> 
-                            </tr>
+                            </tbody>
                               {% endfor %} 
                             </table>      
                        </div>   
