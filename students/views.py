@@ -43,6 +43,7 @@ class StudentCreateView(CreateView):
 class StudentUpdateView(UpdateView):
     model = Student
     form_class = StudentModelForm
+    # success_url = reverse_lazy('students:list_view')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -51,7 +52,10 @@ class StudentUpdateView(UpdateView):
 
     def form_valid(self, form):
         messages.success(self.request, 'Info on the student has been successfully changed.')
-        return self.render_to_response(self.get_context_data(form=form))
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('students:edit', kwargs={'pk': self.kwargs.get('pk')})
 
 
 class StudentDeleteView(DeleteView):
