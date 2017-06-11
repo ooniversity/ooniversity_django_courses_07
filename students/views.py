@@ -46,7 +46,8 @@ class StudentUpdateView(UpdateView):
 
     def form_valid(self, form):
         messages.success(self.request, 'Info on the student has been successfully changed.')
-        return self.render_to_response(self.get_context_data(form=form))
+        # return self.render_to_response(self.get_context_data(form=form))
+        return super().form_valid(form)
 
 
 class StudentDeleteView(DeleteView):

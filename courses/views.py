@@ -45,7 +45,8 @@ class CourseUpdateView(UpdateView):
 
     def form_valid(self, form):
         messages.success(self.request, 'The changes have been saved.')
-        return self.render_to_response(self.get_context_data(form=form))
+        # return self.render_to_response(self.get_context_data(form=form))
+        return super().form_valid(form)
 
 
 class CourseDeleteView(DeleteView):
