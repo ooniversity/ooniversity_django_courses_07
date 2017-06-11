@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'feedbacks.apps.FeedbacksConfig',
     'coaches.apps.CoachesConfig',
     'students.apps.StudentsConfig',
     'courses.apps.CoursesConfig',
@@ -130,3 +131,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+
+ADMINS = [('Admin', 'example@example.com')]
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25

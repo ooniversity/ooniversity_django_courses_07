@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block title %}PyBursa - Contacts{% endblock %}
+
+
+{% block menu_class_feedbacks %}active{% endblock %}
+
+
+{% block content %}
+    <form method="post">
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Отправить">
+    </form>
+{% endblock content %}

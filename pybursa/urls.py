@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from . import views
 from courses.views import index
+from feedbacks.views import FeedbackView
 
 admin.site.site_header = 'PyBursa Administration'
 
@@ -29,4 +30,5 @@ urlpatterns = [
     url(r'^quadratic/', include('quadratic.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^contact/', views.contact, name='contact'),
+    url(r'^feedback/', FeedbackView.as_view(), name='feedbacks'),
 ]

@@ -35,6 +35,10 @@
 			<li class="{% block menu_class_students %}{% endblock %}">
                 <a href="{% url 'students:list_view' %}{% block menu_student_list_params %}{% endblock %}">Students</a>
             </li>
+            <li class="{% block menu_class_feedbacks %}{% endblock %}">
+                <a href="{% url 'feedbacks' %}">Feedbacks</a>
+            </li>
+
 		  </ul>
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
