@@ -5,4 +5,3 @@ class Feedback(models.Model):
     subject = models.CharField(max_length=32)
     message = models.TextField()
     create_date = models.DateTimeField(auto_now_add=True)
-    
