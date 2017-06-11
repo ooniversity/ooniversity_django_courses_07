@@ -1,10 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
-from django.views.generic.edit import UpdateView
-from django.views.generic.edit import DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from students.models import Student
 from students.forms import StudentModelForm
