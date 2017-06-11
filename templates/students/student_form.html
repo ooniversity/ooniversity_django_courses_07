@@ -2,18 +2,25 @@
 
 {% load staticfiles %}
 
-{% block title %}Remove student{% endblock title %}
+{% block title %}{{ title }}{% endblock title %}
 
 {% block nav_class_students %}"active"{% endblock %}
 
               {% block content %}
               <div class="row-fluid">
                   <div class="col-xs-8" "col-xs-offset-2" >
-                      <h1>Студент {{ student.name }} {{ student.surname }} будет удален</h1>
+                      {% if messages %}
+                      <div class="alert alert-success" role="alert">
+                          {% for message in messages %}
+                          {{ message }}
+                          {% endfor %}
+                      </div>
+                      {% endif %}
+                      <h1>{{ header }}</h1> 
                       <form method = "post">
                           {% csrf_token %}
                           {{ form.as_p }}
-                          <input type="submit" value="Удалить">
+                          <input type="submit" value="{{ button }}">
                       </form> 
                    </div>
               </div>

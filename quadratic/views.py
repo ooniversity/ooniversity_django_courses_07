@@ -10,7 +10,7 @@ def discriminant(a, b, c):
 def quadratic_roots(a, b, d):
     x1 = (-b+d**(1/2))/(2*a)    
     x2 = (-b-d**(1/2))/(2*a)
-    return round(x1, 2), round(x2, 2)
+    return x1,x2
 
 def quadratic_results(request):
     form = QuadraticForm(request.GET)
@@ -20,15 +20,15 @@ def quadratic_results(request):
         b = form.cleaned_data['b']
         c = form.cleaned_data['c']
         d = discriminant(a, b, c)
-        context.update({'d':"Дискриминант: %d"%d})
+        context.update({'d':'Дискриминант: {}'.format(d)})
         if d < 0:
-            result_message = "Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений."
+            result_message = 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
         elif d == 0:
             x1,x2 = quadratic_roots(a, b, d)            
-            result_message = "Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %d"%x1
+            result_message = 'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {}'.format(x1)
         else:
             x1,x2 = quadratic_roots(a, b, d)           
-            result_message = "Квадратное уравнение имеет два действительных корня: x1 = %d, x2 = %d"%(x1, x2)
+            result_message = 'Квадратное уравнение имеет два действительных корня: x1 = {}, x2 = {}'.format(x1, x2)
         context.update({'result_message':result_message})
     return render(request, 'quadratic/results.html', context)
 
