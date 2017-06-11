@@ -2,6 +2,7 @@
 
 {% block title %}PyBursa: {{ course.name }}{% endblock %}
 
+{% block students_link %}?course_id={{course.id}}{% endblock %}
 
 {% block content %}
     <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'courses:add-lesson' course.id %}">Add new lesson</a></p><br />
