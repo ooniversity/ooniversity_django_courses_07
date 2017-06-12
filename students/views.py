@@ -4,7 +4,7 @@ from students.forms import StudentModelForm
 from django.contrib import messages
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 
@@ -39,8 +39,8 @@ class StudentCreateView(CreateView):
 
 class StudentUpdateView(UpdateView):
     model = Student
-    success_url = reverse_lazy('students:list_view')
     form_class = StudentModelForm
+    success_url = reverse_lazy('students:list_view')
 
     def form_valid(self, form):
         response = super().form_valid(form)

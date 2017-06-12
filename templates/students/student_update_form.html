@@ -4,7 +4,7 @@
 {% load static %}
 
 
-{% block title %}{{ title }}{% endblock title %}
+{% block title %}Редактировать данные студента{% endblock title %}
 
 {% block nav_students_active %} active{% endblock nav_students_active %}
 
@@ -18,7 +18,7 @@
 				{% endif %}
     <div class="container">
       <div class="row">
-
+           <h2>{{ title }}</h2>
         	<form method="post">
                   {% csrf_token %}
                   {{ form.as_p }}
