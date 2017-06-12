@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'courses',
     'students',
     'coaches',
+    'feedbacks',
 ]
 
 MIDDLEWARE = [
@@ -125,4 +126,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+
+ADMINS = (('Tarchanskyj Arthur', 'arthurka.company@gmail.com'))
+
+EMAIL_HOST = 'localhost'
+
+EMAIL_PORT = 1025
+
+EMAIL_SUBJECT_PREFIX = '[PyBursa]'
 
