@@ -63,10 +63,7 @@
             <ul class="pagination">
               <li>
                 {% if page_obj.has_previous %}
-                <a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.previous_page_number }}" aria-label="<< previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  previous
-                </a>
+                  <a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.previous_page_number }}" aria-label="Previous"><< previous</a>
                 {% endif %}
               </li>
 
@@ -84,10 +81,7 @@
 
               <li>
                 {% if page_obj.has_next %}
-                <a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.next_page_number }}">
-                  <span aria-hidden="true">&raquo;</span>
-                  next
-                </a>
+                  <a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.next_page_number }}" aria-label="Next">next >></a>
                 {% endif %}
               </li>
             </ul>
