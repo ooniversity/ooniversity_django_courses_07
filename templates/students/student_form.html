@@ -4,22 +4,27 @@
 {% load static %}
 
 
-{% block title %}Добавить студента{% endblock title %}
-
+{% block title %}{{ title }}{% endblock title %}
 
 {% block nav_students_active %} active{% endblock nav_students_active %}
 
-
 {% block content %}
+{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+					<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
     <div class="container">
       <div class="row">
-          <h2>{{ title }}</h2>
-
-		      <form method="post">
+           <h2>{{ title }}</h2>
+        	<form method="post">
                   {% csrf_token %}
                   {{ form.as_p }}
-                  <input type="Submit" value="Добавить" class="btn btn-success" >
+              <input class="btn btn-success" type="Submit" value="Изменить">
               </form>
+
       </div><!-- /.row -->
     </div><!-- /.container -->
 {% endblock content %}
