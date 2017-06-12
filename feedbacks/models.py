@@ -7,3 +7,6 @@ class Feedback(models.Model):
     message = models.TextField()
     from_email = models.EmailField()
     create_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.from_email
