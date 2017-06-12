@@ -1,27 +1,19 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 
-{% load static %}
+{% block title %}Удаление студента - pyBursa{% endblock %}
 
 
-{% block title %}Удалить студента{% endblock title %}
-
-
-{% block nav_students_active %} active{% endblock nav_students_active %}
+{% block nav_students %}active{% endblock %}
 
 
 {% block content %}
-
-
-    <div class="container">
-      <div class="row">
-<h1>Student {{ remove_student.name }} {{ remove_student.surname }} will be deleted.</h1>
-		  <form method="post">
-            {% csrf_token %}
-            <input class="btn btn-success" type="Submit" value="Удалить">
-          </form>
-      </div>
-    </div>
-
-
+<div class="page-header">
+  <h2>{{ title }}</h2>
+  <!--<h4>Студент {{ student.name }} {{ student.surname }} будет удален</h4>-->
+</div>
+  <form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Удалить">
+  </form>
 {% endblock content %}

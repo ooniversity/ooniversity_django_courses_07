@@ -1,26 +1,29 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 
-{% load static %}
+{% block title %}{{ title }} - pyBursa{% endblock %}
 
 
-{% block title %}Добавить студента{% endblock title %}
-
-
-{% block nav_students_active %}active{% endblock nav_students_active %}
+{% block nav_students %}active{% endblock %}
 
 
 {% block content %}
-</div>
-    <div class="container">
-      <div class="row">
-      	<div class="col-sm-12 blog-main">
-             <form method="post">
-                  {% csrf_token %}
-                  {{ form.as_p }}
-                  <input type="Submit" value="Создать">
-              </form>
-        </div>
-      </div>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{ message }}
     </div>
+  {% endfor %}
+{% endif %}
+
+<div class="page-header">
+  <h2>{{ title }}</h2>
+</div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Сохранить">
+  </form>
 {% endblock content %}

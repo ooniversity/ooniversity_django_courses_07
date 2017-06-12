@@ -1,68 +1,72 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 
-{% load staticfiles %}
+{% block title %}Студенты - pyBursa{% endblock %}
 
 
-{% block title %}Pybursa: Students{% endblock title %}
+{% block nav_students %}active{% endblock %}
 
 
-{% block nav %}{% include "include/nav_inc.html" with students_menu='active' %}{% endblock nav %}
+{% block content %}
 
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
 
-{% block content %}   
+<a href="{% url 'students:add' %}" class="btn btn-primary" role="button">
+  <span class="glyphicon glyphicon-plus"></span>
+  Добавить нового студента
+</a>
+<div class="page-header">
+  <h2>Список студентов</h2>
 </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 blog-main">
-		<br>
-           {% if messages %}
-	                    {% for message in messages %}
-	                    {{ message }}
-	                    {% endfor %}
-	       {% endif %}
-
-			<h1>List of Students</h1>
-			<p>ITBursa 2017</p>
-			<table class="table table-hover"> 
-				<thead> 
-					<tr> 
-						<th>#</th>
-						<th>фамилия имя</th>
-						<th>адрес</th>
-						<th>skype</th>
-						<th>курсы</th>
-					</tr> 
-				</thead> 
-				<tbody>
-					{% for item in object_list %}
-					<tr> 
-						<td>{{ item.id }}</td>
-						<td><a href="{% url 'students:detail' item.id %}">{{ item.surname }} {{ item.name }}</a></td>
-						<td>{{ item.address }}</td>
-						<td>{{ item.skype }}</td>
-						<td>{% for i in item.courses.all %}<a href="{% url 'courses:detail' i.id %}">{{ i.name }}</a>
-                            <br>{% endfor %}</td>
-						<td>
-							<a href="{% url 'students:edit' item.id %}" class="btn btn-info">Изменить</a>
-							<a href="{% url 'students:remove' item.id %}" class="btn btn-info">Удалить</a>
-						</td>
-
-					</tr>
-					{% endfor %}
-
-
-				</tbody> 
-			</table>
-        </div><!-- /.page-main -->
-      </div><!-- /.row -->
-    </div><!-- /.container -->
-
-<div class="students-add">
-	<a href="{% url 'students:add' %}">Добавить нового студента</a>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>фамилия имя</th>
+          <th>адрес</th>
+          <th>skype</th>
+          <th>курсы</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in student_list %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'students:detail' student.pk %}">{{ student.surname }} {{ student.name }}</a></td>
+            <td>{{ student.address }}</td>
+            <td>{{ student.skype }}</td>
+            <td>
+              {% for course in student.courses.all %}
+                <p><a href="{% url 'courses:detail' course.pk %}">{{ course.name }}</a></p>
+              {% endfor %}
+            </td>
+            <td>
+              <a href="{% url 'students:edit' student.pk  %}" class="btn btn-primary" role="button">
+                <span class="glyphicon glyphicon-pencil"></span>
+                Изменить
+              </a>
+            </td>
+            <td>
+              <a href="{% url 'students:remove' student.pk  %}" class="btn btn-primary" role="button">
+                <span class="glyphicon glyphicon-remove"></span>
+                Удалить
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
-
-{% include 'include/ome_include.html' %}
-
-
-{% endblock content %} 
+{% endblock content %}

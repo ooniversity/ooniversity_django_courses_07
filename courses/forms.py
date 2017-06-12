@@ -1,14 +1,14 @@
 from django import forms
-from courses.models import Course, Lesson
+from .models import Course, Lesson
 
 
 class CourseModelForm(forms.ModelForm):
     class Meta:
         model = Course
-        exclude = []
+        fields = '__all__'
 
 
 class LessonModelForm(forms.ModelForm):
     class Meta:
         model = Lesson
-        exclude = []
+        fields = '__all__'
