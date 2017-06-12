@@ -42,6 +42,7 @@
             <li {% block navbar_nav_class_main %}{% endblock %}><a href="{% url 'index' %}">Main</a></li>
             <li {% block navbar_nav_class_contacts %}{% endblock %}><a href="{% url 'contact' %}">Contacts</a></li>
             <li {% block navbar_nav_class_students %}{% endblock %}><a href="{% url 'students:list_view' %}{% block students_link %}{% endblock %}">Students</a></li>
+            <li {% block navbar_nav_class_feedbacks %}{% endblock %}><a href="{% url 'feedback' %}">Feedbacks</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
