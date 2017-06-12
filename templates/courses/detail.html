@@ -8,6 +8,8 @@
 
 {% block nav_main_active %} active{% endblock nav_main_active %}
 
+{% block nav_course %}?course_id={{ course_inf.id }}{% endblock nav_course %}
+
 
 {% block content %}
     <div class="container">
@@ -25,9 +27,9 @@
 			<h1>{{ course_inf.name }}</h1>
 			<p class="page-main">{{ course_inf.description|truncatechars:32 }}</p>
 
-{% include 'include/instructor_include.html' with block_title='Teacher' instructor=teacher %}
+{% include 'include/instructor_include.html' with block_title='Teacher' instructor=course_inf.coach %}
 
-{% include 'include/instructor_include.html' with block_title='Assistant' instructor=assistant %}
+{% include 'include/instructor_include.html' with block_title='Assistant' instructor=course_inf.assistant %}
 
 
 			<h2>Course plan</h2>
