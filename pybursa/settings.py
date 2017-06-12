@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
     'coaches.apps.CoachesConfig',
+    'feedbacks.apps.FeedbacksConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+
+
+ADMINS = [
+    ('admin', 'admin@admin.com'),
+
+]
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025

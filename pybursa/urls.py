@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from courses.views import index
 from . import views
+from feedbacks.views import FeedbackView
 
 urlpatterns = [
     url(r'^polls/', include('polls.urls')),
@@ -27,6 +28,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name='index'),
     url(r'^contact/$', views.contact, name='contact'),
+    url(r'^feedback/$', FeedbackView.as_view(), name='feedback'),
 
 ]
 
