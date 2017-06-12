@@ -6,7 +6,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-    
+
 
 class StudentDetailView(DetailView):
     model = Student
@@ -15,18 +15,13 @@ class StudentDetailView(DetailView):
 class StudentListView(ListView):
     model = Student
     paginate_by = 2
-    
+
     def get_queryset(self):
         qs = super().get_queryset()
         course_id = self.request.GET.get('course_id', None)
         if course_id:
             qs = qs.filter(courses__id=course_id)
         return qs
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        messages.success(self.request, "The changes have been saved.")
-        return response
 
 
 class StudentCreateView(CreateView):
@@ -75,4 +70,3 @@ class StudentDeleteView(DeleteView):
         context = super().get_context_data(**kwargs)
         context['title'] = "Student info suppression"
         return context
-
