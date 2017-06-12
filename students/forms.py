@@ -1,8 +1,9 @@
 from django import forms
-from students.models import Student
+from .models import Student
 
 
 class StudentModelForm(forms.ModelForm):
     class Meta:
         model = Student
-        exclude = []
+        fields = "__all__"  # to avoid ImproperlyConfigured error
+

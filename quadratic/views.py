@@ -1,41 +1,40 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import QuadraticForm
-import math
+from quadratic.forms import QuadraticForm
 
 
-def solve(a, b, c, d):
-	if d == 0:
-		x1 = x2 = (-b + math.sqrt(b ** 2 - 4 * a * c))/ (2 * a)    	
-	else:
-		x1 = (-b + math.sqrt((b ** 2) - (4 * a * c))) / (2 * a)
-		x2 = (-b - math.sqrt((b ** 2) - (4 * a * c))) / (2 * a)
-	return x1, x2
-
-def descr(a, b, c):
-	return b ** 2 - 4 * a * c
-		
-def check(param):
-	try:
-		param = int(param)
-	except ValueError:
-		return False
-	return True
-    
 def quadratic_results(request):
-    my_dict = {}
-    if len(request.GET) > 0:
+
+    context={}
+
+    if request.GET:
+
         form = QuadraticForm(request.GET)
+
         if form.is_valid():
-            my_dict = form.cleaned_data
-            my_dict['form'] = form
-            my_dict['next'] = True
-            my_dict['d'] = descr(my_dict['a'], my_dict['b'], my_dict['c'])
-            if my_dict['d'] >= 0:
-                my_dict['x1'], my_dict['x2'] = solve(my_dict['a'], my_dict['b'], my_dict['c'], my_dict['d'])
-        else:
-            my_dict['form'] = form
+            a = form.cleaned_data['a']
+            b = form.cleaned_data['b']
+            c = form.cleaned_data['c']
+            # claculating discriminant
+            d = b ** 2 - 4 * a * c
+            if d < 0:
+                result = "Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений."
+            elif d == 0:
+                result = "Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %0.1f" % (-b / 2 * a)
+
+            else:
+                x1 = (-b + d ** (1/2.0)) / (2 * a)
+                x2 = (-b - d ** (1/2.0)) / (2 * a)
+                result = "Квадратное уравнение имеет два действительных корня: x1 = %0.1f, x2 = %0.1f" % (x1, x2)
+
+            context.update({ 'd' : d, 'result' : result })
+
     else:
         form = QuadraticForm()
-        my_dict['form'] = form             
-    return render(request, 'results.html', my_dict)
+
+    context.update({ 'form' : form })
+
+    return render(request, "quadratic/results.html",  context )
+

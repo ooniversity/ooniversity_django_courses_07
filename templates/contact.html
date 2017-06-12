@@ -1,61 +1,60 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 
 {% load staticfiles %}
 
 
-{% block title %}Pybursa: Contacts{% endblock title %}
+{% block title %}Контакты - pyBursa{% endblock %}
 
 
-{% block nav %}{% include "include/nav_inc.html" with contact_menu='active' %}{% endblock nav %}
+{% block nav_contact %}active{% endblock %}
 
 
 {% block content %}
+<div class="jumbotron">
+  <h1>Организаторы</h1>
 
-
-	<div class="contacts-template">
-        <div class="contacts-text">
-          <h2 class="contact-title">Director</h2>
-
-          <p>Name: Vasya Pupkin</p>
-          <p>Skype: vasyok</p>
-          <p>Email: vasyok@meta.ua</p>
-          <p>Phone: +380505555557</p>
-
-          <h2 class="contact-title">Manager</h2>
-          <p>Name: Ivanonv Ivan</p>
-          <p>Skype: i_van</p>
-          <p>Email: i-van@mail.ua</p>
-          <p>Phone: +380505555556</p>
-
-          <h2 class="contact-title">Founder</h2>
-          <p>Name: Viktor Yakubovich</p>
-          <p>Skype: yakub</p>
-          <p>Email: yakub@vor.in.ua</p>
-          <p>Phone: +380505555555 </p>          
+  <div class="row">
+    <div class="col-xs-6 col-lg-6">
+      <h3>Основатель pyBursa</h3>
+      <div class="row">
+        <div class="col-xs-4 col-lg-4">
+          <img src="{% static 'img/python.jpg' %}" />
         </div>
-        <div class="contacts-map">
-          <iframe class="i-map" src="https://www.google.com/maps/embed?pb=!1m19!1m8!1m3!1d10259.855998556783!2d36.2279557!3d49.9932844!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x4127a09f63ab0f8b%3A0x2d4c18681aa4be0a!2zS2hhcmtpdiDQpdCw0YDQutGW0LI!3m2!1d49.9935!2d36.230382999999996!5e0!3m2!1sen!2sua!4v1494500668822" allowfullscreen>
-          </iframe>
-        </div>
-        <div class="contacts-img-block">
-          <img class="contacts-img" src="{% static 'images/contacts.jpg' %}">
-        <div class="contacts-form">
-          <form action="" method="POST" enctype="multipart/form-data">
-          <input name="action" value="submit" type="hidden"><span class="contact-form-key">Your name:</span><br>
-          <input name="name" size="30" type="text"><br><span class="contact-form-key">Your email:</span><br>  
-          <input name="email" size="30" type="text"><br><span class="contact-form-key">Your message:</span><br>
-          <textarea name="message" rows="7" cols="30">
-          </textarea><br>
-          <input value="Send email" type="submit">
-          </form>
+        <div class="col-xs-6 col-lg-6 ">
+          <p>pyBursa@gmail.com</p>
+          <p>skype: pyBursa</p>
+          <p>+38 097 123 3 457</p>
         </div>
       </div>
-    </div>
-</div><!-- /.container -->
+    </div><!--/.col-xs-6.col-lg-6-->
 
+    <div class="col-xs-6 col-lg-6">
+      <h3>Менеджер pyBursa</h3>
+      <div class="row">
+        <div class="col-xs-4 col-lg-4">
+          <img src="{% static 'img/python.jpg' %}" />
+        </div>
+        <div class="col-xs-6 col-lg-6 ">
+          <p>pyBursa@gmail.com</p>
+          <p>skype: pyBursa</p>
+          <p>+38 097 123 3 457</p>
+        </div>
+      </div>
+    </div><!--/.col-xs-6.col-lg-4-->
 
-{% include 'include/ome_include.html' %}
-
-
+    <div class="col-xs-6 col-lg-6">
+      <h3>Менеджер pyBursa</h3>
+      <div class="row">
+        <div class="col-xs-4 col-lg-4">
+          <img src="{% static 'img/python.jpg' %}" />
+        </div>
+        <div class="col-xs-6 col-lg-6 ">
+          <p>pyBursa@gmail.com</p>
+          <p>skype: pyBursa</p>
+          <p>+38 097 123 3 457</p>
+        </div>
+      </div>
+    </div><!--/.col-xs-6.col-lg-4-->
+  </div><!--/row-->
+</div>
 {% endblock content %}
