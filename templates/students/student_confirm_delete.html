@@ -11,7 +11,8 @@
 {% block content %}
     <div class="container">
       <div class="row">
-<h1>Student {{ remove_student.name }} {{ remove_student.surname }} will be deleted.</h1>
+<h2>Student {{ remove_student.name }} {{ remove_student.surname }} will be deleted.</h2>
+          <h3>{{ title }}</h3>
 		  <form method="post">
                   {% csrf_token %}
               <input class="btn btn-success" type="Submit" value="Удалить">
