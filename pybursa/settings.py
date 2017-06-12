@@ -124,11 +124,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    #'/var/www/static/',
 )
 
-ADMINS = (('Misha','misha.beliy15@gmail.com'),('test','test@yopmail.com'))
-EMAIL_HOST = "localhost"
-EMAIL_PORT = '1025'
+ADMINS = (('test','test_misha@yopmail.com'),('admin','admin_misha@yopmail.com'))
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+
+EMAIL_PORT = '587'
+
+EMAIL_SUBJECT_PREFIX = '[PyBursa]'
+
+SERVER_EMAIL = 'pyBursa'
+
+EMAIL_HOST_USER = 'misha.sendgrid'
+
+EMAIL_HOST_PASSWORD = 'misha_test123'
