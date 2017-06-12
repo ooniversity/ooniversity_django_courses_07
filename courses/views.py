@@ -39,15 +39,18 @@ class CourseUpdateView(UpdateView):
     model = Course
     form_class = CourseModelForm
     template_name = 'courses/edit.html'
+    context_object_name = 'form'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Course update'
         return context
-
+   
     def form_valid(self, form):
+        data = form.instance
         messages.success(self.request, 'The changes have been saved.')
-        return super().form_valid(form)
+        self.success_url = reverse_lazy('courses:edit', args=(data.id,))
+        return super(CourseUpdateView, self).form_valid(form)
 
 
 class CourseDeleteView(DeleteView):
