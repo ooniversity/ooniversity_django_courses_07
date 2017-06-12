@@ -1,15 +1,20 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 
-{% block title %}Удаление курса - pyBursa{% endblock %}
+{% load staticfiles %}
 
+
+{% block title %}Remove Course{% endblock title %}
+
+{% block nav_main_active %}active{% endblock nav_main_active %}
 
 {% block content %}
-<div class="page-header">
-  <h2>{{ title }}</h2>
-</div>
-  <form method="post">
-    {% csrf_token %}
-    <input type="submit" value="Удалить">
-  </form>
+    <div class="container">
+
+		  <form method="post">
+                  {% csrf_token %}
+              <input class="btn btn-danger" type="Submit" value="Remove">
+              </form>
+
+    </div><!-- /.container -->
 {% endblock content %}

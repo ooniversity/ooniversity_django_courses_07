@@ -1,80 +1,80 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 
-{% block title %}Сведения о преподавателе - pyBursa{% endblock %}
+{% load staticfiles %}
 
 
-{% block content %}
-<div class="page-header">
-  <h2>{{ coach.user.first_name }} {{ coach.user.last_name }}</h2>
+{% block title %}Pybursa: {{ coach_info.user.first_name }} {{ coach_info.user.last_name }}{% endblock title %}
+
+
+{% block content %}  
+
 </div>
 
-<div class="row">
-  <div class="col-xs-12 col-lg-12">
+<div class="container">
     <div class="row">
-      <div class="col-xs-12 col-lg-12 ">
-        <table class="table">
-          <thead>
-            <tr>
-              <td>дата рождения</td>
-              <td>{{ coach.date_of_birth|date:"d F, Y" }}</td>
-            </tr>
-          </thead>
+        <div class="col-sm-12 blog-main">
+      <h1 class="page-title">{{ coach_info.user.first_name }} {{ coach_info.user.last_name }}</h1>
+      <br>
+
+    </div><!-- /.page-main -->
+      
+      <div class="col-sm-6">
+        <table class="table table-hover"> 
           <tbody>
             <tr>
-              <td>адрес</td>
-              <td>{{ coach.address }}</td>
+              <td>Birth Date</td>
+              <td>{{ coach_info.date_of_birth|date:'j F, Y' }}</td>
             </tr>
             <tr>
-              <td>почта</td>
-              <td>{{ coach.user.email }}</td>
+              <td>Address</td> 
+              <td>{{ coach_info.address }}</td>
             </tr>
-            <tr>
-              <td>логин skype</td>
-              <td>{{ coach.skype }}</td>
+            <tr> 
+              <td>E-mail</td> 
+              <td>{{ coach_info.user.email }}</td>
             </tr>
-            <tr>
-              <td>телефон</td>
-              <td>{{ coach.phone }}</td>
+            <tr> 
+              <td>Skype</td> 
+              <td>{{ coach_info.skype }}</td>
             </tr>
-            <tr>
-              <td>курсы учитель</td>
-              <td>
-                {% for course in coach.coach_courses.all %}
-                  <p>
-                    <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
-                    cтуденты курса
-                    <a href="{% url 'students:list_view' %}?course_id={{ course.id }}">
-                      <span class="glyphicon glyphicon-new-window"></span>
-                    </a>
-                  </p>
-                {% empty %}
-                  нет курсов
-                {% endfor %}
+            <tr> 
+              <td>Phone</td>
+              <td>{{ coach_info.phone }}</td>
+            </tr>
+            {% if courses_teacher.count > 0 %}
+            <tr> 
+              <td>Courses Teacher</td>
+              <td>{% for i in courses_teacher %}
+                <a href="{% url 'courses:detail' i.id %}">
+              {{ i.name }}</a> Students of course
+              <a href="{% url 'students:list_view' %}?course_id={{ i.id }}" >
+              <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+              </a><br/>
+              {% endfor %}
               </td>
             </tr>
+            {% endif %}
+            {% if courses_assistant.count > 0 %}
             <tr>
-              <td>курсы ассистент</td>
-              <td>
-                {% for course in coach.assistant_courses.all %}
-                  <p>
-                    <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
-                    cтуденты курса
-                    <a href="{% url 'students:list_view' %}?course_id={{ course.id }}">
-                      <span class="glyphicon glyphicon-new-window"></span>
-                    </a>
-                  </p>
-                {% empty %}
-                  нет курсов
-                {% endfor %}
+              <td>Courses Assistant</td>
+              <td>{% for i in courses_assistant %}
+                <a href="{% url 'courses:detail' i.id %}">
+              {{ i.name }}</a> Students of course
+              <a href="{% url 'students:list_view' %}?course_id={{ i.id }}" >
+              <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+              </a><br/>
+              {% endfor %}
               </td>
             </tr>
-          </tbody>
+              {% endif %}
+          </tbody> 
         </table>
       </div>
-    </div>
-  </div>
-</div>
+    </div><!-- /.container -->
+
+
+{% include 'include/ome_include.html' %}
+
+
 {% endblock content %}
-
-
