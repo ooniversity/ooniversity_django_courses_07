@@ -61,21 +61,35 @@
 
         <nav>
             <ul class="pagination">
-              {% if page_obj.has_previous %}
-                <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>
-              {% endif %}
+              <li>
+                {% if page_obj.has_previous %}
+                <a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.previous_page_number }}" aria-label="<< previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  previous
+                </a>
+                {% endif %}
+              </li>
 
               {% for page_num in paginator.page_range %}
                 {% if page_num == page_obj.number %}
-                  <li class="active"><a href="#" class="disabled">{{ page_num }}</a></li>
+                  <li class="active">
+                    <a href="#" class="disabled">{{ page_num }}</a>
+                  </li>
                 {% else %}
-                  <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_num }}">{{ page_num }}</a></li>
+                  <li>
+                    <a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_num }}">{{ page_num }}</a>
+                  </li>
                 {% endif %}
               {% endfor %}
 
-              {% if page_obj.has_next %}
-                <li><a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.next_page_number }}">&raquo; next </a></li>
-              {% endif %}
+              <li>
+                {% if page_obj.has_next %}
+                <a href="?{% if request.GET.course_id %}course_id={{ request.GET.course_id }}&{% endif %}page={{ page_obj.next_page_number }}">
+                  <span aria-hidden="true">&raquo;</span>
+                  next
+                </a>
+                {% endif %}
+              </li>
             </ul>
         </nav>
 
