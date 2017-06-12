@@ -9,21 +9,14 @@
 {% block nav_students_active %} active{% endblock nav_students_active %}
 
 {% block content %}
-{% if messages %}
-				<ul class="messages">
-					{% for message in messages %}
-					<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-					{% endfor %}
-				</ul>
-				{% endif %}
     <div class="container">
       <div class="row">
-
-        	<form method="post">
+<h1>Student {{ remove_student.name }} {{ remove_student.surname }} will be deleted.</h1>
+		  <form method="post">
                   {% csrf_token %}
-                  {{ form.as_p }}
-              <input class="btn btn-success" type="Submit" value="Изменить">
+              <input class="btn btn-success" type="Submit" value="Удалить">
               </form>
+
 
       </div><!-- /.row -->
     </div><!-- /.container -->
