@@ -15,15 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from . import views
+from pybursa.views import index, contact, student_list, student_detail
+from feedbacks import views
 
 
 urlpatterns = [
-	url(r'^$', views.index, name='index'),
+	url(r'^$', index, name='index'),
 	url(r'^feedback/$', views.FeedbackView.as_view(), name='feedback'),
-	url(r'^contact/$', views.contact, name='contact'),
-	url(r'^student_list/$', views.student_list, name='student_list'),
-	url(r'^student_detail/$', views.student_detail, name='student_detail'),
+	url(r'^contact/$', contact, name='contact'),
+	url(r'^student_list/$', student_list, name='student_list'),
+	url(r'^student_detail/$', student_detail, name='student_detail'),
     url(r'^admin/', admin.site.urls),	
 	url(r'^polls/', include('polls.urls')),
 	url(r'^quadratic/', include('quadratic.urls')),
