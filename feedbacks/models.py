@@ -1,9 +1,13 @@
 from django.db import models
+import datetime
 
 
 class Feedback(models.Model):
-    name = models.CharField(max_length=25)
-    subject = models.CharField(max_length=25)
-    message = models.TextField()
+    name = models.CharField(max_length=50)
     from_email = models.EmailField()
-    create_date = models.DateField(auto_now_add=True)
+    subject = models.CharField(max_length=50)
+    message = models.TextField()
+    create_date = models.DateTimeField(auto_now_add=datetime.datetime.now())
+
+    def __str__(self):
+        return self.from_email
