@@ -16,12 +16,14 @@ class StudentDetailView(DetailView):
     #return render (request, 'students/detail.html', context)
 
 class StudentListView(ListView):
-    model = Student    
+    model = Student
+    
     def get_queryset(self):
         qs = super().get_queryset()
-        course_id = self.request.GET.get('course_id', None)
+        course_id = self.request.GET.get('pk', None)
+        print ('pk')
         if course_id :
-            qs = Student.objects.filter(courses__id=course_id)
+            qs = Student.objects.filter(courses__id=pk)
         return qs
         
 #def list_view(request):
