@@ -7,7 +7,7 @@
 {% block title %}Pybursa: Students{% endblock title %}
 
 
-{% block nav_students_active %}active{% endblock nav_students_active %}
+{% block nav %}{% include "include/nav_inc.html" with students_menu='active' %}{% endblock nav %}
 
 
 {% block content %}   
