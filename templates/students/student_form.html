@@ -4,7 +4,7 @@
 {% load static %}
 
 
-{% block title %}{{ title }}{% endblock title %}
+{% block title %}Добавить студента{% endblock title %}
 
 
 {% block nav_students_active %} active{% endblock nav_students_active %}
@@ -18,7 +18,7 @@
 		      <form method="post">
                   {% csrf_token %}
                   {{ form.as_p }}
-                  <input type="Submit" value="Создать" class="btn btn-success" >
+                  <input type="Submit" value="Добавить" class="btn btn-success" >
               </form>
       </div><!-- /.row -->
     </div><!-- /.container -->
