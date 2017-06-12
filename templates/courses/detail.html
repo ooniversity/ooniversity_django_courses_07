@@ -4,7 +4,9 @@
 
 {% block title %}Содержание курса{% endblock title %}
 
-{% block nav_class_index %}"active"{% endblock %}
+{% block nav_class_index %}"active"{% endblock %} 
+
+{% block url_student_list %}"{% url 'students:list_view' course.id %}"{% endblock %}
 
 {% block content %} 
 {% include "include/itb_include.html" %}

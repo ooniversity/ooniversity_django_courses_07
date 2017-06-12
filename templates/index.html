@@ -12,14 +12,14 @@
                       {% include "include/itb_include.html" %}
                       <h1>Наши курсы</h1>
                       <div>
-                          <a href="{% url 'courses:add' %}"><span class="glyphicon glyphicon-plus"></span><strong>  Добавить курс</strong></a>  
+                          <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'courses:add' %}" role="button"><strong>Добавить курс</strong></a>
                       </div>
                       {% if messages %}
-                      <ul class="messages">
+                      <div class="alert alert-success" role="alert">
                           {% for message in messages %}
-                          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                          {{ message }}
                           {% endfor %}
-                      </ul>
+                      </div>
                       {% endif %}
                       <ul>
                           {% for course in courses %}
