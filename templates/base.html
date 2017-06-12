@@ -23,7 +23,7 @@
         <nav class="page-nav">
           <a class="page-nav-item{% block nav_main_active %}{% endblock nav_main_active %}" href="{% url 'index' %}">Main</a>
           <a class="page-nav-item{% block nav_contacts_active %}{% endblock nav_contacts_active %}" href="{% url 'contact' %}">Contacts</a>
-		  <a class="page-nav-item{% block nav_students_active %}{% endblock nav_students_active %}" href="{% url 'students:list_view' %}">Students</a>
+		  <a class="page-nav-item{% block nav_students_active %}{% endblock nav_students_active %}" href="{% url 'students:list_view' %}{% block nav_course %}{% endblock nav_course %}">Students</a>
         </nav>
       </div>
     </div>

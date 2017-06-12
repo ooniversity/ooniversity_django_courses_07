@@ -6,8 +6,8 @@
               </thead>
               <tbody>
                 <tr>
-                    <td><a href="{% url 'coaches:detail' instructor.id %}">{{ instructor.f_name }} {{ instructor.l_name }}</a>
-                  <p>{{ instructor.descr }}</p></td>
+                    <td><a href="{% url 'coaches:detail' instructor.id %}">{{ instructor.user.first_name }} {{ instructor.user.last_name }}</a>
+                  <p>{{ instructor.description }}</p></td>
                 </tr>
               </tbody>
 			</table>
