@@ -38,7 +38,7 @@
 				</thead> 
 				<tbody>
 					{% for item in object_list %}
-					<tr> 
+					<tr>
 						<td>{{ item.id }}</td>
 						<td><a href="{% url 'students:detail' item.id %}">{{ item.surname }} {{ item.name }}</a></td>
 						<td>{{ item.address }}</td>
