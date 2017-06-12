@@ -6,7 +6,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-
+    
 
 class StudentDetailView(DetailView):
     model = Student
@@ -22,6 +22,11 @@ class StudentListView(ListView):
         if course_id:
             qs = qs.filter(courses__id=course_id)
         return qs
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "The changes have been saved.")
+        return response
 
 
 class StudentCreateView(CreateView):
