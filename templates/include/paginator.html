@@ -1,15 +1,26 @@
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?{{ get }}{{ course_id }}{{ separator }}page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li>
+          <a href="?{{ get }}{{ course_id }}{{ separator }}page={{ page_obj.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true"><< previous</span>
+          </a>
+        </li>
+      {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?{{ get }}{{ course_id }}{{ separator }}page={{ page_obj.next_page_number }}">next</a>
+    {% for number in page_obj.paginator.page_range %}
+        {% if number == page_obj.number %}
+            <li class="active"><a href="?{{ get }}{{ course_id }}{{ separator }}page={{ number }}">{{ number }}</a></li>
+        {% else %}
+            <li><a href="?{{ get }}{{ course_id }}{{ separator }}page={{ number }}">{{ number }}</a></li>
         {% endif %}
-    </span>
-</div>
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <li>
+          <a href="?{{ get }}{{ course_id }}{{ separator }}page={{ page_obj.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">next >></span>
+          </a>
+        </li>
+    {% endif %}
+  </ul>
+</nav>
