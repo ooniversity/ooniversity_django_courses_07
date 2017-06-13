@@ -4,6 +4,10 @@ from courses.models import Course, Lesson
 from courses.forms import CourseModelForm, LessonModelForm
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 class CourseDetailView(DetailView):
@@ -14,6 +18,10 @@ class CourseDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['lessons'] = self.object.lesson_set.all().order_by('order')
+        logger.debug("Courses detail view has been debugged!")
+        logger.info("Logger of courses detail view informs you!")
+        logger.warning("Logger of courses detail view warns you!")
+        logger.error("Courses detail view went wrong!")
         return context
 
 
