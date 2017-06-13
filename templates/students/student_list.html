@@ -56,12 +56,10 @@
 				</tbody> 
 			</table>
 			{% if is_paginated %}
-			<div class="pagination">
 				  <ul class="pagination">
 
 						{% if page_obj.has_previous %}<li>
-							<a href="?{% if request.GET.course_id != None %}course_id={{ request.GET.course_id }}&{% endif%}page={{ page_obj.previous_page_number }}" aria-label="Previous">
-							<< previous</a>
+							<a href="?{% if request.GET.course_id != None %}course_id={{ request.GET.course_id }}&{% endif%}page={{ page_obj.previous_page_number }}" aria-label="Previous"><< previous</a>
 							</li>{% endif %}
 
 						{% for page in page_obj.paginator.page_range %}
@@ -73,13 +71,12 @@
 						{% endfor %}
 
 						{% if page_obj.has_next %}<li>
-							<a href="?{% if request.GET.course_id != None %}course_id={{ request.GET.course_id }}&{% endif%}page={{ page_obj.next_page_number }}" aria-label="Next">
-							next >></a>
+							<a href="?{% if request.GET.course_id != None %}course_id={{ request.GET.course_id }}&{% endif%}page={{ page_obj.next_page_number }}" aria-label="Next">next >></a>
 							</li>{% endif %}
 
 					</li>
 				</ul>
-			</div>
+
 			{% endif %}
 			{% include 'include/come_include.html' %}
 
