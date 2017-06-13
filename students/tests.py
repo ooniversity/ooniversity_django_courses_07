@@ -3,30 +3,20 @@ from students.models import Student
 from courses.models import Course
 
 
-class CoursesDetailTest(TestCase):
+class StudentsListTest(TestCase):
 
     def test_student_create(self):
-        student = create_student()
+        create_student()
         self.assertEqual(Student.objects.all().count(), 1)
 
-    def test_student_detail(self):
-        response = self.client.get('/students/1/')
-        self.assertEqual(response.status_code, 404)
-        student = create_student()
-        response = self.client.get('/students/1/')
+    def test_student_list1(self):
+        response = self.client.get('/students/')
         self.assertEqual(response.status_code, 200)
 
-    def test_student_edit(self):
-        student = create_student()
-        response = self.client.get('/students/edit/1/')
-        self.assertEqual(response.status_code, 200)
-        response = self.client.get('/students/remove/1/')
-        self.assertEqual(response.status_code, 200)
-
-    def test_student_content(self):
-        student = create_student()
-        response = self.client.get('/students/1/')
-        self.assertContains(response, 'Human Old')
+    def test_student_list2(self):
+        create_student()
+        response = self.client.get('/students/')
+        self.assertContains(response, 'Old Human')
 
     def test_student_in_course(self):
         student = create_student()
@@ -34,6 +24,42 @@ class CoursesDetailTest(TestCase):
         student.courses.add(course)
         response = self.client.get('/students/?course_id=1')
         self.assertContains(response, 'Old Human')
+
+    def test_invalid_course(self):
+        response = self.client.get('/students/?course_id=1')
+        self.assertEqual(response.status_code, 404)
+
+
+class StudentsDetailTest(TestCase):
+
+    def test_student_detail1(self):
+        response = self.client.get('/students/1/')
+        self.assertEqual(response.status_code, 404)
+
+    def test_student_detail2(self):
+        create_student()
+        response = self.client.get('/students/1/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_student_detail3(self):
+        create_student()
+        response = self.client.get('/students/1/')
+        self.assertContains(response, 'Human Old')
+
+    def test_student_detail4(self):
+        create_student()
+        response = self.client.get('/students/1/')
+        self.assertContains(response, '123@mail.com')
+
+    def test_student_edit(self):
+        create_student()
+        response = self.client.get('/students/edit/1/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_student_remove(self):
+        create_student()
+        response = self.client.get('/students/remove/1/')
+        self.assertEqual(response.status_code, 200)
 
 
 def create_student():
