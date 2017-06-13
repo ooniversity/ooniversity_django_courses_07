@@ -29,6 +29,10 @@ class StudentListView(ListView):
 class StudentDetailView(DetailView):
     model = Student
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        return context
+
 
 class StudentCreateView(CreateView):
     model = Student
