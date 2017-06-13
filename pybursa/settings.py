@@ -128,3 +128,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+ADMINS = (('Evgeniy', 'methate@gmail.com'))
+
+EMAIL_HOST = 'localhost'
+
+EMAIL_PORT = 1025
+
+EMAIL_SUBJECT_PREFIX = '[PyBursa]'
