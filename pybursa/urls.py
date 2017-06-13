@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from . import views
+from feedbacks import views
 
 urlpatterns = [
         url(r'^admin/', admin.site.urls),
         url(r'^$', views.index, name='index'),
         url(r'^contact/$', views.contact, name='contact'),
+        url(r'^feedback/$', views.FeedbackView.as_view(), name='feedback'),
         url(r'^polls/', include('polls.urls')),
         url(r'^quadratic/', include('quadratic.urls', namespace="quadratic")),
         url(r'^courses/', include('courses.urls', namespace="courses")),
