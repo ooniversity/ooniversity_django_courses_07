@@ -5,6 +5,9 @@ from django.urls import reverse_lazy
 from courses.models import Course, Lesson
 from courses.forms import CourseModelForm, LessonModelForm
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 def index(request):
     context = {'courses_list': Course.objects.all()}
@@ -15,6 +18,13 @@ class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/detail.html'
     context_object_name = 'course'
+
+    def get_context_data(self, **kwargs):
+        logger.debug('Courses detail view has been debugged!')
+        logger.info('Logger of courses detail view informs you!')
+        logger.warning('Logger of courses detail view warns you!')
+        logger.error('Courses detail view went wrong!')
+        return super().get_context_data(**kwargs)
 
 
 class CourseCreateView(CreateView):
