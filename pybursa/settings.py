@@ -145,3 +145,42 @@ SERVER_EMAIL = 'ValeriiPonomarenko.sendgrid'
 EMAIL_HOST_USER = 'ValeriiPonomarenko.sendgrid'
 
 EMAIL_HOST_PASSWORD = 'send9379992'
+
+LOGGING = {
+    'version': 1,
+
+    'formatters': {
+        'main': {
+            'format': '%(levelname)s: datetime %(asctime)s; module %(name)s in %(funcName)s; message: %(message)s'
+        },
+        'main1': {
+            'format': '%(levelname)s: %(message)s'
+        },
+    },
+
+    'loggers': {
+        'courses': {
+            'handlers': ['file'],
+            'level': 'DEBUG'
+        },
+        'students': {
+            'handlers': ['file1'],
+            'level': 'DEBUG'
+        },
+    },
+
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'courses_logger.log'),
+            'formatter': 'main1'
+        },
+        'file1': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'students_logger.log'),
+            'formatter': 'main'
+        },
+    },
+}
