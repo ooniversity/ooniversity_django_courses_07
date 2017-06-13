@@ -19,10 +19,6 @@ class StudentListView(ListView):
         course_id = self.request.GET.get('course_id', None)
         if course_id:
             students = students.filter(courses=course_id)
-        logger.debug("Students detail view has been debugged!")
-        logger.info("Logger of students detail view informs you!")
-        logger.warning("Logger of students detail view warns you!")
-        logger.error("Students detail view went wrong!")
         return students
 
 
@@ -31,6 +27,10 @@ class StudentDetailView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
+        logger.debug("Students detail view has been debugged!")
+        logger.info("Logger of students detail view informs you!")
+        logger.warning("Logger of students detail view warns you!")
+        logger.error("Students detail view went wrong!")
         return context
 
 
