@@ -39,7 +39,8 @@
           <ul class="nav navbar-nav">
               <li class={% block nav_class_index %}{% endblock %}><a href="{% url 'index' %}">Main</a></li>
               <li class={% block nav_class_contacts %}{% endblock %}><a href="{% url 'contact' %}">Contacts</a></li>
-              <li class={% block nav_class_students %}{% endblock %}><a href={% block url_student_list %}"{% url 'students:list_view' %}"{% endblock %}>Students</a></li>
+              <li class={% block nav_class_students %}{% endblock %}><a href="{% url 'students:list_view' %}{% block students_course %}{% endblock %}">Students</a></li>
+              <li class={% block nav_class_feedback %}{% endblock %}><a href="{% url 'feedback' %}">Feedback</a></li>
               <li class={% block nav_class_results%}{% endblock %}><a href="{% url 'quadratic:results' %}">QuadrEquestion </a></li>                  
            </ul>      
         </div><!-- /.navbar-collapse -->
