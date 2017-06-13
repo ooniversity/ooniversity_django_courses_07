@@ -142,7 +142,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'student': {
-            'format': '%(levelname)s, %(asctime)s, %(module)s, %(funcName)s. %(message)s'
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s'
         },
         'course': {
             'format': '%(levelname)s %(message)s'
