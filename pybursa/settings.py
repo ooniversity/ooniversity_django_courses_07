@@ -151,7 +151,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'main': {
-            'format': '%(levelname)s %(asctime)s %(name)s in %(funcName)s %(message)s'
+            'format': '%(levelname)s %(asctime)s %(name)s %(funcName)s %(message)s'
         },
         'main1': {
             'format': '%(levelname)s %(message)s'
