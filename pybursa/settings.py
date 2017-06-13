@@ -148,28 +148,32 @@ EMAIL_HOST_PASSWORD = 'send9379992'
 
 LOGGING = {
     'version': 1,
-
+    'disable_existing_loggers': False,
     'formatters': {
         'main': {
-            'format': '%(levelname)s: datetime %(asctime)s; module %(name)s in %(funcName)s; message: %(message)s'
+            'format': '%(levelname)s %(asctime)s %(name)s in %(funcName)s %(message)s'
         },
         'main1': {
-            'format': '%(levelname)s: %(message)s'
+            'format': '%(levelname)s %(message)s'
         },
     },
 
     'loggers': {
         'courses': {
-            'handlers': ['file'],
+            'handlers': ['console', 'file'],
             'level': 'DEBUG'
         },
         'students': {
-            'handlers': ['file1'],
-            'level': 'DEBUG'
+            'handlers': ['console', 'file1'],
+            'level': 'WARNING'
         },
     },
 
     'handlers': {
+        'console':{
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+    },
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
