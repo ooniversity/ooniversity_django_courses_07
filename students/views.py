@@ -4,6 +4,10 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from students.models import Student
 from students.forms import StudentModelForm
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 class StudentListView(ListView):
@@ -15,6 +19,10 @@ class StudentListView(ListView):
         course_id = self.request.GET.get('course_id', None)
         if course_id:
             students = students.filter(courses=course_id)
+        logger.debug("Students detail view has been debugged!")
+        logger.info("Logger of students detail view informs you!")
+        logger.warning("Logger of students detail view warns you!")
+        logger.error("Students detail view went wrong!")
         return students
 
 

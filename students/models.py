@@ -17,4 +17,4 @@ class Student(models.Model):
         return reverse('students:list_view')
 
     def __str__(self):
-        return self.name + ' ' + self.surname
+        return self.name + ' ' + self.surname 
