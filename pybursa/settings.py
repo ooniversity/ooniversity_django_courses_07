@@ -161,21 +161,17 @@ LOGGING = {
 
     'loggers': {
         'courses': {
-            'handlers': ['console', 'file'],
+            'handlers': ['file'],
             'level': 'DEBUG'
         },
         'students': {
-            'handlers': ['console', 'file1'],
+            'handlers': ['file1'],
             'level': 'WARNING'
         },
     },
 
     'handlers': {
-        'console':{
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-    },
-        'file': {
+            'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'courses_logger.log'),
