@@ -8,8 +8,20 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 
+import logging
+logger = logging.getLogger(__name__)
+
+
 class StudentDetailView(DetailView):
     model = Student
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        logger.debug("Students detail view has been debugged!")
+        logger.info("Logger of students detail view informs you!")
+        logger.warning("Logger of students detail view warns you!")
+        logger.error("Students detail view went wrong!")
+        return qs
 
 
 class StudentListView(ListView):
