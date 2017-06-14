@@ -19,6 +19,7 @@
                 <p><span class="text">ItBursa — это современная онлайн школа веб-разработки и программирования. Мы хотим сделать IT образование качественным, полезным и доступным.</span></p>
                <h3 class="title">Program</h3>
                 <p><span class="text">Сейчас у нас открыта регистрация на курс по "Python". Кроме того, вы можете предварительно зарегистрироваться на курсы, дата старта которых еще не определена:</span></p>
+                  {% if cour %}
                   {% if messages %}
                     <div class="alert alert-success" role="alert">
                      {% for message in messages %}
@@ -52,6 +53,9 @@
                        </tbody>
                      </table>
                  </div>
+                {% else %}
+                  <p>На данный момент нет активных курсов</p>
+                {% endif%}
             </div>
         </div>
     </div>

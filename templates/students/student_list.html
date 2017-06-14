@@ -8,6 +8,7 @@
 
 
 {% block content %}
+{% if object_list %}
       <div class="general-container">
          <div class="container top-container">
             <div class="row">
@@ -63,4 +64,7 @@
             </div>
         </div>
     </div>
+{% else %}
+<p>Пока-что нет ни одного студента</p>
+{% endif %}
 {% endblock content %}

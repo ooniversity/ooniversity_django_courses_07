@@ -24,6 +24,7 @@
                   {% endif %}
                 <h1 class="title">{{ course.name }}</h1>
                   <p><span class="text">{{ course.description|truncatechars:32 }}</span></p>
+                    {% if course.coach or course.assist %}
                     <div>
                      <h3 class="title">Преподаватели</h3>
                        <h4 class="h4">Учитель</h4>
@@ -33,6 +34,9 @@
 	                     <p><b><a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a></b></p>
 	                       <p class="name">{{ course.assistant.description }}</p>
 	                </div>
+                  {% else %}
+                 <p>Преподаватель и Ассистент еще не назначены на данный курс</p>
+                  {% endif %}
                  <h3 class="title">План курса</h3>
                   <p><a class="btn btn-primary glyphicon glyphicon-plus"
                    href="{% url 'courses:add-lesson' course.id %}" role="button"> Добавить занятие</a></p><br />
@@ -56,7 +60,7 @@
                         </tbody>
                      </table>
                  </div>
-           </div>
+              </div>
         </div>
     </div>
 </div>
