@@ -21,4 +21,5 @@ class Student(models.Model):
         return self.courses.all()
 
     def reformat_birthdate(self):
-        return self.date_of_birth.strftime("%b. %d, %Y")
+        if self.date_of_birth:
+            return self.date_of_birth.strftime("%b. %d, %Y")
