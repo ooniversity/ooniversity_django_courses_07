@@ -132,9 +132,9 @@ EMAIL_PORT = '1025'
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "pybursa/static"), 
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "/static"), 
+# ]
 
 
 LOGGING = {
@@ -173,3 +173,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from pybursa.local_settings import *
+except ImportError:
+    print("Warning! local settings are not defined!")

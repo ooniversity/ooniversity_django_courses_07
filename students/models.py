@@ -11,7 +11,7 @@ class Student(models.Model):
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=255)
     skype = models.CharField(max_length=50)
-    courses = models.ManyToManyField(Course, null=True)
+    courses = models.ManyToManyField(Course)
 
     def get_absolute_url(self):
         return reverse('students:list_view')
