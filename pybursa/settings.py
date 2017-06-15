@@ -142,3 +142,43 @@ SERVER_EMAIL = 'pyBursa'
 EMAIL_HOST_USER = 'misha.sendgrid'
 
 EMAIL_HOST_PASSWORD = 'misha_test123'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'main': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s',
+            'datefmt': "%Y-%m-%d %H:%M:%S",
+        },
+        'main1': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+
+    'loggers': {
+        'courses': {
+            'handlers': ['file1'],
+            'level': 'DEBUG'
+        },
+        'students': {
+            'handlers': ['file2'],
+            'level': 'WARNING'
+        },
+    },
+
+    'handlers': {
+        'file1': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'courses_logger.log'),
+            'formatter': 'main1'
+        },
+        'file2': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'students_logger.log'),
+            'formatter': 'main'
+        },
+    },
+}
