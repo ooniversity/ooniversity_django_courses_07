@@ -144,7 +144,8 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s'
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s',
+            'datefmt': "%Y-%m-%d %H:%M:%S",
         },
         'simple': {
             'format': '%(levelname)s %(message)s'
