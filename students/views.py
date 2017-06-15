@@ -4,7 +4,8 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from students.models import Student
 from .forms import StudentModelForm
-
+import logging
+logger = logging.getLogger(__name__)
 
 #список всех студентвои и одного курса
 class StudentListView(ListView):
@@ -24,7 +25,13 @@ class StudentListView(ListView):
 class StudentDetailView(DetailView):
     model = Student
     template_name = 'students/detail.html'
-
+    def get_context_data(self, *args, **kwargs):
+        context = super(StudentDetailView, self).get_context_data(*args, **kwargs)
+        logger.debug('Students detail view has been debugged!')
+        logger.info('Logger of students detail view informs you!')
+        logger.warning('Logger of students detail view warns you!')
+        logger.error('Students detail view went wrong!')
+        return context
 
 #создание студента
 class StudentCreateView(CreateView):
