@@ -137,3 +137,37 @@ ADMINS = [('Admin', 'example@example.com')]
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 25
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(message)s'
+        },
+    },
+    'loggers': {
+        'courses': {
+            'handlers': ['file_courses'],
+            'level': 'DEBUG',
+        },
+        'students': {
+            'handlers': ['file_students'],
+            'level': 'WARNING',
+        },
+    },
+    'handlers': {
+        'file_courses': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'courses_logger.log'),
+        },
+        'file_students': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'students_logger.log'),
+            'formatter': 'verbose',
+        },
+    },
+}

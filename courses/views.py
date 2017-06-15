@@ -4,7 +4,9 @@ from django.contrib import messages
 from .forms import CourseModelForm, LessonModelForm
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+import logging
 
+logger = logging.getLogger(__name__)
 
 def index(request):
     all_courses = Course.objects.all()
@@ -13,6 +15,10 @@ def index(request):
     return render(request, 'index.html', context)
 
 class CourseDetailView(DetailView):
+    logger.debug('Courses detail view has been debugged!')
+    logger.info('Logger of courses detail view informs you!')
+    logger.warning('Logger of courses detail view warns you!')
+    logger.error('Courses detail view went wrong!')
     model = Course
     template_name = 'courses/detail.html'
     context_object_name = 'course'
