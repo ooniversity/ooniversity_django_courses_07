@@ -17,16 +17,20 @@
             </tr>
         </thead>
         <tbody>
-        {% for course in courses_list %}
-            <tr>
-                <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
-                <td>{{ course.short_description|title }}</td>
-                <td>
-                    <a class="btn btn-primary glyphicon glyphicon-pencil" href="{% url 'courses:edit' course.id %}">Edit</a>
-                    <a class="btn btn-primary glyphicon glyphicon-trash" href="{% url 'courses:remove' course.id %}">Remove</a>
-                </td>
-            </tr>
-        {% endfor %}
+            {% if courses_list %}
+                {% for course in courses_list %}
+                    <tr>
+                        <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
+                        <td>{{ course.short_description|title }}</td>
+                        <td>
+                            <a class="btn btn-primary glyphicon glyphicon-pencil" href="{% url 'courses:edit' course.id %}">Edit</a>
+                            <a class="btn btn-primary glyphicon glyphicon-trash" href="{% url 'courses:remove' course.id %}">Remove</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                No courses
+            {% endif %}
         </tbody>
     </table>
 {% endblock content %}
