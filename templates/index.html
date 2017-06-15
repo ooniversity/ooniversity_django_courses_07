@@ -8,16 +8,16 @@
     <h1>Courses <span class="PyBursa">PyBursa</span></h1>
     <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'courses:add' %}">Add new course</a></p><br />
     <h2>Program</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Course</th>
-                <th>Description</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% if courses_list %}
+    {% if courses_list %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
                 {% for course in courses_list %}
                     <tr>
                         <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
@@ -28,9 +28,9 @@
                         </td>
                     </tr>
                 {% endfor %}
-            {% else %}
-                No courses
-            {% endif %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    {% else %}
+        No courses
+    {% endif %}
 {% endblock content %}

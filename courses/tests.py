@@ -24,7 +24,7 @@ class CoursesListTest(TestCase):
         self.assertContains(response, 'PythonCourse'.upper())
 
     def test_remove_course(self):
-        course_python = Course.objects.create(
+        course = Course.objects.create(
             name='PythonCourse',
             short_description='Short Python description',
             description='Python description'
@@ -35,8 +35,8 @@ class CoursesListTest(TestCase):
         self.assertContains(response, 'PythonCourse'.upper())
         response = self.client.get('/courses/remove/1/')
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response,'Do you want to remove course: PythonCourse ?')
-        course_python.delete()
+        self.assertContains(response, 'Do you want to remove course: PythonCourse ?')
+        course.delete()
         self.assertEqual(Course.objects.all().count(), 0)
 
     def test_add_many_courses(self):
