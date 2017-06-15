@@ -125,3 +125,12 @@ class CoursesDetailTest(TestCase):
         self.assertContains(response, 'Lesson1')
         self.assertContains(response, 'Lesson2')
         self.assertContains(response, 'Lesson3')
+
+    def test_add_lesson(self):
+        self.create_test_course()
+        response = self.client.get('/courses/1/add_lesson')
+        self.assertContains(response, 'Subject:')
+        self.assertContains(response, 'Description:')
+        self.assertContains(response, 'Course:')
+        self.assertContains(response, 'Order:')
+        self.assertContains(response, 'Add')
