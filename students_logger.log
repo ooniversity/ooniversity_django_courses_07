@@ -1,0 +1,2 @@
+WARNING 2017-06-15 20:18:55,911 views get_context_data Logger of students detail view warns you!
+ERROR 2017-06-15 20:18:55,911 views get_context_data Students detail view went wrong!
