@@ -173,3 +173,8 @@ LOGGING = {
         },
     },
 }
+
+try:
+    from pybursa.local_settings import *
+except ImportError:
+    print('Warning! local_settings are not defined!')
