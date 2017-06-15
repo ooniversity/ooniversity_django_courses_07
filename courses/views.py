@@ -15,16 +15,16 @@ def index(request):
     return render(request, 'index.html', context)
 
 class CourseDetailView(DetailView):
-    logger.debug('Courses detail view has been debugged!')
-    logger.info('Logger of courses detail view informs you!')
-    logger.warning('Logger of courses detail view warns you!')
-    logger.error('Courses detail view went wrong!')
     model = Course
     template_name = 'courses/detail.html'
     context_object_name = 'course'
     pk_url_kwarg = 'course_id'
 
     def get_context_data(self, **kwargs):
+        logger.debug('Courses detail view has been debugged!')
+        logger.info('Logger of courses detail view informs you!')
+        logger.warning('Logger of courses detail view warns you!')
+        logger.error('Courses detail view went wrong!')
         context = super().get_context_data(**kwargs)
         context['course_lessons'] = Lesson.objects.filter(course__id__exact = self.kwargs.get('course_id')).order_by('order')
         return context
