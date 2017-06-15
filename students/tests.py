@@ -88,3 +88,51 @@ class StudentsListTest(TestCase):
         response = self.client.get('/students/')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'No students')
+
+
+class StudentsDetailTest(TestCase):
+
+    def create_test_student(self):
+        Student.objects.create(
+            name='John',
+            surname='Doe',
+            date_of_birth=date(1234, 1, 10),
+            email='test@test.com',
+            phone='456546346',
+            address='Alabama',
+            skype='test'
+        )
+
+    def test_detail_view(self):
+        response = self.client.get('/students/1/')
+        self.assertEqual(response.status_code, 404)
+        self.create_test_student()
+        response = self.client.get('/students/1/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_detail_name(self):
+        self.create_test_student()
+        response = self.client.get('/students/1/')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'John Doe')
+
+    def test_detail_address(self):
+        self.create_test_student()
+        response = self.client.get('/students/1/')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Address')
+        self.assertContains(response, 'Alabama')
+
+    def test_detail_phone(self):
+        self.create_test_student()
+        response = self.client.get('/students/1/')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Phone')
+        self.assertContains(response, '456546346')
+
+    def test_detail_date_of_birth(self):
+        self.create_test_student()
+        response = self.client.get('/students/1/')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Date of birth')
+        self.assertContains(response, 'Jan. 10, 1234')

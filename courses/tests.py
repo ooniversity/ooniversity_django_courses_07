@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from courses.models import Course
+from courses.models import Course,Lesson
 
 
 class CoursesListTest(TestCase):
@@ -66,3 +66,62 @@ class CoursesListTest(TestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'No courses')
+
+
+class CoursesDetailTest(TestCase):
+
+    def create_test_course(self):
+        return Course.objects.create(
+            name='PythonCourse',
+            short_description='Short Python description',
+            description='Python description'
+        )
+
+    def test_detail_view(self):
+        response = self.client.get('/courses/1/')
+        self.assertEqual(response.status_code, 404)
+        self.create_test_course()
+        response = self.client.get('/courses/1/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_no_lessons(self):
+        self.create_test_course()
+        response = self.client.get('/courses/1/')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'No lessons')
+
+    def test_lesson(self):
+        course = self.create_test_course()
+        Lesson.objects.create(
+            subject='Lesson1',
+            course=course,
+            description='description',
+            order=1
+        )
+        response = self.client.get('/courses/1/')
+        self.assertContains(response, 'Lesson1')
+
+    def test_many_lesson(self):
+        course = self.create_test_course()
+        Lesson.objects.create(
+            subject='Lesson1',
+            course=course,
+            description='description',
+            order=1
+        )
+        Lesson.objects.create(
+            subject='Lesson2',
+            course=course,
+            description='description',
+            order=1
+        )
+        Lesson.objects.create(
+            subject='Lesson3',
+            course=course,
+            description='description',
+            order=1
+        )
+        response = self.client.get('/courses/1/')
+        self.assertContains(response, 'Lesson1')
+        self.assertContains(response, 'Lesson2')
+        self.assertContains(response, 'Lesson3')

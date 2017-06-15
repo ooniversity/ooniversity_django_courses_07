@@ -9,28 +9,40 @@
 
     {% include 'include/course_include.html' %}
     <h2>Coach</h2>
-    <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a><br>
-    {{ course.coach.description }}
+    {% if course.coach %}
+        <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a><br>
+        {{ course.coach.description }}
+    {% else %}
+        No coach
+    {% endif %}
     <h2>Assistant</h2>
-    <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a><br>
-    {{ course.assistant.description }}
+    {% if course.assistant %}
+        <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a><br>
+        {{ course.assistant.description }}
+    {% else %}
+        No assistant
+    {% endif %}
     <p>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Subject</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for lesson in course.lesson_set.all %}
+    {% if course.lesson_set.all %}
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>{{ lesson.order }}</td>
-                    <td>{{ lesson.subject }}</td>
-                    <td>{{ lesson.description }}</td>
+                    <th>#</th>
+                    <th>Subject</th>
+                    <th>Description</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for lesson in course.lesson_set.all %}
+                    <tr>
+                        <td>{{ lesson.order }}</td>
+                        <td>{{ lesson.subject }}</td>
+                        <td>{{ lesson.description }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        No lessons
+    {% endif %}
 {% endblock content %}
