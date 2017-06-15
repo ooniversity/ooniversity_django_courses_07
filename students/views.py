@@ -3,10 +3,17 @@ from .models import Student
 from .forms import StudentModelForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class StudentListView(ListView):
+    logger.debug('Students detail view has been debugged!')
+    logger.info('Logger of students detail view informs you!')
+    logger.warning('Logger of students detail view warns you!')
+    logger.error('Students detail view went wrong!')
     model = Student
     paginate_by = 2
 
