@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Feedback
+from feedbacks.models import Feedback
 from feedbacks.forms import FeedbackForm
 from django.contrib import messages
 from django.views.generic.edit import CreateView
 from django.core.mail import mail_admins
-from django.core.mail import send_mail
+
 
 class FeedbackView(CreateView):
     model = Feedback
@@ -16,6 +16,9 @@ class FeedbackView(CreateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(self.request,"Thank you for your feedback! We will keep in touch with you very soon!")
+        data = form.cleaned_data
+        message = '{}\nMessage from {}\n{}'.format(data['message'], data['name'], data['from_email'])
+        mail_admins(data['subject'], message)
         return response
         
     def get_context_data(self, **kwargs):
@@ -23,6 +26,5 @@ class FeedbackView(CreateView):
         context.update({'title':"Feedback",})
         return context
     
-    mail_admins(subject, message, fail_silently=False, connection=None, html_message=None)
-
+    
 # Create your views here.

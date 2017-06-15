@@ -13,11 +13,12 @@
 {% include "include/itb_include.html" %}
       
 {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
+  {% for message in messages %}
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{ message }}
+    </div>
+  {% endfor %}
 {% endif %}
 <div>
     <h1>{{ course.name }}</h1>
@@ -26,35 +27,20 @@
       <div class="page-header">
         <h1>Преподаватели</h1>
       </div>
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title">Учитель</h3>
-        </div>
-        <div class="panel-body">
-          <p><a href="{% url 'coaches:detail' course.coach_id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a></p>
-          <p>{{ course.coach.description }}</p>
-        </div>
-      </div>
-
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title">Ассистент</h3>
-        </div>
-        <div class="panel-body">
-          <p><a href="{% url 'coaches:detail' course.assistant_id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a></p>
-          <p>{{ course.assistant.description }}</p>
-        </div>
-      </div>
-                
+{% if course.coach %}
+{% include "include/coach_include.html" with title="Учитель" coach=course.coach %}
+{% endif %}
+{% if course.assistant %}
+{% include "include/coach_include.html" with title="Ассистент" coach=course.assistant %}
+{% endif %}
+                  
            <div class="container-fluid">
               <div class="row-fluid">
                   <div class="panel panel-info">
                       <div class="panel-heading">
                           <h3 class="panel-title">Содержание курса</h3>
                       </div>
-                      <div>
-                          <a href="{% url 'courses:add-lesson' course.id  %}"><span class="glyphicon glyphicon-plus"></span><strong>  Добавить занятие</strong></a>  
-                      </div>
+                      <a href="{% url 'courses:add-lesson' course.pk %}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-plus"></span> Добавить занятие </a>
                       <div class="panel-body">
                           <table class="table">
                             <tr class="row-2">

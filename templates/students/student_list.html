@@ -15,10 +15,8 @@
                     {{ message }}
                   {% endfor %}
               </div>
-          {% endif %}
-          <div>
-              <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'students:add' %}" role="button"><strong>Добавить нового студента</strong></a>
-          </div>
+          {% endif %}          
+              <a href="{% url 'students:add' %}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-plus"></span> Добавить нового студента</a>          
           <p>Список студентов</p>
       </div>    
            <div class="container-fluid">
@@ -47,30 +45,34 @@
                                 <td>{% for course in student.courses.all %}
                                     <a href="{% url 'courses:detail' course.id %}">{{course.name}}</a><br>
                                      {% endfor %}</td>
-                                <td><a href="{% url 'students:edit' student.id %}">  <span class="glyphicon glyphicon-edit"></span>  Изменить</a></td>
-                                <td><a href="{% url 'students:remove' student.id %}">  <span class="glyphicon glyphicon-remove">  Удалить</span></a></td> 
+                                <td> <a href="{% url 'students:edit' student.pk  %}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-pencil"></span> Изменить</a></td>
+                                <td> <a href="{% url 'students:remove' student.pk  %}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-remove"></span> Удалить</a></td> 
                             </tbody>
                               {% endfor %} 
                             </table>      
                        </div>
                       {% if is_paginated %}
-                      <div class="pagination">
-                          <span class="step-links">
-                              {% if page_obj.has_previous %}
-                              <a href="?page={{ page_obj.previous_page_number }}">previous</a>   {% endif %}
-                              <span class="current">Page {{ page_obj.number }} of {{ paginator.num_pages }}.</span>
-                              {% if page_obj.has_next %}
-                              <a href="?page={{ page_obj.next_page_number }}">next</a>
-                              {% endif %}
-                          </span>
-                      </div>
+                      {% if paginator.num_pages > 1 %}
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li class="arrow"><a href="?page={{ page_obj.previous_page_number }}">&lt&ltprevious</a></li>
+                            {% else %}
+                                <li class="arrow unavailable"><a href="#">&lt</a></li>
+                            {% endif %}
+                            {% for num_page in paginator.page_range %}
+                                <li {% if num_page == page_obj.number %}class="active"{% endif %}><a href="?page={{ num_page }}">{{ num_page }}</a></li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="arrow"><a href="?page={{ page_obj.next_page_number }}">next >></a></li>
+                            {% else %}
+                                <li class="arrow unavailable"><a href="#">></a></li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}   
+                      
                       {% endif %}
                   </div>                 
               </div>
           </div>
 {% endblock content %}
              
-      
-    
-
-   
