@@ -7,56 +7,59 @@
 {% block content %}
     <a class="btn btn-primary glyphicon glyphicon-plus" href="{% url 'students:add' %}">Add new student</a></p><br />
     <h1>Students list</h1>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Student</th>
-                <th>Address</th>
-                <th>Skype</th>
-                <th>Courses</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for student in object_list %}
+    {% if student_list %}
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td><a href="{% url 'students:detail' student.id %}">{{ student }}</a></td>
-                    <td>{{ student.address }}</td>
-                    <td>{{ student.skype }}</td>
-                    <td>
-                        {% for course in student.courses.all %}
-                            <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a> <br>
-                        {% endfor %}
-                    </td>
-                    <td>
-                        <a class="btn btn-primary glyphicon glyphicon-pencil" href="{% url 'students:edit' student.id %}">Edit</a>
-                        <a class="btn btn-primary glyphicon glyphicon-trash" href="{% url 'students:remove' student.id %}">Remove</a>
-                    </td>
+                    <th>#</th>
+                    <th>Student</th>
+                    <th>Address</th>
+                    <th>Skype</th>
+                    <th>Courses</th>
+                    <th></th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for student in object_list %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><a href="{% url 'students:detail' student.id %}">{{ student }}</a></td>
+                        <td>{{ student.address }}</td>
+                        <td>{{ student.skype }}</td>
+                        <td>
+                            {% for course in student.courses.all %}
+                                <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a> <br>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a class="btn btn-primary glyphicon glyphicon-pencil" href="{% url 'students:edit' student.id %}">Edit</a>
+                            <a class="btn btn-primary glyphicon glyphicon-trash" href="{% url 'students:remove' student.id %}">Remove</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    {% if is_paginated %}
-        <ul class="pagination">
-            {% if page_obj.has_previous %}
-                <li><a href="?page={{ page_obj.previous_page_number }}"><< previous</a></li>
-            {% endif %}
+        {% if is_paginated %}
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}"><< previous</a></li>
+                {% endif %}
 
-            {% for page_number in page_obj.paginator.page_range %}
-                {% ifequal page_number page_obj.number %}
-                    <li class="active"><a href="#">{{ page_number }}<span class="sr-only">(current)</span></a></li>
-                {% else %}
-                    <li><a href="?page={{ page_number }}">{{ page_number }}</a></li>
-                {% endifequal %}
-            {% endfor %}
+                {% for page_number in page_obj.paginator.page_range %}
+                    {% ifequal page_number page_obj.number %}
+                        <li class="active"><a href="#">{{ page_number }}<span class="sr-only">(current)</span></a></li>
+                    {% else %}
+                        <li><a href="?page={{ page_number }}">{{ page_number }}</a></li>
+                    {% endifequal %}
+                {% endfor %}
 
-            {% if page_obj.has_next %}
-                <li><a href="?page={{ page_obj.next_page_number }}">next >></a></li>
-            {% endif %}
-        </ul>
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">next >></a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    {% else %}
+        No students
     {% endif %}
-
 {% endblock content %}
