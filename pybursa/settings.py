@@ -136,3 +136,41 @@ EMAIL_HOST = 'localhost'
 
 EMAIL_PORT = '1025'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'student': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s'
+        },
+        'course': {
+            'format': '%(levelname)s %(message)s'
+        }
+    },
+    'loggers': {
+        'students': {
+            'handlers': ['students_log'],
+            'level': 'WARNING'
+        },
+        'courses': {
+            'handlers': ['courses_log'],
+            'level': 'DEBUG'
+        }
+    },
+    'handlers': {
+        'students_log': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'formatter': 'student',
+            'filename': os.path.join(BASE_DIR, 'students_logger.log')
+        },
+        'courses_log': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'course',
+            'filename': os.path.join(BASE_DIR, 'courses_logger.log')
+        },
+    }
+}
+
+
