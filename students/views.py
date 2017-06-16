@@ -11,9 +11,11 @@ from django.core.urlresolvers import reverse_lazy
 
 class StudentDetailView(DetailView):
     model = Student
-    
+        
 class StudentListView(ListView):
     model = Student
+    paginate_by = 2
+
     def get_queryset(self):
         course_id = self.request.GET.get('course_id', None)
         if course_id:
@@ -26,10 +28,12 @@ class StudentCreateView(CreateView):
     model = Student
     form_class = StudentModelForm
     success_url = reverse_lazy('students:list_view')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Student registration'
         return context
+
     def form_valid(self, form):
         fullname = form.instance.name + ' ' + form.instance.surname
         messages.success(self.request, 'Student %s has been successfully added.' % fullname)
@@ -40,10 +44,12 @@ class StudentUpdateView(UpdateView):
     model = Student
     form_class = StudentModelForm
     success_url = reverse_lazy('students:list_view')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Student info update'
         return context
+
     def form_valid(self, form):
         messages.success(self.request, 'Info on the student has been successfully changed.')
         return super().form_valid(form)
@@ -52,10 +58,12 @@ class StudentUpdateView(UpdateView):
 class StudentDeleteView(DeleteView):
     model = Student
     success_url = reverse_lazy('students:list_view')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Student info suppression'
         return context
+        
     def delete(self, request, *args, **kwargs):
         response = super(StudentDeleteView, self).delete(self, request, *args, **kwargs)
         student = self.object.name + ' ' + self.object.surname
