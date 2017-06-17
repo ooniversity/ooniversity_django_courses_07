@@ -1,6 +1,8 @@
 *.pyc
 *.pyo
 *~
+courses_logger.log
+students_logger.log
 .idea/
 __pycache__
 venv/ 

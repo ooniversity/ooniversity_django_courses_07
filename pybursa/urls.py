@@ -13,10 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 from pybursa.views import index, contact, student_list, student_detail
 from feedbacks import views
+
 
 
 urlpatterns = [
@@ -33,3 +35,8 @@ urlpatterns = [
 	url(r'^coaches/', include('coaches.urls')),
 ]
 admin.site.site_header = 'PyBursa Administration'
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [url(r'^__debug__/', include(debug_toolbar.urls)),]
