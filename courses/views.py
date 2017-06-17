@@ -7,12 +7,20 @@ from django.core.urlresolvers import reverse_lazy
 from .models import Course
 from courses.forms import CourseModelForm, LessonModelForm
 
+import logging
+logger = logging.getLogger('pybursa.courses')
+
 
 class CourseDetailView(DetailView):
     model = Course
     fields = '__all__'
     template_name = 'courses/detail.html'
     context_object_name = 'course'
+    logger.debug("Courses detail view has been debugged!")
+    logger.info("Logger of courses detail view informs you!")
+    logger.warning("Logger of courses detail view warns you!")
+    logger.error("Courses detail view went wrong!")
+    
 #def detail(request, pk):
 #    course = get_object_or_404(Course, pk=pk)
 #    context = {'course': course}
