@@ -1,21 +1,19 @@
 {% extends "base.html" %}
 
-{% load staticfiles %}
 
-{% block title %}{{ title }}{% endblock title %}
+{% block title %}Удаление студента - pyBursa{% endblock %}
 
-{% block nav_class_students %}"active"{% endblock %}
 
-              {% block content %}
-              <div class="row-fluid">
-                  <div class="col-xs-8" "col-xs-offset-2" >
-                      <h1>Студент {{ student.name }} {{ student.surname }} будет удален</h1>
-                      <form method = "post">
-                          {% csrf_token %}
-                          {{ form.as_p }}
-                          <input type="submit" value="Удалить">
-                      </form> 
-                   </div>
-              </div>
-              {% endblock content %}
-         
+{% block nav_students %}active{% endblock %}
+
+
+{% block content %}
+<div class="page-header">
+  <h2>{{ title }}</h2>
+  <!--<h4>Студент {{ student.name }} {{ student.surname }} будет удален</h4>-->
+</div>
+  <form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Удалить">
+  </form>
+{% endblock content %}

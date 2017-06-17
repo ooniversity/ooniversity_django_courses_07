@@ -16,12 +16,14 @@
                           {% endfor %}
                       </div>
                       {% endif %}
-                      <h1>{{ header }}</h1> 
-                      <form method = "post">
+                      <div class="page-header">
+                          <h2>{{ title }}</h2>
+                      </div>
+                      <form method="post">
                           {% csrf_token %}
                           {{ form.as_p }}
-                          <input type="submit" value="{{ button }}">
-                      </form> 
+                          <input type="submit" value="Сохранить">
+                      </form>
                    </div>
               </div>
               {% endblock content %}
