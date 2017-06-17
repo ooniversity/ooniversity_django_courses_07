@@ -7,23 +7,22 @@
 {% block nav_class_index %}"active"{% endblock %}
 
 {% block content %}
-<div class="row-fluid">
-    {% if messages %}
-    {% for message in messages %}
+
+{% if messages %}
+  {% for message in messages %}
     <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{ message }}
     </div>
-    {% endfor %}
-    {% endif %}
-                  <div class="col-xs-8" "col-xs-offset-2" >
-                      <h1>Редактировать курс</h1> 
-                      <form method = "post">
-                          {% csrf_token %}
-                          {{ form.as_p }}
-                          <input type="submit" value="Применить">
-                      </form> 
-                   </div>
-              </div>
-              {% endblock content %}
-         
+  {% endfor %}
+{% endif %}
+
+<div class="page-header">
+  <h2>{{ title }}</h2>
+</div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Изменить">
+  </form>
+{% endblock content %}

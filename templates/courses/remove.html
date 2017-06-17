@@ -6,16 +6,13 @@
 
 {% block nav_class_index %}"active"{% endblock %}
 
-              {% block content %}
-              <div class="row-fluid">
-                  <div class="col-xs-8" "col-xs-offset-2" >
-                      <h1>Удалить курс "{{ course.name }}"</h1> 
-                      <form method = "post">
-                          {% csrf_token %}
-                          {{ form.as_p }}
-                          <input type="submit" value="Применить">
-                      </form> 
-                   </div>
-              </div>
-              {% endblock content %}
+{% block content %}
+<div class="page-header">
+  <h2>{{ title }}</h2>
+</div>
+  <form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Удалить">
+  </form>
+{% endblock content %}
          
