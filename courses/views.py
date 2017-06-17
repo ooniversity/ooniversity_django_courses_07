@@ -72,13 +72,17 @@ class CourseUpdateView(UpdateView):
     def form_valid(self, form):
         response = super(CourseUpdateView, self).form_valid(form)
         messages.success(self.request, "The changes have been saved.")
-        self.success_url = reverse_lazy('courses:edit', args=(self.object.id))
         return response
     
     def get_context_data(self, **kwargs):
         context = super(CourseUpdateView, self).get_context_data(**kwargs)
         context.update({'title':"Course update",})
         return context
+    
+    def get_success_url(self):
+        success_url = reverse_lazy('courses:edit',
+                                   kwargs={"pk":self.object.id})
+        return success_url
 
     #def edit(request, pk):
 #    course = Course.objects.get(id=pk)
