@@ -17,11 +17,11 @@ class CourseDetailView(DetailView):
 
 
     def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
         logger.debug('Courses detail view has been debugged!')
         logger.info('Logger of courses detail view informs you!')
         logger.warning('Logger of courses detail view warns you!')    
         logger.error('Courses detail view went wrong!')
-        context = super().get_context_data(*args, **kwargs)
         context['course_plan'] = self.object.lesson_set.all()
         return context
 
