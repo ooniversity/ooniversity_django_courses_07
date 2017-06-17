@@ -35,14 +35,17 @@
 			  <thead>
 			    <tr>
                   <th>Преподаватель</th>
+	    {% if course.coach %}
 				</tr>
               </thead>
               <tbody>
                 <tr>
+		
                     <td><a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a>
                   <p>{{ course.coach.description }}</p></td>
                 </tr>
               </tbody>
+	      {% endif %}
 			</table>
             <table class="table table-hover">
 			  <thead>
@@ -51,11 +54,13 @@
 				</tr>
               </thead>
               <tbody>
+	      {% if course.assistant %}
                 <tr>
                   <td><a a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a>
                   <p>{{ course.assistant.description }}</p></td>
                 </tr>
               </tbody>
+	      {% endif %}
 			</table>
 			<h2>План курса</h2>
 			<p><a class="btn btn-primary glyphicon"
