@@ -7,9 +7,16 @@ from django.core.urlresolvers import reverse_lazy
 from students.models import Student
 from students.forms import StudentModelForm
 
+import logging
+logger = logging.getLogger('pybursa.students')
 
 class StudentDetailView(DetailView):
     model = Student
+    logger.debug("Students detail view has been debugged!")
+    logger.info("Logger of students detail view informs you!")
+    logger.warning("Logger of students detail view warns you!")
+    logger.error("Students detail view went wrong!")
+
 #def detail(request, pk):
     #student = get_object_or_404(Student, pk=pk)
     #context = {'student': student }
@@ -18,6 +25,12 @@ class StudentDetailView(DetailView):
 class StudentListView(ListView):
     model = Student
     paginate_by = 2
+
+    def get_context_data(self, **kwargs):
+        context = super(StudentListView, self).get_context_data(**kwargs)
+        context['page_title'] = self.page_title
+        context['page_path'] = ''
+        return context
     
     def get_queryset(self):
         qs = super(StudentListView, self).get_queryset()

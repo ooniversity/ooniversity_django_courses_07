@@ -80,6 +80,44 @@ EMAIL_PORT = "1025"
 ADMINS = [('John', 'john@example.com'), ('Mary', 'mary@example.com')]
 WSGI_APPLICATION = 'pybursa.wsgi.application'
 
+LOGGING = {
+    'version': 1,
+    #'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file1': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'simple',
+            'filename': os.path.join(BASE_DIR,'courses_logger.log'),
+        },
+        'file2': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': os.path.join(BASE_DIR,'students_logger.log'),
+        },
+    },
+    'loggers': {
+        'pybursa.courses': {
+            'handlers': ['file1'],
+            'level': 'DEBUG',
+            #'propagate': True,
+        },
+        'pybursa.students': {
+            'handlers': ['file2'],
+            'level': 'WARNING',
+            #'propagate': True,
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
