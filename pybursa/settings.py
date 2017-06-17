@@ -160,12 +160,10 @@ LOGGING = {
         'courses': {
             'handlers': ['file_courses'],
             'level': 'DEBUG',
-            'propagate': True,
         },
         'students': {
             'handlers': ['file_students'],
             'level': 'WARNING',
-            'propagate': True,
         },
     },
 }
