@@ -10,11 +10,10 @@ class FeedbackView(CreateView):
     model = Feedback
     form_class = FeedbackForm
     success_url ='feedback'
-    template_name = 'feedback.html'
-    context_object_name = 'course'
+    template_name = 'feedback.html'    
     
     def form_valid(self, form):
-        response = super().form_valid(form)
+        response = super(FeedbackView, self).form_valid(form)
         messages.success(self.request,"Thank you for your feedback! We will keep in touch with you very soon!")
         data = form.cleaned_data
         message = '{}\nMessage from {}\n{}'.format(data['message'], data['name'], data['from_email'])

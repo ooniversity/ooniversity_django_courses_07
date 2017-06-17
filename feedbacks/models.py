@@ -9,6 +9,6 @@ class Feedback(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return u'{} {}'.format(self.name, self.create_date)
+        return u'{} {}'.format(self.from_email, self.create_date)
 
 # Create your models here.
