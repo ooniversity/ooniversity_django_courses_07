@@ -49,9 +49,10 @@
                                 <td> <a href="{% url 'students:remove' student.pk  %}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-remove"></span> Удалить</a></td> 
                             </tbody>
                               {% endfor %} 
-                            </table>      
-                       </div>
-                    <!--  {% if is_paginated %}
+                            </table>
+                          </div> 
+                      {% include 'include/pagination.html' %}
+                  <!--   {% if is_paginated %}
                       {% if paginator.num_pages > 1 %}
                         <ul class="pagination">
                             {% if page_obj.has_previous %}
