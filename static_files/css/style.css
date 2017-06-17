@@ -1,0 +1,87 @@
+body{
+	background-color: #ddd;
+}
+.navbar {
+	background-color: #555;
+	border-radius: 0px;
+}
+.navbar .navbar-nav > li > a {
+	color: #fff;
+}
+.navbar .navbar-nav > li:hover > a{
+	color: #fff;
+	background-color: #666;
+}
+body > .navbar .navbar-nav > li.active > a {
+	background-color: #ddd;
+	color: #555;
+}
+p a{
+	color: #000;
+	text-decoration: underline;
+}
+p a:hover{
+	color: #333;
+	text-decoration: none;
+}
+.desc {
+	font-size: 130%;
+}
+.prog{
+	font-size: 120%;
+}
+.contacts .col p{
+	margin: 10px 0 20px 0;
+	font-weight: bold;
+}
+.contacts .col p span{
+	font-weight: normal;
+	letter-spacing: 1px;
+}
+.names{
+	margin-bottom: 20px;	
+}
+.name{
+	font-size: 150%;
+}
+.Skype{
+	font-family: Monospace;
+}
+.email{
+	text-decoration: underline;
+}
+.phone{
+	font-style: italic;
+}
+.main-title{
+	font-size: 50px;
+}
+.contacts{
+	border-bottom: 1px solid black;
+}
+.old-text{
+	text-decoration: line-through;
+}
+th {
+	text-align: center;
+}
+.tab2{
+	width:50%;
+}
+.tab2 table, .tab2 th, .tab2 td{
+	border-style:solid;
+	border-color:green !important;
+	border-width:1px;
+	border-collapse:collapse;
+	background-color: #CDCDC1;
+}
+.tab3{
+	width:75%;
+}
+.tab3 td {
+	text-align: center;
+	background-color: #F5F5DC;
+}
+.tab3 th {
+	background-color: #4682B4;
+}
