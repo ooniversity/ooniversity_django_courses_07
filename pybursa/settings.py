@@ -129,6 +129,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
+STATICFILES_FINDERS =("django.contrib.staticfiles.finders.FileSystemFinder",
+                      "django.contrib.staticfiles.finders.AppDirectoriesFinder")
+
 ADMINS = (('test','test_misha@yopmail.com'),('admin','admin_misha@yopmail.com'))
 
 EMAIL_HOST = 'smtp.sendgrid.net'
@@ -184,6 +188,6 @@ LOGGING = {
 }
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
-    print('Warning! local_settings are not defined!')
+    print("Warning! local_settings are not defined!")
