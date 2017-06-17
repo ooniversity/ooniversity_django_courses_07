@@ -136,3 +136,47 @@ EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 
 EMAIL_SUBJECT_PREFIX = '[PyBursa]'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'main': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s',
+            'datefmt': "%Y-%m-%d %H:%M:%S",
+        },
+        'main1': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+
+    'loggers': {
+        'courses': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG'
+        },
+        'students': {
+            'handlers': ['console', 'file1'],
+            'level': 'WARNING'
+        },
+    },
+
+    'handlers': {
+        'console':{
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+    },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'courses_logger.log'),
+            'formatter': 'main1'
+        },
+        'file1': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'students_logger.log'),
+            'formatter': 'main'
+        },
+    },
+}
