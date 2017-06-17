@@ -173,7 +173,7 @@ LOGGING = {
             'format': '%(levelname)s %(message)s'
         },
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(message)s'
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s'
         },
     },
 }
