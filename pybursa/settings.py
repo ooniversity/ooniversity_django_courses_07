@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'mw_$04e!5=wy=p%p_b_57+*y#uozs6&3y-ifam!oll7ci6^imd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -185,3 +185,9 @@ LOGGING = {
         },
     },
 }
+
+#try:
+#    from local_settings import *
+#except ImportError:
+#    print("Warning! local_settings are not defined!")
+
