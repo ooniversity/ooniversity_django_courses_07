@@ -127,6 +127,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
+
 ADMINS = (('Bulkin Stanislav', 'Bulikstasmagn@gmail.com'))
 
 EMAIL_HOST = 'smtp.sendgrid.net'
@@ -142,5 +144,50 @@ EMAIL_HOST_USER = 'StasBulkin.sendgrid'
 EMAIL_HOST_PASSWORD = 'send9380000'
 
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'main': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s',
+            'datefmt': "%Y-%m-%d %H:%M:%S",
+        },
+        'main1': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+
+    'loggers': {
+        'courses': {
+            'handlers': ['file'],
+            'level': 'DEBUG'
+        },
+        'students': {
+            'handlers': ['file1'],
+            'level': 'WARNING'
+        },
+    },
+
+    'handlers': {
+            'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'courses_logger.log'),
+            'formatter': 'main1'
+        },
+        'file1': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'students_logger.log'),
+            'formatter': 'main'
+        },
+    },
+}
+
+
+try:
+    from .local_settings_example import *
+except ImportError:
+    print("Warning! local_settings are not defined!")
 
 
