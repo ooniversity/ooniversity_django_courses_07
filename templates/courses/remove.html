@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block title %}Remove Course{% endblock title %}
+
+{% block nav_main_active %}active{% endblock nav_main_active %}
+
+{% block content %}
+
+
+    <div class="container">
+    	<div class="page-header">
+  		<h2>{{ title }}</h2>
+		</div>
+		  <form method="post">
+                  {% csrf_token %}
+              <input class="btn btn-danger" type="Submit" value="Remove">
+              </form>
+
+    </div><!-- /.container -->
+{% endblock content %}

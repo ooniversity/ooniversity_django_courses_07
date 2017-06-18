@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block title %}Pybursa: Main{% endblock title %}
+
+
+{% block nav %}{% include "include/nav_inc.html" with main_menu='active' %}{% endblock nav %}
+
+
+{% block content %}    
+
+    </div><!-- /.container -->
+    <div class="container">
+      <div class="row">
+      {% if messages %}
+         {% for message in messages %}
+           {{ message }}
+         {% endfor %}
+      {% endif %}
+        <div class="col-sm-12 blog-main">
+      <h1>ItBursa course</h1>
+      <br>
+      <p class="page-main">We'll help you to get to know programming :)</p>
+      <h2>Attend courses:</h2>
+            <table class="table table-hover">
+        <thead>
+          <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+              </thead>
+              <tbody>
+                {% for item in course_list %}
+                <tr>
+                    <th scope="row"><a href="{% url 'courses:detail' item.id %}">{{ item.name|upper }}</a></th>
+                    <td>{{ item.short_description|title }}</td>
+                    <td><a href="{% url 'courses:edit' item.id  %}" class="btn btn-info">Edit</a>
+                    <td><a href="{% url 'courses:remove' item.id  %}" class="btn btn-danger">Remove course</a></td>
+
+                </tr>
+                {% endfor %}
+              </tbody>
+      </table>
+              </div><!-- /.page-main -->
+      </div><!-- /.row -->
+    <a href="{% url 'courses:add' %}" class="btn btn-primary">Add new course</a>
+    </div><!-- /.container -->
+
+
+{% include 'include/ome_include.html' %}
+
+
+{% endblock content %}

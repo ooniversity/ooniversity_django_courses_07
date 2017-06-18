@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static "images/favicon.ico" %}">
+
+    <title>{% block title %}PyBursa: Base{% endblock title %}</title>
+
+    <!-- Bootstrap core CSS -->
+	<link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    {% block nav %}{% include "include/nav_inc.html" %}{% endblock nav %}
+    {% block content %}{% endblock content %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+    {% load static %}
+    <script src="{% static "js/bootstrap.js" %}"></script>
+  </body>
+</html>

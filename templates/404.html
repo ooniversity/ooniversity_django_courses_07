@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block nav %}{% include "include/nav_inc.html" with main_menu='active' %}{% endblock nav %}
+
+
+{% block title %}Pybursa: 404 error{% endblock title %}
+
+
+{% block content %}    
+
+    </div><!-- /.container -->
+    <div class="container">
+        <div class="row">
+          <div class="error-template">
+            <h2>Sorry, page is not found</h2>
+          </div>
+        </div>
+    </div><!-- /.container -->
+
+{% endblock content %}
