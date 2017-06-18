@@ -4,7 +4,7 @@
 {% load staticfiles %}
 
 
-{% block title %}Pybursa: {{ student_info.name }} {{ student_info.surname }}{% endblock title %}
+{% block title %}Pybursa: {{ student.name }} {{ student.surname }}{% endblock title %}
 
 
 {% block nav_students_active %}active{% endblock nav_students_active %}
@@ -17,7 +17,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 blog-main">
-			<h1 class="page-title">{{ student_info.surname }} {{ student_info.name }}</h1>
+			<h1 class="page-title">{{ student.surname }} {{ student.name }}</h1>
 			<br>
 
 		</div><!-- /.page-main -->
@@ -27,27 +27,27 @@
 					<tbody>
 						<tr>
 							<td>Birth Date</td>
-							<td>{{ student_info.date_of_birth }}</td>
+							<td>{{ student.date_of_birth }}</td>
 						</tr>
 						<tr>
 							<td>Address</td> 
-							<td>{{ student_info.address }}</td>
+							<td>{{ student.address }}</td>
 						</tr>
 						<tr> 
 							<td>E-mail</td> 
-							<td>{{ student_info.email }}</td>
+							<td>{{ student.email }}</td>
 						</tr>
 						<tr> 
 							<td>Skype</td> 
-							<td>{{ student_info.skype }}</td>
+							<td>{{ student.skype }}</td>
 						</tr>
 						<tr> 
 							<td>Phone</td>
-							<td>{{ student_info.phone }}</td>
+							<td>{{ student.phone }}</td>
 						</tr>
 						<tr> 
 							<td>Courses</td>
-							<td>{% for i in student_info.courses.all %}
+							<td>{% for i in student.courses.all %}
 							<a href="{% url 'courses:detail' i.id %}">
 								{{ i }}</a><br/>{% endfor %}</td>
 						</tr>
