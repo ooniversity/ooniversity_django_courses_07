@@ -4,5 +4,5 @@
 .idea/
 __pycache__
 venv/ 
-courses_logger.log
-students_logger.log
+*.log
+local_settings.py
