@@ -7,7 +7,7 @@
 .font-weight{
     font-weight: 800;
 }
-.jumbotron h1.color_h{
+h1.color_h{
     color: #204d74;
 }
 .outline-div{
@@ -25,6 +25,6 @@
 .background-nav{
     background-color: #696969;
 }
-.jumbotron h1.underline{
+h1.underline{
     text-decoration: underline;
 }
