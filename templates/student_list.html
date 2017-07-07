@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Contact</title>
+    <title>Main</title>
 
     <!-- Bootstrap -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
     <![endif]-->
   </head>
   <body class = "background-body">
-      <nav class="navbar navbar-default background-nav">
+    <nav class="navbar navbar-default background-nav">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -35,51 +35,65 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="contact.html">Contacts</a></li>
+            <li><a href="contact.html">Contacts</a></li>
             <li><a href="student_list.html">Students</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container theme-showcase" role="main">
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail background-color outline-div">
-            <img src="../static/images/ivan.png" alt="Director" class="outline-img">
-            <div class="caption">
-              <h3 class="italics">Director</h3>
-              <p><span class ="font-weight">Name:</span> Ivan Kuznyakov</p>
-              <p>Skype: bask</p>
-              <p>Email: ivan.kys@gmail.com</p>
-              <p>Phone: 0966822371</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail background-color outline-div">
-            <img src="../static/images/sergey.png" alt="Manager" class="outline-img">
-            <div class="caption">
-              <h3 class="italics">Manager</h3>
-              <p><span class ="font-weight">Name:</span> Sergey Ostoushcko</p>
-              <p>Skype: bread</p>
-              <p>Email: ser.os@gmail.com</p>
-              <p>Phone: 0966812311</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail background-color outline-div">
-            <img src="../static/images/alexey.png" alt="Founder" class="outline-img">
-            <div class="caption">
-              <h3 class="italics">Founder</h3>
-              <p><span class ="font-weight">Name:</span> Alexsey Serechenko</p>
-              <p>Skype: alex</p>
-              <p>Email: alexser@gmail.com</p>
-              <p>Phone: 0966822345</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h1 class="color_h underline">Students BogBursa</h1>
+      <p>List students, output 2017.</p>
+    </div>
+    <div class="col-md-6">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Surname</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Skype</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><a href = "student_detail.html">Slusarenko</a></td>
+                <td>Oksana</td>
+                <td>Ukraine, Dergachi, lane Chleboroba h.14</td>
+                <td>oksana.slu</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><a href = "student_detail.html">Slusarenko</a></td>
+                <td>Bogdan</td>
+                <td>Ukraine, Dergachi, lane Chleboroba h.14</td>
+                <td>bogdan.slu</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><a href = "student_detail.html">Serichenko</a></td>
+                <td>Alexey</td>
+                <td>Ukraine, Slatino, lane Svoboda h.10</td>
+                <td>alexey</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><a href = "student_detail.html">Addo</a></td>
+                <td>Eva</td>
+                <td>Ukraine, Kharkiv, stret Geroiv Praci h.10 ap.7</td>
+                <td>evchik</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><a href = "student_detail.html">Gasemi</a></td>
+                <td>Arash</td>
+                <td>Ukraine, Bezruki, stret Troyanda h.21</td>
+                <td>ara</td>
+              </tr>
+            </tbody>
+          </table>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
