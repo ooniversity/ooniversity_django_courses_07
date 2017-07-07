@@ -1,0 +1,30 @@
+.italics {
+    font-style: italic;
+}
+.background-color{
+    background-color: RGB(245, 218, 218);
+}
+.font-weight{
+    font-weight: 800;
+}
+.jumbotron h1.color_h{
+    color: #204d74;
+}
+.outline-div{
+    outline: 2px solid #000;
+}
+.outline-img{
+    outline: 1px solid #000;
+}
+.background-body{
+    background-color: #F0FFF0;
+}
+.jumbotron h2.color_h2{
+    color: #4682B4;
+}
+.background-nav{
+    background-color: #696969;
+}
+.jumbotron h1.underline{
+    text-decoration: underline;
+}
