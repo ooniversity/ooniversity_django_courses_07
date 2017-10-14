@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../static/images/images.png">
+    {% load staticfiles  %}
+    <link rel="icon" href="{% static 'images/images.png' %}">
 
     <title>PyBursa</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    {% load staticfiles  %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+<!--    было <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        изменить <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> -->
 
     <!-- Custom styles for this template -->
-    <link href="../static/css/starter-template.css" rel="stylesheet">
+    <link href="{% static 'css/starter-template.css' %}" rel="stylesheet">
   </head>
 
   <body>
@@ -23,13 +28,13 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Main</a>
+            <a class="nav-link" href="/">Main</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="contact.html">Contacts</a>
+            <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="student_list.html">Students</a>
+            <a class="nav-link" href="{% url 'student_list' %}">Students</a>
           </li>
         </ul>
        </div>
@@ -48,11 +53,11 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Placed at the end of the document so the pages load faster 
     <script src="../static/js/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../static/js/jquery.min.js"><\/script>')</script>
-    <script src="../static/js/popper.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/popper.min.js"></script> 
+    <script src="../static/js/bootstrap.min.js"></script> -->
     </body>
 </html>
 
