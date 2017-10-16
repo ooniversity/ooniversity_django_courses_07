@@ -1,1 +1,2 @@
-# ooniversity_django_courses_07
+# Django_tutor
+My first Django site
