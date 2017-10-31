@@ -1,0 +1,36 @@
+<!DOCTYPE p PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+	   <meta charset="UTF-8">
+	</head>
+    <body>
+		<p>Квадратное уравнение ax**2 + bx + x = 0</p>
+		<ul>
+			<li>
+			   a = {{ get.a }}
+			   <p>{{ errors.a }}</p> 
+			</li>
+			<li>
+		       b = {{ get.b }}
+		       <p>{{ errors.b }}</p> 
+		    </li>
+		    <li>
+		       c = {{ get.c }}
+		       <p>{{ errors.c }}</p> 
+		    </li>    
+		</ul>
+		
+		{% if not errors %}
+			<p>Дискриминант: {{ d }}</p>
+			<p>
+			{% if d < 0 %}
+			    Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.
+			{% elif d == 0 %}
+			    Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {{ x1 }}
+			{% else %}
+			    Квадратное уравнение имеет два действительных корня: x1 = {{ x1 }}, x2 = {{ x2 }}
+			{% endif %}
+			</p>
+		{% endif %}
+    </body>
+</html>
