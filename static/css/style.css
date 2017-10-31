@@ -44,8 +44,8 @@ html, body {
 }
 
 
-.person:not(:last-child) {
-    margin-bottom: 50px;
+.person {
+    margin-top: 50px;
 }
 
 .person img {
