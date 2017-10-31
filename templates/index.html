@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,20 +6,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="../static/css/bootstrap.css"/>
-        <link rel="stylesheet" href="../static/css/style.css"/>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
         
-        <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../static/js/popper.js"></script>
-        <script type="text/javascript" src="../static/js/bootstrap.js"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
     </head>
     <body>
         <div class="wrapper">
             <section class="header">
                 <div class="menu clearfix">
-                    <a class="active" href="index.html">Main</a>
-                    <a href="contact.html">Contacts</a>
-                    <a href="student_list.html">Students</a>
+                    <a class="active" href="{% url 'index' %}">Main</a>
+                    <a href="{% url 'contact' %}">Contacts</a>
+                    <a href="{% url 'student_list' %}">Students</a>
                 </div>
             </section>
 
