@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bursa | Main</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+        
+        <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <section class="header">
+                <div class="menu clearfix">
+                    <a href="{% url 'index' %}">Main</a>
+                    <a href="{% url 'contact' %}">Contacts</a>
+                    <a href="{% url 'students:list' %}?course_id={{ course.id }}">Students</a>
+                </div>
+            </section>
+
+            <section class="content">
+                <h1 class="text-uppercase">{{ course }}</h1>
+
+                <h3>Описание</h3>
+                <p>{{ course.description }}</p>
+
+                <h3>План курса</h3>
+                <p>Выберите курс, на котором Вы хотите учиться</p>
+                {% if course.lessons %}
+                <ul class="no-base-style">
+                    {% for lesson in course.lessons %}
+                    <li>
+                        {{ lesson.order }}. {{ lesson.subject }}
+                        <div class="short-description">{{ lesson.description }}</div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="bg-info">Нет ни одного урока</p>
+                {% endif %}
+                
+                <h3>Получить демо версию курса по почте</h3>
+                <form id="email-form" class="col-6" action="/">
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-control form-control-lg" name="email" autocomplete="off" aria-required="true" placeholder="Введите Ваш email">
+                        <div class="help-block"></div>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-flat">Получить курс</button>
+                </form>
+            </section>
+
+            <section class="footer">
+                <div class="pull-right">
+                    <span>by rymka1989</span>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>
