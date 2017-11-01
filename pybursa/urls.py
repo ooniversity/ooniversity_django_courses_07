@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^$', views.index, name='index'),
     url(r'^contact/$', views.contact, name='contact'),
-    url(r'^students/', include('students.urls')),
+    url(r'^students/', include('students.urls'), namespace="students"),
     url(r'^quadratic/', include('quadratic.urls')),
-    url(r'^courses/', include('courses.urls'))
+    url(r'^courses/', include('courses.urls'), namespace="courses")
 ]
