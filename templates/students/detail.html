@@ -19,7 +19,7 @@
                 <div class="menu clearfix">
                     <a href="{% url 'index' %}">Main</a>
                     <a href="{% url 'contact' %}">Contacts</a>
-                    <a href="{% url 'students:list' %}">Students</a>
+                    <a href="{% url 'students:list_view' %}">Students</a>
                 </div>
             </section>
 
@@ -39,7 +39,7 @@
                         </tr>
                         <tr>
                             <td>Birth Date</td>
-                            <td>{{ student.date_of_birth|date:"d.m.Y" }}</td>
+                            <td>{{ student.date_of_birth|date:"M. d, Y" }}</td>
                         </tr>
                         <tr>
                             <td>Address</td>
