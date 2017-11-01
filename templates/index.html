@@ -25,12 +25,9 @@
 
             <section class="content">
                 <h1 class="text-uppercase">Python/Django Bursa</h1>
-
-                <h3>Description</h3>
                 <p>Учебник подразумевает, что студенты уже освоили базовый python. Даются азы html/css, достаточные для формирования html страниц браузеру, но не достаточные для профессиональной верстки. Глубина освоения django будет достаточной для самостоятельного написания web-проектов, которые содержат редактируемые страницы, структуру специфических данных, отображение их на фронтенде и создание-редактирование этих данных. Все разделы django будут освещены.</p>
 
-                <h3>Program</h3>
-                <p>Выберите курс, на котором Вы хотите учиться</p>
+                <h3>Выберите курс, на котором Вы хотите учиться</h3>
                 {% if courses %}
                 <ul>
                     {% for course in courses %}
@@ -45,7 +42,7 @@
                 {% endif %}
                 
                 <h3>Получить демо версию курса по почте</h3>
-                <form id="email-form" class="col-6" action="/">
+                <form id="email-form" class="col-6" action="{% url 'index' %}">
                     <div class="form-group">
                         <input type="email" id="email" class="form-control form-control-lg" name="email" autocomplete="off" aria-required="true" placeholder="Введите Ваш email">
                         <div class="help-block"></div>
