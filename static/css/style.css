@@ -73,3 +73,14 @@ html, body {
     display: inline-block;
     margin-right: 10px;
 }
+
+.short-description {
+	font-size: 0.8em;
+	font-style: italic;
+	padding-left: 15px;
+}
+
+ul.no-base-style {
+	list-style-type: none;
+	padding: 0 0 0 40px;
+}
