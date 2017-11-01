@@ -19,7 +19,7 @@
                 <div class="menu clearfix">
                     <a href="{% url 'index' %}">Main</a>
                     <a href="{% url 'contact' %}">Contacts</a>
-                    <a class="active" href="{% url 'students:list' %}">Students</a>
+                    <a class="active" href="{% url 'students:list' %}{% if course_id %}?course_id={{ course_id }}{% endif %}">Students</a>
                 </div>
             </section>
 
