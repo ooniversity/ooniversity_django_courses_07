@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Student
 
 # Create your views here.
-def slist(request):
+def list_view(request):
     get = request.GET.dict()
     students = Student.objects.all()
     
@@ -16,7 +16,7 @@ def slist(request):
     return render(request, 'students/list.html', {'students': students})
 
 
-def sdetail(request, student_id):
+def detail(request, student_id):
     student = get_object_or_404(Student, id=student_id)
     student.crs = student.courses.all()
     
