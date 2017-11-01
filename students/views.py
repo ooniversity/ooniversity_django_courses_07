@@ -4,16 +4,18 @@ from .models import Student
 # Create your views here.
 def list_view(request):
     get = request.GET.dict()
+    course_id = None
     students = Student.objects.all()
     
     if get and get['course_id']:
         students = students.filter(courses__id=get['course_id']).all()
+        course_id = get['course_id']
         
     if students:
         for student in students:
             student.crs = student.courses.all()
         
-    return render(request, 'students/list.html', {'students': students})
+    return render(request, 'students/list.html', {'students': students, 'course_id': course_id})
 
 
 def detail(request, student_id):
