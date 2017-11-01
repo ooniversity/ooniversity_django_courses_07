@@ -35,7 +35,7 @@
                 <ul>
                     {% for course in courses %}
                     <li>
-                        <a href="{% url 'courses:detail' course.id %}" title="{{ course }}">{{ course }}</a>
+                        <a href="{% url 'courses:detail' course.id %}" title="{{ course.name }}">{{ course.name }}</a>
                         <div class="short-description">{{ course.short_description }}</div>
                     </li>
                     {% endfor %}

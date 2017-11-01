@@ -24,7 +24,7 @@
             </section>
 
             <section class="content">
-                <h1 class="text-uppercase">{{ course }}</h1>
+                <h1 class="text-uppercase">{{ course.name }}</h1>
 
                 <h3>Описание</h3>
                 <p>{{ course.description }}</p>
@@ -43,15 +43,6 @@
                 {% else %}
                 <p class="bg-info">Нет ни одного урока</p>
                 {% endif %}
-                
-                <h3>Получить демо версию курса по почте</h3>
-                <form id="email-form" class="col-6" action="/">
-                    <div class="form-group">
-                        <input type="email" id="email" class="form-control form-control-lg" name="email" autocomplete="off" aria-required="true" placeholder="Введите Ваш email">
-                        <div class="help-block"></div>
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-flat">Получить курс</button>
-                </form>
             </section>
 
             <section class="footer">
