@@ -10,6 +10,7 @@ class Coach(models.Model):
     address = models.CharField(max_length=300)
     skype = models.CharField(max_length=100)
     description = models.TextField()
+
     
     def __str__(self):
         return self.user.get_username()
