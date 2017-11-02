@@ -6,10 +6,10 @@ import math
 def quadratic_results(request):
     get = request.GET.dict()
     x1 = x2 = None
-    if get:
-        form = QuadraticForm(request.GET)
-    else:
-        form = QuadraticForm()
+    form = QuadraticForm()
+    if request.method == 'GET':
+        if get:
+            form = QuadraticForm(request.GET)
         
     context = {'form': form}
                 
