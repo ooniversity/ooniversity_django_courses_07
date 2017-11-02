@@ -1,61 +1,39 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Bursa | Main</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %} 
+{% block title %}Main{% endblock title %}
+{% block active_link %}active{% endblock active_link %} 
+{% block content %}
+<h1 class="text-uppercase">Python/Django Bursa</h1>
+<p>Учебник подразумевает, что студенты уже освоили базовый python.
+	Даются азы html/css, достаточные для формирования html страниц
+	браузеру, но не достаточные для профессиональной верстки. Глубина
+	освоения django будет достаточной для самостоятельного написания
+	web-проектов, которые содержат редактируемые страницы, структуру
+	специфических данных, отображение их на фронтенде и
+	создание-редактирование этих данных. Все разделы django будут освещены.</p>
 
-        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-        
-        <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
-    </head>
-    <body>
-        <div class="wrapper">
-            <section class="header">
-                <div class="menu clearfix">
-                    <a class="active" href="{% url 'index' %}">Main</a>
-                    <a href="{% url 'contact' %}">Contacts</a>
-                    <a href="{% url 'students:list_view' %}">Students</a>
-                </div>
-            </section>
+<h3>Выберите курс, на котором Вы хотите учиться</h3>
+{% if courses %}
+	<ul>
+		{% for course in courses %}
+		<li><a href="{% url 'courses:detail' course.id %}"
+			title="{{ course.name }}">{{ course.name|upper }}</a>
+			<div class="short-description">{{ course.short_description|title }}</div></li> 
+		{%endfor %}
+	</ul>
+{% else %}
+    <p class="bg-info">Нет ни одного курса</p>
+{% endif %}
 
-            <section class="content">
-                <h1 class="text-uppercase">Python/Django Bursa</h1>
-                <p>Учебник подразумевает, что студенты уже освоили базовый python. Даются азы html/css, достаточные для формирования html страниц браузеру, но не достаточные для профессиональной верстки. Глубина освоения django будет достаточной для самостоятельного написания web-проектов, которые содержат редактируемые страницы, структуру специфических данных, отображение их на фронтенде и создание-редактирование этих данных. Все разделы django будут освещены.</p>
-
-                <h3>Выберите курс, на котором Вы хотите учиться</h3>
-                {% if courses %}
-                <ul>
-                    {% for course in courses %}
-                    <li>
-                        <a href="{% url 'courses:detail' course.id %}" title="{{ course.name }}">{{ course.name }}</a>
-                        <div class="short-description">{{ course.short_description }}</div>
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% else %}
-                <p class="bg-info">Нет ни одного курса</p>
-                {% endif %}
-                
-                <h3>Получить демо версию курса по почте</h3>
-                <form id="email-form" class="col-6" action="{% url 'index' %}">
-                    <div class="form-group">
-                        <input type="email" id="email" class="form-control form-control-lg" name="email" autocomplete="off" aria-required="true" placeholder="Введите Ваш email">
-                        <div class="help-block"></div>
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-flat">Получить курс</button>
-                </form>
-            </section>
-
-            <section class="footer">
-                <div class="pull-right">
-                    <span>by rymka1989</span>
-                </div>
-            </section>
-        </div>
-    </body>
-</html>
+<h3>Получить демо версию курса по почте</h3>
+<div id="email-form" class="clearfix">
+	<form class="col-md-6" action="{% url 'index' %}">
+		<div class="form-group">
+			<input type="email" id="email" class="form-control form-control-lg"
+				name="email" autocomplete="off" aria-required="true"
+				placeholder="Введите Ваш email">
+			<div class="help-block"></div>
+		</div>
+		<button class="btn btn-lg btn-primary btn-flat">Получить курс</button>
+	</form>
+</div>
+{% endblock content %}

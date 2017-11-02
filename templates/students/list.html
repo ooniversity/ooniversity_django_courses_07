@@ -1,79 +1,41 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Bursa | Student list</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Students{% endblock title %} 
+{% block content %}
+<h1>Студенты PyBursa</h1>
+<p>Список студентов</p>
 
-        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-        
-        <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
-    </head>
-    <body>
-        <div class="wrapper">
-            <section class="header">
-                <div class="menu clearfix">
-                    <a href="{% url 'index' %}">Main</a>
-                    <a href="{% url 'contact' %}">Contacts</a>
-                    <a class="active" href="{% url 'students:list_view' %}{% if course_id %}?course_id={{ course_id }}{% endif %}">Students</a>
-                </div>
-            </section>
-
-            <section class="content">
-                <h1>Студенты PyBursa</h1>
-                <p>Список студентов</p>
-
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Фамилия/Имя</th>
-                                <th>Адрес</th>
-                                <th>Skype</th>
-                                <th>Курсы</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% if not students %}
-                            <tr>
-                                <td colspan="5">Нет ни одного студента на курсе</td>
-                            </tr>
-                            {% else %}
-                                {% for student in students %}
-                                <tr>
-	                                <td>{{ forloop.counter }}</td>
-	                                <td>
-	                                   <a href="{% url 'students:detail' student.id %}" title="{{ student.surname }} {{ student.name }}">{{ student.surname }} {{ student.name }}</a>
-	                                </td>
-	                                <td>{{ student.address }}</td>
-	                                <td>{{ student.skype }}</td>
-	                                <td>
-	                                   {% if student.crs %}
-	                                       {% for course in student.crs %}
-	                                       <p>
-	                                           <a href="{% url 'courses:detail' course.id %}" title="{{ course.name }}">{{ course.name }}</a>
-	                                       </p>
-	                                       {% endfor %}
-	                                   {% endif %}
-	                                </td>
-	                            </tr>
-                                {% endfor %}
-                            {% endif %}
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section class="footer">
-                <div class="pull-right">
-                    <span>by rymka1989</span>
-                </div>
-            </section>
-        </div>
-    </body>
-</html>
+<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Фамилия/Имя</th>
+				<th>Адрес</th>
+				<th>Skype</th>
+				<th>Курсы</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if not students %}
+			<tr>
+				<td colspan="5">Нет ни одного студента на курсе</td>
+			</tr>
+			{% else %} 
+				{% for student in students %}
+				<tr>
+					<td>{{ forloop.counter }}</td>
+					<td><a href="{% url 'students:detail' student.id %}"
+						title="{{ student.surname }} {{ student.name }}">{{	student.surname }} {{ student.name }}</a></td>
+					<td>{{ student.address }}</td>
+					<td>{{ student.skype }}</td>
+					<td>
+					   {% include 'include/courses_include.html' with courses=student.crs %}
+					</td>
+				</tr>
+				{% endfor %} 
+			{% endif %}
+		</tbody>
+	</table>
+</div>
+{% endblock content %}

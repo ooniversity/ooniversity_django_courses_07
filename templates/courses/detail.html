@@ -1,71 +1,40 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Bursa | Main</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Student{% endblock title %}
+{% block content %}
+<h1 class="text-uppercase">{{ course.name }}</h1>
 
-        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-        
-        <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
-    </head>
-    <body>
-        <div class="wrapper">
-            <section class="header">
-                <div class="menu clearfix">
-                    <a href="{% url 'index' %}">Main</a>
-                    <a href="{% url 'contact' %}">Contacts</a>
-                    <a href="{% url 'students:list_view' %}?course_id={{ course.id }}">Students</a>
-                </div>
-            </section>
+<h3>Описание</h3>
+<p>{{ course.description }}</p>
 
-            <section class="content">
-                <h1 class="text-uppercase">{{ course.name }}</h1>
+<h3>Преподаватели</h3>
+<div>
+    <h5>Учитель</h5>
+    <p>
+        <a href="{% url 'coaches:detail' course.coach_id %}" title="{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a>
+    </p>
+    <p>{{ course.coach.description }}</p>
+</div>
+<div>
+    <h5>Ассистент</h5>
+    <p>
+        <a href="{% url 'coaches:detail' course.assistant_id %}" title="{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}">{{ course.assistant.user.last_name }} {{ course.assistant.user.last_name }}</a>
+    </p>
+    <p>{{ course.assistant.description|truncatechars:32 }}</p>
+</div>
 
-                <h3>Описание</h3>
-                <p>{{ course.description }}</p>
-                
-                <h3>Преподаватели</h3>
-                <div>
-                    <h5>Учитель</h5>
-                    <p>
-                        <a href="{% url 'coaches:detail' course.coach_id %}" title="{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a>
-                    </p>
-                    <p>{{ course.coach.description }}</p>
-                </div>
-                <div>
-                    <h5>Ассистент</h5>
-                    <p>
-                        <a href="{% url 'coaches:detail' course.assistant_id %}" title="{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}">{{ course.assistant.user.last_name }} {{ course.assistant.user.last_name }}</a>
-                    </p>
-                    <p>{{ course.assistant.description }}</p>
-                </div>
-
-                <h3>План курса</h3>
-                <p>Выберите курс, на котором Вы хотите учиться</p>
-                {% if course.lessons %}
-                <ul class="no-base-style">
-                    {% for lesson in course.lessons %}
-                    <li>
-                        {{ lesson.order }}. {{ lesson.subject }}
-                        <div class="short-description">{{ lesson.description }}</div>
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% else %}
-                <p class="bg-info">Нет ни одного урока</p>
-                {% endif %}
-            </section>
-
-            <section class="footer">
-                <div class="pull-right">
-                    <span>by rymka1989</span>
-                </div>
-            </section>
-        </div>
-    </body>
-</html>
+<h3>План курса</h3>
+<p>Выберите курс, на котором Вы хотите учиться</p>
+{% if course.lessons %}
+	<ul class="no-base-style">
+	    {% for lesson in course.lessons %}
+	    <li>
+	        {{ lesson.order }}. {{ lesson.subject }}
+	        <div class="short-description">{{ lesson.description }}</div>
+	    </li>
+	    {% endfor %}
+	</ul>
+{% else %}
+    <p class="bg-info">Нет ни одного урока</p>
+{% endif %}
+{% endblock content %}
