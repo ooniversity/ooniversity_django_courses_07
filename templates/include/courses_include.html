@@ -1,0 +1,8 @@
+{% if courses %} 
+   {% for course in courses %}
+    <p>
+        <a href="{% url 'courses:detail' course.id %}"
+            title="{{ course.name }}">{{ course.name }}</a>
+    </p> 
+    {% endfor %} 
+{% endif %}

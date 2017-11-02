@@ -6,4 +6,4 @@ def detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     course.lessons = course.lesson_set.all()
     
-    return render(request, 'courses/detail.html', {'course': course})
+    return render(request, 'courses/detail.html', {'course': course, 'course_id': course.id})
