@@ -3,7 +3,7 @@ from django.core import validators
 
 
 class QuadraticForm(forms.Form):        
-    a = forms.CharField(label='коэффициент a', max_length=10, validators=[validators.int_list_validator('')])
+    a = forms.CharField(label='коэффициент a', max_length=10)
     b = forms.CharField(label='коэффициент b', max_length=10, validators=[validators.int_list_validator('')])
     c = forms.CharField(label='коэффициент c', max_length=10, validators=[validators.int_list_validator('')])
        
