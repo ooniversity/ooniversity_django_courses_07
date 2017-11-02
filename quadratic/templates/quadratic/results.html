@@ -4,13 +4,13 @@
 	   <meta charset="UTF-8">
 	</head>
     <body>
-		<p>Квадратное уравнение ax**2 + bx + x = 0</p>
+		<p>Квадратное уравнение a*x*x + bx + x = 0</p>
 		<form method="get">
 		  {{ form.as_p }}
 		  <button type="submit">Решить</button>
 		</form>
 		
-		{% if not form.errors %}
+		{% if not form.errors and d != None %}
 			<p>Дискриминант: {{ d }}</p>
 			<p>
 			{% if d < 0 %}
