@@ -10,7 +10,7 @@
 		  <button type="submit">Решить</button>
 		</form>
 		
-		{% if not error %}
+		{% if not form.errors %}
 			<p>Дискриминант: {{ d }}</p>
 			<p>
 			{% if d < 0 %}
