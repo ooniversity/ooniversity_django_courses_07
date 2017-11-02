@@ -29,4 +29,4 @@ def quadratic_results(request):
         context['x1'] = x1
         context['x2'] = x2            
     
-    return render(request, 'quadratic/results.html', context)
+    return render(request, 'results.html', context)
