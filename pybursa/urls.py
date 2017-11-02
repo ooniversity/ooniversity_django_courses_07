@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^students/', include('students.urls', namespace="students")),
     url(r'^quadratic/', include('quadratic.urls')),
-    url(r'^courses/', include('courses.urls', namespace="courses"))
+    url(r'^courses/', include('courses.urls', namespace="courses")),
+    url(r'^coaches/', include('coaches.urls', namespace="coaches"))
 ]
