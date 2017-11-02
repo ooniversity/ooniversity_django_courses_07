@@ -3,9 +3,9 @@ from django.core import validators
 
 
 class QuadraticForm(forms.Form):        
-    a = forms.CharField(label='коэффициент a', max_length=10)
-    b = forms.CharField(label='коэффициент b', max_length=10)
-    c = forms.CharField(label='коэффициент c', max_length=10)
+    a = forms.IntegerField(label='коэффициент a')
+    b = forms.IntegerField(label='коэффициент b')
+    c = forms.IntegerField(label='коэффициент c')
        
     
     def clean_a(self):
