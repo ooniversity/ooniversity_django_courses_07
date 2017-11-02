@@ -5,7 +5,7 @@
 <h1 class="text-uppercase">{{ course.name }}</h1>
 
 <h3>Описание</h3>
-<p>{{ course.description }}</p>
+<p>{{ course.description|truncatechars:32 }}</p>
 
 <h3>Преподаватели</h3>
 <div>
@@ -20,7 +20,7 @@
     <p>
         <a href="{% url 'coaches:detail' course.assistant_id %}" title="{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}">{{ course.assistant.user.last_name }} {{ course.assistant.user.last_name }}</a>
     </p>
-    <p>{{ course.assistant.description|truncatechars:32 }}</p>
+    <p>{{ course.assistant.description }}</p>
 </div>
 
 <h3>План курса</h3>
