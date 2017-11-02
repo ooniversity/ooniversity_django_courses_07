@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import QuadraticForm
+from django.forms import Form 
 import math
 
 # Create your views here.
@@ -9,7 +10,7 @@ def quadratic_results(request):
     if get:
         form = QuadraticForm(request.GET)
     else:
-        form = QuadraticForm()
+        form = Form()
         
     context = {'error': False}
     context['form'] = form
