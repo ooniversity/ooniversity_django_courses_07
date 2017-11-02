@@ -5,22 +5,12 @@
 	</head>
     <body>
 		<p>Квадратное уравнение ax**2 + bx + x = 0</p>
-		<ul>
-			<li>
-			   a = {{ get.a }}
-			   <p>{{ errors.a }}</p> 
-			</li>
-			<li>
-		       b = {{ get.b }}
-		       <p>{{ errors.b }}</p> 
-		    </li>
-		    <li>
-		       c = {{ get.c }}
-		       <p>{{ errors.c }}</p> 
-		    </li>    
-		</ul>
+		<form method="get">
+		  {{ form.as_p }}
+		  <button type="submit">Решить</button>
+		</form>
 		
-		{% if not errors %}
+		{% if not error %}
 			<p>Дискриминант: {{ d }}</p>
 			<p>
 			{% if d < 0 %}

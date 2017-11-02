@@ -1,40 +1,35 @@
 from django.shortcuts import render
+from .forms import QuadraticForm
 import math
 
 # Create your views here.
 def quadratic_results(request):
-    errors = {}
-    x1 = x2 = d = None
-    
     get = request.GET.dict()
-    
-    for param in get:
-        if not get[param]:
-            errors[param] = 'коэффициент не определен'
-        else:
-            try:
-                get[param] = int(get[param])
-                
-                if get['a'] == 0:
-                    errors['a'] = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
-            except:
-                errors[param] = 'коэффициент не целое число'
-                
-                
-    if not errors:
-        d = get['b']**2 - 4*get['a']*get['c']
+    x1 = x2 = None
+    if get:
+        form = QuadraticForm(request.GET)
+    else:
+        form = QuadraticForm()
         
+    context = {'error': False}
+    context['form'] = form
+                
+    if form.is_valid():
+        a = form.cleaned_data['a']
+        b = form.cleaned_data['b']
+        c = form.cleaned_data['c']
+        d = b**2 - 4*a*c
+         
         if d == 0:
-            x1 = x2 = -get['b'] / 2*get['a']
+            x1 = x2 = -b / 2*a
         elif d > 0:
-            x1 = (-get['b'] + math.sqrt(d)) / 2*get['a']
-            x2 = (-get['b'] - math.sqrt(d)) / 2*get['a']
+            x1 = (-b + math.sqrt(d)) / 2*a
+            x2 = (-b - math.sqrt(d)) / 2*a
             
+        context['d'] = d
+        context['x1'] = x1
+        context['x2'] = x2
+    else:
+        context['error'] = True            
     
-    return render(request, 'results.html', {
-                                            'errors': errors, 
-                                            'get': get,
-                                            'd': d,
-                                            'x1': x1,
-                                            'x2': x2
-                                            })
+    return render(request, 'quadratic/results.html', context)
