@@ -34,7 +34,7 @@
 		<tr>
 			<td>Курсы</td>
 			<td>
-			    {% include 'include/courses_include.html' with courses=student.crs %}
+			    {% include 'include/courses_include.html' with courses=student.courses.all %}
 			</td>
 		</tr>
 	</table>
