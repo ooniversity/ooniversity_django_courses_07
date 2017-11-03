@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
+from feedbacks import views as feedback
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,5 +26,7 @@ urlpatterns = [
     url(r'^students/', include('students.urls', namespace="students")),
     url(r'^quadratic/', include('quadratic.urls')),
     url(r'^courses/', include('courses.urls', namespace="courses")),
-    url(r'^coaches/', include('coaches.urls', namespace="coaches"))
+    url(r'^coaches/', include('coaches.urls', namespace="coaches")),
+    url(r'^feedback/', feedback.FeedbackView.as_view(), name='feedback'),
+    
 ]

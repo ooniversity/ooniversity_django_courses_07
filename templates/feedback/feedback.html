@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Feedback{% endblock title %}
+
+{% block content %}
+
+{% for message in messages %}
+    <p class="message bg-info">{{ message }}</p>
+{% endfor %}
+
+<h1>Форма обратной связи</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary btn-flat" type="submit" value="Отправить сообщение"/>
+</form>
+
+{% endblock content %}
