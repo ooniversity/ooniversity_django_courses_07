@@ -6,6 +6,9 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Student
 from . import forms
+import logging
+
+logger = logging.getLogger('students')
 
 # Create your views here.
 class StudentListView(ListView):
@@ -29,6 +32,11 @@ class StudentListView(ListView):
         get = self.request.GET.dict()
         if get and 'course_id' in list(get.keys()):
             context['course_id'] = get['course_id']
+            
+        logger.debug('Students detail view has been debugged!')
+        logger.info('Logger of students detail view informs you!')
+        logger.warning('Logger of students detail view warns you!')
+        logger.error('Students detail view went wrong!')
             
         return context
     
