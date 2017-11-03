@@ -26,12 +26,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% if not students %}
+			{% if not student_list %}
 			<tr>
 				<td colspan="5">Нет ни одного студента на курсе</td>
 			</tr>
 			{% else %} 
-				{% for student in students %}
+				{% for student in student_list %}
 				<tr>
 					<td>{{ forloop.counter }}</td>
 					<td><a href="{% url 'students:detail' student.id %}"
@@ -39,7 +39,7 @@
 					<td>{{ student.address }}</td>
 					<td>{{ student.skype }}</td>
 					<td>
-					   {% include 'include/courses_include.html' with courses=student.crs %}
+					   {% include 'include/courses_include.html' with courses=student.courses.all %}
 					</td>
 					<td>
 					   <a href="{% url 'students:update' student.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
