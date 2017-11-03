@@ -23,9 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8l$0#k^t%3+@-0olt44vd7y5r*&_lnc!4ucwkn940s&ijwj_qi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1'
+]
 
 ADMINS = [
     ('Roman', 'rymka-by@rambler.ru')
