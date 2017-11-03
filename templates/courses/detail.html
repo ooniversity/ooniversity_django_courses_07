@@ -29,7 +29,7 @@
 </div>
 
 <h3>План курса</h3>
-<a class="btn btn-primary btn-flat" href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
+<a class="btn btn-primary btn-flat" href="{% url 'courses:add_lesson' course.id %}">Добавить занятие</a>
 {% if course.lessons %}
 	<ul class="no-base-style">
 	    {% for lesson in course.lessons %}
