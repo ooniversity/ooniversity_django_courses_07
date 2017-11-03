@@ -2,6 +2,11 @@
 {% load static %}
 {% block title %}Student{% endblock title %}
 {% block content %}
+
+{% for message in messages %}
+    <p class="message bg-info">{{ message }}</p>
+{% endfor %}
+
 <h1 class="text-uppercase">{{ course.name }}</h1>
 
 <h3>Описание</h3>
@@ -24,7 +29,7 @@
 </div>
 
 <h3>План курса</h3>
-<p>Выберите курс, на котором Вы хотите учиться</p>
+<a class="btn btn-primary btn-flat" href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
 {% if course.lessons %}
 	<ul class="no-base-style">
 	    {% for lesson in course.lessons %}
@@ -35,6 +40,6 @@
 	    {% endfor %}
 	</ul>
 {% else %}
-    <p class="bg-info">Нет ни одного урока</p>
+    <p class="message bg-info">Нет ни одного урока</p>
 {% endif %}
 {% endblock content %}

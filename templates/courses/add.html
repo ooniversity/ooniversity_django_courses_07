@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Create course{% endblock title %}
+{% block content %}
+<h2>Создание нового курса</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary btn-flat" type="submit" value="Save"/>
+</form>
+{% endblock content %}
