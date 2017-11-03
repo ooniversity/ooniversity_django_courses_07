@@ -4,11 +4,9 @@ import math
 
 # Create your views here.
 def quadratic_results(request):
-    get = request.GET.dict()
     x1 = x2 = None
     form = QuadraticForm()
-    if request.method == 'GET':
-        if get:
+    if request.GET:
             form = QuadraticForm(request.GET)
         
     context = {'form': form}
@@ -29,4 +27,4 @@ def quadratic_results(request):
         context['x1'] = x1
         context['x2'] = x2            
     
-    return render(request, 'results.html', context)
+    return render(request, 'quadratic/results.html', context)
