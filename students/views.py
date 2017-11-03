@@ -58,7 +58,7 @@ class StudentUpdateView(UpdateView):
     fields = '__all__'
     
     def get_success_url(self):
-        return  reverse_lazy('students:update', kwargs={'student_id': self.object.id})
+        return reverse_lazy('students:update', kwargs={'pk': self.object.id})
     
     
     def get_context_data(self, **kwargs):
