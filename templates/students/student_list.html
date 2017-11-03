@@ -51,20 +51,22 @@
 		</tbody>
 	</table>
 	
+	{% if is_paginated %}
 	<div class="pagination">
 	    <span class="step-links">
 	        {% if page_obj.has_previous %}
-	            <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.course_id %}&course_id={{ request.GET.course_id }}{% endif %}">previous</a>
+	            <a href="{% url 'students:list_view' %}?page={{ page_obj.previous_page_number }}{% if request.GET.course_id %}&course_id={{ request.GET.course_id }}{% endif %}"><< previous</a>
 	        {% endif %}
 	
-	        <span class="current">
-	            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-	        </span>
+	        {% for page in page_obj.paginator.page_range %}
+	            <a href="{% url 'students:list_view' %}?page={{ page }}{% if request.GET.course_id %}&course_id={{ request.GET.course_id }}{% endif %}">{{ page }}</a>
+            {% endfor %}
 	
 	        {% if page_obj.has_next %}
-	            <a href="?page={{ page_obj.next_page_number }}{% if request.GET.course_id %}&course_id={{ request.GET.course_id }}{% endif %}">next</a>
+	            <a href="{% url 'students:list_view' %}?page={{ page_obj.next_page_number }}{% if request.GET.course_id %}&course_id={{ request.GET.course_id }}{% endif %}">next >></a>
 	        {% endif %}
 	    </span>
 	</div>
+	{% endif %}
 </div>
 {% endblock content %}
