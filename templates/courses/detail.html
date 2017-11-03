@@ -12,6 +12,7 @@
 <h3>Описание</h3>
 <p>{{ course.description|truncatechars:32 }}</p>
 
+{% if course.coach %}
 <h3>Преподаватели</h3>
 <div>
     <h5>Учитель</h5>
@@ -20,6 +21,9 @@
     </p>
     <p>{{ course.coach.description }}</p>
 </div>
+{% endif %}
+
+{% if course.assistant %}
 <div>
     <h5>Ассистент</h5>
     <p>
@@ -27,6 +31,7 @@
     </p>
     <p>{{ course.assistant.description }}</p>
 </div>
+{% endif %}
 
 <h3>План курса</h3>
 <a class="btn btn-primary btn-flat" href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
