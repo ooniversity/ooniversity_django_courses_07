@@ -22,6 +22,8 @@
                     <a class="{% if t_url in request.get_full_path %}active{% endif %}" href="{{ t_url }}">Contacts</a>
                     {% url 'students:list_view' as t_url %}
                     <a class="{% if t_url in request.get_full_path %}active{% endif %}" href="{{ t_url }}{% if course_id %}?course_id={{ course_id }}{% endif %}">Students</a>
+                    {% url 'feedback' as t_url %}
+                    <a class="{% if t_url in request.get_full_path %}active{% endif %}" href="{{ t_url }}">Feedback</a>
                 </div>
             </section>
 

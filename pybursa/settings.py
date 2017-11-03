@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ADMINS = [
+    ('Roman', 'rymka-by@rambler.ru')
+]
+
 
 # Application definition
 
@@ -41,7 +45,8 @@ INSTALLED_APPS = [
     'quadratic.apps.QuadraticConfig',
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
-    'coaches.apps.CoachesConfig'
+    'coaches.apps.CoachesConfig',
+    'feedbacks.apps.FeedbacksConfig'
 ]
 
 MIDDLEWARE = [
@@ -127,3 +132,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+
+
+EMAIL_HOST = '127.0.0.1'
+EMAIL_PORT = 1025
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
