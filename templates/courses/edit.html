@@ -7,7 +7,7 @@
     <p class="message bg-info">{{ message }}</p>
 {% endfor %}
 
-<h2>Редактирование информации о курсе</h2>
+<h2>{{ title }}</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

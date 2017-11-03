@@ -2,9 +2,9 @@
 {% load static %}
 {% block title %}Delete course{% endblock title %}
 {% block content %}
-<h2>Удаление курса</h2>
+<h2>{{ title }}</h2>
 <form method="post">
-    <p class="message bg-warning">Вы точно хотите удалить курс {{ course.name }}</p>
+    <p class="message bg-warning">Вы точно хотите удалить курс {{ item.name }}</p>
     {% csrf_token %}
     <input class="btn btn-danger btn-flat" type="submit" value="Delete"/>
 </form>

@@ -30,9 +30,9 @@
 
 <h3>План курса</h3>
 <a class="btn btn-primary btn-flat" href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
-{% if course.lessons %}
+{% if course.lesson_set.all %}
 	<ul class="no-base-style">
-	    {% for lesson in course.lessons %}
+	    {% for lesson in course.lesson_set.all %}
 	    <li>
 	        {{ lesson.order }}. {{ lesson.subject }}
 	        <div class="short-description">{{ lesson.description }}</div>
