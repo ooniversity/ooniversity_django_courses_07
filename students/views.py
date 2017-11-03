@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -52,20 +52,32 @@ class StudentCreateView(CreateView):
         return context
     
     
+    def form_valid(self, form):
+        messages.success(self.request, 'Student {} {} has been successfully added.'.format(form.cleaned_data['name'], form.cleaned_data['surname']))
+        
+        return super().form_valid(form)
+    
+    
 class StudentUpdateView(UpdateView):
     
     model = Student
-    fields = '__all__'
-    
-    def get_success_url(self):
-        return reverse_lazy('students:update', kwargs={'pk': self.object.id})
-    
+    fields = '__all__' 
     
     def get_context_data(self, **kwargs):
         context = super(StudentUpdateView, self).get_context_data(**kwargs)
         context['title'] = 'Student info update'
         
         return context
+    
+    
+    def get_success_url(self):
+        return reverse_lazy('students:update', args=[self.object.id])
+    
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Info on the student has been successfully changed.')
+        
+        return super().form_valid(form)
     
     
 class StudentDeleteView(DeleteView):
@@ -78,4 +90,11 @@ class StudentDeleteView(DeleteView):
         context['title'] = 'Student info suppression'
         
         return context
+    
+    
+    def delete(self, request, *args, **kwargs):
+        student = Student.objects.get(id=kwargs['pk'])
+        messages.success(self.request, 'Info on {} {} has been successfully deleted.'.format(student.name, student.surname))
+        
+        return super().delete(request, *args, **kwargs)
     
