@@ -138,3 +138,41 @@ STATICFILES_DIRS = [
 EMAIL_HOST = '127.0.0.1'
 EMAIL_PORT = 1025
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'loggers': {
+        'courses': {
+            'handlers': ['file_courses'],
+            'level': 'DEBUG'
+        },
+        'students': {
+            'handlers': ['file_students'],
+            'level': 'WARNING'
+        }
+    },
+    'handlers': {
+        'file_courses': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'courses_logger.log'),
+            'formatter': 'courses'
+        },
+        'file_students': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'students_logger.log'),
+            'formatter': 'students'
+        }
+    },
+    'formatters': {
+        'courses': {
+            'format': u'%(levelname)s %(message)s'
+        },
+        'students': {
+            'format': u'%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s'
+        }
+    }
+}
