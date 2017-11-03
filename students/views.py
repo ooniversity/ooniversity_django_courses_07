@@ -34,6 +34,9 @@ class StudentListView(ListView):
 class StudentDetailView(DetailView):
     
     model = Student
+    
+    def get_context_data(self, **kwargs):
+        return super(StudentDetailView, self).get_context_data(**kwargs)
 
 
 class StudentCreateView(CreateView):
