@@ -11,21 +11,23 @@ from . import forms
 class StudentListView(ListView):
     
     model = Student
+    paginate_by = 2
     
     def get_queryset(self):
+        qs = super(StudentListView, self).get_queryset()
         get = self.request.GET.dict()
     
-        if get and get['course_id']:
-            return Student.objects.filter(courses__id=get['course_id']).all()
+        if get and 'course_id' in list(get.keys()):
+            qs = qs.filter(courses__id=get['course_id'])
             
-        return Student.objects.all()
+        return qs
 
 
     def get_context_data(self, **kwargs):
         context = super(StudentListView, self).get_context_data(**kwargs)
         
         get = self.request.GET.dict()
-        if get and get['course_id']:
+        if get and 'course_id' in list(get.keys()):
             context['course_id'] = get['course_id']
             
         return context
