@@ -4,8 +4,8 @@ from . import views
 app_name = 'students'
 urlpatterns = [
     url(r'^$', views.StudentListView.as_view(), name='list_view'),
-    url(r'^(?P<student_id>\d+)/$', views.StudentDetailView.as_view(pk_url_kwarg = 'student_id'), name='detail'),
+    url(r'^(?P<pk>\d+)/$', views.StudentDetailView.as_view(), name='detail'),
     url(r'^add/$', views.StudentCreateView.as_view(), name='add'),
-    url(r'^edit/(?P<student_id>\d+)/$', views.StudentUpdateView.as_view(pk_url_kwarg = 'student_id'), name='update'),
-    url(r'^remove/(?P<student_id>\d+)/$', views.StudentDeleteView.as_view(pk_url_kwarg='student_id'), name='delete')
+    url(r'^edit/(?P<pk>\d+)/$', views.StudentUpdateView.as_view(), name='update'),
+    url(r'^remove/(?P<pk>\d+)/$', views.StudentDeleteView.as_view(), name='delete')
 ]
