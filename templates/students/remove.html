@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Delete student{% endblock title %}
+{% block content %}
+
+{% for message in messages %}
+    <p class="message bg-info">{{ message }}</p>
+{% endfor %}
+
+<h2>Удаление студента</h2>
+<form method="post">
+    <p class="message bg-warning">Вы точно хотите удалить студента {{ student.surname }} {{ student.name }}</p>
+    {% csrf_token %}
+    <input class="btn btn-danger btn-flat" type="submit" value="Delete"/>
+</form>
+{% endblock content %}

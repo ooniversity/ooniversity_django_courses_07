@@ -2,10 +2,18 @@
 {% load static %}
 {% block title %}Students{% endblock title %} 
 {% block content %}
+
+{% for message in messages %}
+    <p class="message bg-info">{{ message }}</p>
+{% endfor %}
+
 <h1>Студенты PyBursa</h1>
 <p>Список студентов</p>
 
 <div class="table-responsive">
+
+    <a class="btn btn-primary btn-flat" href="{% url 'students:create' %}">Добавить нового студента</a>
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -14,6 +22,7 @@
 				<th>Адрес</th>
 				<th>Skype</th>
 				<th>Курсы</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,6 +40,10 @@
 					<td>{{ student.skype }}</td>
 					<td>
 					   {% include 'include/courses_include.html' with courses=student.crs %}
+					</td>
+					<td>
+					   <a href="{% url 'students:update' student.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+					   <a href="{% url 'students:delete' student.id %}"><span class="glyphicon glyphicon-remove"></span></a>
 					</td>
 				</tr>
 				{% endfor %} 
