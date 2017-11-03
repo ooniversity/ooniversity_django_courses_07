@@ -17,7 +17,7 @@ class StudentListView(ListView):
     paginate_by = 2
     
     def get_queryset(self):
-        qs = super(StudentListView, self).get_queryset()
+        qs = super(StudentListView, self).get_queryset().order_by('pk')
         get = self.request.GET.dict()
     
         if get and 'course_id' in list(get.keys()):
