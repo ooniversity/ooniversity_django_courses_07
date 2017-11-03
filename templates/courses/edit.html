@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update course{% endblock title %}
+{% block content %}
+
+{% for message in messages %}
+    <p class="message bg-info">{{ message }}</p>
+{% endfor %}
+
+<h2>Редактирование информации о курсе</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary btn-flat" type="submit" value="Save"/>
+</form>
+{% endblock content %}

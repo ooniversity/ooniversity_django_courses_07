@@ -2,6 +2,11 @@
 {% block title %}Main{% endblock title %}
 {% block active_link %}active{% endblock active_link %} 
 {% block content %}
+
+{% for message in messages %}
+    <p class="message bg-info">{{ message }}</p>
+{% endfor %}
+
 <h1 class="text-uppercase">Python/Django Bursa</h1>
 <p>Учебник подразумевает, что студенты уже освоили базовый python.
 	Даются азы html/css, достаточные для формирования html страниц
@@ -12,11 +17,14 @@
 	создание-редактирование этих данных. Все разделы django будут освещены.</p>
 
 <h3>Выберите курс, на котором Вы хотите учиться</h3>
+<a class="btn btn-primary btn-flat" href="{% url 'courses:add' %}">Добавить курс</a>
 {% if courses %}
 	<ul>
 		{% for course in courses %}
 		<li><a href="{% url 'courses:detail' course.id %}"
 			title="{{ course.name }}">{{ course.name|upper }}</a>
+			<a href="{% url 'courses:edit' course.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+			<a href="{% url 'courses:remove' course.id %}"><span class="glyphicon glyphicon-remove"></span></a>
 			<div class="short-description">{{ course.short_description|title }}</div></li> 
 		{%endfor %}
 	</ul>
