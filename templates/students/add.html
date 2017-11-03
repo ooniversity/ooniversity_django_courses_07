@@ -2,11 +2,6 @@
 {% load static %}
 {% block title %}Create student{% endblock title %}
 {% block content %}
-
-{% for message in messages %}
-    <p class="message bg-info">{{ message }}</p>
-{% endfor %}
-
 <h2>Создание нового студента</h2>
 <form method="post">
     {% csrf_token %}
