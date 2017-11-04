@@ -24,7 +24,7 @@ class FeedbackView(CreateView):
             send_mail(
                 form.cleaned_data['subject'],
                 form.cleaned_data['message'],
-                form.cleaned_data['from_email'],
+                settings.EMAIL_HOST_USER,
                 recipients,
                 fail_silently=False
             )
