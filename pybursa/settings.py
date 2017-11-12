@@ -21,7 +21,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-	'polls.apps.PollsConfig',
+	  'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +45,8 @@ ROOT_URLCONF = 'pybursa.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'DIRS': [os.path.join(BASE_DIR, "templates"), 
+		'/home/ubuntu/Documents/week5/quadratic/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
