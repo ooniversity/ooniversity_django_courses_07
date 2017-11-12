@@ -48,7 +48,7 @@ def quadratic(a,b,c):
     return [mes_discr, mes]
 
 
-def results(request):
+def quadratic_results(request):
     
     vars = (request.GET)
     
