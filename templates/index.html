@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     {% load static %}
-    <link href="{% static 'css/bootstrap/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap.css' %}" rel="stylesheet">
     <!-- My CSS -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
   </head>
 
   <body>
@@ -27,7 +26,7 @@
             <ul class="nav navbar-nav">
               <li class="active-link"><a href="{% url 'index' %}">Main</a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li><a href="{% url 'student_list' %}">Students</a></li>
+              <li><a href="{% url 'list_view' %}">Students</a></li>
             </ul>
           </div>
         </div><!-- /.container-->
@@ -37,58 +36,20 @@
     <main>
       <div class="jumbotron jumbotron-fluid content">
         <div class="container">
-          <h3>Description</h3>
-          <p class="lead">На курсе BursaDjango мы вас познакомим с фреймворком Django, вместе сделаем работающий проект на Python / Django и освоим еще много полезного.</p>
-          <h3>Program</h3>
-          <ul class="list-unstyled week">
-            <li>Первая неделя. Основы html/css. GIT</li>
-            <ul>
-              <li>html - теги и свойства</li>
-              <li>css - свойства и селекторы</li>
-              <li>Bootstrap</li>
-              <li>GIT basic reference</li>
-            </ul><br>
-            <li>Вторая неделя. Функции и модульность.</li>
-            <ul>
-              <li>введение и описание фреймворка, старт проекта</li>
-              <li>инструменты отладки браузера</li>
-              <li>HTTP (GET, POST), (200, 404, 500), headers, cookies</li>
-              <li>админка</li>
-            </ul><br>
-            <li>Третья неделя. ООП.</li>
-            <ul>
-              <li>синтаксис, атрибуты, методы, инстанцирование</li>
-              <li>все объект, служебные методы</li>
-              <li>наследование</li>
-              <li>переопределение методов, super</li>
-            </ul><br>
-            <li>Четвертая неделя. Кастомизация админки. Язык шаблонов</li>
-            <ul>
-              <li>настройка отображения виджетов админки</li>
-              <li>сортировка, фильтры, поиск</li>
-              <li>синтаксис шаблонов, логические конструкции</li>
-              <li>наследование и includes шаблонов</li>
-              <li>теги и фильтры</li>
-            </ul><br>
-            <li>Пятая неделя. Forms. Class-based (Generic) Views.</li>
-            <ul>
-              <li>формы, типы полей, виджеты и аттрибуты, валидация</li>
-              <li>встроеные class-based views (TemplateView, ListView, ItemView)</li>
-              <li>синтаксис шаблонов, логические конструкции</li>
-              <li>миксины</li>
-            </ul><br>
-            <li>Шестая неделя. Реализация стандартных задач. Средства отладки и тестирование. Деплоймент.</li>
-            <ul>
-              <li>отправка емейл, кеширование, интернационализация, батарейки (готовые решения)</li>
-              <li>logging, pdb, debug toolbar, extensions, unit-tests, selenium</li>
-              <li>nginx, управление статикой, деплоймент</li>
-            </ul><br>
-          </ul>
+          <h3>Bursa</h3>
+          <p class="lead">Выбери свой курс</p>
+          <ul>
+          {% for course in courses_list %}
+            <li>
+              <a href="{% url 'detail' course.id %}">{{ course.name }}<a>
+            </li>
+          {% endfor %}
+          </ul> 
         </div>
       </div>
     </main>
     <!-- Optional JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
   </body>
 </html>
