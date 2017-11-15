@@ -27,7 +27,7 @@
             <ul class="nav navbar-nav">
               <li class="active-link"><a href="{% url 'index' %}">Main</a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li><a href="{% url 'list_view' %}?course_id={{course.id}}">Students</a></li>
+              <li><a href="{% url 'students:list_view' %}?course_id={{course.id}}">Students</a></li>
             </ul>
           </div>
         </div><!-- /.container-->
