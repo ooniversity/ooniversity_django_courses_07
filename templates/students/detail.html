@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Student</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    {% load static %}
+    <link href="{% static 'css/bootstrap/bootstrap.css' %}" rel="stylesheet">
+    <!-- My CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-default menu">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'index' %}">bursa</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="{% url 'index' %}">Main</a></li>
+              <li><a href="{% url 'contact' %}">Contacts</a></li>
+              <li class="active-link"><a href="{% url 'list_view' %}">Students</a></li>
+            </ul>
+          </div>
+        </div><!-- /.container-->
+      </nav>
+    </header>   
+    
+    <main>
+      <div class="jumbotron jumbotron-fluid content">
+        <div class="panel panel-default container">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{student_detail.name}} {{student_detail.surname}}</h3>
+          </div>
+         
+          <!-- Table -->
+            <table class="table perf">
+              <tr>
+                <td> дата рождения </td>                
+                <td> {{student_detail.date_of_birth}} </td>
+              </tr>              
+              <tr">
+                <td> адрес </td>                
+                <td> {{student_detail.address}} </td>
+              </tr>
+              <tr>
+                <td> почта </td>                
+                <td> {{student_detail.email}} </td>
+              </tr> 
+              <tr>
+                <td> логин skype </td>                
+                <td> {{student_detail.skype}} </td>
+              </tr>   
+              <tr>
+                <td> телефон </td>                
+                <td> {{student_detail.phone}} </td>
+              </tr>
+              <tr>
+                <td> курсы </td>                
+                <td> 
+                  {% for course in student_detail.courses.all %}                  
+                  <a href = "{% url 'detail' course.id %}">  {{ course.name }}</a><br> 
+                  {% endfor %}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Optional JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+  </body>
+</html>
