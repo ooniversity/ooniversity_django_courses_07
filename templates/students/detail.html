@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     {% load static %}
-    <link href="{% static 'css/bootstrap/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap.css' %}" rel="stylesheet">
     <!-- My CSS -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
   </head>
 
   <body>
@@ -42,42 +41,41 @@
           </div>
          
           <!-- Table -->
-            <table class="table perf">
-              <tr>
-                <td> дата рождения </td>                
-                <td> {{student_detail.date_of_birth}} </td>
-              </tr>              
-              <tr">
-                <td> адрес </td>                
-                <td> {{student_detail.address}} </td>
-              </tr>
-              <tr>
-                <td> почта </td>                
-                <td> {{student_detail.email}} </td>
-              </tr> 
-              <tr>
-                <td> логин skype </td>                
-                <td> {{student_detail.skype}} </td>
-              </tr>   
-              <tr>
-                <td> телефон </td>                
-                <td> {{student_detail.phone}} </td>
-              </tr>
-              <tr>
-                <td> курсы </td>                
-                <td> 
-                  {% for course in student_detail.courses.all %}                  
-                  <a href = "{% url 'detail' course.id %}">  {{ course.name }}</a><br> 
-                  {% endfor %}
-                </td>
-              </tr>
-            </table>
-          </div>
+          <table class="table perf">
+            <tr>
+              <td> дата рождения </td>                
+              <td> {{student_detail.date_of_birth}} </td>
+            </tr>              
+            <tr>
+              <td> адрес </td>                
+              <td> {{student_detail.address}} </td>
+            </tr>
+            <tr>
+              <td> почта </td>                
+              <td> {{student_detail.email}} </td>
+            </tr> 
+            <tr>
+              <td> логин skype </td>                
+              <td> {{student_detail.skype}} </td>
+            </tr>   
+            <tr>
+              <td> телефон </td>                
+              <td> {{student_detail.phone}} </td>
+            </tr>
+            <tr>
+              <td> курсы </td>                
+              <td> 
+                {% for course in student_detail.courses.all %}                  
+                <a href = "{% url 'detail' course.id %}">  {{ course.name }}</a><br> 
+                {% endfor %}
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </main>
     <!-- Optional JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
   </body>
 </html>

@@ -6,7 +6,7 @@ from .models import Course, Lesson
 def index(request):
     courses_list = Course.objects.all()
     context = {'courses_list':courses_list}
-    return render(request, 'courses.html', context)
+    return render(request, 'index.html', context)
 
 def detail(request, cd_id):
     course = get_object_or_404(Course, pk=cd_id)
