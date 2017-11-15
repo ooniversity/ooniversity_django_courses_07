@@ -22,7 +22,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
-    'courses.apps.CoursesConfig',
+    'courses',
     'students',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,7 +48,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates"), 
-		'/home/ubuntu/Documents/week5/quadratic/templates'],
+		'/home/ubuntu/Documents/week5/quadratic/templates',
+        'templates/students','templates/courses'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

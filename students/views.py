@@ -12,8 +12,8 @@ def list_view(request):
     else: 
         list_st = Student.objects.all()
     
-    return render(request, 'students/list.html', {'list_st':list_st})
+    return render(request, 'list.html', {'list_st':list_st})
 
 def detail(request, st_id):
     student_detail = Student.objects.get(id=st_id)
-    return render(request, 'students/detail.html', {'student_detail':student_detail})
+    return render(request, 'detail.html', {'student_detail':student_detail})
