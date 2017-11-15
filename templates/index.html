@@ -38,13 +38,20 @@
         <div class="container">
           <h3>Bursa</h3>
           <p class="lead">Выбери свой курс</p>
-          <ul>
+          <table class="table">
+            <tr>
+              <td>Курс</td>
+              <td>Описание</td>
+            </tr>
           {% for course in courses_list %}
-            <li>
-              <a href="{% url 'detail' course.id %}">{{ course.name }}<a>
-            </li>
+            <tr>
+              <td>
+                <a href="{% url 'detail' course.id %}">{{ course.name }}</a>
+              </td>
+              <td>{{ course.short_description }}</td>
+            </tr>
           {% endfor %}
-          </ul> 
+          </table> 
         </div>
       </div>
     </main>
