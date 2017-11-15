@@ -83,20 +83,21 @@ h4 {
 }
 
 .first_row{
-		background-color:#FFE4B5;
+		background-color:#FFFAFA;
 		font-weight:bold;
 }
 
 .perf {
-		background-color:#E0FFFF;
-		color:black;
-		border-color:black;
-		width:70%;
+		width:50%;
 }
 
 .fr_blue{
 		background-color:#4682B4;
 		font-weight:bold;
 		color:white;
+}
+
+.standart{
+		font-size:12px;	
 }
 
