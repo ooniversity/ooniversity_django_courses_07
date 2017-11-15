@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav">
               <li><a href="{% url 'index' %}">Main</a></li>
               <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li class="active-link"><a href="{% url 'list_view' %}">Students</a></li>
+              <li class="active-link"><a href="{% url 'students:list_view' %}">Students</a></li>
             </ul>
           </div>
         </div><!-- /.container-->
@@ -53,13 +53,13 @@
               <tr>
                 <td> {{ student.id }} </td>                
                 <td> 
-                  <a href="{% url 'detail_student' student.id %}"> {{ student.name }} {{ student.surname }} </a> 
+                  <a href="{% url 'students:detail' student.id %}"> {{ student.name }} {{ student.surname }} </a> 
                 </td>
                 <td> {{ student.address }} </td>
                 <td> {{ student.skype }} </td>
                 <td> 
                   {% for course in student.courses.all %}                  
-                  <a href = "{% url 'detail' course.id %}">  {{ course.name }}</a><br> 
+                  <a href = "{% url 'courses:detail' course.id %}">  {{ course.name }}</a><br> 
                   {% endfor %}
                 </td>
               </tr>

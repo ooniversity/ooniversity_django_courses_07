@@ -1,10 +1,10 @@
 
-from django.conf.urls import include, url
-from students.views import list_view, detail
+from django.conf.urls import url
+from students.views import detail, list_view
 
-
+app_name = 'students'
 urlpatterns = [
     url(r'^$', list_view, name = 'list_view'),
-    url(r'^(?P<st_id>[0-9]+)/$', detail, name = 'detail_student')
+    url(r'^(?P<st_id>[0-9]+)/$', detail, name = 'detail')
 ]
    
