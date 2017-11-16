@@ -12,7 +12,7 @@ class StudentAdmin(admin.ModelAdmin):
         (None,              {'fields': ['courses']})
         ]
     list_display = ['full_name','email', 'skype']
-    search_fields = ['surname']
+    search_fields = ['surname','email']
     
     formfield_overrides = {
         models.ManyToManyField: {'widget': widgets.SelectMultiple}
