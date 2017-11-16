@@ -117,8 +117,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    '/home/ubuntu/Documents/week5/static/',
-    '/home/ubuntu/Documents/week5/static/css',
-    '/home/ubuntu/Documents/week5/static/js',
-    '/home/ubuntu/Documents/week5/static/css/bootstrap'
+    'static/css',
+    'static/js',
+    'static/css/bootstrap'
 ]
