@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'courses',
     'students',
+    'coaches',
+    'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,5 +121,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     'static/css',
     'static/js',
-    'static/css/bootstrap'
+    'static/fonts',
+    'static/css/bootstrap',
 ]
