@@ -1,62 +1,27 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Main</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    {% load static %}
-    <link href="{% static 'bootstrap.css' %}" rel="stylesheet">
-    <!-- My CSS -->
-    <link href="{% static 'style.css' %}" rel="stylesheet">
-  </head>
+{% extends "base.html" %}
 
-  <body>
-    <header>
-      <nav class="navbar navbar-default menu">
-        <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'index' %}">bursa</a>
-          </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active-link"><a href="{% url 'index' %}">Main</a></li>
-              <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li><a href="{% url 'students:list_view' %}">Students</a></li>
-            </ul>
-          </div>
-        </div><!-- /.container-->
-      </nav>
-    </header>   
-    
-    <main>
-      <div class="jumbotron jumbotron-fluid content">
-        <div class="container">
-          <h3>Bursa</h3>
-          <p class="lead">Выбери свой курс</p>
-          <table class="table">
-            <tr>
-              <td>Курс</td>
-              <td>Описание</td>
-            </tr>
-          {% for course in courses_list %}
-            <tr>
-              <td>
-                <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
-              </td>
-              <td>{{ course.short_description }}</td>
-            </tr>
-          {% endfor %}
-          </table> 
-        </div>
-      </div>
-    </main>
-    <!-- Optional JavaScript -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-  </body>
-</html>
+{% block title %}Список курсов{% endblock title %}
+
+
+{% block active_link_index %} active-link {% endblock %}
+
+
+{% block content %}
+  
+  <p class="lead">Выбери свой курс</p>
+  <table class="table">
+    <tr>
+      <td>Курс</td>
+      <td>Описание</td>
+    </tr>
+    {% for course in courses_list %}
+    <tr>
+      <td>
+        <a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a>
+      </td>
+      <td>{{ course.short_description|title }}</td>
+    </tr>
+        {% endfor %}
+  </table> 
+{% endblock content %}
