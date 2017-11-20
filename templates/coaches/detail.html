@@ -1,41 +1,13 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Student</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    {% load static %}
-    <link href="{% static 'bootstrap.css' %}" rel="stylesheet">
-    <!-- My CSS -->
-    <link href="{% static 'style.css' %}" rel="stylesheet">
-  </head>
+{% extends "base.html" %}
 
-  <body>
-    <header>
-      <nav class="navbar navbar-default menu">
-        <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'index' %}">bursa</a>
-          </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="{% url 'index' %}">Main</a></li>
-              <li><a href="{% url 'contact' %}">Contacts</a></li>
-              <li class="active-link"><a href="{% url 'students:list_view' %}">Students</a></li>
-            </ul>
-          </div>
-        </div><!-- /.container-->
-      </nav>
-    </header>   
-    
-    <main>
-      <div class="jumbotron jumbotron-fluid content">
-        <div class="panel panel-default container">
+{% block title %}Список курсов{% endblock title %}
+
+
+{% block active_link_index %} active-link {% endblock %}
+
+
+{% block content %}
           <div class="panel-heading">
             <h3 class="panel-title">{{coach.user.first_name}} {{coach.user.last_name}}</h3>
           </div>
@@ -44,7 +16,7 @@
           <table class="table perf">
             <tr>
               <td> дата рождения </td>                
-              <td> {{coach.date_of_birth}} </td>
+              <td> {{coach.date_of_birth|date:"d E, Y"}}</td>
             </tr>              
             <tr>
               <td> адрес </td>                
@@ -80,10 +52,4 @@
             </tr>
           </table>
         </div>
-      </div>
-    </main>
-    <!-- Optional JavaScript -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-  </body>
-</html>
+{% endblock content %}
