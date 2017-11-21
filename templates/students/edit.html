@@ -1,0 +1,17 @@
+{% extends "students/base.html" %}
+
+
+{% block title %} Отредактировать заявку{% endblock title %}
+
+
+{% block content %}
+
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Submit" />
+</form>         
+  
+{% endblock content %}

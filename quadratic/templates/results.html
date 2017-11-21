@@ -1,11 +1,10 @@
 <html>
   <body>
     <p>Квадратное уравнение a*x*x + b*x + c = 0</p>
-    <ul>
-      <li>a = {{ a }} {% if mess_a %}<br><i>{{ mess_a }}</i>{% endif %}</li>
-      <li>b = {{ b }} {% if mess_b %}<br><i>{{ mess_b }}</i>{% endif %}</li>
-      <li>c = {{ c }} {% if mess_c %}<br><i>{{ mess_c }}</i>{% endif %}</li>
-    </ul>
+    <form action="/quadratic/">
+      {{ form.as_p }}
+      <input type="submit" value="Submit" />
+    </form>
     <p> {% if mes_discr %}{{ mes_discr }}<br>{% endif %}</p>
     <p> {% if mes %}{{ mes }}{% endif %}</p>
   </body>

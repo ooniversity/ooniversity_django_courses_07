@@ -1,0 +1,16 @@
+{% extends "students/base.html" %}
+
+
+{% block title %} Удалить заявку {% endblock title %}
+
+
+{% block content %}
+
+<p>Студент {{ student.surname }} {{ student.name }}  будет удален </p> 
+
+<form method="post">
+    {% csrf_token %}
+     <input type="submit" value="Delete" />
+</form>     
+  
+{% endblock content %}
