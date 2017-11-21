@@ -1,20 +1,10 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-		color:#868685;
+   	color:#868685;
 		background:#fbfbfc; 
 }
 
 header {
 		margin: 10px 0 10px;
-}
-
-h3 {
-		color:#d42819;
-}
-
-h4 {
-		color:#d42819;
 }
 
 

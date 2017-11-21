@@ -1,25 +1,8 @@
 from django.shortcuts import render
 from math import sqrt
+from .forms import QuadraticForm
 
-
-def test(par):
-    
-    if par == '':
-
-        mes = 'коэффициент не определен'
-
-        return mes
-
-    try:
-
-        int(par)
-
-    except:
-
-        mes = 'коэффициент не целое число'
-
-        return mes
-    
+  
 
 def quadratic(a,b,c):
 
@@ -50,22 +33,18 @@ def quadratic(a,b,c):
 
 def quadratic_results(request):
     
-    vars = (request.GET)
+    form = QuadraticForm()
     
-    a, b, c = vars['a'], vars['b'], vars['c']     
-
-    mess_a, mess_b, mess_c = test(a), test(b), test(c)
-
-    if test(a) == None and int(a) == 0:
+    if 0 == 0:
 
         mess_a = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
 
-    context = {'a':a, 'b':b, 'c':c, 'mess_a':mess_a, 'mess_b':mess_b, 'mess_c':mess_c}
+        context = {'mess_a':mess_a, 'form':form}
     
-    if test(a) == None and test(b) == None and test(c) == None and int(a) != 0:
+    else:
     
-        q = quadratic(int(a), int(b), int(c))
+        q = quadratic(form.a, form.b, form.c)
     
-        context = {'a':a, 'b':b, 'c':c, 'mess_a':mess_a, 'mess_b':mess_b, 'mess_c':mess_c, 'mes_discr':q[0], 'mes':q[1]}
+        context = {'mess_a':mess_a, 'mes_discr':q[0], 'mes':q[1], 'form':form}
 
     return render(request, "results.html", context)
