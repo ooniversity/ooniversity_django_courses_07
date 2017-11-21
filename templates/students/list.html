@@ -40,15 +40,15 @@
                   {% endfor %}
                 </td>
                 <td> 
-                  <a href = "{% url 'students:edit' student.id %}"> Edit </a>
+                  <a href = "{% url 'students:edit' student.id %}"> Изменить </a>
                 </td>
                 <td> 
-                  <a href = "{% url 'students:remove' student.id %}"> Delete </a>
+                  <a href = "{% url 'students:remove' student.id %}"> Удалить </a>
                 </td>
               </tr>
               {% endfor %}
             </table>
-            <a href="{% url 'students:add' %}">Сделать заявку</a>
+            <a href="{% url 'students:add' %}">Добавить нового студента</a>
           </div>
 
 {% endblock content %}
