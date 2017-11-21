@@ -24,15 +24,14 @@ def detail(request, st_id):
 
 
 def create(request):
+    form = StudentModelForm()
     if request.method == 'POST':
         form = StudentModelForm(request.POST)
         if form.is_valid():
             new_student = form.save()
             messages.success(request, "Student " + new_student.name + " " + new_student.surname + " has been successfully added.")
             return redirect('/students/')
-    else:
-        form = StudentModelForm()
-        return render(request, 'add.html', {'form': form})
+    return render(request, 'add.html', {'form': form})
         
         
 def edit(request, pk):
