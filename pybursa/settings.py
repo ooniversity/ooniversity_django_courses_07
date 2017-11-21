@@ -50,7 +50,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates"), 
 		'/home/ubuntu/Documents/week5/quadratic/templates',
-        'templates/students','templates/courses'
+        'templates/courses'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
