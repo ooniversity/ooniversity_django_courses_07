@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404, render
 from .models import Student
 from .forms import StudentModelForm
 from django.contrib import messages
+from django.urls import reverse
 # Create your views here.
 
 
@@ -42,7 +43,7 @@ def edit(request, pk):
         if form.is_valid():
             student = form.save()
             messages.success(request, "Info on the student has been successfully changed.")
-            return redirect('/students/')
+            return redirect('students:edit', pk=pk)
     return render(request, 'students/edit.html', {'form': form})
         
     

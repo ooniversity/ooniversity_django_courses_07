@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block title %}Создание нового занятия{% endblock title %}
+
+
+{% block content %}
+
+<p>Создание нового занятия</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Создать" />
+</form>         
+  
+{% endblock content %}
