@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 
-
-{% block title %}Курс{% endblock title %}
-
-
 {% block active_link_index %} active-link {% endblock %}
 
 {% block list_students %}?course_id={{ course.id }}{% endblock %}
@@ -19,25 +15,25 @@
 {% endif %}
 
           <div>
-            <h3>{{ course.name }}</h3>
+            <h3>{{ object.name }}</h3>
           </div>
           <div class="panel-body">
-            {{ course.description|truncatechars:32 }}
+            {{ object.description|truncatechars:32 }}
           </div>
           <h4>Преподаватели</h4>
           <div class="panel-heading">
             <h3 class="panel-title">Учитель</h3>
           </div>
           <div class="panel-body">
-            <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a><br><br>
-            {{ course.coach.description }}
+            <a href="{% url 'coaches:detail' course.coach.id %}">{{ object.coach.user.first_name }} {{ object.coach.user.last_name }}</a><br><br>
+            {{ object.coach.description }}
           </div>
           <div class="panel-heading">
             <h3 class="panel-title">Ассистент</h3>
           </div>
           <div class="panel-body">
-            <a  href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a><br><br>
-            {{ course.assistant.description }}
+            <a  href="{% url 'coaches:detail' course.assistant.id %}">{{ object.assistant.user.first_name }} {{ object.assistant.user.last_name }}</a><br><br>
+            {{ object.assistant.description }}
           </div>          
 
           <p><a href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a></p>
