@@ -48,7 +48,7 @@ class CourseUpdateView(UpdateView):
      
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, "Course has been successfully updated")
+        messages.success(self.request, "The changes have been saved.")
         return response
     
     def get_context_data(self, **kwargs):
