@@ -1,9 +1,6 @@
 {% extends "students/base.html" %}
 
 
-{% block title %}Список студентов{% endblock title %}
-
-
 {% block content %}
 
 {% if messages %}
@@ -26,7 +23,7 @@
                 <td> skype </td>
                 <td> курсы </td>	
               </tr>              
-              {% for student in list_st%}              
+              {% for student in object_list%}              
               <tr>
                 <td> {{ student.id }} </td>                
                 <td> 

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>{% block title %}Main{% endblock title %}</title>
+    <title>{% block title %}{{ page_title }}{% endblock title %}</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav">
               <li class="{% block active_link_index %}{% endblock %}"><a href="{% url 'index' %}">Main</a></li>
               <li class="{% block active_link_contacts %}{% endblock %}"><a href="{% url 'contact' %}">Contacts</a></li>
-              <li class="{% block active_link_students %}{% endblock %}"><a href="{% url 'students:list_view' %}">Students</a></li>
+              <li class="{% block active_link_students %}{% endblock %}"><a href="{% url 'students:list_view' %}{% block list_students %}{% endblock %}">Students</a></li>
             </ul>
           </div>
         </div><!-- /.container-->

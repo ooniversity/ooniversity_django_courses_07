@@ -1,42 +1,39 @@
 {% extends "students/base.html" %}
 
 
-{% block title %}Инфо о студенте{% endblock title %}
-
-
 {% block content %}
 
 
           <div class="panel-heading">
-            <h3 class="panel-title">{{student_detail.name}} {{student_detail.surname}}</h3>
+            <h3 class="panel-title">{{object.name}} {{object.surname}}</h3>
           </div>
          
           <!-- Table -->
           <table class="table perf">
             <tr>
               <td> дата рождения </td>                
-              <td> {{student_detail.date_of_birth}} </td>
+              <td> {{object.date_of_birth}} </td>
             </tr>              
             <tr>
               <td> адрес </td>                
-              <td> {{student_detail.address}} </td>
+              <td> {{object.address}} </td>
             </tr>
             <tr>
               <td> почта </td>                
-              <td> {{student_detail.email}} </td>
+              <td> {{object.email}} </td>
             </tr> 
             <tr>
               <td> логин skype </td>                
-              <td> {{student_detail.skype}} </td>
+              <td> {{object.skype}} </td>
             </tr>   
             <tr>
               <td> телефон </td>                
-              <td> {{student_detail.phone}} </td>
+              <td> {{object.phone}} </td>
             </tr>
             <tr>
               <td> курсы </td>                
               <td> 
-                {% for course in student_detail.courses.all %}                  
+                {% for course in object.courses.all %}                  
                 <a href = "{% url 'courses:detail' course.id %}">  {{ course.name }}</a><br> 
                 {% endfor %}
               </td>
