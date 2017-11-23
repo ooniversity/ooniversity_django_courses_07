@@ -1,0 +1,54 @@
+{% extends "students/base.html" %}
+
+
+{% block title %}Список студентов{% endblock title %}
+
+
+{% block content %}
+
+{% if messages %}
+  <div class="alert alert-success" role="alert">
+    {% for message in messages %}
+   {{ message }}
+    {% endfor %}
+  </div>
+{% endif %}
+          <div class="panel-heading">
+            <h3 class="panel-title">Список студентов</h3>
+          </div>
+         
+          <!-- Table -->
+            <table class="table">
+              <tr class="first_row">
+                <td> # </td>                
+                <td> фамилия имя </td>
+                <td> адрес </td>
+                <td> skype </td>
+                <td> курсы </td>	
+              </tr>              
+              {% for student in list_st%}              
+              <tr>
+                <td> {{ student.id }} </td>                
+                <td> 
+                  <a href="{% url 'students:detail' student.id %}"> {{ student.name }} {{ student.surname }} </a> 
+                </td>
+                <td> {{ student.address }} </td>
+                <td> {{ student.skype }} </td>
+                <td> 
+                  {% for course in student.courses.all %}                  
+                  <a href = "{% url 'courses:detail' course.id %}">  {{ course.name }}</a><br> 
+                  {% endfor %}
+                </td>
+                <td> 
+                  <a href = "{% url 'students:edit' student.id %}"> Изменить </a>
+                </td>
+                <td> 
+                  <a href = "{% url 'students:remove' student.id %}"> Удалить </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+            <a href="{% url 'students:add' %}">Добавить нового студента</a>
+          </div>
+
+{% endblock content %}
