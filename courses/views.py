@@ -14,6 +14,8 @@ def index(request):
 
 class CourseDetailView(DetailView):
     model = Course
+    template_name = 'courses/detail.html'
+    context_object_name = 'course'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -25,6 +27,8 @@ class CourseCreateView(CreateView):
     model = Course
     fields = '__all__'
     success_url = reverse_lazy('index')
+    template_name = 'courses/sdd.html'
+    context_object_name = 'course'
     
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -39,6 +43,8 @@ class CourseCreateView(CreateView):
 class CourseUpdateView(UpdateView):
     model = Course
     fields = '__all__'
+    template_name = 'courses/edit.html'
+    context_object_name = 'course'
     success_url = reverse_lazy('index')
     
     def form_valid(self, form):
@@ -54,6 +60,8 @@ class CourseUpdateView(UpdateView):
 class CourseDeleteView(DeleteView):
     model = Course
     success_url = reverse_lazy('index')
+    template_name = 'courses/remove.html'
+    context_object_name = 'course'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
