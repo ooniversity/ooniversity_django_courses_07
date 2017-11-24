@@ -10,6 +10,7 @@ from django.views.generic import DetailView, ListView, CreateView, DeleteView, U
 
 class StudentListView(ListView):
     model = Student
+    paginate_by = 2
     
     def get_queryset(self):
         qs = super().get_queryset()
