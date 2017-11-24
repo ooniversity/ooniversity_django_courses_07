@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'courses',
     'students',
     'coaches',
+    'feedbacks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,3 +124,9 @@ STATICFILES_DIRS = [
     'static/fonts',
     'static/css/bootstrap',
 ]
+
+ADMINS = [('Admin', 'admin@admin.com')]
+
+EMAIL_HOST = 'localhost'
+
+EMAIL_PORT = '1025'
