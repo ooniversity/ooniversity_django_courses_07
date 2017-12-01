@@ -2,6 +2,7 @@ a.nav-link {background:yellow}
 #f1 {color:blue}
 p.p1 {color:white;background:red;}
 #im1 {width:400px;height:300px}
+#im2 {width:400px;height:300px}
 p #f2 {background:black;color:blue}
 p u.p2 {color:green;font-family: Pompadur}
 #f3 {font-family: Pompadur;color:red}
@@ -10,3 +11,18 @@ p u.p2 {color:green;font-family: Pompadur}
 #f6 {font-variant:small-caps;font-family: system-ui;text-decoration: underline;color:orange}
 #f7 {font-weight:bolder;text-decoration: underline;font-family: cursive;color:green}
 #li1 {color:red}
+.a_demo_one{background-color:#3BB3E0;padding:10px;position:relative;font-family:'Open Sans',sans-serif;font-size:12px;text-decoration:none;color:#FFF;border:solid 1px #186F8F;background-image:linear-gradient(bottom,#2CA0CA 0,#3EB8E5 100%);background-image:-o-linear-gradient(bottom,#2CA0CA 0,#3EB8E5 100%);background-image:-moz-linear-gradient(bottom,#2CA0CA 0,#3EB8E5 100%);background-image:-webkit-linear-gradient(bottom,#2CA0CA 0,#3EB8E5 100%);background-image:-ms-linear-gradient(bottom,#2CA0CA 0,#3EB8E5 100%);background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0,#2CA0CA),color-stop(1,#3EB8E5));-webkit-box-shadow:inset 0 1px 0 #7FD2F1,0px 1px 0 #FFF;-moz-box-shadow:inset 0 1px 0 #7FD2F1,0px 1px 0 #FFF;box-shadow:inset 0 1px 0 #7FD2F1,0px 1px 0 #FFF;-webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;border-radius:5px}  
+.a_demo_one::before{background-color:#CCD0D5;content:"";display:block;position:absolute;width:100%;height:100%;padding:8px;left:-8px;top:-8px;z-index:-1;-webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;border-radius:5px;-webkit-box-shadow:inset 0 1px 1px #909193,0px 1px 0 #FFF;-moz-box-shadow:inset 0 1px 1px #909193,0px 1px 0 #FFF;-o-box-shadow:inset 0 1px 1px #909193,0px 1px 0 #FFF;box-shadow:inset 0 1px 1px #909193,0px 1px 0 #FFF}  
+.a_demo_one:active{padding-bottom:9px;padding-left:10px;padding-right:10px;padding-top:11px;top:1px;background-image:linear-gradient(bottom,#3EB8E5 0,#2CA0CA 100%);background-image:-o-linear-gradient(bottom,#3EB8E5 0,#2CA0CA 100%);background-image:-moz-linear-gradient(bottom,#3EB8E5 0,#2CA0CA 100%);background-image:-webkit-linear-gradient(bottom,#3EB8E5 0,#2CA0CA 100%);background-image:-ms-linear-gradient(bottom,#3EB8E5 0,#2CA0CA 100%);background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0,#3EB8E5),color-stop(1,#2CA0CA))}
+.out {
+width: 276px;
+margin: 35px
+}
+.out1 {
+width: 276px;
+margin: 35px;margin-left: 70px
+}
+.out2 {
+width: 276px;
+margin: 35px;margin-left: 130px
+}
