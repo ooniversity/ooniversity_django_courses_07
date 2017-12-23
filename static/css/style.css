@@ -1,0 +1,70 @@
+h1{
+	font-family: 'Lobster', cursive;
+	text-align: center;
+	color: #093426;
+	font-size: 30pt;
+	padding: 20px;
+}
+h2{
+	font-family: 'Lobster', cursive;
+	text-align: left;
+	color: #093426;
+	font-size: 20pt;
+}
+body{
+	font-family: Georgia, Georgia, serif;
+	background-color: #E7F3EF;
+	padding: 0 15px;
+	color: #093426;
+	opacity: 1;
+	filter: contrast(100%);
+
+}
+td{
+	padding: 5px;
+	height:16px;
+
+}
+th{
+	width: 30%;
+	text-align: center;
+}
+
+tr:nth-child(even) {
+	background-color:#79BEA8;
+}
+
+tr:hover{
+	background-color:#448D76;
+	opacity: 0.8;
+}
+table{
+	padding-right: 20px;
+	font-size: 1.4em;
+
+}
+.panel-footer{
+	text-indent: 50px;
+	border: 2px solid #093426;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	padding: 10px;
+	color: #093426;
+	clear: both;
+	font-size: 1em;
+	text-align: right;
+}
+.jumbotron{
+	background: white;
+}
+.text{
+	border-top: 2px solid #093426;
+	text-indent: 50px;
+	padding: 10px;
+	color: #093426;
+	clear: both;
+	font-size: 1.4em;
+}
+
+
