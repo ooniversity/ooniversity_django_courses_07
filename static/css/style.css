@@ -20,13 +20,21 @@ body{
 	filter: contrast(100%);
 
 }
+.details{
+	text-align: left;
+	font-size: 1em;
+}
+a{
+	color: #093426;
+}
 td{
 	padding: 5px;
 	height:16px;
+	text-align: center;
 
 }
 th{
-	width: 30%;
+	/*width: 30%;*/
 	text-align: center;
 }
 
