@@ -1,118 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>DjB contacts</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <title>DjB contacts</title>
+    <meta charset="utf-8">
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 	<link href="https://fonts.googleapis.com/css?family=Lobster&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="{% static 'js/bootstrap.min.js' %"></script>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">DjangoBursa</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li ><a href="index.html">Main</a></li>
-				<li class="active"><a href="contact.html">Contacts</a></li>
-				<li><a href="student_list.html">Students</a></li>
-			</ul>
-		</div>
-	</nav>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">DjangoBursa</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'index' %}">Main</a></li>
+            <li class="active">
+                <a href="{% url 'contact' %}">Contacts</a>
+            </li>
+            <li><a href="{% url 'student_list' %}">Students</a></li>
+        </ul>
+    </div>
+</nav>
 
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="container">
-				<h1>Director</h1>
-				<table class="table table-striped ">
-					<tbody>
-						<tr>
-							<th>Name</th>
-							<td>John Doe</td>
-						</tr>
-						<tr>
-							<th>Skype</th>
-							<td>BigBoss</td>
-						</tr>
-						<tr>
-							<th>Email</th>
-							<td>BigBoss@gmail.com</td>
-						</tr>
-						<tr>
-							<th>Phone</th>
-							<td>777-77-77</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="container">
-				<h1>Manager</h1>
-				<table class="table table-striped ">
-					<tbody>
-						<tr>
-							<th>Name</th>
-							<td>Klark Kent</td>
-						</tr>
-						<tr>
-							<th>Skype</th>
-							<td>SuperM</td>
-						</tr>
-						<tr>
-							<th>Email</th>
-							<td>save@gmail.com</td>
-						</tr>
-						<tr>
-							<th>Phone</th>
-							<td>333-33-33</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="container">
-				<h1>Founder </h1>
-				<table class="table table-striped ">
-					<tbody>
-						<tr>
-							<th>Name</th>
-							<td>Bruce Wayne</td>
-						</tr>
-						<tr>
-							<th>Skype</th>
-							<td>DarkKnight</td>
-						</tr>
-						<tr>
-							<th>Email</th>
-							<td>GothamCity@gmail.com</td>
-						</tr>
-						<tr>
-							<th>Phone</th>
-							<td>777-77-77</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="container">
-				<div class="panel-footer">
-					<p>Made by Sofiia Omelchenko</p>
-					<p>2017</p>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <h1>Director</h1>
+            <table class="table table-striped ">
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <td>John Doe</td>
+                </tr>
+                <tr>
+                    <th>Skype</th>
+                    <td>BigBoss</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>BigBoss@gmail.com</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>777-77-77</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <h1>Manager</h1>
+            <table class="table table-striped ">
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <td>Klark Kent</td>
+                </tr>
+                <tr>
+                    <th>Skype</th>
+                    <td>SuperM</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>save@gmail.com</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>333-33-33</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <h1>Founder </h1>
+            <table class="table table-striped ">
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <td>Bruce Wayne</td>
+                </tr>
+                <tr>
+                    <th>Skype</th>
+                    <td>DarkKnight</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>GothamCity@gmail.com</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>777-77-77</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="panel-footer">
+                <p>Made by Sofiia Omelchenko</p>
+                <p>2017</p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
