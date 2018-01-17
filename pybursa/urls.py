@@ -15,17 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from  quadratic.views import quadratic_results
+from . import views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^polls/', include('polls.urls')),
-    url(r'^$', views.index, name='index'),
-    url(r'^contact/', views.contact, name='contact'),
-    url(r'^student_list/', views.student_list, name='student_list'),
-    url(r'^student_detail/$', views.student_detail, name='student_detail'),
-    url(r'^quadratic/results/', quadratic_results, name='results'),
+    url(r'^$', include('courses.urls', namespace='courses', app_name='courses')),
+    # url(r'^$', views.index, name='index'),
+    # url(r'^contact/', views.contact, name='contact'),
+    # url(r'^student_list/', views.student_list, name='student_list'),
+    # url(r'^student_detail/$', views.student_detail, name='student_detail'),
+    # url(r'^quadratic/results/', quadratic_results, name='results'),
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -28,7 +28,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = ['courses','quadratic', 'polls.apps.PollsConfig', 'django.contrib.admin', 'django.contrib.auth',
+INSTALLED_APPS = ['students','courses','quadratic', 'polls.apps.PollsConfig', 'django.contrib.admin', 'django.contrib.auth',
                   'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages',
                   'django.contrib.staticfiles',
                    ]
@@ -43,7 +43,7 @@ ROOT_URLCONF = 'pybursa.urls'
 
 TEMPLATES = [{'BACKEND': 'django.template.backends.django.DjangoTemplates',
               'DIRS': [os.path.join(BASE_DIR, 'templates'), 'C:\\Users\София\django_courses_07 #1-2\\templates',
-                       'C:\\Users\София\django_courses_07 #1-2\quadratic\\templates', ],
+                       'C:\\Users\София\django_courses_07 #1-2\quadratic\\templates','C:\\Users\София\django_courses_07 #1-2\courses\\templates' ],
               'APP_DIRS': True, 'OPTIONS': {
         'context_processors': ['django.template.context_processors.debug', 'django.template.context_processors.request',
                                'django.contrib.auth.context_processors.auth',
