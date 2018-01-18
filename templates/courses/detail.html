@@ -17,9 +17,7 @@
 				<a class="navbar-brand" href="#">SuperCourses</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="{% url 'index' %}">Main</a></li>
-				<li><a href="{% url 'contact' %}">Contacts</a></li>
-				<li><a href="{% url 'student_list' %}">Students</a></li>
+
 			</ul>
 		</div>
 	</nav>
@@ -27,13 +25,38 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="container">
-				<div class="text">
-					<h2>Program</h2>
-					<p>This is some text.</p>
+				<div class="jumbotron">
+					<h2>{{course.name}}</h2>
+                    <p>{{course.id}}</p>
+                    <p>{{course.description}}</p>
 				</div>
 			</div>
 		</div>
 	</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="text">
+                <h2>Lessons</h2>
+                <table class="table">
+                    <tbody>
+                    <th>#</th>
+					<th>Subject</th>
+                    <th>Description</th>
+                    {% for lesson in lesson_list %}
+                    <tr>
+						<td>{{ lesson.id }}</td>
+						<td>{{ lesson.subject }}</td>
+                        <td>{{lesson.description}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 	<div class="row">
 		<div class="col-lg-12">
