@@ -2,9 +2,10 @@ from django.conf.urls import url
 
 from . import views
 
+app_name = 'students'
 urlpatterns = [
-    url(r'^list_view/$', views.list_view, name='index'),
-#     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
-#     url(r'^(?P<pk>[0-9]+)/results/$', views.ResultsView.as_view(), name='results'),
-#     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
+    # url(r'^$', views.list_view, name='students'),
+    url(r'^$', views.StudentListView.as_view(), name = 'list_view'),
+    # url(r'^(course_id=?P<pk>[0-9]+)/$', views.StudentListView.as_view(), name = 'list_view'),
+    url(r'^(?P<pk>[0-9]+)/$', views.StudentsDetailView.as_view(), name='detail'),
 ]
