@@ -15,11 +15,11 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">DjangoBursa</a>
+            <a class="navbar-brand" href="#">SuperCourses</a>
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'index' %}">Main</a></li>
-            <li><a href="{% url 'students:list_view' %}">Students</a></li>
+            <li><a href="{% url 'students:list_view' %}?course_id={{course.id}}">Students</a></li>
         </ul>
     </div>
 </nav>
@@ -28,8 +28,9 @@
     <div class="col-lg-12">
         <div class="container">
             <div class="jumbotron">
-                <h1>SuperCourses</h1>
-                <p>We change your reality</p>
+                <h2>{{course.name}}</h2>
+                <p>{{course.id}}</p>
+                <p>{{course.description}}</p>
             </div>
         </div>
     </div>
@@ -38,15 +39,17 @@
     <div class="col-lg-12">
         <div class="container">
             <div class="text">
-                <h2>Our courses</h2>
+                <h2>Lessons</h2>
                 <table class="table">
                     <tbody>
-                    <th>Course</th>
+                    <th>#</th>
+                    <th>Subject</th>
                     <th>Description</th>
-                    {% for course in courses_list %}
+                    {% for lesson in lesson_list %}
                     <tr>
-                        <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
-                        <td>{{course.description}}</td>
+                        <td>{{ lesson.id }}</td>
+                        <td>{{ lesson.subject }}</td>
+                        <td>{{lesson.description}}</td>
                     </tr>
                     {% endfor %}
                     </tbody>
@@ -55,6 +58,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="row">
     <div class="col-lg-12">

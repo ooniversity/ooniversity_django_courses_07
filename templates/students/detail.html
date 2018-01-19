@@ -15,11 +15,11 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">DjangoBursa</a>
+            <a class="navbar-brand" href="#">SuperCourses</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'index' %}">Main</a></li>
-            <li><a href="{% url 'students:list_view' %}">Students</a></li>
+            <li><a href="{% url 'index' %}">Main</a></li>
+            <li class="active"><a href="{% url 'students:list_view' %}">Students</a></li>
         </ul>
     </div>
 </nav>
@@ -27,9 +27,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="container">
-            <div class="jumbotron">
-                <h1>SuperCourses</h1>
-                <p>We change your reality</p>
+            <div class="text">
+                <h2>{{student.name}} {{student.surname}}</h2>
             </div>
         </div>
     </div>
@@ -38,23 +37,43 @@
     <div class="col-lg-12">
         <div class="container">
             <div class="text">
-                <h2>Our courses</h2>
                 <table class="table">
                     <tbody>
-                    <th>Course</th>
-                    <th>Description</th>
-                    {% for course in courses_list %}
                     <tr>
-                        <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
-                        <td>{{course.description}}</td>
+                        <th>Date of birth</th>
+                        <td>{{ student.date_of_birth|date:"SHORT_DATE_FORMAT"}}</td>
                     </tr>
-                    {% endfor %}
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ student.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ student.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Skype</th>
+                        <td>{{student.skype}}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{student.phone}}</td>
+                    </tr>
+                    <tr>
+                        <th>Courses</th>
+                        <td> {% for course in student.courses.all %}
+                            <p><a href="{% url 'courses:detail' course.id %}">{{course.name}}</a></p>
+                            {% endfor %}
+                        </td>
+                    </tr>
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="row">
     <div class="col-lg-12">
