@@ -1,10 +1,10 @@
 from django.contrib import admin
 from students.models import Student
-
+from django.forms import widgets
+from django.db import models
 
 
 class StudentAdmin(admin.ModelAdmin):
-    # prepopulated_fields = {'full name': ('name', 'surname',), }
     admin.site.site_header = "PyBursa Administration"
     list_display = ( 'get_full_name','email','skype')
     search_fields = ['surname','email', ]
@@ -14,9 +14,11 @@ class StudentAdmin(admin.ModelAdmin):
                   {'fields': ('name', 'surname', 'date_of_birth')}),
                  ('Contact info',
                   {'classes': ('wide',),
-                   'fields': ('email', 'phone','address','skype', 'courses')}),
-
+                   'fields': ('email', 'phone','address','skype')}),
+                 (None, {'fields': ['courses']})
                  )
+
+    filter_horizontal = ('courses',)
 
 
 admin.site.register(Student, StudentAdmin)
