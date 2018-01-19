@@ -14,3 +14,8 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_full_name(self):
+        return u'%s %s' %( self.name, self.surname)
+
+    get_full_name.short_description = 'full name'
