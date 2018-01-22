@@ -29,7 +29,7 @@
     <div class="col-lg-12">
         <div class="container">
             <div class="table">
-                <h2>{{coach}}</h2>
+                <h2>{{ coach.user.last_name }} {{ coach.user.first_name }}</h2>
                 <table>
                     <tbody>
                     <tr>
@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <th>Email</th>
-                        <td>{{ coach.user__email }}</td>
+                        <td>{{ coach.user.email }}</td>
                     </tr>
                     <tr>
                         <th>Skype</th>
@@ -56,8 +56,8 @@
                         <th>Courses as Coach</th>
                         <td>
                             {% for course in coach_list %}
-                            <p><a href="{% url 'courses:detail' course.id %}">{{course.name}}</a>
-                            <a href="{% url 'students:list_view' %}?course_id={{course.id}}">Students<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></p>
+                            <p><a href="{% url 'courses:detail' course.id %}">{{course.name}}</a> Students
+                            <a href="{% url 'students:list_view' %}?course_id={{course.id}}"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></p>
                             {% endfor %}
                         </td>
                     </tr>
@@ -65,8 +65,8 @@
                         <th>Courses as Assistant</th>
                         <td>
                             {% for course in assistant_list %}
-                            <p><a href="{% url 'courses:detail' course.id %}">{{course.name}}</a>
-                            <a href="{% url 'students:list_view' %}?course_id={{course.id}}">Students<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></p>
+                            <p><a href="{% url 'courses:detail' course.id %}">{{course.name}}</a> Students
+                            <a href="{% url 'students:list_view' %}?course_id={{course.id}}"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></p>
                             {% endfor %}
                         </td>
                     </tr>
