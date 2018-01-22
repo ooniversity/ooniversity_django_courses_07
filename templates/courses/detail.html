@@ -39,6 +39,32 @@
     <div class="col-lg-12">
         <div class="container">
             <div class="text">
+                <h2>Coach</h2>
+                {% for coach in coach_list %}
+                <p><a href="{% url 'coaches:detail' coach%}}">{{coach}}</a></p>
+                <p>{{coach.description}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="text">
+                <h2>Assistant</h2>
+                {% for assistant in assistant_list %}
+                <p><a href="{% url 'coaches:detail' assistant.id %}">{{assistant}}</a></p>
+                <p>{{assistant.description}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="text">
                 <h2>Lessons</h2>
                 <table class="table">
                     <tbody>
