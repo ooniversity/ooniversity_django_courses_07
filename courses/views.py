@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from courses.models import Course, Lesson
+from coaches.models import Coach
 from django.views import generic
 
 class DetailView(generic.DetailView):
@@ -13,8 +14,6 @@ class DetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['lesson_list']= Lesson.objects.all().filter(course = self.object)
+        context['assistant_list']= Coach.objects.all().filter(assistant_courses = self.object)
+        context['coach_list']= Coach.objects.all().filter(coach_courses = self.object)
         return context
-
-# def detail(request, course_id ):
-#     course = Course.objects.get(pk = course_id)
-#     return render(request, 'courses/detail.html', {'course': course})
