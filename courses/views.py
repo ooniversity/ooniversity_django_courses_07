@@ -8,8 +8,8 @@ class DetailView(generic.DetailView):
     template_name = 'courses/detail.html'
 
     # def get_queryset(self):
-    #     self.course = get_object_or_404(Course, name=self.args[0])
-    #     return Lesson.objects.filter(course=self.course)
+    #     self.object = get_object_or_404(Course, name=self.object[0])
+    #     return Course.objects.filter(course=self.course)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

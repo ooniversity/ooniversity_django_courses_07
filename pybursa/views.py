@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from courses.models import Course
+from django.views import generic
 
 def index(request):
     courses = Course.objects.all()
@@ -9,8 +10,6 @@ def index(request):
 def contact(request):
     return render(request, 'contact.html')
 
-def student_list(request):
-    return render(request, 'student_list.html')
+# class ContatView(generic.ListView):
+#     template_name = 'contact.html'
 
-def student_detail(request):
-    return render(request, 'student_detail.html')
