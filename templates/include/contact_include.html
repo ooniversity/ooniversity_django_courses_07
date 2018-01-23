@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="text">
+                <h2>{{ position }}</h2>
+                {% for person in person_list %}
+                <p>
+                    <a href="{% url 'coaches:detail' person.id %}}">{{ person.user.last_name }} {{ person.user.first_name }}</a></p>
+                <p>{{person.description}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
