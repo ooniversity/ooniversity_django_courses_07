@@ -23,9 +23,11 @@ from . import views
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
                   url(r'^polls/', include('polls.urls')),
+                  url(r'^quadratic/', include('quadratic.urls', namespace='quadratic')),
                   url(r'^courses/', include('courses.urls', namespace='courses', app_name='courses')),
                   url(r'^students/', include('students.urls', namespace='students', app_name='students')),
                   url(r'^coaches/', include('coaches.urls', namespace='coaches', app_name='coaches')),
+
                   url(r'^$', views.index, name='index'),
                   url(r'^contact/$', views.contact, name='contact'),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
