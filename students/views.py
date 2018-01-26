@@ -29,21 +29,34 @@ class StudentsRemoveView(generic.DeleteView):
         messages.add_message(request, messages.SUCCESS ,text)
         return super(StudentsRemoveView,self).post(request, *args, **kwargs)
 
+class StudentsAddView(generic.CreateView):
+    model = Student
+    form_class = StudentModelForm
+    template_name = 'students/add.html'
+    success_url = reverse_lazy('students:list_view')
+    text = ''
 
-def create(request):
-    if request.method == 'POST':
-        form = StudentModelForm(request.POST)
-        context = {'form': form}
-        if form.is_valid():
-            context["message"] = "add"
-            data = form.cleaned_data
-            form.save()
-            text = "Student {} {} has been successfully added.".format(data['name'], data['surname'])
-            messages.success(request, text)
-            return redirect('/students/')
-    else:
-        form = StudentModelForm()
-        return render(request, 'students/add.html', {'form': form})
+    def form_valid(self, form):
+        text = "Student {} {} has been successfully added.".format(form.cleaned_data['name'], form.cleaned_data['surname'])
+        messages.add_message(self.request, messages.SUCCESS, text)
+        return super().form_valid(form)
+
+
+#
+# def create(request):
+#     if request.method == 'POST':
+#         form = StudentModelForm(request.POST)
+#         context = {'form': form}
+#         if form.is_valid():
+#             context["message"] = "add"
+#             data = form.cleaned_data
+#             form.save()
+#             text = "Student {} {} has been successfully added.".format(data['name'], data['surname'])
+#             messages.success(request, text)
+#             return redirect('/students/')
+#     else:
+#         form = StudentModelForm()
+#         return render(request, 'students/add.html', {'form': form})
 
 
 # def list_view(request):
