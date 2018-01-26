@@ -1,15 +1,60 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Student, Course
 from django.views import generic
-# Create your views here.
-def list_view(request):
-    if request.method == 'GET':
-        course_id = request.GET.get('course_id')
-        students = Student.objects.all().filter(courses = Course.objects.filter(id = course_id) )
+from .forms import StudentModelForm
+from django.contrib import messages
+from django.core.urlresolvers import reverse_lazy
+
+class StudentsEditView(generic.UpdateView):
+    model = Student
+    form_class = StudentModelForm
+    template_name = 'students/edit.html'
+    success_url = '/students/'
+
+    def post(self, request, *args, **kwargs):
+        qs = super().get_queryset()
+        student = qs.get(id=kwargs['pk'])
+        text = "Info on the student has been successfully changed.".format(student.name, student.surname)
+        messages.add_message(request, messages.SUCCESS ,text)
+        return super(StudentsEditView,self).post(request, *args, **kwargs)
+
+class StudentsRemoveView(generic.DeleteView):
+    model = Student
+    template_name = 'students/remove.html'
+    success_url = '/students/'
+    def post(self, request, *args, **kwargs):
+        qs = super().get_queryset()
+        student = qs.get(id=kwargs['pk'])
+        text = "Info on {} {} has been successfully deleted.".format(student.name, student.surname)
+        messages.add_message(request, messages.SUCCESS ,text)
+        return super(StudentsRemoveView,self).post(request, *args, **kwargs)
+
+
+def create(request):
+    if request.method == 'POST':
+        form = StudentModelForm(request.POST)
+        context = {'form': form}
+        if form.is_valid():
+            context["message"] = "add"
+            data = form.cleaned_data
+            form.save()
+            text = "Student {} {} has been successfully added.".format(data['name'], data['surname'])
+            messages.success(request, text)
+            return redirect('/students/')
     else:
-        students = Student.objects.all()
-    context = {'student_list': students, }
-    return render(request, 'students/list.html', context)
+        form = StudentModelForm()
+        return render(request, 'students/add.html', {'form': form})
+
+
+# def list_view(request):
+#     if request.method == 'GET':
+#         course_id = request.GET.get('course_id')
+#         students = Student.objects.all().filter(courses=Course.objects.filter(id=course_id))
+#     else:
+#         students = Student.objects.all()
+#     context = {'student_list': students, }
+#     return render(request, 'students/list.html', context)
+
 
 class StudentsDetailView(generic.DetailView):
     model = Student
