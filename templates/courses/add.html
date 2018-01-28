@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block title %}Add new course{% endblock %}
+
+
+{% block active_link_main %}active{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="text">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Add">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
