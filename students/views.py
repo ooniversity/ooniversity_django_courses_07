@@ -1,35 +1,38 @@
 from django.shortcuts import render, redirect
 from .models import Student, Course
-from django.views import generic
 from .forms import StudentModelForm
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 
-class StudentsUpdateView(generic.UpdateView):
+class StudentUpdateView(UpdateView):
     model = Student
     form_class = StudentModelForm
     template_name = 'students/edit.html'
     success_url = reverse_lazy('students:list_view')
 
-    def post(self, request, *args, **kwargs):
-        qs = super().get_queryset()
-        student = qs.get(id=kwargs['pk'])
-        text = "Info on the student has been successfully changed.".format(student.name, student.surname)
-        messages.add_message(request, messages.SUCCESS ,text)
-        return super(StudentsUpdateView,self).post(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Student info update"
+        text = "Info on the student has been successfully changed."
+        messages.success(self.request, text)
+        return context
 
-class StudentsDeleteView(generic.DeleteView):
+
+class StudentDeleteView(DeleteView):
     model = Student
     template_name = 'students/remove.html'
     success_url = reverse_lazy('students:list_view')
-    def post(self, request, *args, **kwargs):
-        qs = super().get_queryset()
-        student = qs.get(id=kwargs['pk'])
-        text = "Info on {} {} has been successfully deleted.".format(student.name, student.surname)
-        messages.add_message(request, messages.SUCCESS ,text)
-        return super(StudentsDeleteView,self).post(request, *args, **kwargs)
 
-class StudentsCreateView(generic.CreateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] =  "Student suppression"
+        text = "Info on {} {} has been successfully deleted.".format(self.object.name, self.object.surname)
+        messages.success(self.request, text)
+        return context
+
+
+class StudentCreateView(CreateView):
     model = Student
     form_class = StudentModelForm
     template_name = 'students/add.html'
@@ -39,6 +42,11 @@ class StudentsCreateView(generic.CreateView):
         text = "Student {} {} has been successfully added.".format(form.cleaned_data['name'], form.cleaned_data['surname'])
         messages.add_message(self.request, messages.SUCCESS, text)
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] =  "Student registration"
+        return context
 
 
 #
@@ -66,12 +74,12 @@ def create(request):
 #     return render(request, 'students/list.html', context)
 
 
-class StudentsDetailView(generic.DetailView):
+class StudentDetailView(DetailView):
     model = Student
     template_name = 'students/detail.html'
 
 
-class StudentListView(generic.ListView):
+class  StudentListView(ListView):
     model = Student
     template_name = 'students/list.html'
 
