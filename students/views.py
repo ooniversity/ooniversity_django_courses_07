@@ -8,7 +8,7 @@ from django.views.generic import ListView, UpdateView, DeleteView, CreateView, D
 class StudentUpdateView(UpdateView):
     model = Student
     form_class = StudentModelForm
-    template_name = 'students/edit.html'
+    # template_name = 'students/edit.html'
     success_url = reverse_lazy('students:list_view')
 
     def get_context_data(self, **kwargs):
@@ -21,7 +21,7 @@ class StudentUpdateView(UpdateView):
 
 class StudentDeleteView(DeleteView):
     model = Student
-    template_name = 'students/remove.html'
+    # template_name = 'students/remove.html'
     success_url = reverse_lazy('students:list_view')
 
     def get_context_data(self, **kwargs):
@@ -35,7 +35,7 @@ class StudentDeleteView(DeleteView):
 class StudentCreateView(CreateView):
     model = Student
     form_class = StudentModelForm
-    template_name = 'students/add.html'
+    # template_name = 'students/add.html'
     success_url = reverse_lazy('students:list_view')
 
     def form_valid(self, form):
@@ -50,18 +50,18 @@ class StudentCreateView(CreateView):
 
 
 #
-def create(request):
-    if request.method == 'POST':
-        form = StudentModelForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            form.save()
-            text = "Student {} {} has been successfully added.".format(data['name'], data['surname'])
-            messages.success(request, text)
-            return redirect('/students/')
-    else:
-        form = StudentModelForm()
-        return render(request, 'students/add.html', {'form': form})
+# def create(request):
+#     if request.method == 'POST':
+#         form = StudentModelForm(request.POST)
+#         if form.is_valid():
+#             data = form.cleaned_data
+#             form.save()
+#             text = "Student {} {} has been successfully added.".format(data['name'], data['surname'])
+#             messages.success(request, text)
+#             return redirect('/students/')
+#     else:
+#         form = StudentModelForm()
+#         return render(request, 'students/add.html', {'form': form})
 
 
 # def list_view(request):
@@ -81,7 +81,7 @@ class StudentDetailView(DetailView):
 
 class  StudentListView(ListView):
     model = Student
-    template_name = 'students/list.html'
+    # template_name = 'students/list.html'
 
     def get_queryset(self):
         qs = super().get_queryset()
