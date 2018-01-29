@@ -1,15 +1,17 @@
 from django.shortcuts import render, redirect
-from .models import Student, Course
+from .models import Student
 from .forms import StudentModelForm
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
 
 class StudentUpdateView(UpdateView):
     model = Student
     form_class = StudentModelForm
     template_name = 'students/edit.html'
-    success_url = reverse_lazy('students:list')
+    success_url = reverse_lazy('students:list_view')
 
     def form_valid(self, form):
         text = "Info on the student has been successfully changed."
@@ -26,7 +28,7 @@ class StudentUpdateView(UpdateView):
 class StudentDeleteView(DeleteView):
     model = Student
     template_name = 'students/remove.html'
-    success_url = reverse_lazy('students:list')
+    success_url = reverse_lazy('students:list_view')
 
     def delete(self, request, *args, **kwargs):
 
@@ -44,19 +46,17 @@ class StudentCreateView(CreateView):
     model = Student
     form_class = StudentModelForm
     template_name = 'students/add.html'
-    success_url = reverse_lazy('students:list')
+    success_url = reverse_lazy('students:list_view')
 
     def form_valid(self, form):
         text = "Student {} {} has been successfully added.".format(form.cleaned_data['name'], form.cleaned_data['surname'])
-        messages.add_message(self.request, messages.SUCCESS, text)
+        messages.success(self.request, text)
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] =  "Student registration"
         return context
-
-
 #
 # def create(request):
 #     if request.method == 'POST':
@@ -96,9 +96,4 @@ class  StudentListView(ListView):
         course_id = self.request.GET.get('course_id', None)
         if course_id:
             return qs.filter(courses__id=course_id)
-        else:
-            return qs
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+        return qs
