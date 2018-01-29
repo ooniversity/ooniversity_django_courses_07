@@ -37,8 +37,8 @@ def edit(request, pk):
             course = form.save()
             text = "The changes have been saved."
             messages.success(request, text)
-            redirect_url = '/courses/{}/'.format(pk)
-            return redirect(redirect_url)
+            # redirect_url = '/courses/{}/'.format(pk)
+            return redirect('courses:edit',pk)
     else:
         form = CourseModelForm(instance=course)
     return render(request, 'courses/edit.html', {'form': form})
