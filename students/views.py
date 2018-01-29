@@ -8,35 +8,42 @@ from django.views.generic import ListView, UpdateView, DeleteView, CreateView, D
 class StudentUpdateView(UpdateView):
     model = Student
     form_class = StudentModelForm
-    # template_name = 'students/edit.html'
-    success_url = reverse_lazy('students:list_view')
+    template_name = 'students/edit.html'
+    success_url = reverse_lazy('students:list')
+
+    def form_valid(self, form):
+        text = "Info on the student has been successfully changed."
+        messages.success(self.request, text)
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = "Student info update"
-        text = "Info on the student has been successfully changed."
-        messages.success(self.request, text)
         return context
+
 
 
 class StudentDeleteView(DeleteView):
     model = Student
-    # template_name = 'students/remove.html'
-    success_url = reverse_lazy('students:list_view')
+    template_name = 'students/remove.html'
+    success_url = reverse_lazy('students:list')
+
+    def delete(self, request, *args, **kwargs):
+        text = "Info on {} {} has been successfully deleted.".format(self.object.name, self.object.surname)
+        messages.success(self.request, text)
+        return super().delete( request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] =  "Student suppression"
-        text = "Info on {} {} has been successfully deleted.".format(self.object.name, self.object.surname)
-        messages.success(self.request, text)
         return context
 
 
 class StudentCreateView(CreateView):
     model = Student
     form_class = StudentModelForm
-    # template_name = 'students/add.html'
-    success_url = reverse_lazy('students:list_view')
+    template_name = 'students/add.html'
+    success_url = reverse_lazy('students:list')
 
     def form_valid(self, form):
         text = "Student {} {} has been successfully added.".format(form.cleaned_data['name'], form.cleaned_data['surname'])
@@ -64,7 +71,7 @@ class StudentCreateView(CreateView):
 #         return render(request, 'students/add.html', {'form': form})
 
 
-# def list_view(request):
+# def list(request):
 #     if request.method == 'GET':
 #         course_id = request.GET.get('course_id')
 #         students = Student.objects.all().filter(courses=Course.objects.filter(id=course_id))
@@ -81,7 +88,7 @@ class StudentDetailView(DetailView):
 
 class  StudentListView(ListView):
     model = Student
-    # template_name = 'students/list.html'
+    template_name = 'students/list.html'
 
     def get_queryset(self):
         qs = super().get_queryset()
