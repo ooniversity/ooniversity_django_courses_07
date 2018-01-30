@@ -31,7 +31,6 @@ class StudentDeleteView(DeleteView):
     success_url = reverse_lazy('students:list_view')
 
     def delete(self, request, *args, **kwargs):
-
         return super().delete( request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
