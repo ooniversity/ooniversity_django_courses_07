@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from quadratic.views import quadratic_results
 from . import views
+from feedbacks.views import FeedbackView
 
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
@@ -30,4 +31,6 @@ urlpatterns = [
 
                   url(r'^$', views.index, name='index'),
                   url(r'^contact/$', views.contact, name='contact'),
+                  url(r'^feedback/', FeedbackView.as_view(), name='feedback'),
+
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

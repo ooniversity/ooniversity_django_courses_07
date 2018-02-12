@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.conf.global_settings import ADMINS
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -28,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = ['coaches','students','courses','quadratic', 'polls', 'django.contrib.admin', 'django.contrib.auth',
+INSTALLED_APPS = ['feedbacks','coaches','students','courses','quadratic', 'polls', 'django.contrib.admin', 'django.contrib.auth',
                   'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages',
                   'django.contrib.staticfiles',
                    ]
@@ -84,3 +86,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),
                     "C:\\Users\София\django_courses_07 #1-2\static",
                      ]
+
+
+ADMINS = [('Sofiia', 'sofi.odw@gmail.com')]
