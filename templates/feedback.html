@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+{% block title %}SuperCourses{% endblock %}
+
+
+{% block active_link_feedback %}active{% endblock %}
+
+
+{% block content %}
+{% if messages %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            {% for message in messages %}
+            <div class="alert alert-success">
+                <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="jumbotron">
+                <h3>Feedback</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="text">
+                <form method="post">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_table }}
+                    </table>
+                    <input type="submit" value="Add">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

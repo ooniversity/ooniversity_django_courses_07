@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -20,8 +20,12 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="{% block active_link_main %}{% endblock %}"><a href="{% url 'index' %}">Main</a></li>
-            <li class="{% block active_link_students %}{% endblock %}"><a href="{% block student_link %}{% url 'students:list_view' %}{% endblock student_link %}">Students</a></li>
+            <li class="{% block active_link_students %}{% endblock %}"><a
+                    href="{% block student_link %}{% url 'students:list_view' %}{% endblock student_link %}">Students</a>
+            </li>
             <li class="{% block active_link_contact %}{% endblock %}"><a href="{% url 'contact' %}">Contacts</a></li>
+            <li class="{% block active_link_feedback %}{% endblock %}"><a href="{% url 'feedback' %}">Feedback</a></li>
+
         </ul>
     </div>
 </nav>
