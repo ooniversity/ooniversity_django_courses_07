@@ -53,7 +53,7 @@
                     <th>Skype</th>
                     <th>Course</th>
                     <th></th>
-                    {% for student in student_list %}
+                    {% for student in object_list %}
                     <tr>
                         <td>{{student.id}}</td>
                         <td><a href="{% url 'students:detail' student.id %}">{{ student.name}} {{ student.surname}}</a>
@@ -76,40 +76,69 @@
                     </tbody>
                 </table>
             </div>
+            {% if is_paginated %}
+            <div class="pagination">
+                <ul class="pagination">
+                    <!--<span class="step-links">-->
+                    {% if page_obj.has_previous %}
+                    <li>
+                        <a href="?{% if course_id %}course_id={{ course_id }}&{% endif %}page={{ page_obj.previous_page_number }}">&lt;&lt;
+                            previous</a></li>
+                    {% endif %}
+
+                    {% for i in page_obj.paginator.page_range %}
+                    {% if i == page_obj.number %}
+                    <li class="active"><a href="#" class="disabled">{{ i }}</a></li>
+                    {% else %}
+                    <li><a href="?{% if course_id %}course_id={{ course_id }}&{% endif %}page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <li>
+                        <a href="?{% if course_id %}course_id={{ course_id }}&{% endif %}page={{ page_obj.next_page_number }}">next
+                            &gt;&gt;</a></li>
+                    {% endif %}
+                    <!--</span>-->
+                </ul>
+            </div>
+            {% endif %}
+
         </div>
     </div>
 </div>
-{% if is_paginated %}
-<ul class="pagination">
-    {% if page_obj.has_previous %}
-    {% if course_id %}
-    <li><a href="?course_id={{ course_id }}&page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>
-    {% else %}
-    <li><a href="?page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>
-    {% endif %}
-    {% endif %}
+<!--{% if is_paginated %}-->
+<!--<ul class="pagination">-->
+<!--{% if page_obj.has_previous %}-->
+<!--{% if course_id %}-->
+<!--<li><a href="?course_id={{ course_id }}&page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>-->
+<!--{% else %}-->
+<!--<li><a href="?page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>-->
+<!--{% endif %}-->
+<!--{% endif %}-->
 
-    {% for i in paginator.page_range %}
-    {% if page_obj.number == i %}
-    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-    {% else %}
-    {% if course_id %}
-    <li><a href="?course_id={{ course_id }}&page={{ i }}">{{ i }}</a></li>
-    {% else %}
-    <li><a href="?page={{ i }}">{{ i }}</a></li>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
+<!--{% for i in paginator.page_range %}-->
+<!--{% if page_obj.number == i %}-->
+<!--<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>-->
+<!--{% else %}-->
+<!--{% if course_id %}-->
+<!--<li><a href="?course_id={{ course_id }}&page={{ i }}">{{ i }}</a></li>-->
+<!--{% else %}-->
+<!--<li><a href="?page={{ i }}">{{ i }}</a></li>-->
+<!--{% endif %}-->
+<!--{% endif %}-->
+<!--{% endfor %}-->
 
-    {% if page_obj.has_next %}
-    {% if course_id %}
-    <li><a href="?course_id={{ course_id }}&page={{ page_obj.next_page_number }}">&raquo; next</a></li>
-    {% else %}
-    <li><a href="?page={{ page_obj.next_page_number }}">&raquo; next</a></li>
-    {% endif %}
-    {% endif %}
-</ul>
+<!--{% if page_obj.has_next %}-->
+<!--{% if course_id %}-->
+<!--<li><a href="?course_id={{ course_id }}&page={{ page_obj.next_page_number }}">&raquo; next</a></li>-->
+<!--{% else %}-->
+<!--<li><a href="?page={{ page_obj.next_page_number }}">&raquo; next</a></li>-->
+<!--{% endif %}-->
+<!--{% endif %}-->
+<!--</ul>-->
 
-{% endif %}
+<!--{% endif %}-->
+
 
 {% endblock content %}

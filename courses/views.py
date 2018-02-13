@@ -62,6 +62,7 @@ def add(request):
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/detail.html'
+    context_object_name = 'course'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -89,12 +90,16 @@ class CourseCreateView(CreateView):
 class CourseUpdateView(UpdateView):
     model = Course
     template_name = 'courses/edit.html'
-    success_url = reverse_lazy('courses:edit')
-    form_class = CourseModelForm
-
+    # success_url = reverse_lazy('courses:edit')
+    # form_class = CourseModelForm
+    context_object_name = 'item'
+    fields = '__all__'
     # def form_valid(self, form):
     #
     #     return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('courses:edit')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

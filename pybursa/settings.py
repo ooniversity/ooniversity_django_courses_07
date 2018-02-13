@@ -84,8 +84,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),
-                    "C:\\Users\София\django_courses_07 #1-2\static",
-                     ]
+    'static/css',
+    'static/js',
+    'static/fonts',
+    'static/css/bootstrap',
+                    ]
 
 
 ADMINS = [('Sofiia', 'sofi.odw@gmail.com')]

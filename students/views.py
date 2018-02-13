@@ -92,7 +92,7 @@ class StudentDetailView(DetailView):
 
 class StudentListView(ListView):
     model = Student
-    template_name = 'students/list.html'
+    # template_name = 'students/list.html'
     paginate_by = 2
 
     def get_context_data(self, **kwargs):
