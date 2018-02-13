@@ -82,21 +82,34 @@
 {% if is_paginated %}
 <ul class="pagination">
     {% if page_obj.has_previous %}
+    {% if course_id %}
+    <li><a href="?course_id={{ course_id }}&page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>
+    {% else %}
     <li><a href="?page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>
+    {% endif %}
     {% endif %}
 
     {% for i in paginator.page_range %}
     {% if page_obj.number == i %}
     <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
     {% else %}
+    {% if course_id %}
+    <li><a href="?course_id={{ course_id }}&page={{ i }}">{{ i }}</a></li>
+    {% else %}
     <li><a href="?page={{ i }}">{{ i }}</a></li>
+    {% endif %}
     {% endif %}
     {% endfor %}
 
     {% if page_obj.has_next %}
+    {% if course_id %}
+    <li><a href="?course_id={{ course_id }}&page={{ page_obj.next_page_number }}">&raquo; next</a></li>
+    {% else %}
     <li><a href="?page={{ page_obj.next_page_number }}">&raquo; next</a></li>
     {% endif %}
+    {% endif %}
 </ul>
+
 {% endif %}
 
 {% endblock content %}

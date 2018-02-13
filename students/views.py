@@ -8,6 +8,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.core.paginator import Paginator
 
+
 class StudentUpdateView(UpdateView):
     model = Student
     form_class = StudentModelForm
@@ -25,20 +26,19 @@ class StudentUpdateView(UpdateView):
         return context
 
 
-
 class StudentDeleteView(DeleteView):
     model = Student
     template_name = 'students/remove.html'
     success_url = reverse_lazy('students:list_view')
 
     def delete(self, request, *args, **kwargs):
-        return super().delete( request, *args, **kwargs)
+        return super().delete(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         text = "Info on {} {} has been successfully deleted.".format(self.object.name, self.object.surname)
         messages.success(self.request, text)
         context = super().get_context_data(**kwargs)
-        context['title'] =  "Student suppression"
+        context['title'] = "Student suppression"
         return context
 
 
@@ -49,14 +49,17 @@ class StudentCreateView(CreateView):
     success_url = reverse_lazy('students:list_view')
 
     def form_valid(self, form):
-        text = "Student {} {} has been successfully added.".format(form.cleaned_data['name'], form.cleaned_data['surname'])
+        text = "Student {} {} has been successfully added.".format(form.cleaned_data['name'],
+                                                                   form.cleaned_data['surname'])
         messages.success(self.request, text)
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] =  "Student registration"
+        context['title'] = "Student registration"
         return context
+
+
 #
 # def create(request):
 #     if request.method == 'POST':
@@ -87,11 +90,15 @@ class StudentDetailView(DetailView):
     template_name = 'students/detail.html'
 
 
-class  StudentListView(ListView):
+class StudentListView(ListView):
     model = Student
     template_name = 'students/list.html'
     paginate_by = 2
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['course_id'] = self.request.GET.get('course_id', None)
+        return context
 
     def get_queryset(self):
         qs = super().get_queryset()
