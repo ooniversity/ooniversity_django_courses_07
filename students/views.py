@@ -83,11 +83,17 @@ class StudentCreateView(CreateView):
 #         students = Student.objects.all()
 #     context = {'student_list': students, }
 #     return render(request, 'students/list.html', context)
-
+import logging
+logger = logging.getLogger(__name__)
 
 class StudentDetailView(DetailView):
     model = Student
     template_name = 'students/detail.html'
+
+    logger.debug("Students detail view has been debugged!")
+    logger.info("Logger of students detail view informs you!")
+    logger.warning("Logger of students detail view warns you!" )
+    logger.error("Students detail view went wrong!")
 
 
 class StudentListView(ListView):
