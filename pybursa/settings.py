@@ -44,10 +44,10 @@ MIDDLEWARE = ['django.middleware.security.SecurityMiddleware', 'django.contrib.s
 ROOT_URLCONF = 'pybursa.urls'
 
 TEMPLATES = [{'BACKEND': 'django.template.backends.django.DjangoTemplates',
-              'DIRS': [os.path.join(BASE_DIR, 'templates'), 'C:\\Users\София\django_courses_07 #1-2\\templates',
-                       'C:\\Users\София\django_courses_07 #1-2\quadratic\\templates', ],
-              'APP_DIRS': True, 'OPTIONS': {
-        'context_processors': ['django.template.context_processors.debug', 'django.template.context_processors.request',
+              'DIRS': [ os.path.join(BASE_DIR, 'templates') ],
+              'APP_DIRS': True,
+              'OPTIONS': {
+                    'context_processors': ['django.template.context_processors.debug', 'django.template.context_processors.request',
                                'django.contrib.auth.context_processors.auth',
                                'django.contrib.messages.context_processors.messages', ], }, }, ]
 
