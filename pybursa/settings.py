@@ -92,3 +92,40 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),
 
 
 ADMINS = [('Sofiia', 'sofi.odw@gmail.com')]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'courses_file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR,'courses_logger.log'),
+            'formatter': 'simple'
+        },
+        'students_file': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR,'students_logger.log'),
+            'formatter': 'verbose'
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'loggers': {
+        'courses': {
+            'handlers': ['courses_file'],
+            'level': 'DEBUG',
+        },
+        'students': {
+            'handlers': ['students_file'],
+            'level': 'WARNING',
+        },
+    },
+}

@@ -7,6 +7,8 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
+import logging
+
 
 def add_lesson(request, pk):
     if request.method == 'POST':
@@ -59,7 +61,14 @@ def add(request):
         form = CourseModelForm()
     return render(request, 'courses/add.html', {'form': form})
 
+logger = logging.getLogger(__name__)
+
 class CourseDetailView(DetailView):
+    logger.debug("Courses detail view has been debugged!")
+    logger.info("Logger of courses detail view informs you!")
+    logger.warning("Logger of courses detail view warns you!" )
+    logger.error("Courses detail view went wrong!")
+
     model = Course
     template_name = 'courses/detail.html'
     context_object_name = 'course'
