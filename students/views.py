@@ -90,10 +90,13 @@ class StudentDetailView(DetailView):
     model = Student
     template_name = 'students/detail.html'
 
-    logger.debug("Students detail view has been debugged!")
-    logger.info("Logger of students detail view informs you!")
-    logger.warning("Logger of students detail view warns you!" )
-    logger.error("Students detail view went wrong!")
+    def get_context_data(self, **kwargs):
+        logger.debug("Students detail view has been debugged!")
+        logger.info("Logger of students detail view informs you!")
+        logger.warning("Logger of students detail view warns you!")
+        logger.error("Students detail view went wrong!")
+        return super().get_context_data(**kwargs)
+
 
 
 class StudentListView(ListView):
