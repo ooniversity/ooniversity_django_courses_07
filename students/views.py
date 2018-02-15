@@ -114,4 +114,6 @@ class StudentListView(ListView):
         course_id = self.request.GET.get('course_id', None)
         if course_id:
             return qs.filter(courses__id=course_id)
+        if qs.count()==0:
+            messages.info(self.request, 'No students are available.')
         return qs
