@@ -46,10 +46,16 @@
                     </tr>
                     <tr>
                         <th>Courses</th>
+                        {% if student.courses.all %}
                         <td> {% for course in student.courses.all %}
                             <p><a href="{% url 'courses:detail' course.id %}">{{course.name}}</a></p>
                             {% endfor %}
                         </td>
+                        {% else %}
+                        <td>
+                            <p>Student doesn't have courses</p>
+                        </td>
+                        {% endif %}
                     </tr>
 
                     </tbody>

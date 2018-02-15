@@ -38,10 +38,14 @@
     </div>
 </div>
 
+
+{% if coach_list %}
 {% include "include\contact_include.html" with position='Coach' person_list=coach_list %}
+{% endif %}
 
+{% if assistant_list %}
 {% include "include\contact_include.html" with position='Assistant' person_list=assistant_list %}
-
+{% endif %}
 
 <div class="row">
     <div class="col-lg-12">
@@ -53,6 +57,7 @@
                     <th>#</th>
                     <th>Subject</th>
                     <th>Description</th>
+                    {% if lesson_list %}
                     {% for lesson in lesson_list %}
                     <tr>
                         <td>{{ lesson.id }}</td>
@@ -60,6 +65,7 @@
                         <td>{{lesson.description}}</td>
                     </tr>
                     {% endfor %}
+                    {% endif %}
                     </tbody>
                 </table>
             </div>

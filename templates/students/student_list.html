@@ -13,7 +13,6 @@
         <div class="container">
             <div class="text">
                 <h1>Our students</h1>
-
             </div>
             <a href="{% url 'students:create' %}" class="btn btn-info" role="button">Add new student</a>
         </div>
@@ -53,6 +52,7 @@
                     <th>Skype</th>
                     <th>Course</th>
                     <th></th>
+                    {% if object_list %}
                     {% for student in object_list %}
                     <tr>
                         <td>{{student.id}}</td>
@@ -73,10 +73,11 @@
                     </tr>
 
                     {% endfor %}
+                    {% endif %}
                     </tbody>
                 </table>
             </div>
-            {% if is_paginated %}
+            {% if is_paginated and object_list %}
             <div class="pagination">
                 <ul class="pagination">
                     <!--<span class="step-links">-->
