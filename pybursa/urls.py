@@ -34,3 +34,6 @@ urlpatterns = [
                   url(r'^feedback/', FeedbackView.as_view(), name='feedback'),
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+handler404 = 'django.views.defaults.page_not_found'
+
+handler500 = 'django.views.defaults.server_error'

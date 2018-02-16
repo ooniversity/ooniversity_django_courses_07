@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+vmog^q7%5nqh@3m=p8^5*@hdi$)2-4@36)#j(1*t)ec3tju_*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False #True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 # Application definition
 
@@ -83,12 +83,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),
-    'static/css',
-    'static/js',
-    'static/fonts',
-    'static/css/bootstrap',
-                    ]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 ADMINS = [('Sofiia', 'sofi.odw@gmail.com')]
