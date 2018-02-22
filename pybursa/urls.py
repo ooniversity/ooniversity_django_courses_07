@@ -1,6 +1,7 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from pybursa.views import index, contact, student_detail, student_list, quadratic_results
+from pybursa.views import index, contact, student_detail, student_list
+from quadratic.views import quadratic_results
 
 urlpatterns = [
     url(r'^$', index, name = 'index'),
