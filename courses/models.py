@@ -3,7 +3,7 @@ from django.db import models
 class Course(models.Model):
     name = models.CharField('Название', max_length=64)
     short_description = models.CharField('Краткое описание', max_length=256)
-    description = models.CharField('Подробное описание', max_length=512)
+    description = models.TextField('Подробное описание')
     
     def __str__(self):
         return(self.name)
