@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% load static %}
     <link rel="icon" href="{% static 'images/favicon.png' %}">
-    <title>RacBursa Main</title>    
+    <title>Contact us</title>
+
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 
@@ -19,14 +20,14 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'index' %}">Main</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'student_list' %}">Students</a>
+            <a class="nav-link" href="{% url 'students:list_view' %}">Students</a>
           </li>          
         </ul>
       </div>
@@ -35,11 +36,14 @@
     <main role="main" class="container">
 
       <div class="starter-template">
-        <h1 class="bold reddish"><b>Program</b></h1>
-        <p>Курс RacBursa по обучению программированию на Python & Django</p>
-
-        <h2 class="bold greenish"><b>Description</b></h2>
-        <p class="lead">На этом курсе вы узнаете базовые составляющие языка программирования Python и самого распространенного framework'а Django.</p>
+        <h1>Курс ведет опытный специалист и разработчик программных продуктов с многолетним опытом</h1>
+        <h5><b>Director</b></h5>
+        <p>Name, Skype, Phone, Email</p>
+        <h5><b>Manager</b></h5>
+        <p>Name, Skype, Phone, Email</p>
+        <h5><b>Founder</b></h5>
+        <p>Name, Skype, Phone, Email</p>
+        <p class="lead">Для связи с нами вы можете воспользоваться Email: raccoon@gmail.com  или по Telegram: @Raccoon</p>
       </div>
 
     </main>
