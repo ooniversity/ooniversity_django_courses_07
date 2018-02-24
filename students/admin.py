@@ -2,7 +2,7 @@ from django.contrib import admin
 from students.models import Student
 
 def fullname(obj):
-    fullname.short_description = 'Full name'
+    obj.short_description = 'Full name'
     return ("%s %s" % (obj.name, obj.surname))
 
 class StudentAdmin(admin.ModelAdmin):
