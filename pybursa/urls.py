@@ -13,3 +13,5 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^courses/', include('courses.urls')),
     url(r'^students/', include('students.urls')),]
+
+admin.site.site_header = 'PyBursa Administration'
