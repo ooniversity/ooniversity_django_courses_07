@@ -27,7 +27,7 @@
             <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'student_list' %}">Students</a>
+            <a class="nav-link" href="{% url 'students:list_view' %}">Students</a>
           </li>          
         </ul>
       </div>
@@ -36,51 +36,39 @@
     <main role="main" class="container">
 
       <div class="starter-template">
-        <h1 class="bold reddish"><b>Persianova Olena</b></h1>
+        <h1 class="bold reddish"><b>{{ qscurrent.surname }} {{ qscurrent.name }}</b></h1>
         <p>Students card</p>
         <div class="container">
             <div class="row">
-                <div class="col">Surname</div>
-                <div class="col">Surname</div>
+                <div class="col border">Дата рождения</div>
+                <div class="col border"> {{ qscurrent.date_of_birth }}</div>
             </div>
             <div class="row">
-                <div class="col">Name</div>
-                <div class="col">Surname</div>
+                <div class="col border">Адрес</div>
+                <div class="col border">{{ qscurrent.address }}</div>
             </div>
             <div class="row">
-                <div class="col">Patronymic</div>
-                <div class="col">Surname</div>
+                <div class="col border">Почта</div>
+                <div class="col border">{{ qscurrent.email }}</div>
             </div>
             <div class="row">
-                <div class="col">Rating</div>
-                <div class="col">Surname</div>
+                <div class="col border">Логин Skype</div>
+                <div class="col border">{{ qscurrent.skype }}</div>
             </div>
             <div class="row">
-                <div class="col">Average Grade</div>
-                <div class="col">Surname</div>
+                <div class="col border">Телефон</div>
+                <div class="col border">{{ qscurrent.phone }}</div>
             </div>
             <div class="row">
-                <div class="col">Package</div>
-                <div class="col">Surname</div>
-            </div>
-            <div class="row">
-                <div class="col">Birth Date</div>
-                <div class="col">Surname</div>
-            </div>
-            <div class="row">
-                <div class="col">Address</div>
-                <div class="col">Surname</div>
-            </div>
-            <div class="row">
-                <div class="col">E-mail</div>
-                <div class="col">Surname</div>
-            </div>
-            <div class="row">
-                <div class="col">Skype</div>
-                <div class="col">Surname</div>
+                <div class="col border">Курсы</div>
+                <div class="col border">
+                    {% for course_stud in qscurrent.courses.all %}
+                        <a href="{% url 'courses:detail' course_stud.id %}">{{ course_stud.name }}<br /></a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-        <p>Perfomance</p>
+<!--        <p>Perfomance</p>
         <div class="container">
             <div class="row">
                 <div class="col">Course</div>
@@ -100,7 +88,7 @@
                 <div class="col">Problem Task №1</div>
                 <div class="col">100%</div>
             </div>
-        </div>
+        </div> -->
       </div>
 
     </main>

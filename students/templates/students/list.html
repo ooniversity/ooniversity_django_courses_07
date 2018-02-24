@@ -27,7 +27,7 @@
             <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'student_list' %}">Students</a>
+            <a class="nav-link" href="{% url 'students:list_view' %}">Students</a>
           </li>          
         </ul>
       </div>
@@ -40,40 +40,25 @@
         <p>Ниже представлен список студентов</p>
         <div class="container">
             <div class="row">
-                <div class="col">No</div>
-                <div class="col">Surname</div>
-                <div class="col">Name</div>
-                <div class="col">Address</div>
-                <div class="col">Skype</div>
+                <div class="col border">#</div>
+                <div class="col border">Фамилия Имя</div>
+                <div class="col border">Адрес</div>
+                <div class="col border">Skype</div>
+                <div class="col border">Курсы</div>
             </div>
+            {% for qs_stud in qsstud_list %}
             <div class="row">
-                <div class="col"><a href="{% url 'student_detail' %}">1</a></div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
+                <div class="col border">{{ qs_stud.id }}</div>
+                <div class="col border"><a href="{% url 'students:detail' qs_stud.id %}">{{ qs_stud.surname }} {{ qs_stud.name }}</a></div>
+                <div class="col border">{{ qs_stud.address }}</div>
+                <div class="col border">{{ qs_stud.skype }}</div>
+                <div class="col border">
+                    {% for course_stud in qs_stud.courses.all %}
+                        <a href="{% url 'courses:detail' course_stud.id %}">{{ course_stud.name }}<br /></a>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="row">
-                <div class="col">2</div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
-            </div>
-            <div class="row">
-                <div class="col">4</div>
-                <div class="col">3</div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
-            </div>
-            <div class="row">
-                <div class="col">5</div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
-                <div class="col">.col-5</div>
-            </div>
+            {% endfor %}
         </div>
       </div>
 
