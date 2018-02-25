@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <title>Persianova Olena</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/starter-template.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">Main</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'students:list_view' %}">Students</a>
+          </li>          
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+
+      <div class="starter-template">
+        <h1 class="bold reddish"><b>{{ coach_curr.user.first_name }} {{ coach_curr.user.last_name }}</b></h1>
+        <p>Coaches card</p>
+        <div class="container">
+            <div class="row">
+                <div class="col border">Дата рождения</div>
+                <div class="col border"> {{ coach_curr.date_of_birth }}</div>
+            </div>
+            <div class="row">
+                <div class="col border">Адрес</div>
+                <div class="col border">{{ coach_curr.address }}</div>
+            </div>
+            <div class="row">
+                <div class="col border">Почта</div>
+                <div class="col border">{{ coach_curr.user.email }}</div>
+            </div>
+            <div class="row">
+                <div class="col border">Логин Skype</div>
+                <div class="col border">{{ coach_curr.skype }}</div>
+            </div>
+            <div class="row">
+                <div class="col border">Телефон</div>
+                <div class="col border">{{ coach_curr.phone }}</div>
+            </div>
+            <div class="row">
+                <div class="col border">Курсы учитель</div>
+                <div class="col border">
+                    {% if coach_curr.coach_courses.all %}
+                        {% for i in coach_curr.coach_courses.all %}
+                            <div class="border">
+                                <a href="{% url 'courses:detail' i.id %}">{{ i.name }}<br /></a>
+                                <a href="{% url 'students:list_view' %}?course_id={{ i.id }}">Студенты курса<br /></a>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        Нет курсов <br />
+                    {% endif %}
+                </div>
+             </div>
+             <div class="row">
+                <div class="col border">Курсы ассистент</div>
+                <div class="col border">
+                    {% if coach_curr.assistant_courses.all %}
+                        {% for i in coach_curr.assistant_courses.all %}
+                            <div class="border">
+                                <a href="{% url 'courses:detail' i.id %}">{{ i.name }}<br /></a>
+                                <a href="{% url 'students:list_view' %}?course_id={{ i.id }}">Студенты курса<br /></a>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        Нет курсов <br />
+                    {% endif %}            
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+  </body>
+</html>
