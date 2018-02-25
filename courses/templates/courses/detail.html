@@ -40,8 +40,26 @@
 
         <h3 class="bold greenish"><b>Description</b></h3>
         <h4 class="lead">{{ qscurrent.description }}</h4>
-        <h5>План курса</h5>
-        
+        <h4>Преподаватели</h4>
+        <div class="container border">      
+            <h5><br \>Учитель</h5>
+            {% if qscurrent.coach %}
+                <a href="{% url 'coaches:detail' qscurrent.coach.id %}">{{ coach.user.get_full_name }}</a><br \>
+                {{ coach.description }}<br \>
+            {% else %}
+                Учитель не назначен
+            {% endif %} 
+        </div>
+        <div class="container border">      
+            <h5><br \>Ассистент</h5>
+            {% if qscurrent.assistant %}
+                <a href="{% url 'coaches:detail' qscurrent.assistant.id %}">{{ assistant.user.get_full_name }}</a><br \>
+                {{ assistant.description }}<br \>
+            {% else %}
+                Ассистент не назначен
+            {% endif %} 
+        </div>        
+        <h4><br \>План курса</h4>
         <div class="container">
             <div class="row">
                 <div class="col border">#</div>
