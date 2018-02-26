@@ -7,9 +7,7 @@ class QuadraticForm(forms.Form):
     
     def clean_a(self):
         data = str(self.cleaned_data['a'])
-        if data == '':
-            raise forms.ValidationError("This field is required.")
-        elif data == '0':
+        if data == '0':
             raise forms.ValidationError("коэффициент при первом слагаемом уравнения не может быть равным нулю")
         elif len(data) >= 2:
             if data[0] == data[1] == '-' or not data.lstrip('-').isdigit():
@@ -18,18 +16,14 @@ class QuadraticForm(forms.Form):
     
     def clean_b(self):
         data = str(self.cleaned_data['b'])
-        if data == '':
-            raise forms.ValidationError("This field is required.")
-        elif len(data) >= 2:
+        if len(data) >= 2:
             if data[0] == data[1] == '-' or not data.lstrip('-').isdigit():
                 raise forms.ValidationError("коэффициент не целое число")         
         return data
 
     def clean_c(self):
         data = str(self.cleaned_data['c'])
-        if data == '':
-            raise forms.ValidationError("This field is required.")
-        elif len(data) >= 2:
+        if len(data) >= 2:
             if data[0] == data[1] == '-' or not data.lstrip('-').isdigit():
-                raise forms.ValidationError("коэффициент не целое число")          
+                raise forms.ValidationError("коэффициент не целое число")
         return data
