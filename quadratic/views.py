@@ -1,19 +1,19 @@
 from django.shortcuts import render
+from quadratic.forms import QuadraticForm
 
 def quadratic_results(request):
     
     def checkreq(abc):
         oshibka = ''
         if not abc == '':
-            good = abc
             for i in abc:
                 if not i in '-0123456789':
                     oshibka = 'коэффициент не целое число'
         else:
-            good = abc
             oshibka = 'коэффициент не определен'
-        return good, oshibka
+        return abc, oshibka
     
+    form = QuadraticForm()
     error = False
     a, errora = checkreq(request.GET['a'])    
     if a == '0':
@@ -51,6 +51,4 @@ def quadratic_results(request):
                                                                 'errorc': errorc,
                                                                 'errord': errord,
                                                                 'discr': discr,
-                                                                'a': a,
-                                                                'b': b,
-                                                                'c': c, })
+                                                                'form': form})
