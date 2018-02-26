@@ -1,16 +1,20 @@
 from django.shortcuts import render
 from quadratic.forms import QuadraticForm
 
-def quadratic_results(request):
-    a = request.GET['a']    
-    b = request.GET['b']    
-    c = request.GET['c']    
+def quadratic_results(request):    
     errord = ''
     discr = ''
     d, x1, x2 = 0, 0, 0
     
-    form = QuadraticForm(request.GET)
+    if request.GET == {}:
+        form = QuadraticForm()
+    else:
+        form = QuadraticForm(request.GET)
+    
     if form.is_valid():
+        a = request.GET['a']    
+        b = request.GET['b']    
+        c = request.GET['c']
         d = int(b)**2 - 4*int(a)*int(c)
         discr = 'Дискриминант: %d' % d
         
