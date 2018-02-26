@@ -1,0 +1,9 @@
+<div class="container border">      
+    <h5><br \>{{ block_title }}</h5>
+    {% if check %}
+        <a href="{% url 'coaches:detail' qscurrent.coach.id %}">{{ instr.user.get_full_name }}</a><br \>
+        {{ instr.description }}<br \>
+    {% else %}
+        Учитель не назначен
+    {% endif %} 
+</div>
