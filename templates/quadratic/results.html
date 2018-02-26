@@ -2,15 +2,11 @@
 <html>
     <body>
         Квадратное уравнение a*x*x + b*x + c = 0
-        
-        <ul style="list-style-type:disc">
-          <li>a = {{ a }}</li>
-          {{ errora }}
-          <li>b = {{ b }}</li>
-          {{ errorb }}
-          <li>c = {{ c }}</li>
-          {{ errorc }}
-        </ul>
+        <form method='get'>
+            <br /><li type='disc'>{{ errora }}</li>
+            {{ form.as_p }}
+            <input type=submit value='решить' />
+        </form>        
         <p>{{ discr }}</p>
         <p>{{ errord }}</p>
     </body>
