@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}RacBursa Main{% endblock %}
+
+
+{% block nav_baractive_index %}active{% endblock %}
+
+
+{% block content %}
+    <div class="starter-template">
+    
+        <h1 class="bold reddish"><b>Program</b></h1>
+        <p>Курс RacBursa по обучению программированию на Python & Django</p>
+
+        <h2 class="bold greenish"><b>Description</b></h2>
+        <p class="lead">На этом курсе вы узнаете базовые составляющие языка программирования Python и самого распространенного framework'а Django.</p>
+        <h2>Выбирай на каком курсе ты хочешь учиться!</h2>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col border">Курс</div>
+                <div class="col border">Описание</div>
+            </div>
+            {% for qs in qs_list %}
+            <div class="row"> 
+                <div class="col border"><a href="{% url 'courses:detail' qs.id %}">{{ qs.name|upper }}</a></div>
+                <div class="col border">{{ qs.short_description|title }}</div>
+            </div>
+            {% endfor %}
+{% endblock %}

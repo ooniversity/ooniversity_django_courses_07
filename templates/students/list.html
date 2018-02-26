@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Student list{% endblock %}
+
+
+{% block nav_baractive_students %}active{% endblock %}
+
+
+{% block content %}
+    <div class="starter-template">
+        <h1 class="bold reddish"><b>Студенты курса RacBursa</b></h1>
+        <p>Ниже представлен список студентов</p>
+        <div class="container">
+            <div class="row">
+                <div class="col border">#</div>
+                <div class="col border">Фамилия Имя</div>
+                <div class="col border">Адрес</div>
+                <div class="col border">Skype</div>
+                <div class="col border">Курсы</div>
+            </div>
+            {% for qs_stud in qsstud_list %}
+            <div class="row">
+                <div class="col border">{{ qs_stud.id }}</div>
+                <div class="col border"><a href="{% url 'students:detail' qs_stud.id %}">{{ qs_stud.surname }} {{ qs_stud.name }}</a></div>
+                <div class="col border">{{ qs_stud.address }}</div>
+                <div class="col border">{{ qs_stud.skype }}</div>
+                <div class="col border">
+                    {% for course_stud in qs_stud.courses.all %}
+                        <a href="{% url 'courses:detail' course_stud.id %}">{{ course_stud.name }}<br /></a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
