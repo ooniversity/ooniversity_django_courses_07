@@ -22,9 +22,9 @@
         
         <h4>Преподаватели</h4>
         
-        {% include 'include/inc_courses_prepod.html' with block_title='Учитель' instr=coach check=qscurrent.coach %}
+        {% include 'include/courses_prepod_include.html' with block_title='Учитель' instr=coach check=qscurrent.coach %}
         
-        {% include 'include/inc_courses_prepod.html' with block_title='Ассистент' instr=assistant check=qscurrent.assistant %}  
+        {% include 'include/courses_prepod_include.html' with block_title='Ассистент' instr=assistant check=qscurrent.assistant %}  
             
         <h4><br \>План курса</h4>
         <div class="container">
