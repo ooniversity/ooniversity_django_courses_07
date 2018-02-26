@@ -2,53 +2,28 @@ from django.shortcuts import render
 from quadratic.forms import QuadraticForm
 
 def quadratic_results(request):
-    
-    def checkreq(abc):
-        oshibka = ''
-        if not abc == '':
-            for i in abc:
-                if not i in '-0123456789':
-                    oshibka = 'коэффициент не целое число'
-        else:
-            oshibka = 'коэффициент не определен'
-        return abc, oshibka
-    
-    form = QuadraticForm()
-    error = False
-    a, errora = checkreq(request.GET['a'])    
-    if a == '0':
-        errora = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
-        
-    b, errorb = checkreq(request.GET['b'])
-    c, errorc = checkreq(request.GET['c'])
+    a = request.GET['a']    
+    b = request.GET['b']    
+    c = request.GET['c']    
     errord = ''
     discr = ''
-    d = 0
-    x1 = 0
-    x2 = 0 
+    d, x1, x2 = 0, 0, 0
     
-    if not errora == '' or not errorb == '' or not errorc == '':
-        error = True
-    
-    if not error:
+    form = QuadraticForm(request.GET)
+    if form.is_valid():
         d = int(b)**2 - 4*int(a)*int(c)
         discr = 'Дискриминант: %d' % d
         
         if d >= 0:
             x1 = round((-int(b) + (d**0.5)) / 2*int(a), 1)
             x2 = round((-int(b) - (d**0.5)) / 2*int(a), 1)
-    
+
         if d < 0:
             errord = 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
         elif d == 0:
             errord = 'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %s' % x1
         elif d > 0:
-            errord = 'Квадратное уравнение имеет два действительных корня: x1 = %s, x2 = %s' % (x1, x2)
-            
-    return render(request, 'quadratic/results.html', context = {
-                                                                'errora': errora,
-                                                                'errorb': errorb,
-                                                                'errorc': errorc,
-                                                                'errord': errord,
+            errord = 'Квадратное уравнение имеет два действительных корня: x1 = %s, x2 = %s' % (x1, x2)           
+    return render(request, 'quadratic/results.html', context = {'errord': errord,
                                                                 'discr': discr,
                                                                 'form': form})
