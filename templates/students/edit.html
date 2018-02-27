@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Student edit{% endblock %}
+
+
+{% block nav_baractive_students %}active{% endblock %}
+
+
+{% block content %}
+    {% if messages %}
+    <div class="alert alert-success" role="alert">
+        <ul class="messages ">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}   
+    <div class="starter-template text-left">
+        <h1 class="bold reddish"><b>Изменение данных студента</b></h1>
+        <div class="container text-left">
+            <form method="post">
+                <b>{{ form.as_p }}</b>    
+            <input type="submit" value="Изменить" />
+            </form
+        </div>
+    </div>
+{% endblock %}

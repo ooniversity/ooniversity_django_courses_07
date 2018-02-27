@@ -5,8 +5,16 @@
         <form method='get'>
             {{ form.as_p }}
             <input type=submit value='решить' />
-        </form>        
-        <p>{{ discr }}</p>
-        <p>{{ errord }}</p>
+        </form>
+        {% if calc_data.d %}
+            <p>Дискриминант: {{ calc_data.d }}</p>
+            {% if calc_data.d < 0 %}
+                <p>Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.</p>
+            {% elif calc_data.d == 0 %}
+                <p>Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {{ calc_data.x1|floatformat }}</p>
+            {% elif calc_data.d > 0 %}
+                <p>Квадратное уравнение имеет два действительных корня: x1 = {{ calc_data.x1|floatformat }}, x2 = {{ calc_data.x2|floatformat }}</p>
+            {% endif %}
+        {% endif %}       
     </body>
 </html>

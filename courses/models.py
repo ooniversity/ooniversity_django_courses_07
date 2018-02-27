@@ -9,7 +9,7 @@ class Course(models.Model):
     assistant = models.ForeignKey(Coach, related_name='assistant_courses', null=True, blank=True)
     
     def __str__(self):
-        return(self.name)
+        return self.name
         
 class Lesson(models.Model):
     subject = models.CharField('Subject', max_length=128)
@@ -18,4 +18,4 @@ class Lesson(models.Model):
     order = models.PositiveIntegerField('Order')    
         
     def __str__(self):
-        return(self.subject)
+        return self.subject
