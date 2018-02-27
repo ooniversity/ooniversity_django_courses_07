@@ -16,17 +16,30 @@
 
         <h2 class="bold greenish"><b>Description</b></h2>
         <p class="lead">На этом курсе вы узнаете базовые составляющие языка программирования Python и самого распространенного framework'а Django.</p>
+        {% if messages %}
+        <div class="alert alert-success" role="alert">
+            <ul class="messages ">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
         <h2>Выбирай на каком курсе ты хочешь учиться!</h2>
-        
+        <a class="btn btn-primary" href="{% url 'courses:add' %}" role="button">Добавить новый курс</a>       
         <div class="container">
-            <div class="row">
+            <br /><div class="row">
                 <div class="col border">Курс</div>
                 <div class="col border">Описание</div>
+                <div class="col border">Изменить</div>
+                <div class="col border">Удалить</div>
             </div>
             {% for qs in qs_list %}
             <div class="row"> 
                 <div class="col border"><a href="{% url 'courses:detail' qs.id %}">{{ qs.name|upper }}</a></div>
                 <div class="col border">{{ qs.short_description|title }}</div>
+                <div class="col border"><a class="btn btn-primary" href="{% url 'courses:edit' qs.id %}" role="button">Изменить</a></div>
+                <div class="col border"><a class="btn btn-primary" href="{% url 'courses:remove' qs.id %}" role="button">Удалить</a></div>
             </div>
             {% endfor %}
 {% endblock %}
