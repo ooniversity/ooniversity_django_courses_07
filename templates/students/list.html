@@ -11,14 +11,26 @@
 {% block content %}
     <div class="starter-template">
         <h1 class="bold reddish"><b>Студенты курса RacBursa</b></h1>
+        {% if messages %}
+        <div class="alert alert-success" role="alert">
+            <ul class="messages ">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}            
         <p>Ниже представлен список студентов</p>
+        <a class="btn btn-primary" href="{% url 'students:add' %}" role="button">Добавить нового студента</a>
         <div class="container">
-            <div class="row">
+            <br /><div class="row">
                 <div class="col border">#</div>
                 <div class="col border">Фамилия Имя</div>
                 <div class="col border">Адрес</div>
                 <div class="col border">Skype</div>
                 <div class="col border">Курсы</div>
+                <div class="col border">Изменить</div>
+                <div class="col border">Удалить</div>
             </div>
             {% for qs_stud in qsstud_list %}
             <div class="row">
@@ -31,6 +43,8 @@
                         <a href="{% url 'courses:detail' course_stud.id %}">{{ course_stud.name }}<br /></a>
                     {% endfor %}
                 </div>
+                <div class="col border"><a class="btn btn-primary" href="{% url 'students:edit' qs_stud.id %}" role="button">Изменить</a></div>
+                <div class="col border"><a class="btn btn-primary" href="{% url 'students:remove' qs_stud.id %}" role="button">Удалить</a></div>
             </div>
             {% endfor %}
         </div>
