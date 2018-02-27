@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Course remove{% endblock %}
+
+
+{% block nav_baractive_index %}active{% endblock %}
+
+
+{% block content %} 
+    <div class="starter-template text-left">
+        <h1 class="bold reddish"><b>Курс {{ course.name }} будет удален</b></h1>
+        <div class="container text-left">
+            <form method="post">  
+            <input type="submit" value="Удалить" />
+            </form
+        </div>
+    </div>
+{% endblock %}

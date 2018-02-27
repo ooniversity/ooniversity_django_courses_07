@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Course add{% endblock %}
+
+
+{% block nav_baractive_index %}active{% endblock %}
+
+
+{% block content %}
+    <div class="starter-template text-left">
+        <h1 class="bold reddish"><b>Создание нового курса</b></h1>
+        <div class="container text-left">
+            <form method="post">
+                <b>{{ form.as_p }}</b>    
+            <input type="submit" value="Создать" />
+            </form
+        </div>
+    </div>
+{% endblock %}

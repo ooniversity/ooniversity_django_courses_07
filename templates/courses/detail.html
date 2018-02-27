@@ -13,7 +13,15 @@
 
 {% block content %}
     <div class="starter-template">
-    
+        {% if messages %}
+        <div class="alert alert-success" role="alert">
+            <ul class="messages ">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}        
         <h1 class="bold reddish"><b>Program</b></h1>
         <h2>{{ course.name }}</h2>
 
@@ -25,7 +33,8 @@
         {% include 'include/courses_prepod_include.html' with block_title='Учитель' instr=course.coach %}
         
         {% include 'include/courses_prepod_include.html' with block_title='Ассистент' instr=course.assistant %}  
-            
+        
+        <br /><a class="btn btn-primary" href="{% url 'courses:add_lesson' course.id %}" role="button">Добавить новое занятие</a>
         <h4><br \>План курса</h4>
         <div class="container">
             <div class="row">
