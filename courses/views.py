@@ -25,7 +25,7 @@ def edit(request, pk):
     if request.method == 'POST':
         form = CourseModelForm(request.POST, instance=course)
         if form.is_valid():
-            course = form.save()
+            instance = form.save()
             mess_suc = 'The changes have been saved.'
             messages.success(request, mess_suc)
             return redirect('/courses/edit/'+pk)
