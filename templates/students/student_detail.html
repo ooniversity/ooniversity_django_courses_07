@@ -2,7 +2,7 @@
 {% load static %}
 
 
-{% block title %}{{ qscurrent.surname }} {{ qscurrent.name }}{% endblock %}
+{% block title %}{{ student.surname }} {{ student.name }}{% endblock %}
 
 
 {% block nav_baractive_students %}active{% endblock %}
@@ -10,33 +10,33 @@
 
 {% block content %}
     <div class="starter-template">
-        <h1 class="bold reddish"><b>{{ qscurrent.surname }} {{ qscurrent.name }}</b></h1>
+        <h1 class="bold reddish"><b>{{ student.surname }} {{ student.name }}</b></h1>
         <p>Students card</p>
         <div class="container">
             <div class="row">
                 <div class="col border">Дата рождения</div>
-                <div class="col border"> {{ qscurrent.date_of_birth }}</div>
+                <div class="col border"> {{ student.date_of_birth }}</div>
             </div>
             <div class="row">
                 <div class="col border">Адрес</div>
-                <div class="col border">{{ qscurrent.address }}</div>
+                <div class="col border">{{ student.address }}</div>
             </div>
             <div class="row">
                 <div class="col border">Почта</div>
-                <div class="col border">{{ qscurrent.email }}</div>
+                <div class="col border">{{ student.email }}</div>
             </div>
             <div class="row">
                 <div class="col border">Логин Skype</div>
-                <div class="col border">{{ qscurrent.skype }}</div>
+                <div class="col border">{{ student.skype }}</div>
             </div>
             <div class="row">
                 <div class="col border">Телефон</div>
-                <div class="col border">{{ qscurrent.phone }}</div>
+                <div class="col border">{{ student.phone }}</div>
             </div>
             <div class="row">
                 <div class="col border">Курсы</div>
                 <div class="col border">
-                    {% for course_stud in qscurrent.courses.all %}
+                    {% for course_stud in student.courses.all %}
                         <a href="{% url 'courses:detail' course_stud.id %}">{{ course_stud.name }}<br /></a>
                     {% endfor %}
                 </div>

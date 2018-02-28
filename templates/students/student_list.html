@@ -32,7 +32,7 @@
                 <div class="col border">Изменить</div>
                 <div class="col border">Удалить</div>
             </div>
-            {% for qs_stud in qsstud_list %}
+            {% for qs_stud in object_list %}
             <div class="row">
                 <div class="col border">{{ qs_stud.id }}</div>
                 <div class="col border"><a href="{% url 'students:detail' qs_stud.id %}">{{ qs_stud.surname }} {{ qs_stud.name }}</a></div>
