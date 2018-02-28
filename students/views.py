@@ -1,9 +1,8 @@
-from django.shortcuts import render, redirect
 from students.models import Student
-from students.forms import StudentModelForm
 from django.contrib import messages
 from django.views import generic
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 
 class StudentListView(generic.ListView):
     model = Student
@@ -18,63 +17,41 @@ class StudentListView(generic.ListView):
 class StudentDetailView(generic.DetailView):
     model = Student
 
-class StudentCreateView(generic.CreateView):
+class StudentCreateView(SuccessMessageMixin, generic.CreateView):
     model = Student
     fields = '__all__'
     success_url = reverse_lazy('students:list_view')
+    success_message = 'Student %(name)s %(surname)s has been successfully added.'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Student registration'
         return context
-    
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        mess_suc = 'Student %s %s has been successfully added.' % (form.cleaned_data['name'], form.cleaned_data['surname'])
-        messages.success(self.request, mess_suc)
-        return response
-        
-class StudentUpdateView(generic.UpdateView):
+         
+class StudentUpdateView(SuccessMessageMixin, generic.UpdateView):
     model = Student
     fields = '__all__'
-    success_url = reverse_lazy('students:edit')
+    success_message = 'Info on the student has been successfully changed.'
     
+    def get_success_url(self):
+        return reverse('students:edit', args=[self.object.id])
+        
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Student info update'
         return context
-        
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        mess_suc = 'Info on the student has been successfully changed.'
-        messages.success(self.request, mess_suc)
-        return response
 
 class StudentDeleteView(generic.DeleteView):
     model = Student
     success_url = reverse_lazy('students:list_view')
-    
+    success_message = 'Info on %s %s has been successfully deleted.'
+
+    def delete(self, request, *args, **kwargs):
+        student = Student.objects.get(id=kwargs['pk'])
+        messages.success(self.request, self.success_message % (student.name, student.surname))
+        return super(StudentDeleteView, self).delete(request, *args, **kwargs)
+ 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Student info suppression'
         return context
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        mess_suc = 'Info on %s %s has been successfully deleted.' % (student.name, student.surname)
-        messages.success(self.request, mess_suc)
-        return response
-
-def edit(request, pk):
-    student = Student.objects.get(id=pk)
-    if request.method == 'POST':
-        form = StudentModelForm(request.POST, instance=student)
-        if form.is_valid():
-            student = form.save()
-            mess_suc = 'Info on the student has been successfully changed.'
-            messages.success(request, mess_suc)
-            return redirect('/students/edit/'+pk)
-    else:
-        form = StudentModelForm(instance=student)           
-    context = {'form': form}
-    return render(request, 'students/edit.html', context)    
