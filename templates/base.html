@@ -28,6 +28,10 @@
           <li class="nav-item {% block nav_baractive_students %}{% endblock %}">
             <a class="nav-link" href="{% block student_url %}{% url 'students:list_view' %}{% endblock %}">Students</a>
           </li>          
+          <li class="nav-item {% block nav_baractive_feedback %}{% endblock %}">
+            <a class="nav-link" href="{% url 'feedback' %}">Feedback</a>
+          </li>
+
         </ul>
       </div>
     </nav>
