@@ -47,6 +47,23 @@
                 <div class="col border"><a class="btn btn-primary" href="{% url 'students:remove' qs_stud.id %}" role="button">Удалить</a></div>
             </div>
             {% endfor %}
+            {% if is_paginated %}
+            <br /><div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">&lt;&lt; previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        page {{ page_obj.number }} of {{ paginator.num_pages }}
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next &gt;&gt;</a>
+                    {% endif %}
+                </span>
+            </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
