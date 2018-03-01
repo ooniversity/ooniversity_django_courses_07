@@ -19,6 +19,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'feedbacks',
     'coaches',
     'students',
     'courses',
@@ -108,6 +109,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+EMAIL_HOST = '127.0.0.1'
+
+EMAIL_PORT = '1025'
+
+ADMINS = [('admin', 'admin@example.com')]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

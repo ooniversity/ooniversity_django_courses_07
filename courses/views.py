@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect
-from courses.models import Course
-from courses.forms import CourseModelForm, LessonModelForm
+from courses.models import Course, Lesson
+from courses.forms import LessonModelForm
 from django.contrib import messages
 from django.views import generic
 from django.urls import reverse, reverse_lazy
@@ -58,15 +57,17 @@ class CourseDeleteView(generic.DeleteView):
         context['title'] = 'Course deletion'
         return context
 
-def add_lesson(request, pk):
-    if request.method == 'POST':
-        form = LessonModelForm(request.POST)
-        if form.is_valid():
-            instance = form.save()
-            mess_suc = 'Lesson %s has been successfully added.' % form.cleaned_data['subject']
-            messages.success(request, mess_suc)
-            return redirect('/courses/'+pk)
-    else:
-        form = LessonModelForm(initial={'course': pk})           
-    context = {'form': form}
-    return render(request, 'courses/add_lesson.html', context)
+class LessonCreateView(SuccessMessageMixin, generic.CreateView):
+    model = Lesson
+    fields = '__all__'
+    template_name = 'courses/add_lesson.html'
+    success_message = 'Lesson %(subject)s has been successfully added.'    
+
+    def get_success_url(self):
+        return reverse('courses:detail', args=[self.get_object().id])
+
+    def get_initial(self):
+        initial = super(LessonCreateView, self).get_initial()
+        initial = initial.copy()
+        initial['course'] = self.get_object()
+        return initial

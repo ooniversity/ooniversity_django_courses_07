@@ -1,13 +1,15 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from quadratic.views import quadratic_results
-from pybursa.views import IndexView, contact
+from pybursa.views import IndexView, FeedbackView
+from django.views import generic
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^$', IndexView.as_view(), name='index'),
-    url(r'^contact/', contact, name='contact'),
+    url(r'^contact/$', generic.TemplateView.as_view(template_name='contact.html'), name='contact'),
+    url(r'^feedback/$', FeedbackView.as_view(), name='feedback'),
     
     url(r'^quadratic/results/', quadratic_results, name='results'),
 

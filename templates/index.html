@@ -34,7 +34,7 @@
                 <div class="col border">Изменить</div>
                 <div class="col border">Удалить</div>
             </div>
-            {% for qs in qs_list %}
+            {% for qs in object_list %}
             <div class="row"> 
                 <div class="col border"><a href="{% url 'courses:detail' qs.id %}">{{ qs.name|upper }}</a></div>
                 <div class="col border">{{ qs.short_description|title }}</div>
