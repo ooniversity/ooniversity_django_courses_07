@@ -19,6 +19,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_extensions',
+    'debug_toolbar',
     'feedbacks',
     'coaches',
     'students',
@@ -34,10 +36,11 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -123,3 +126,22 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+INTERNAL_IPS = ['127.0.0.1']
+
+LOGGING = { 'version': 1,
+            'disable_existing_loggers': False,
+            'loggers': { 'courses': { 'handlers': ['courses_logger'],
+                                      'level': 'DEBUG', },
+                         'students': { 'handlers': ['students_logger'],
+                                       'level': 'WARNING' } },
+            'handlers': { 'courses_logger': { 'level': 'DEBUG',
+                                              'class': 'logging.FileHandler',
+                                              'filename': os.path.join(BASE_DIR, 'courses_logger.log'),
+                                              'formatter': 'simple' },
+                          'students_logger': { 'level': 'WARNING',
+                                               'class': 'logging.FileHandler',
+                                               'filename': os.path.join(BASE_DIR, 'students_logger.log'),
+                                               'formatter': 'verbose' } },
+            'formatters': { 'simple': { 'format': 'Уровень %(levelname)s: "%(message)s"' },
+                            'verbose': { 'format': 'Уровень %(levelname)s: "%(message)s", %(asctime)s, %(funcName)s, %(module)s' } } }
