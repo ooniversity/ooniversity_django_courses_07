@@ -1,9 +1,11 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views import generic
+from django.conf import settings
 from quadratic.views import quadratic_results
 from pybursa.views import IndexView
 from feedbacks.views import FeedbackView
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -20,3 +22,9 @@ urlpatterns = [
     url(r'^coaches/', include('coaches.urls'))]
 
 admin.site.site_header = 'PyBursa Administration'
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns

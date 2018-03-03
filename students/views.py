@@ -4,6 +4,10 @@ from django.views import generic
 from django.urls import reverse, reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 
+import logging
+logger = logging.getLogger(__name__)
+
+
 class StudentListView(generic.ListView):
     model = Student
     paginate_by = 2
@@ -23,6 +27,11 @@ class StudentListView(generic.ListView):
         return context
 
 class StudentDetailView(generic.DetailView):
+    logger.debug('Students detail view has been debugged!')
+    logger.info('Logger of students detail view informs you!')
+    logger.warning('Logger of students detail view warns you!')
+    logger.error('Students detail view went wrong!')
+
     model = Student
 
 class StudentCreateView(SuccessMessageMixin, generic.CreateView):
@@ -55,7 +64,7 @@ class StudentDeleteView(generic.DeleteView):
     success_message = 'Info on %s %s has been successfully deleted.'
 
     def delete(self, request, *args, **kwargs):
-        student = Student.objects.get(id=kwargs['pk'])
+        student = self.get_object()
         messages.success(self.request, self.success_message % (student.name, student.surname))
         return super(StudentDeleteView, self).delete(request, *args, **kwargs)
  
