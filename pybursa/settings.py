@@ -1,5 +1,3 @@
-# coding=utf-8
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -145,5 +143,5 @@ LOGGING = { 'version': 1,
                                                'class': 'logging.FileHandler',
                                                'filename': os.path.join(BASE_DIR, 'students_logger.log'),
                                                'formatter': 'verbose' } },
-            'formatters': { 'simple': { 'format': 'Уровень %(levelname)s: "%(message)s"' },
-                            'verbose': { 'format': 'Уровень %(levelname)s: "%(message)s", %(asctime)s, %(funcName)s, %(module)s' } } }
+            'formatters': { 'simple': { 'format': 'Level %(levelname)s: "%(message)s"' },
+                            'verbose': { 'format': 'Level %(levelname)s: "%(message)s", %(asctime)s, %(funcName)s, %(module)s' } } }
