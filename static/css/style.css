@@ -1,40 +1,40 @@
 .contact{
   width: 40%;
 }
-#one{
+.one{
   color: grey;
   margin-left: inherit;
 }
-#two{
+.two{
   color: red;
 }
-#three{
+.three{
   color: green;
 }
-#four{
+.four{
   color: blue;
 }
-#five{
+.five{
   color: black;
 }
-#one_ps{
+.one_ps{
   font-size: 19px;
   font-style: italic;
   font-weight: bold;
 }
-#two_ps{
+.two_ps{
   font-size: 19px;
   font-style: oblique;
 }
-#three_ps{
+.three_ps{
   font-size: 21px;
   font-style: lighter;
 }
-#four_ps{
+.four_ps{
   font-size: 18px;
   font-style: italic;
 }
-#five_ps{
+.five_ps{
   font-size: 19px;
   font-style: oblique;
   font-weight: bold;
