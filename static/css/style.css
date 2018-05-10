@@ -1,6 +1,3 @@
-.contact{
-  width: 40%;
-}
 .one{
   color: grey;
   margin-left: inherit;
@@ -38,4 +35,16 @@
   font-size: 19px;
   font-style: oblique;
   font-weight: bold;
+}
+.contact{
+  width: 40%;
+}
+.left{
+  margin-left: 10%;
+}
+.right{
+  margin-left: 50%;
+}
+.middle{
+  margin-right: 100%;
 }
