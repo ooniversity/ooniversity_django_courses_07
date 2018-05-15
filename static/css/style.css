@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+    padding: 0 calc(50% - 720px);
+}
+
+.starter-template {
+    padding-top: 80px;
+}
+
+.contact-list {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
