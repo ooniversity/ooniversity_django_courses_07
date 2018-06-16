@@ -21,10 +21,16 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('polls/', include('polls.urls')),
-    path('admin/', admin.site.urls),
-    path('contact/', views.contact, name='contact'),
-    path('student_list/', views.student_list, name='student_list'),
-    path('student_detail/', views.student_detail, name='student_detail'),
+#    path('', views.index, name='index'),
+#    path('polls/', include('polls.urls')),
+#    path('admin/', admin.site.urls),
+#    path('contact/', views.contact, name='contact'),
+#    path('student_list/', views.student_list, name='student_list'),
+#    path('student_detail/', views.student_detail, name='student_detail'),
+    url(r'^$', views.index, name='index'),
+    url(r'^polls/', include('polls.urls')),
+    url(r'^admin/', admin.site.urls),
+    url(r'^contact/', views.contact, name='contact'),
+    url(r'^student_list/', views.student_list, name='student_list'),
+    url(r'^student_detail/', views.student_detail, name='student_detail'),
 ]
