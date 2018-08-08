@@ -33,32 +33,26 @@
             <a class="nav-link" href="{% url 'student_list' %}">Students <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/quadratic/results">Quadratic <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/quadratic/results/">Quadratic <span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>
     </nav>
 
     <div class="container">
-      <h2>PyBursa Django course</h2>
       <main role="main">
         <div class="jumbotron">
           <div class="col-sm-8 mx-auto">
-            <h3>Description</h3>
-              <p>Здесь находится описание курса PyBursa по DJANGO</p>
-            <h3>Program</h3>
-              <p class="text1"><b>Глава 1.</b> Основы Web технологий</p>
-              <p class="text2">Задачи к главе 1</p>
-              <p class="text3"><b>Глава 2.</b> Django first steps, http, app</p>
-              <p class="text4">Задачи к главе 2</p>
-              <p class="text5"><b>Глава 3.</b> Django models, admin</p>
-              <p class="text6">Задачи к главе 3</p>
-              <p class="text7"><b>Глава 4.</b> Django templates, forms, model forms</p>
-              <p class="text8">Задачи к главе 4</p>
-              <p class="text9"><b>Глава 5.</b> Django CBV (generic views), standard tasks</p>
-              <p class="text10">Задачи к главе 5</p>
-              <p class="text1"><b>Глава 6.</b> Django debugging, tests, deployment</p>
-              <p class="text2">Задачи к главе 6</p>
+              <p>Квадратное уравнение a*x*x + b*x + c = 0</p>
+              <p>a = {{ a }}</p>
+              <p>{{ a_add }}</p>
+              <p>b = {{ b }}</p>
+              <p>{{ b_add }}</p>
+              <p>c = {{ c }}</p>
+              <p>{{ c_add }}</p>
+              <p>{{ discriminant }}</p>
+              <p>{{ discriminant_add }}</p>
+              <p>{{ roots }}</p>
           </div>
         </div>
       </main>
