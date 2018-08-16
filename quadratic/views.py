@@ -38,10 +38,10 @@ def quadratic_results(request):
         if D < 0:
             parameters_dict.update({"discriminant_add": "Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений."})
         elif D == 0:
-            x = -1*int(b)/2
+            x = -1*int(b)/(2*a)
             parameters_dict.update({"roots": "Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = " + str(x)})
         else:
-            x1 = (-1*int(b) + D**0.5)/2
-            x2 = (-1*int(b) - D**0.5)/2
+            x1 = (-1*int(b) + D**0.5)/(2*a)
+            x2 = (-1*int(b) - D**0.5)/(2*a)
             parameters_dict.update({"roots": "Квадратное уравнение имеет два действительных корня: x1 = " + str(x1) + " x2 = " + str(x2)})
     return render(request, "results.html", parameters_dict)
