@@ -56,7 +56,7 @@
               <tr>
                 <td>{{ student.id }}</td>
                 <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
-                <td>{{ student.adress }}</td>
+                <td>{{ student.address }}</td>
                 <td>{{ student.skype }}</td>
                 <td>{% for course in student.courses.all %}
                     <p><a href="{% url 'courses:detail' course.id %}">{{ course }}</a></p>
