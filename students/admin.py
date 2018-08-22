@@ -1,5 +1,29 @@
 from django.contrib import admin
 from .models import Student
+from django.db import models
+from django.forms import widgets
 
 
-admin.site.register(Student)
+#class AdminSite():
+#    site_header = "Polls administration"
+
+class StudentAdmin(admin.ModelAdmin):
+    
+    def full_name(obj):
+        return ("{0} {1}".format(obj.name, obj.surname))
+
+    list_display = [full_name, "email", "skype"]
+    search_fields = ["surname", "email"]
+    list_filter = ["courses"]
+    fieldsets = [
+                ('Personal info', {'fields': ["name", "surname", "date_of_birth"]}),
+                ('Contact info',  {'fields': ["email", "phone", "address", "skype"]}),
+                (None,            {'fields': ["courses"]}),
+                ]
+
+    formfield_overrides = {
+                            models.ManyToManyField: {'widget': widgets.SelectMultiple}
+                           }
+
+
+admin.site.register(Student, StudentAdmin)
