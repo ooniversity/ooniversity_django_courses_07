@@ -4,9 +4,6 @@ from django.db import models
 from django.forms import widgets
 
 
-#class AdminSite():
-#    site_header = "Polls administration"
-
 class StudentAdmin(admin.ModelAdmin):
     
     def full_name(obj):

@@ -9,7 +9,7 @@ class LessonInline(admin.TabularInline):
 class CourseAdmin(admin.ModelAdmin):
     list_display = ["name", "short_description"]
     fieldsets = [
-                 (None, {'fields': ["name", "short_description", "description"]}),
+                 (None, {'fields': ["name", "short_description", "description", "coach", "assistant"]}),
                 ]
     inlines = [LessonInline]
     search_fields = ["name"]
