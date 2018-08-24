@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{% static 'images/icons-24.png' %}">
-    <title>Courses detail</title>
+    <title>Coaches detail</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -41,23 +41,7 @@
       <main role="main">
         <div class="jumbotron">
           <div class="col-sm-8 mx-auto">
-            <h1>{{ course.name }}</h1>
-            <p>{{ course.description }}</p>
-            <h3>План курса</h3>
-            <table class="table table-striped">
-              <tr>
-                <td>#</td>
-                <td>Тема</td>
-                <td>Описание</td>
-              </tr>
-              {% for lesson in lesson_list %}
-              <tr>
-                <td>{{ lesson.order }}</td>
-                <td>{{ lesson.subject }}</td>
-                <td>{{ lesson.description }}</td>
-              </tr>
-              {% endfor %}
-            </table>
+            
           </div>
         </div>
       </main>

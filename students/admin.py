@@ -7,7 +7,7 @@ from django.forms import widgets
 class StudentAdmin(admin.ModelAdmin):
     
     def full_name(obj):
-        return ("{0} {1}".format(obj.name, obj.surname))
+        return obj.name + ' ' + obj.surname
 
     list_display = [full_name, "email", "skype"]
     search_fields = ["surname", "email"]

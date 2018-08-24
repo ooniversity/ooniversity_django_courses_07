@@ -4,5 +4,5 @@ from . import views
 app_name = 'students'
 urlpatterns = [
     url(r'^$', views.list_view, name='list'),
-    url(r'^([0-9]+)/$', views.detail, name='detail'),
+    url(r'^(\d+)/$', views.detail, name='detail'),
 ]
