@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{% static 'images/icons-24.png' %}">
-    <title>Courses detail</title>
+    <title>Coaches detail</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -41,49 +41,52 @@
       <main role="main">
         <div class="jumbotron">
           <div class="col-sm-8 mx-auto">
-            <h1>{{ course.name }}</h1>
-            <p>{{ course.description }}</p>
-            <h3>Преподаватели</h3>
+            <h1>{{ coach.user.first_name }} {{ coach.user.last_name }}</h1>
             <table class="table">
-              <thead class="thead-dark">
-               <tr>
-                 <th>Учитель</th>
-               </tr>
-               <tr>
-                 <td>
-                   <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a>
-                   <br>
-                   {{ course.coach.description }}
-                 </td>
-               </tr>
-            </table>
-            <table class="table">
-              <thead class="thead-dark">
-               <tr>
-                 <th>Ассистент</th>
-               </tr>
-               <tr>
-                 <td>
-                   <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a>
-                   <br>
-                   {{ course.assistant.description }}
-                 </td>
-               </tr>
-            </table>
-            <h3>План курса</h3>
-            <table class="table table-striped">
-              <tr>
-                <td>#</td>
-                <td>Тема</td>
-                <td>Описание</td>
-              </tr>
-              {% for lesson in lesson_list %}
-              <tr>
-                <td>{{ lesson.order }}</td>
-                <td>{{ lesson.subject }}</td>
-                <td>{{ lesson.description }}</td>
-              </tr>
-              {% endfor %}
+              <tbody>
+                <tr>
+                  <td>Дата рождения</td>
+                  <td>{{ coach.date_of_birth }}</td>
+                </tr>
+                <tr>
+                  <td>Адрес</td>
+                  <td>{{ coach.address }}</td>
+                </tr>
+                <tr>
+                  <td>Почта</td>
+                  <td>{{ coach.user.email }}</td>
+                </tr>
+                <tr>
+                  <td>Логин Skype</td>
+                  <td>{{ coach.skype }}</td>
+                </tr>
+                <tr>
+                  <td>Телефон</td>
+                  <td>{{ coach.phone }}</td>
+                </tr>
+                <tr>
+                  <td>Курсы учитель</td>
+                  <td>{% for course in coach.coach_courses.all %}
+                        <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                        <span class="glyphicons glyphicons-education">
+                          <a href="{% url 'students:list' %}?course_id={{ course.id }}">Студенты курса</a>
+                        </span>
+                        <br>
+                      {% endfor %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Курсы ассистент</td>
+                  <td>{% for course in coach.assistant_courses.all %}
+                        <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                        <span class="glyphicons glyphicons-education">
+                          <a href="{% url 'students:list' %}?course_id={{ course.id }}">Студенты курса</a>
+                        </span>
+                        <br>
+                      {% endfor %}
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
