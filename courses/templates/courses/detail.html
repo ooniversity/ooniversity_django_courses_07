@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<!-- saved from url=(0050)http://getbootstrap.com/docs/4.1/examples/navbars/ -->
-{% load static %}
+{% load static %}<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
@@ -45,6 +43,33 @@
           <div class="col-sm-8 mx-auto">
             <h1>{{ course.name }}</h1>
             <p>{{ course.description }}</p>
+            <h3>Преподаватели</h3>
+            <table class="table">
+              <thead class="thead-dark">
+               <tr>
+                 <th>Учитель</th>
+               </tr>
+               <tr>
+                 <td>
+                   <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a>
+                   <br>
+                   {{ course.coach.description }}
+                 </td>
+               </tr>
+            </table>
+            <table class="table">
+              <thead class="thead-dark">
+               <tr>
+                 <th>Ассистент</th>
+               </tr>
+               <tr>
+                 <td>
+                   <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a>
+                   <br>
+                   {{ course.assistant.description }}
+                 </td>
+               </tr>
+            </table>
             <h3>План курса</h3>
             <table class="table table-striped">
               <tr>
