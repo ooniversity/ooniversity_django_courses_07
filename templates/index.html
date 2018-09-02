@@ -1,50 +1,21 @@
-<!DOCTYPE html>
-<!-- saved from url=(0050)http://getbootstrap.com/docs/4.1/examples/navbars/ -->
+{% extends "base.html" %}
+
+
 {% load static %}
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="{% static 'images/icons-24.png' %}">
-    <title>PyBursa main</title>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
-    <link rel="stylesheet" crossorigin="anonymous" href="{% static 'css/main.css' %}">
-    <style type="text/css">
-    </style>  
-  </head>
 
-  <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <div class="collapse navbar-collapse" id="navbarsExample04">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Main <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'contact' %}">Contacts <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'student_list' %}">Students <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/quadratic/results">Quadratic <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
+{% block title %}pyBursa - Main page{% endblock %}
+
+
+{% block nav_class_index %}active{% endblock %}
+
+
+{% block content %}
     <div class="container">
       <main role="main">
         <div class="jumbotron">
           <div class="col-sm-8 mx-auto">
-            <h1>ooniversity</h1>
-            <p>Мы специализируемся на "модных" языках программирования. Принципиальное наше отличие от других курсов - максимум практики и жесткая система обязательных домашних заданий.</p>
+            {% include "include/ooniversity_include.html" %}
             <table class="table table-striped">
               <h3>Выбирай на каком курсе ты хочешь учиться!</h3>
               <tr>
@@ -53,8 +24,8 @@
               </tr>
               {% for course in courses_dict %}
                 <tr>
-                  <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
-                  <td>{{ course.short_description }}</td>
+                  <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
+                  <td>{{ course.short_description|title }}</td>
                 </tr>
               {% endfor %}
             </table>
@@ -62,12 +33,5 @@
         </div>
       </main>
     </div>
-    
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  </body>
-</html>
+{% endblock content %}
+

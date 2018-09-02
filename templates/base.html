@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<!-- saved from url=(0050)http://getbootstrap.com/docs/4.1/examples/navbars/ -->
-{% load static %}
+{% load static %}<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
@@ -8,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{% static 'images/icons-24.png' %}">
-    <title>Students list</title>
+    <title>{% block title %}pyBursa{% endblock %}</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -23,52 +21,24 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="{% block nav_class_index %}{% endblock %}">
             <a class="nav-link" href="{% url 'index' %}">Main <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
+          <li class="{% block nav_class_contacts %}{% endblock %}">
             <a class="nav-link" href="{% url 'contact' %}">Contacts <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'students:list' %}">Students <span class="sr-only">(current)</span></a>
+          <li class="{% block nav_class_students %}{% endblock %}">
+            <a class="nav-link" href="{% url 'students:list' %}{% block link_students_id %}{% endblock link_students_id %}">Students <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
+          <li class="{% block nav_class_quadratic %}{% endblock %}">
             <a class="nav-link" href="{% url 'quadratic:results' %}">Quadratic <span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <div class="container">
-      <main role="main">
-        <div class="jumbotron">
-          <div class="col-sm-8 mx-auto">
-            <h3>Список студентов</h3>
-            <table class="table table-striped">
-              <tr>
-                <td>#</td>
-                <td>фамилия имя</td>
-                <td>адрес</td>
-                <td>skype</td>
-                <td>курсы</td>
-              </tr>
-              {% for student in students_list %}
-              <tr>
-                <td>{{ student.id }}</td>
-                <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
-                <td>{{ student.address }}</td>
-                <td>{{ student.skype }}</td>
-                <td>{% for course in student.courses.all %}
-                    <p><a href="{% url 'courses:detail' course.id %}">{{ course }}</a></p>
-                    {% endfor %}
-                </td>
-              </tr>
-              {% endfor %}
-            </table>
-          </div>
-        </div>
-      </main>
-    </div>
+{% block content %}
+{% endblock content %}
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
