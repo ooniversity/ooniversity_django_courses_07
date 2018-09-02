@@ -16,7 +16,7 @@
         <div class="jumbotron">
           <div class="col-sm-8 mx-auto">
             <h1>{{ course.name }}</h1>
-            <p>{{ course.description }}</p>
+            <p>{{ course.description|truncatechars:32 }}</p>
             <h3>Преподаватели</h3>
             <table class="table">
               <thead class="thead-dark">
