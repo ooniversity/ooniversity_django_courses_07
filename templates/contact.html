@@ -1,44 +1,16 @@
-<!DOCTYPE html>
-<!-- saved from url=(0050)http://getbootstrap.com/docs/4.1/examples/navbars/ -->
+{% extends "base.html" %}
+
+
 {% load static %}
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="{% static 'images/icons-24.png' %}">
-    <title>PyBursa contacts</title>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
-    <link rel="stylesheet" crossorigin="anonymous" href="{% static 'css/main.css' %}">
-    <style type="text/css">
-    </style>
-  </head>
 
-  <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <div class="collapse navbar-collapse" id="navbarsExample04">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Main <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'contact' %}">Contacts <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'student_list' %}">Students <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/quadratic/results">Quadratic <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
+{% block title %}pyBursa - Contacts{% endblock %}
+
+
+{% block nav_class_contacts %}active{% endblock %}
+
+
+{% block content %}
     <div class="container">
       <h2>PyBursa contacts</h2>
       <main role="main">
@@ -63,13 +35,5 @@
         </div>
       </main>
     </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+{% endblock content %}
 
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-  </body>
-</html>

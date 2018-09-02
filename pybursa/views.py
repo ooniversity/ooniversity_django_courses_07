@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from courses.models import Course
+from datetime import datetime, date
 
 def index(request):
     courses = Course.objects.all()

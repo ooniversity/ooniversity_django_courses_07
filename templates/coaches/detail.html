@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+{% block title %}pyBursa - Coaches detail{% endblock %}
+
+
+{% block link_students_id %}?course_id={{ course.id }}{% endblock link_students_id %}
+
+
+{% block content %}
+    <div class="container">
+      <main role="main">
+        <div class="jumbotron">
+          <div class="col-sm-8 mx-auto">
+            <h1>{{ coach.user.first_name }} {{ coach.user.last_name }}</h1>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Дата рождения</td>
+                  <td>{{ coach.date_of_birth|date:"j F, Y" }}</td>
+                </tr>
+                <tr>
+                  <td>Адрес</td>
+                  <td>{{ coach.address }}</td>
+                </tr>
+                <tr>
+                  <td>Почта</td>
+                  <td>{{ coach.user.email }}</td>
+                </tr>
+                <tr>
+                  <td>Логин Skype</td>
+                  <td>{{ coach.skype }}</td>
+                </tr>
+                <tr>
+                  <td>Телефон</td>
+                  <td>{{ coach.phone }}</td>
+                </tr>
+                <tr>
+                  <td>Курсы учитель</td>
+                  <td>{% for course in coach.coach_courses.all %}
+                        <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                        <span class="glyphicons glyphicons-education">
+                          <a href="{% url 'students:list' %}?course_id={{ course.id }}">Студенты курса</a>
+                        </span>
+                        <br>
+                      {% endfor %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Курсы ассистент</td>
+                  <td>{% for course in coach.assistant_courses.all %}
+                        <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a>
+                        <span class="glyphicons glyphicons-education">
+                          <a href="{% url 'students:list' %}?course_id={{ course.id }}">Студенты курса</a>
+                        </span>
+                        <br>
+                      {% endfor %}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+{% endblock content %}

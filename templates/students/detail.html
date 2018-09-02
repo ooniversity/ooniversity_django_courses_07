@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+{% block title %}pyBursa - Student detail{% endblock %}
+
+
+{% block nav_class_students %}active{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+      <main role="main">
+        <div class="jumbotron">
+          <div class="col-sm-8 mx-auto">
+            <h1>{{ student.name }} {{ student.surname }}</h1>
+            <table class="table table-striped">
+              <tr>
+                <td>дата рождения</td>
+                <td>{{ student.date_of_birth }}</td>
+              </tr>
+              <tr>
+                <td>адрес</td>
+                <td>{{ student.address }}</td>
+              </tr>
+              <tr>
+                <td>почта</td>
+                <td>{{ student.email }}</td>
+              </tr>
+              <tr>
+                <td>логин skype</td>
+                <td>{{ student.skype }}</td>
+              </tr>
+              <tr>
+                <td>телефон</td>
+                <td>{{ student.phone }}</td>
+              </tr>
+              <tr>
+                <td>курсы</td>
+                <td>{% for lesson in student.courses.all %}
+                    <p><a href="{% url 'courses:detail' lesson.id %}">{{ lesson }}</a></p>
+                    {% endfor %}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+{% endblock content %}

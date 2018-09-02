@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+{% block title %}pyBursa - Students list{% endblock %}
+
+
+{% block nav_class_students %}active{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+      <main role="main">
+        <div class="jumbotron">
+          <div class="col-sm-8 mx-auto">
+            <h3>Список студентов</h3>
+            <table class="table table-striped">
+              <tr>
+                <td>#</td>
+                <td>фамилия имя</td>
+                <td>адрес</td>
+                <td>skype</td>
+                <td>курсы</td>
+              </tr>
+              {% for student in students_list %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
+                <td>{{ student.address }}</td>
+                <td>{{ student.skype }}</td>
+                <td>{% for course in student.courses.all %}
+                    <p><a href="{% url 'courses:detail' course.id %}">{{ course }}</a></p>
+                    {% endfor %}
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+{% endblock content %}
