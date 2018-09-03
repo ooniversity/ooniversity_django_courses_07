@@ -16,15 +16,20 @@
         <div class="jumbotron">
           <div class="col-sm-8 mx-auto">
               <p>Квадратное уравнение a*x*x + b*x + c = 0</p>
-              <p>a = {{ a }}</p>
-              <p>{{ a_add }}</p>
-              <p>b = {{ b }}</p>
-              <p>{{ b_add }}</p>
-              <p>c = {{ c }}</p>
-              <p>{{ c_add }}</p>
+              <form method="get">
+                коэффициент a:<input type="text" name="a" value="{{ a }}" />
+                {% if a_add %}<br /><em>{{ a_add }}</em>{% endif %}<br />
+                коэффициент b:<input type="text" name="b" value="{{ b }}" />
+                {% if b_add %}<br /><em>{{ b_add }}</em>{% endif %}<br />
+                коэффициент c:<input type="text" name="c" value="{{ c }}" />
+                {% if c_add %}<br /><em>{{ c_add }}</em>{% endif %}<br />
+                <input type="submit" value="Решить" />
+              </form>
               <p>{{ discriminant }}</p>
               <p>{{ discriminant_add }}</p>
               <p>{{ roots }}</p>
+              
+              {{ form.as_p }}
           </div>
         </div>
       </main>
