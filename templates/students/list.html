@@ -15,6 +15,14 @@
       <main role="main">
         <div class="jumbotron">
           <div class="col-sm-8 mx-auto">
+            {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            <a href="{% url 'students:create' %}" class="btn btn-primary my-2">Добавить нового студента</a>
             <h3>Список студентов</h3>
             <table class="table table-striped">
               <tr>
@@ -23,6 +31,8 @@
                 <td>адрес</td>
                 <td>skype</td>
                 <td>курсы</td>
+                <td></td>
+                <td></td>
               </tr>
               {% for student in students_list %}
               <tr>
@@ -34,6 +44,8 @@
                     <p><a href="{% url 'courses:detail' course.id %}">{{ course }}</a></p>
                     {% endfor %}
                 </td>
+                <td><a href="{% url 'students:edit' student.id %}" class="btn btn-primary my-2">Изменить</a></td>
+                <td><a href="{% url 'students:remove' student.id %}" class="btn btn-primary my-2">Удалить</a></td>
               </tr>
               {% endfor %}
             </table>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% load staticfiles %}
+
+
+{% block title %}pyBursa - Remove student{% endblock %}
+
+
+{% block nav_class_students %}active{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <form method="post">
+      {% csrf_token %}
+      <p>Студент {{ student.name }} {{ student.surname }} будет удален</p>
+      <input type="submit" value="Удалить"/>
+    </form>
+  </div>
+{% endblock content %}
