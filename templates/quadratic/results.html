@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% load staticfiles %}
+
+
+{% block title %}pyBursa - Quadratic{% endblock %}
+
+
+{% block nav_class_quadratic %}active{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+      <main role="main">
+        <div class="jumbotron">
+          <div class="col-sm-8 mx-auto">
+              <p>Квадратное уравнение a*x*x + b*x + c = 0</p>
+              <form method="get">
+                {{ form.as_p }}
+                <input type="submit" value="Решить">
+              </form>
+              {% if discriminant > 0 %}
+              <p>Дискриминант: {{ discriminant }}</p>
+              <p>Квадратное уравнение имеет два действительных корня: x1 = {{ x1 }} x2 = {{ x2 }}</p>
+              {% elif discriminant == 0 %}
+              <p>Дискриминант: {{ discriminant }}</p>
+              <p>Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {{ x }}</p>
+              {% elif discriminant < 0 %}
+              <p>Дискриминант: {{ discriminant }}</p>
+              <p>Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.</p>
+              {% endif %}
+          </div>
+        </div>
+      </main>
+    </div>
+{% endblock content %}
