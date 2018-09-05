@@ -33,7 +33,7 @@ def edit(request, pk):
     if request.method == 'POST':
         form = StudentModelForm(request.POST, instance=student)
         if form.is_valid():
-            changed_student = form.save()
+            form.save()
             messages.success(request, 'Info on the student has been successfully changed.')
             return redirect('students:edit', student.id)
     else:
@@ -43,7 +43,7 @@ def edit(request, pk):
 def remove(request, pk):
     student = Student.objects.get(id=pk)
     if request.method == 'POST':
-            messages.success(request, 'Info on %s %s has been successfully deleted.' % (student.name, student.surname))            
-            student.delete()
-            return redirect('students:list')
+        messages.success(request, 'Info on %s %s has been successfully deleted.' % (student.name, student.surname))            
+        student.delete()
+        return redirect('students:list')
     return render(request, 'students/remove.html', {'student': student})
