@@ -11,21 +11,38 @@
 
 
 {% block content %}
+    {% if messages %}
+    <div class="container">
+      <div class="messages">
+        {% for message in messages %}
+          <div class="alert alert-success" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
     <div class="container">
       <main role="main">
         <div class="jumbotron">
-          <div class="col-sm-8 mx-auto">
+          <div class="col-sm-10 mx-auto">
             {% include "include/ooniversity_include.html" %}
             <table class="table table-striped">
               <h3>Выбирай на каком курсе ты хочешь учиться!</h3>
+              <a href="{% url 'courses:add' %}" class="btn btn-primary my-2">Добавить новый курс</a>
               <tr>
                 <td>Курс</td>
                 <td>Описание</td>
+                <td></td>
               </tr>
-              {% for course in courses_dict %}
+              {% for course in courses %}
                 <tr>
                   <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
                   <td>{{ course.short_description|title }}</td>
+                  <td>
+                    <a href="{% url 'courses:edit' course.id %}" class="btn btn-primary my-2">Редактировать курс</a>
+                    <a href="{% url 'courses:remove' course.id %}" class="btn btn-primary my-2">Удалить курс</a>                    
+                  </td>
                 </tr>
               {% endfor %}
             </table>

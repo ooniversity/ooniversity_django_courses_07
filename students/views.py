@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from students.models import Student
-from courses.models import Course, Lesson
 from students.forms import StudentModelForm
 
 
@@ -26,6 +25,7 @@ def create(request):
             return redirect('students:list')
     else:
         form = StudentModelForm()
+
     return render(request, 'students/add.html', {'form': form})
 
 def edit(request, pk):
@@ -38,6 +38,7 @@ def edit(request, pk):
             return redirect('students:edit', student.id)
     else:
         form = StudentModelForm(instance=student)
+
     return render(request, 'students/edit.html', {'form': form})
 
 def remove(request, pk):
@@ -46,4 +47,5 @@ def remove(request, pk):
         messages.success(request, 'Info on %s %s has been successfully deleted.' % (student.name, student.surname))            
         student.delete()
         return redirect('students:list')
+
     return render(request, 'students/remove.html', {'student': student})
