@@ -14,13 +14,17 @@
     <div class="container">
       <main role="main">
         <div class="jumbotron">
-          <div class="col-sm-8 mx-auto">
+          <div class="col-sm-10 mx-auto">
             {% if messages %}
-            <ul class="messages">
-              {% for message in messages %}
-              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-              {% endfor %}
-            </ul>
+            <div class="container">
+              <div class="messages">
+                {% for message in messages %}
+                <div class="alert alert-success" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                  {{ message }}
+                </div>
+                {% endfor %}
+              </div>
+            </div>
             {% endif %}
             <a href="{% url 'students:add' %}" class="btn btn-primary my-2">Добавить нового студента</a>
             <h3>Список студентов</h3>
