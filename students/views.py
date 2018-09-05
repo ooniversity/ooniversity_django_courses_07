@@ -22,28 +22,30 @@ def create(request):
         form = StudentModelForm(request.POST)
         if form.is_valid():
             new_student = form.save()
+            context = {'form': new_student}
             messages.success(request, 'Student %s %s has been successfully added.' % (new_student.name, new_student.surname))
-            return redirect('/students/')
+            return redirect('students:list')
     else:
-        form = StudentModelForm()
-    return render(request, 'students/add.html', {'form': form})
+        context = {'form': StudentModelForm()}
+    return render(request, 'students/add.html', context)
 
 def edit(request, pk):
     student = Student.objects.get(id=pk)
     if request.method == 'POST':
         form = StudentModelForm(request.POST, instance=student)
         if form.is_valid():
-            form.save()
+            changed_student = form.save()
+            context = {'form': changed_student}
             messages.success(request, 'Info on the student has been successfully changed.')
-            return redirect('/students/edit/%s' % pk)
+            return redirect('students:edit', student.id)
     else:
-        form = StudentModelForm(instance=student)
-    return render(request, 'students/edit.html', {'form': form})
+        context = {'form': StudentModelForm(instance=student)}
+    return render(request, 'students/edit.html', context)
 
 def remove(request, pk):
     student = Student.objects.get(id=pk)
     if request.method == 'POST':
             messages.success(request, 'Info on %s %s has been successfully deleted.' % (student.name, student.surname))            
             student.delete()
-            return redirect('/students/')
+            return redirect('students:list')
     return render(request, 'students/remove.html', {'student': student})
