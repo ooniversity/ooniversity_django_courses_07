@@ -22,12 +22,11 @@ def create(request):
         form = StudentModelForm(request.POST)
         if form.is_valid():
             new_student = form.save()
-            context = {'form': new_student}
             messages.success(request, 'Student %s %s has been successfully added.' % (new_student.name, new_student.surname))
             return redirect('students:list')
     else:
-        context = {'form': StudentModelForm()}
-    return render(request, 'students/add.html', context)
+        form = StudentModelForm()
+    return render(request, 'students/add.html', {'form': form})
 
 def edit(request, pk):
     student = Student.objects.get(id=pk)
@@ -35,12 +34,11 @@ def edit(request, pk):
         form = StudentModelForm(request.POST, instance=student)
         if form.is_valid():
             changed_student = form.save()
-            context = {'form': changed_student}
             messages.success(request, 'Info on the student has been successfully changed.')
             return redirect('students:edit', student.id)
     else:
-        context = {'form': StudentModelForm(instance=student)}
-    return render(request, 'students/edit.html', context)
+        form = StudentModelForm(instance=student)
+    return render(request, 'students/edit.html', {'form': form})
 
 def remove(request, pk):
     student = Student.objects.get(id=pk)
