@@ -4,7 +4,7 @@
 {% load staticfiles %}
 
 
-{% block title %}pyBursa - Add student{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 
 {% block nav_class_students %}active{% endblock %}
@@ -12,11 +12,11 @@
 
 {% block content %}
   <div class="container">
-    <h1>Создание нового студента</h1>
+    <h1>{{ operation_type_name }}</h1>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
-      <input type="submit" value="Создать"/>
+      <input type="submit" value="{{ button_name }}"/>
     </form>
   </div>
 {% endblock content %}

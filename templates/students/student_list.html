@@ -11,6 +11,7 @@
 
 
 {% block content %}
+{% csrf_token %}
     <div class="container">
       <main role="main">
         <div class="jumbotron">
@@ -38,7 +39,7 @@
                 <td></td>
                 <td></td>
               </tr>
-              {% for student in students_list %}
+              {% for student in object_list %}
               <tr>
                 <td>{{ forloop.counter }}</td>
                 <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
