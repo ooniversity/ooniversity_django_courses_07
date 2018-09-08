@@ -4,16 +4,27 @@
 {% load staticfiles %}
 
 
-{% block title %}pyBursa - Add course{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 
 {% block content %}
+  {% if messages %}
+  <div class="container">
+    <div class="messages">
+      {% for message in messages %}
+        <div class="alert alert-success" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
   <div class="container">
     <h1>Создание нового курса</h1>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
-      <input type="submit" value="Создать"/>
+      <input type="submit" value="Сохранить"/>
     </form>
   </div>
 {% endblock content %}

@@ -7,6 +7,7 @@ class CourseModelForm(forms.ModelForm):
         model = Course
         exclude = []
 
+
 class LessonModelForm(forms.ModelForm):
     class Meta:
         model = Lesson

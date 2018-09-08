@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from students.models import Student
 from students.forms import StudentModelForm
 from django.views.generic.detail import DetailView
@@ -17,8 +17,8 @@ class StudentListView(ListView):
     
     def get_queryset(self):
         qs = super().get_queryset()
-        course_id = self.request.GET.get('course_id', None)
-        if course_id:
+        course_id = self.request.GET.get('course_id')
+        if course_id != None and course_id.isnumeric():
             qs = qs.filter(courses__id=course_id)
         return qs
         
@@ -58,7 +58,7 @@ class StudentUpdateView(UpdateView):
         return context
     
     def get_success_url(self):
-        return reverse_lazy('students:edit', kwargs={'pk': self.kwargs.get('pk')})
+        return reverse('students:edit', kwargs={'pk': self.kwargs.get('pk')})
 
 
 class StudentDeleteView(DeleteView):

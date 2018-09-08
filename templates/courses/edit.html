@@ -4,23 +4,23 @@
 {% load staticfiles %}
 
 
-{% block title %}pyBursa - Edit course{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 
 {% block content %}
-{% if messages %}
-<div class="container">
-  <div class="messages">
-    {% for message in messages %}
-    <div class="alert alert-success" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-      {{ message }}
-    </div>
-    {% endfor %}
-  </div>
-</div>
-{% endif %}
+  {% if messages %}
   <div class="container">
-    <h1>Редактирование курса</h1>
+    <div class="messages">
+      {% for message in messages %}
+        <div class="alert alert-success" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  <div class="container">
+    <h1>Редактирование данных курса</h1>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
