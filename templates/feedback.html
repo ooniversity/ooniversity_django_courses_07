@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{% load staticfiles %}
+
+
+{% block title %}pyBursa - Feedback{% endblock %}
+
+
+{% block nav_class_feedback %}active{% endblock %}
+
+
+{% block content %}
+  {% if messages %}
+  <div class="container">
+    <div class="messages">
+      {% for message in messages %}
+        <div class="alert alert-success" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  <div class="container">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Отправить"/>
+    </form>
+  </div>
+{% endblock content %}
+

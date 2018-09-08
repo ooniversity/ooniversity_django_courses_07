@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student
+from students.models import Student
 from django.db import models
 from django.forms import widgets
 

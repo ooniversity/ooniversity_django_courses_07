@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'quadratic',
     'courses',
     'students',
+    'feedbacks',
     'polls.apps.PollsConfig',
 ]
 
@@ -71,6 +72,12 @@ TEMPLATES = [
         },
     },
 ]
+
+#ADMINS = []
+#EMAIL_HOST = 'localhost'
+#EMAIL_PORT = '587'
+#EMAIL_HOST_USER = ''
+#EMAIL_HOST_PASSWORD = ''
 
 WSGI_APPLICATION = 'pybursa.wsgi.application'
 
@@ -110,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
