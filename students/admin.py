@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student
+from students.models import Student
 from django.db import models
 from django.forms import widgets
 
@@ -17,7 +17,6 @@ class StudentAdmin(admin.ModelAdmin):
                 ('Contact info',  {'fields': ["email", "phone", "address", "skype"]}),
                 (None,            {'fields': ["courses"]}),
                 ]
-
     formfield_overrides = {
                             models.ManyToManyField: {'widget': widgets.SelectMultiple}
                            }
