@@ -5,7 +5,6 @@ from .models import Coach
 class CoachAdmin(admin.ModelAdmin):
     
     def first_name(self, obj):
-        #print(obj.user.is_staff)
         return obj.user.first_name
     
     def last_name(self, obj):
@@ -13,5 +12,6 @@ class CoachAdmin(admin.ModelAdmin):
 
     list_display = ["first_name", "last_name", "gender", "skype", "description"]
     list_filter = ["user"]
+
 
 admin.site.register(Coach, CoachAdmin)

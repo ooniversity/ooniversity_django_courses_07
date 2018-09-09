@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from courses import views
 
+
 app_name = 'courses'
 urlpatterns = [
     url(r'^(?P<pk>\d+)/$', views.CourseDetailView.as_view(), name='detail'),

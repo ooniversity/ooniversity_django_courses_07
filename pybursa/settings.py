@@ -73,9 +73,9 @@ TEMPLATES = [
     },
 ]
 
-#ADMINS = []
-#EMAIL_HOST = 'localhost'
-#EMAIL_PORT = '587'
+ADMINS = ['localhost']
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
 #EMAIL_HOST_USER = ''
 #EMAIL_HOST_PASSWORD = ''
 

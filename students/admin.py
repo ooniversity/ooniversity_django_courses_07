@@ -17,7 +17,6 @@ class StudentAdmin(admin.ModelAdmin):
                 ('Contact info',  {'fields': ["email", "phone", "address", "skype"]}),
                 (None,            {'fields': ["courses"]}),
                 ]
-
     formfield_overrides = {
                             models.ManyToManyField: {'widget': widgets.SelectMultiple}
                            }
