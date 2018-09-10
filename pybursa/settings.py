@@ -73,11 +73,51 @@ TEMPLATES = [
     },
 ]
 
+
 ADMINS = ['localhost']
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 #EMAIL_HOST_USER = ''
 #EMAIL_HOST_PASSWORD = ''
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'courses_logger': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'courses_logger.log',
+            'formatter': 'simple'
+        },
+        'students_logger': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'students_logger.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'courses': {
+            'handlers': ['courses_logger'],
+            'level': 'DEBUG',
+        },
+        'students': {
+            'handlers': ['students_logger'],
+            'level': 'DEBUG',
+        },
+    },
+}
+
 
 WSGI_APPLICATION = 'pybursa.wsgi.application'
 
