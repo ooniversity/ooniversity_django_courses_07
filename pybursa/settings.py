@@ -113,7 +113,7 @@ LOGGING = {
         },
         'students': {
             'handlers': ['students_logger'],
-            'level': 'DEBUG',
+            'level': 'WARNING',
         },
     },
 }
