@@ -100,7 +100,7 @@ LOGGING = {
             'formatter': 'simple'
         },
         'students_logger': {
-            'level': 'DEBUG',
+            'level': 'WARNING',
             'class': 'logging.FileHandler',
             'filename': 'students_logger.log',
             'formatter': 'verbose'

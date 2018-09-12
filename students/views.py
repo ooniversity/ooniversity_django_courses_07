@@ -13,10 +13,14 @@ logger = logging.getLogger(__name__)
 
 class StudentDetailView(DetailView):
     model = Student
-    logger.debug("Students detail view has been debugged!")
-    logger.info("Logger of students detail view informs you!")
-    logger.warning("Logger of students detail view warns you!")
-    logger.error("Students detail view went wrong!")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        logger.debug("Students detail view has been debugged!")
+        logger.info("Logger of students detail view informs you!")
+        logger.warning("Logger of students detail view warns you!")
+        logger.error("Students detail view went wrong!")
+        return context
 
 
 class StudentListView(ListView):
