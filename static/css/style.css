@@ -1,0 +1,40 @@
+.description {
+    text-align: center;
+    margin: 100px;
+}
+
+h1 {
+    color: red;
+}
+
+h2 {
+    color: black;
+}
+
+p {
+    color: green;
+}
+
+ul {
+    color: black;
+}
+
+button.navbar-toggler {
+    color: orange;
+}
+
+a {
+    color: grey;
+}
+
+title {
+    color: red;
+}
+
+button {
+    color: green;
+}
+
+div {
+    border: 1px
+}
