@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type"
+		content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css"
+		href="{% static 'quadratic/bootstrap.css' %}">
+		<title> Результат </title>
+	</head>
+	<body>
+		<h1>Квадратное уравнение ax^2+bx+c=0</h1>
+		<ul class="list-group">
+  		<li class="list-group-item">a: {{a}}</li>
+  		<li class="list-group-item">b: {{b}}</li>
+  		<li class="list-group-item">c: {{c}}</li>
+  		<li class="list-group-item">{{descr}}</li>
+  		<li class="list-group-item">{{conclusion}}</li>
+		</ul>
+	</body>
+</html>
