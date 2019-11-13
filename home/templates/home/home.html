@@ -1,0 +1,28 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-1">supergovnokursi</h1>
+    <p class="lead">Ну мы там короч чето вотт текст текст екст текст текст текст текст текст текст текст</p>
+    <p class="lead">еще текст текст текст текст текст текст текст текст</p>
+  </div>
+</div>
+<h2>Выбирай на каком курсе будешь учиться!</h2>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Курс</th>
+      <th scope="col">Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for course in courses %}
+    <tr>
+      <th scope="row"><a href="{% url 'by_course' course.pk %}">{{course.name}}</a></th>
+      <td>{{course.short_description}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
