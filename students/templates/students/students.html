@@ -1,0 +1,38 @@
+{% extends "navbar.html" %}
+
+{% block title %}Студенты{% endblock %}
+{% block students %}"nav-link active" href="#">{% endblock %}
+{% block main %}"nav-link" href="/">{% endblock %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-1">Список студентов</h1>
+  </div>
+</div>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Фамилия Имя</th>
+      <th scope="col">Адрес</th>
+      <th scope="col">Skype</th>
+      <th scope="col">Курсы</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in students %}
+    <tr>
+      <th scope="row">{{student.pk}}</th>
+      <td><a href="{% url 'by_student' student.pk %}">{{student.surname}} {{student.name}}</a></td>
+      <td>{{student.adress}}</td>
+      <td>{{student.skype}}</td>
+      <td>
+        {% for course in student.courses.all %}
+        <p><a href="{% url 'by_course' course.pk %}">{{course.name}}</a></p>
+        {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

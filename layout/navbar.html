@@ -19,7 +19,7 @@
     			<a class={% block contacts %}"nav-link" href="#">{% endblock %}Контакты</a>
   			</li>
   			<li class="nav-item">
-    			<a class={% block students %}"nav-link disabled" href="#">{% endblock %}Студенты</a>
+    			<a class={% block students %}"nav-link" href="{% url 'student_list'%}">{% endblock %}Студенты</a>
   			</li>
 			</ul>
 		</div>
