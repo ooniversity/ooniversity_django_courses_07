@@ -1,0 +1,64 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block title %}{{coach.last_name}}{% endblock %}
+{% block main %}"nav-link" href="/">{% endblock %}
+{% block content %}
+<h2>{{coach.first_name}} {{coach.last_name}}</h2>
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <th scope="row">Дата рождения</th>
+      <td></td>
+      <td></td>
+      <td>{{coach.date_of_birth}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Адрес</th>
+      <td></td>
+      <td></td>
+      <td>{{coach.adress}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Почта</th>
+      <td></td>
+      <td></td>
+      <td>{{coach.user.email}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Skype</th>
+      <td></td>
+      <td></td>
+      <td>{{coach.skype}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Телефон</th>
+      <td></td>
+      <td></td>
+      <td>{{coach.phone}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Курсы учитель</th>
+      <td></td>
+      <td></td>
+      <td>
+        {% for course in courses_coach  %}
+        <a href="{% url 'by_course' course.pk %}">{{course.name}}</a>
+        <a href="{% url 'student_list' %}?course_id={{course.pk}}"><img src="{% static "icon.png" %}"></a>
+        {% endfor %}
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Курсы ассистент</th>
+      <td></td>
+      <td></td>
+      <td>
+        {% for course in courses_assistant %}
+          <a href="{% url 'by_course' course.pk %}">{{course.name}}</a>
+          <a href="{% url 'student_list' %}?course_id={{course.pk}}"><img src="{% static "icon.png" %}"></a>
+        {% endfor %}
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

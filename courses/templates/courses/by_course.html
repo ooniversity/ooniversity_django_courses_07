@@ -10,6 +10,21 @@
     <p class="lead">{{course.description}}</p>
   </div>
 </div>
+<h2>Преподаватели</h2>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Учитель</h5>
+    <a href="{% url 'by_coach' course.coach.pk %}" class="card-link">{{course.coach.last_name}} {{course.coach.first_name}}</a>
+    <p class="card-text">{{course.coach.description}}</p>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Ассистент</h5>
+    <a href="{% url 'by_coach' course.assistant.pk %}" class="card-link">{{course.assistant.last_name}} {{course.assistant.first_name}}</a>
+    <p class="card-text">{{course.coach.description}}</p>
+  </div>
+</div>
 <h2>План курса</h2>
 <table class="table table-dark">
   <thead>
