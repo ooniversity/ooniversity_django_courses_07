@@ -19,8 +19,8 @@
   <tbody>
     {% for course in courses %}
     <tr>
-      <th scope="row"><a href="{% url 'by_course' course.pk %}">{{course.name}}</a></th>
-      <td>{{course.short_description}}</td>
+      <th scope="row"><a href="{% url 'by_course' course.pk %}">{{course.name|upper}}</a></th>
+      <td>{{course.short_description|title}}</td>
     </tr>
     {% endfor %}
   </tbody>
