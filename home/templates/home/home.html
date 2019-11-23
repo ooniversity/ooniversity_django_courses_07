@@ -1,6 +1,12 @@
 {% extends "navbar.html" %}
 
 {% block content %}
+{% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+<a href="{% url 'add_course' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Добавить запись</a>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-1">supergovnokursi</h1>
