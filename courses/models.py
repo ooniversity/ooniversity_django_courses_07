@@ -26,7 +26,8 @@ class Course(models.Model):
 
 class Lesson(models.Model):
     subject=models.CharField(max_length=30,verbose_name='тема')
-    course=models.ForeignKey(Course,on_delete=models.PROTECT)
+    course=models.ForeignKey(Course,on_delete=models.CASCADE,
+                             verbose_name='курс')
     description=models.TextField(verbose_name='описание')
     order=models.PositiveIntegerField(verbose_name='номер по порядку')
 

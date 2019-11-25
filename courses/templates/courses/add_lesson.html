@@ -1,0 +1,14 @@
+{% extends "navbar.html" %}
+
+{% block title %}Добавление{% endblock %}
+{% block main %}"nav-link" href="/">{% endblock %}
+{% block content %}
+
+<h2>Добавление нового урока</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+<input type="submit" vаluе="Добавить">
+</form>
+
+{% endblock %}

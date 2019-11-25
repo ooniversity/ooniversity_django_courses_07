@@ -1,0 +1,20 @@
+{% extends "navbar.html" %}
+
+{% block title %}Изменение{% endblock %}
+{% block main %}"nav-link" href="/">{% endblock %}
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-secondary" role="alert">
+      {{message}}
+    </div>
+    {% endfor %}
+{% endif %}
+<h2>Изменение записи</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+<input class="btn btn-primary" type="submit" value="Изменить">
+</form>
+
+{% endblock %}

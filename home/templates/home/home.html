@@ -3,10 +3,13 @@
 {% block content %}
 {% if messages %}
     {% for message in messages %}
-    <p>{{ message }}</p>
+    <div class="alert alert-secondary" role="alert">
+      {{message}}
+    </div>
     {% endfor %}
 {% endif %}
 <a href="{% url 'add_course' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Добавить запись</a>
+
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-1">supergovnokursi</h1>
@@ -25,7 +28,11 @@
   <tbody>
     {% for course in courses %}
     <tr>
-      <th scope="row"><a href="{% url 'by_course' course.pk %}">{{course.name|upper}}</a></th>
+      <th scope="row">
+        <a href="{% url 'by_course' course.pk %}">{{course.name|upper}}</a>
+        <a href="{% url 'edit_course' course.pk%}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Изменить</a>
+        <a href="{% url 'remove_course' course.pk%}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Удалить</a>
+      </th>
       <td>{{course.short_description|title}}</td>
     </tr>
     {% endfor %}
