@@ -18,7 +18,7 @@ class CourseAddView(CreateView):
 
     def form_valid(self,form):
         messages.success(self.request,
-                         "Запись {0} добавлена".format(form.instance.name))
+                         "Студент {0} добавлен".format(form.instance.name))
         return super().form_valid(form)
     
 class LessonAddView(CreateView):
@@ -64,3 +64,4 @@ class CourseDeleteView(DeleteView):
         course=Course.objects.get(pk=kwargs['course_id'])
         messages.success(request,"Курс {0} удален".format(course.name))
         return super().delete(self,request,*args,**kwargs)
+    

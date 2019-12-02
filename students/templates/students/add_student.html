@@ -4,7 +4,7 @@
 {% block main %}"nav-link" href="/">{% endblock %}
 {% block content %}
 
-<h2>{{title}}</h2>
+<h2>Добавление нового студента</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
