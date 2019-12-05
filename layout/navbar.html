@@ -16,7 +16,7 @@
     			<a class={% block main %}"nav-link active" href="#">{% endblock %}Главная</a>
   			</li>
   			<li class="nav-item">
-    			<a class={% block contacts %}"nav-link" href="#">{% endblock %}Контакты</a>
+    			<a class={% block contacts %}"nav-link" href="{% url 'feedback' %}">{% endblock %}Контакты</a>
   			</li>
   			<li class="nav-item">
     			<a class={% block students %}"nav-link" href="{% url 'student_list'%}">{% endblock %}Студенты</a>

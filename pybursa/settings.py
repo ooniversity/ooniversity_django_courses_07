@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'students.apps.StudentsConfig',
     'home.apps.HomeConfig',
     'coaches.apps.CoachesConfig',
+    'feedbacks.apps.FeedbacksConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "nopilei@gmail.com"
+EMAIL_HOST_PASSWORD = "password228822"
+EMAIL_USE_TLS = True
+ADMINS=[('Leha', 'nopilei@gmail.com')]
