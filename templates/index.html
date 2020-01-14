@@ -11,7 +11,7 @@
 <nav class="navbar navbar-expand-lg navbar-expand navbar-light bg-light">
     <div class="navbar-nav">
         <a class="nav-item nav-link active" href="index.html">Main</a>
-        <a class="nav-item nav-link" href="contact.html">Contact</a>
+        <a class="nav-item nav-link" href="contact.html">Contacts</a>
     </div>
 </nav>
 <div class="row">
@@ -28,8 +28,9 @@
             отображение их на фронтенде</p>
         <h3 class="h3">Program</h3>
         <ol class="list-group num-list">
-            <li class="list-group-item list-group-item-action list-group-item-primary num-list-elem">Основы Web технологий</li>
-            <ul class="list-group">
+            <li class="list-group-item list-group-item-action list-group-item-primary num-list-elem"
+                data-toggle="collapse" data-target="#el1">Основы Web технологий</li>
+            <ul id="el1" class="list-group collapse in">
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Основы HTML</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Основы CSS</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Bootstrap</li>
@@ -37,8 +38,9 @@
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem task">Контрольное задание 1</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem task">Контрольное задание 2</li>
             </ul>
-            <li class="list-group-item list-group-item-action list-group-item-primary num-list-elem">Django First steps, HTTP, app</li>
-            <ul class="list-group">
+            <li class="list-group-item list-group-item-action list-group-item-primary num-list-elem"
+                data-toggle="collapse" data-target="#el2">Django First steps, HTTP, app</li>
+            <ul id="el2" class="list-group collapse in">
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Django first steps</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">HTTP</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Django application</li>
@@ -46,8 +48,9 @@
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem task">Контрольное задание 3</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem task">Контрольное задание 4</li>
             </ul>
-            <li class="list-group-item list-group-item-action  list-group-item-primary num-list-elem">Django Models, Admin</li>
-            <ul class="list-group">
+            <li class="list-group-item list-group-item-action  list-group-item-primary num-list-elem"
+                data-toggle="collapse" data-target="#el3">Django Models, Admin</li>
+            <ul id="el3" class="list-group collapse in">
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Django models</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Django QUERYSETS</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Django admin</li>
@@ -55,8 +58,9 @@
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem task">Контрольное задание 5</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem task">Контрольное задание 6</li>
             </ul>
-            <li class="list-group-item list-group-item-action list-group-item-primary num-list-elem">Django Templates, Forms, Model Forms</li>
-            <ul class="list-group list-group">
+            <li class="list-group-item list-group-item-action list-group-item-primary num-list-elem"
+                data-toggle="collapse" data-target="#el4">Django Templates, Forms, Model Forms</li>
+            <ul id="el4" class="list-group collapse in">
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Язык шаблонов</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Forms</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Model forms</li>
@@ -65,18 +69,19 @@
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem task">Контрольное задание 8</li>
 
             </ul>
-            <li class="list-group-item list-group-item-action list-group-item-primary num-list-elem">Django CBV (generic views), standard
-                tasks
+            <li class="list-group-item list-group-item-action list-group-item-primary num-list-elem"
+                data-toggle="collapse" data-target="#el5">Django CBV (generic views), standard tasks
             </li>
-            <ul class="list-group">
+            <ul id="el5" class="list-group collapse in">
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Class-based (Generic) Views</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Реализация стандартных задач</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem test">Тесты</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem task">Контрольное задание 9</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem task">Контрольное задание 10</li>
             </ul>
-            <li class="list-group-item list-group-item-action list-group-item-primary num-list-elem">Django Debugging, Tests, Deployment</li>
-            <ul class="list-group">
+            <li class="list-group-item list-group-item-action list-group-item-primary num-list-elem"
+                data-toggle="collapse" data-target="#el6">Django Debugging, Tests, Deployment</li>
+            <ul id="el6" class="list-group collapse in">
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Средства отладки и тестирование</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem">Деплоймент</li>
                 <li class="list-group-item list-group-item-action list-group-flush ul-list-elem task">Контрольное задание 11</li>
@@ -85,5 +90,7 @@
         </ol>
     </div>
 </div>
+<script src="../static/js/jquery_3.3.1.min.js"></script>
+<script src="../static/js/bootstrap.js"></script>
 </body>
 </html>
