@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quadratic</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<!--меню-->
+<nav class="navbar navbar-expand-lg navbar-expand navbar-light bg-light">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url 'index' %}">Main</a>
+        <a class="nav-item nav-link" href="{% url 'contact' %}">Contacts</a>
+        <a class="nav-item nav-link" href="{% url 'student_list' %}">Students</a>
+        <a class="nav-item nav-link active" href="{% url 'results' %}">Quadratic</a>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-md-2 col-sm-2 col"></div>
+    <div class="col-md-7 col-sm-9 col-12 box">
+
+        <p>Квадратное уравнение a*x*x + b*x + c = 0</p>
+        <ul>
+            <li>a = {{ a }}
+                {% if a_error %}
+                    <br><em>{{ a_error }}</em>
+                {% endif %}
+            </li>
+            <li>b = {{ b }}
+                {% if b_error %}
+                    <br><em>{{ b_error }}</em>
+                {% endif %}
+            </li>
+            <li>c = {{ c }}
+                {% if c_error %}
+                    <br><em>{{ c_error }}</em>
+                {% endif %}
+            </li>
+        </ul>
+
+        {% if discriminant is not None %}
+            <p>Дискриминант: {{ discriminant }}</p>
+            <p>{{ message }}</p>
+        {% endif %}
+
+    </div>
+</div>
+
+<script src="{% static 'js/jquery_3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>
