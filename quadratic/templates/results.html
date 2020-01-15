@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Quadratic</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <p>results.html</p>
+<!--меню-->
+<nav class="navbar navbar-expand-lg navbar-expand navbar-light bg-light">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url 'index' %}">Main</a>
+        <a class="nav-item nav-link" href="{% url 'contact' %}">Contacts</a>
+        <a class="nav-item nav-link" href="{% url 'student_list' %}">Students</a>
+        <a class="nav-item nav-link active" href="{% url 'results' %}">Quadratic</a>
+    </div>
+</nav>
+
+{% if get %}
+    {{ get }}
+{% endif %}
+
+<script src="{% static 'js/jquery_3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
 </body>
 </html>

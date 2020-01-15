@@ -2,4 +2,5 @@ from django.shortcuts import render
 
 
 def quadratic_results(request):
-    return render(request, 'results.html')
+    print(request.method)
+    return render(request, 'results.html', {'get': request.GET})
