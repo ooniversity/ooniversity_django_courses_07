@@ -11,9 +11,9 @@
 <!--меню-->
 <nav class="navbar navbar-expand-lg navbar-expand navbar-light bg-light">
     <div class="navbar-nav">
-        <a class="nav-item nav-link" href="index.html">Main</a>
-        <a class="nav-item nav-link" href="contact.html">Contacts</a>
-        <a class="nav-item nav-link active" href="student_list.html">Students</a>
+        <a class="nav-item nav-link" href="{% url 'index' %}">Main</a>
+        <a class="nav-item nav-link " href="{% url 'contact' %}">Contacts</a>
+        <a class="nav-item nav-link active" href="{% url 'student_list' %}">Students</a>
     </div>
 </nav>
 
@@ -35,7 +35,7 @@
             </thead>
             <tbody>
             <tr id="clickable-row">
-                <th scope="row"><a href="student_detail.html" class="stretched-link">1</a></th>
+                <th scope="row"><a href="{% url 'student_detail' %}" class="stretched-link">1</a></th>
                 <td>Petrenko</td>
                 <td>Petro</td>
                 <td>01, Shevchenko Street, Kharkov </td>
