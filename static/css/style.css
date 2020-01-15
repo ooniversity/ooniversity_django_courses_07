@@ -4,7 +4,7 @@ body {
 
 
 h2 {
-    font-family: "Open Sans";
+    font-family: "Open Sans Light", sans-serif;
 }
 
 h3 {
@@ -56,4 +56,8 @@ li {
 
 .attr {
     font-size: 18px;
+}
+
+#clickable-row {
+    transform: rotate(0);
 }
