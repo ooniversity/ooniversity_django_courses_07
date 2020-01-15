@@ -1,0 +1,63 @@
+body {
+    background-color: lightgrey;
+}
+
+
+h2 {
+    font-family: "Open Sans Light", sans-serif;
+}
+
+h3 {
+    font-family: "Open Sans Light", sans-serif;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: darkgrey;
+}
+
+p {
+    font-family: "Open Sans Light", sans-serif;
+    font-size: 22px;
+}
+
+ul {
+    padding: 10px 0px 10px 10px;
+    margin-left: 50px;
+}
+
+li {
+    font-family: "Open Sans Light", sans-serif;
+    font-size: 20px;
+}
+
+.box {
+    background-color: whitesmoke;
+    padding: 40px 50px 50px;
+}
+
+.active {
+    border-bottom: 4px solid #149ee6;
+}
+
+.nav-item {
+    font-family: "Open Sans Light", sans-serif;
+    font-size: 20px;
+}
+
+.task {
+    color: #cc00b1;
+}
+
+.test {
+    color: #378a00;
+}
+
+.attr {
+    font-size: 18px;
+}
+
+#clickable-row {
+    transform: rotate(0);
+}
