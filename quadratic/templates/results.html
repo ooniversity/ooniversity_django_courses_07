@@ -41,7 +41,7 @@
             </li>
         </ul>
 
-        {% if discriminant is not None %}
+        {% if not error %}
             <p>Дискриминант: {{ d }}</p>
             <p>{{ result_message }}</p>
         {% endif %}
