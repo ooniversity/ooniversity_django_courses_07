@@ -31,48 +31,40 @@
 <div class="row">
     <div class="col-md-2 col-sm-2 col"></div>
     <div class="col-md-7 col-sm-9 col-12 box">
-        <h2 class="h2">Python Basic Training</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Malesuada fames ac turpis egestas integer eget aliquet nibh.
-            Viverra aliquet eget sit amet tellus cras adipiscing.
-            Interdum varius sit amet mattis vulputate enim nulla aliquet.
-            Orci ac auctor augue mauris. Arcu felis bibendum ut tristique et egestas quis ipsum.
-            Tristique senectus et netus et malesuada fames ac.</p>
-        <h2 class="h3 mt-4">Courses</h2>
+        <h2 class="h2">{{ course.name }}</h2>
+        <p>{{ course.description }}</p>
+        <h2 class="h3 mt-4">Plan of the education</h2>
 
         <table class="table table-hover">
             <thead class="thead-light">
             <tr>
+                <th scope="col">#</th>
                 <th scope="col">Course</th>
                 <th scope="col">Description</th>
             </tr>
             </thead>
             <tbody>
 
-            {% for course in courses %}
+            {% for lesson in lessons %}
 
                 <tr class="row-link position-relative">
-                    <td scope="row">
-                        <a class="nav-link stretched-link m-0 p-0"
-                           href="{% url 'courses:detail' course.pk %}">{{ course.name }}</a>
-                    </td>
-                    <td>{{ course.short_description }}</td>
+                    <td scope="row">{{ lesson.order }}</td>
+                    <td>{{ lesson.subject }}
+                    <td>{{ lesson.description }}</td>
                 </tr>
 
             {% empty %}
 
                 <tr>
-                    <td>no one course</td>
+                    <td>no one lessons</td>
                 </tr>
 
             {% endfor %}
             </tbody>
         </table>
+
+
     </div>
 </div>
-
-<script src="{% static 'js/jquery_3.3.1.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.js' %}"></script>
 </body>
 </html>

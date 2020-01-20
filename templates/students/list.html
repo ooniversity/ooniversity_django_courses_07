@@ -11,19 +11,19 @@
 <!--меню-->
 <nav class="navbar navbar-expand-lg navbar-expand navbar-light bg-light">
     <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="{% url 'index' %}">Home</a>
+        <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
         <a class="nav-item nav-link" href="{% url 'contact' %}">Contacts</a>
 
         {% if course %}
 
             <form action="{% url 'students:list_view' %}">
                 <input hidden name="course_id" value="{{ course.pk }}">
-                <input type="submit" class="nav-item nav-link btn btn-outline-light" value="Students">
+                <input type="submit" class="nav-item nav-link btn btn-outline-light active" value="Students">
             </form>
 
         {% else %}
 
-            <a class="nav-item nav-link" href="{% url 'students:list_view' %}">Students</a>
+            <a class="nav-item nav-link active" href="{% url 'students:list_view' %}">Students</a>
 
         {% endif %}
     </div>
@@ -31,33 +31,35 @@
 <div class="row">
     <div class="col-md-2 col-sm-2 col"></div>
     <div class="col-md-7 col-sm-9 col-12 box">
-        <h2 class="h2">Python Basic Training</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Malesuada fames ac turpis egestas integer eget aliquet nibh.
-            Viverra aliquet eget sit amet tellus cras adipiscing.
-            Interdum varius sit amet mattis vulputate enim nulla aliquet.
-            Orci ac auctor augue mauris. Arcu felis bibendum ut tristique et egestas quis ipsum.
-            Tristique senectus et netus et malesuada fames ac.</p>
-        <h2 class="h3 mt-4">Courses</h2>
+        <h2 class="h2">Students list</h2>
 
         <table class="table table-hover">
             <thead class="thead-light">
             <tr>
-                <th scope="col">Course</th>
-                <th scope="col">Description</th>
+                <th>#</th>
+                <th scope="col">Full name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Skype</th>
+                <th scope="col">Courses</th>
             </tr>
             </thead>
             <tbody>
 
-            {% for course in courses %}
+            {% for student in students %}
 
                 <tr class="row-link position-relative">
-                    <td scope="row">
+                    <td scope="row">{{ forloop.counter }}</td>
+                    <td>
                         <a class="nav-link stretched-link m-0 p-0"
-                           href="{% url 'courses:detail' course.pk %}">{{ course.name }}</a>
+                           href="{% url 'students:detail' student.pk %}">{{ student.name }} {{ student.surname }}</a>
                     </td>
-                    <td>{{ course.short_description }}</td>
+                    <td>{{ student.address }}</td>
+                    <td>{{ student.skype }}</td>
+                    <td>
+                        {% for course in student.courses.all %}
+                            {{ course.name }}<br>
+                        {% endfor course %}
+                    </td>
                 </tr>
 
             {% empty %}
