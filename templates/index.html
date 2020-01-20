@@ -18,7 +18,6 @@
 </nav>
 <div class="row">
     <div class="col-md-2 col-sm-2 col"></div>
-    <!--информация о курсе-->
     <div class="col-md-7 col-sm-9 col-12 box">
         <h2 class="h2">Python Basic Training</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -28,7 +27,7 @@
             Interdum varius sit amet mattis vulputate enim nulla aliquet.
             Orci ac auctor augue mauris. Arcu felis bibendum ut tristique et egestas quis ipsum.
             Tristique senectus et netus et malesuada fames ac.</p>
-        <h2 class="h3">Courses</h2>
+        <h2 class="h3 mt-4">Courses</h2>
 
         <table class="table table-hover">
             <thead class="thead-light">
@@ -41,9 +40,9 @@
 
             {% for course in courses %}
 
-                <tr>
+                <tr class="row-link position-relative">
                     <td scope="row">
-                        <a href="{% url 'courses:detail' course.pk %}">{{ course.name }}</a>
+                        <a class="nav-link stretched-link m-0 p-0" href="{% url 'courses:detail' course.pk %}">{{ course.name }}</a>
                     </td>
                     <td>{{ course.short_description }}</td>
                 </tr>
