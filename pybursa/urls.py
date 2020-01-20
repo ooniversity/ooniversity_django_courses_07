@@ -4,8 +4,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name="index"),
-    url(r'^courses/$', include('courses.urls', namespace='courses')),
-    url(r'^students/$', include('students.urls', namespace='students')),
+    url(r'^courses/', include('courses.urls', namespace='courses')),
+    url(r'^students/', include('students.urls', namespace='students')),
     url(r'^quadratic/results/', include('quadratic.urls')),
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^student_list/$', views.student_list, name="student_list"),
