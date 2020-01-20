@@ -13,8 +13,19 @@
     <div class="navbar-nav">
         <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
         <a class="nav-item nav-link active" href="{% url 'contact' %}">Contacts</a>
-        <a class="nav-item nav-link" href="{% url 'student_list' %}">Students</a>
-{#        <a class="nav-item nav-link" href="{% url 'quadratic:results' %}">Quadratic</a>#}
+
+        {% if course %}
+
+            <form action="{% url 'students:list_view' %}">
+                <input hidden name="course_id" value="{{ course.pk }}">
+                <input type="submit" class="nav-item nav-link btn btn-outline-light" value="Students">
+            </form>
+
+        {% else %}
+
+            <a class="nav-item nav-link" href="{% url 'students:list_view' %}">Students</a>
+
+        {% endif %}
     </div>
 </nav>
 
