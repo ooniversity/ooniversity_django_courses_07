@@ -13,7 +13,19 @@
     <div class="navbar-nav">
         <a class="nav-item nav-link active" href="{% url 'index' %}">Home</a>
         <a class="nav-item nav-link" href="{% url 'contact' %}">Contacts</a>
-        <a class="nav-item nav-link" href="{% url 'students:list_view' %}">Students</a>
+
+        {% if course %}
+
+            <form action="{% url 'students:list_view' %}">
+                <input hidden name="course_id" value="{{ course.pk }}">
+                <input type="submit" class="nav-item nav-link btn btn-outline-light" value="Students">
+            </form>
+
+        {% else %}
+
+            <a class="nav-item nav-link" href="{% url 'students:list_view' %}">Students</a>
+
+        {% endif %}
     </div>
 </nav>
 <div class="row">
@@ -42,7 +54,8 @@
 
                 <tr class="row-link position-relative">
                     <td scope="row">
-                        <a class="nav-link stretched-link m-0 p-0" href="{% url 'courses:detail' course.pk %}">{{ course.name }}</a>
+                        <a class="nav-link stretched-link m-0 p-0"
+                           href="{% url 'courses:detail' course.pk %}">{{ course.name }}</a>
                     </td>
                     <td>{{ course.short_description }}</td>
                 </tr>
