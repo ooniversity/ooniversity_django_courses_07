@@ -9,6 +9,7 @@ class Student(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=256)
     address = models.CharField(max_length=256)
+    skype = models.CharField(max_length=256)
     courses = models.ManyToManyField(to=Course)
 
     def __str__(self):
