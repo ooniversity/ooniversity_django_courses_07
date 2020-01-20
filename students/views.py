@@ -4,7 +4,8 @@ from django.shortcuts import get_list_or_404, get_object_or_404
 
 
 def list_view(request):
-    students = get_list_or_404(Student)
+    course_id = request.GET.get('course_id')
+    students = Student.objects.filter(courses=course_id) if course_id else Student.objects.all()
     context = {'students': students}
     return render(request, 'students/list.html', context=context)
 
