@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Results</title>
+    <title>Quadratic</title>
 </head>
 <body>
-Results
+        <p>Квадратное уравнение a*x*x + b*x + c = 0</p>
+        <ul>
+            <li>a = {{ a }}
+                {% if a_error %}
+                    <br><em>{{ a_error }}</em>
+                {% endif %}
+            </li>
+            <li>b = {{ b }}
+                {% if b_error %}
+                    <br><em>{{ b_error }}</em>
+                {% endif %}
+            </li>
+            <li>c = {{ c }}
+                {% if c_error %}
+                    <br><em>{{ c_error }}</em>
+                {% endif %}
+            </li>
+        </ul>
+
+        {% if discriminant is not None %}
+            <p>Дискриминант: {{ discriminant }}</p>
+            <p>{{ message }}</p>
+        {% endif %}
+
 </body>
 </html>
