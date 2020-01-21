@@ -40,8 +40,8 @@ def root_equation(content):
                       f'имеет один действительный корень: x1 = x2 = {x}'
 
         elif discriminant > 0:
-            x1 = (-b + sqrt(b * b - 4 * a * c)) / 2 * a
-            x2 = (-b - sqrt(b * b - 4 * a * c)) / 2 * a
+            x1 = (-b + sqrt(discriminant)) / 2 * a
+            x2 = (-b - sqrt(discriminant)) / 2 * a
             message = f'Квадратное уравнение имеет два действительных корня: ' \
                       f'x1 = {round(x1, ndigits=1)}, x2 = {round(x2, ndigits=1)}'
 
