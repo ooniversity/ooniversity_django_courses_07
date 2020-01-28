@@ -61,15 +61,3 @@ li {
 #clickable-row {
     transform: rotate(0);
 }
-
-em {
-    font-style: italic;
-}
-
-.row-link {
-    transform: rotate(0);
-}
-
-table {
-    font-size: 20px;
-}
