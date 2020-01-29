@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def quadratic_results(request):
+    return render(request, 'results.html')
