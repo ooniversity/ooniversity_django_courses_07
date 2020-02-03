@@ -27,7 +27,7 @@ def root_equation(content):
     a = content.get('a')
     b = content.get('b')
     c = content.get('c')
-    if a and b and c:
+    if a is not None and b is not None and c is not None:
         discriminant = b * b - 4 * a * c
 
         if discriminant == 0:
