@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Contacts Lead-up Bursa</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.css">
-    <link rel="stylesheet" href="../static/css/style.css">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 <!--меню-->
 <nav class="navbar navbar-expand-lg navbar-expand navbar-light bg-light">
     <div class="navbar-nav">
-        <a class="nav-item nav-link" href="{% url 'index' %}">Main</a>
-        <a class="nav-item nav-link active" href="{%  url 'contact' %}">Contacts</a>
-        <a class="nav-item nav-link" href="{% url 'student_list' %}">Students</a>
+        <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
+        <a class="nav-item nav-link active" href="{% url 'contact' %}">Contacts</a>
+
+        {% if course %}
+
+            <form action="{% url 'students:list_view' %}">
+                <input hidden name="course_id" value="{{ course.pk }}">
+                <input type="submit" class="nav-item nav-link btn btn-outline-light" value="Students">
+            </form>
+
+        {% else %}
+
+            <a class="nav-item nav-link" href="{% url 'students:list_view' %}">Students</a>
+
+        {% endif %}
     </div>
 </nav>
 
@@ -40,7 +53,8 @@
         <p>Phone: +38 (011) 111 11 13</p>
     </div>
 </div>
-<script src="../static/js/jquery_3.3.1.min.js"></script>
-<script src="../static/js/bootstrap.js"></script>
+
+<script src="{% static 'js/jquery_3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
 </body>
 </html>
