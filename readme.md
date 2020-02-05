@@ -22,7 +22,6 @@ names must meet the requirements.
 и проходит все примеры тест-кейсов
 
 
-
 ### порядок создания приложения
 - создал приложение "quadratic"
 - прописал его в settings INSTALLED_APPS
