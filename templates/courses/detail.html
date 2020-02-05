@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lead-up Bursa</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<!--меню-->
+<nav class="navbar navbar-expand-lg navbar-expand navbar-light bg-light">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="{% url 'index' %}">Home</a>
+        <a class="nav-item nav-link" href="{% url 'contact' %}">Contacts</a>
+
+        {% if course %}
+
+            <form action="{% url 'students:list_view' %}">
+                <input hidden name="course_id" value="{{ course.pk }}">
+                <input type="submit" class="nav-item nav-link btn btn-outline-light" value="Students">
+            </form>
+
+        {% else %}
+
+            <a class="nav-item nav-link" href="{% url 'students:list_view' %}">Students</a>
+
+        {% endif %}
+    </div>
+</nav>
+<div class="row">
+    <div class="col-md-2 col-sm-2 col"></div>
+    <div class="col-md-7 col-sm-9 col-12 box">
+        <h2 class="h2">{{ course.name }}</h2>
+        <p>{{ course.description }}</p>
+        <h2 class="h3 mt-4">Plan of the education</h2>
+
+        <table class="table table-hover">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Course</th>
+                <th scope="col">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for lesson in lessons %}
+
+                <tr class="row-link position-relative">
+                    <td scope="row">{{ lesson.order }}</td>
+                    <td>{{ lesson.subject }}
+                    <td>{{ lesson.description }}</td>
+                </tr>
+
+            {% empty %}
+
+                <tr>
+                    <td>no one lessons</td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+</body>
+</html>
