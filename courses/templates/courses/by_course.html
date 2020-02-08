@@ -1,0 +1,55 @@
+{% extends "navbar.html" %}
+
+{% block title %}{{course.name}}{% endblock %}
+{% block main %}"nav-link" href="/">{% endblock %}
+{% block students %}"nav-link" href="{% url 'student_list' %}?course_id={{course.pk}}">{% endblock %}
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-secondary" role="alert">
+      {{message}}
+    </div>
+    {% endfor %}
+{% endif %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-1">{{course.name}}</h1>
+    <p class="lead">{{course.description|truncatechars:1}}</p>
+  </div>
+</div>
+<h2>Преподаватели</h2>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Учитель</h5>
+    <a href="{% url 'by_coach' course.coach.pk %}" class="card-link">{{course.coach.last_name}} {{course.coach.first_name}}</a>
+    <p class="card-text">{{course.coach.description}}</p>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Ассистент</h5>
+    <a href="{% url 'by_coach' course.assistant.pk %}" class="card-link">{{course.assistant.last_name}} {{course.assistant.first_name}}</a>
+    <p class="card-text">{{course.coach.description}}</p>
+  </div>
+</div>
+<h2>План курса</h2>
+<a href="{% url 'add_lesson'  course.pk%}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Добавить занятие</a>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">Тема</th>
+      <th scope="col">Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for lesson in lessons %}
+    <tr>
+      <th scope="row">{{lesson.order}}</th>
+      <td>{{lesson.subject}}</td>
+      <td>{{lesson.description}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
